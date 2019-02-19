@@ -1,0 +1,876 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>HTML to MySQL</title>
+
+        <link rel="stylesheet" href="/assets/css/bootstrap.css">
+        <link rel="stylesheet" href="/assets/css/main.css">
+        <link rel="stylesheet" href="/assets/css/type/budicons.css">
+        <link rel="stylesheet" href="/assets/css/type/fontello.css">
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&subset=latin,cyrillic" rel="stylesheet" crossorigin="anonymous">
+
+        <link rel="canonical" href="https://vtvz.ru/blog/html-to-mysql/">
+        <link rel="alternate" type="application/rss+xml" title="Виталий Заславский" href="https://vtvz.ru/feed.xml">
+
+        <meta name="theme-color" content="#232323">
+
+        <!-- Begin Jekyll SEO tag v2.5.0 -->
+<meta name="generator" content="Jekyll v3.7.3" />
+<meta property="og:title" content="HTML to MySQL" />
+<meta name="author" content="Виталий Заславский" />
+<meta property="og:locale" content="ru_RU" />
+<meta name="description" content="Как перенести данные из одного сайта в другой, если нет доступа к БД" />
+<meta property="og:description" content="Как перенести данные из одного сайта в другой, если нет доступа к БД" />
+<link rel="canonical" href="https://vtvz.ru/blog/html-to-mysql/" />
+<meta property="og:url" content="https://vtvz.ru/blog/html-to-mysql/" />
+<meta property="og:site_name" content="Виталий Заславский" />
+<meta property="og:image" content="https://vtvz.ru/assets/images/logo-black.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-02-18T00:00:00+00:00" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","url":"https://vtvz.ru/blog/html-to-mysql/","headline":"HTML to MySQL","dateModified":"2019-02-18T00:00:00+00:00","datePublished":"2019-02-18T00:00:00+00:00","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://vtvz.ru/assets/images/logo-black.png"},"name":"Виталий Заславский"},"image":"https://vtvz.ru/assets/images/logo-black.png","author":{"@type":"Person","name":"Виталий Заславский"},"description":"Как перенести данные из одного сайта в другой, если нет доступа к БД","mainEntityOfPage":{"@type":"WebPage","@id":"https://vtvz.ru/blog/html-to-mysql/"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    </head>
+
+    <body class="full-layout">
+        <div id="preloader"><div id="status"><div class="spinner"></div></div></div>
+
+<div id="bg"></div>
+
+<div class="body-wrapper">
+      <nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+      <a class="btn responsive-menu" data-toggle="collapse" data-target=".navbar-collapse"><i></i></a>
+      <div class="navbar-brand text-center">
+        <a href="/">
+          <img src="/assets/images/logo.svg" alt="Logo" class="logo">
+        </a>
+      </div>
+      <!-- /.navbar-brand -->
+    </div>
+    <!-- /.navbar-header -->
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <!-- <li class="current"> -->
+        <li>
+            <a href="/" class="hint--right" data-hint="Главная"><i class="budicon-home-1"></i><span>Главная</span></a>
+        </li>
+        <li class="current">
+            <a href="/blog/" class="hint--right" data-hint="Блог"><i class="budicon-book-1"></i><span>Блог</span></a>
+        </li>
+      </ul>
+      <!-- /.navbar-nav -->
+    </div>
+    <!-- /.navbar-collapse -->
+  </nav>
+  <!-- /.navbar -->
+
+    <div class="container inner">
+    <div class="blog list-view row">
+        <div class="col-md-8 col-sm-12 content">
+            <div class="blog-posts">
+    <div class="post box">
+        <div class="meta">
+    <span class="category"><a href="/blog/category/%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B0/">Разработка</a></span>
+    <span class="date">18 фев 2019</span>
+    
+    <span class="reading-time" title="Примерное время чтения">
+        
+
+        <!--1928-->
+
+        
+            ~10 мин.
+        
+    </span>
+</div>
+
+        <h1 class="post-title">
+            <a href="/blog/html-to-mysql/">HTML to MySQL</a>
+        </h1>
+        <div>
+            <p>Один мой хороший знакомый и коллега обратился ко мне за помощью. Он делал для одной компании новый сайт взамен старому.
+Данные со старого, естественно, должны были переместиться на новый.
+В этом и заключалась моя задача. Было только одно простое условие – доступа к БД старого сайта ни у меня, ни у него не было.</p>
+
+<p>В этой статье я хочу на практике показать, что можно сделать в этой ситуации, несмотря на отсутствие адекватной разметки в коде страницы.</p>
+
+<!--cut-->
+
+<p><em>// Не ждите высокотехнологичных мемуаров. 
+Статья предназначена скорее для новичков среднего уровня, поэтому излишне подробная.
+Но может быть и разработчики уровня повыше смогут найти для себя интересные подходы к решению описанной проблемы <img class="emoji" title=":blush:" alt=":blush:" src="/assets/images/emoji/unicode/1f60a.png" height="20" width="20"></em></p>
+
+<h2 id="что-имеется">Что имеется</h2>
+
+<p>Есть сайт с панелью администратора, доступной по логину-паролю, которые имеются, и около 1500 записей по 20 на страницу.</p>
+
+<p>Также есть доступ к БД через панель PhpMyAdmin. (На крайний случай есть SSH доступ, но это для очень больших объемов данных)</p>
+
+<p>Ну и на этом все.</p>
+
+<p>Работа единоразовая, поэтому писать целую инфраструктуру не требуется.</p>
+
+<h2 id="инструменты">Инструменты</h2>
+
+<p>Для таких задач мне не раз приходил на выручку NodeJs.</p>
+
+<ul>
+  <li>Во-первых, я его знаю и знаю достаточно хорошо.</li>
+  <li>Во-вторых, под него есть огромное количество библиотек, в том числе и для работы с HTML разметкой.</li>
+  <li>В-третьих, в случае большого количества данных запросы можно распараллелить и это даст значительный прирост к скорости выполнения скрипта. PHP так же может.</li>
+  <li>Ну и последнее, я уже не первый раз выполнял подобную работу и на бо́льших объемах и могу сказать, что лучше JS ничто не выполнит эту задачу лучше.</li>
+</ul>
+
+<p>Так же в некоторых, в том числе и в этом, случаях приходится писать некоторые скрипты прямо в браузер. А там JS по умолчанию.</p>
+
+<p>Часто используемые библиотеки это:</p>
+
+<ul>
+  <li>
+<a href="https://github.com/request/request">request</a> + <a href="https://github.com/request/request-promise">request-promise</a>
+которые в удобном виде умеют делать HTTP запросы и делают это хорошо. 
+Можно было использовать встроенный http модуль, надстройкой которому является эта библиотека, 
+но в request уже из коробки учтены такие мелочи, 
+как использование http или https, обработка редиректов, сбор информации из буферов и стримов 
+и прочее, чем обычно заниматься не хочется совсем. 
+<br>
+В нашем случае она не понадобится, но обычно она незаменимый инструмент.</li>
+  <li>
+<a href="https://github.com/cheeriojs/cheerio">cheerio</a>
+как удобная замена jQuery для NodeJs с идентичным интерфейсом. То, что доктор прописал.
+Возможно, кто-то со мной не согласится и скажет, что есть что-то удобнее. И я скорее всего соглашусь.
+Но я пользовался jQuery еще до того, как NodeJS, NPM и прочие появились.
+Поэтому я использую его, потому что хорошо знаю и люблю.</li>
+</ul>
+
+<h2 id="шаг-первый-сбор-сырой-информации">Шаг первый. Сбор сырой информации</h2>
+
+<p>Был у меня опыт вытягивания данных из новостной ленты одного сайта.
+Это были публичные данные, поэтому собрать их не с труда любым способом. И я использовал <code class="highlighter-rouge">request</code>.</p>
+
+<p>Тут ситуация немного другая – доступ был запаролен, скорее всего с помощью PHP сессий.
+Быстрый эксперимент с подстановкой Cookie из браузера не дал положительного результата.
+Возможно, да и скорее всего, я просто сделал что-то не так. Как бы то ни было я решил пойти другим путем.</p>
+
+<p>Оказалось проще вытянуть данные прямо в пределах браузера. На сайте уже использовался jQuery, так что пол дела уже сделано.</p>
+
+<p>Первая проверка на работоспособность прошла успешно:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">await</span> <span class="nx">$</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s1">'http://example.ru/user/admin?page=1'</span><span class="p">);</span>
+<span class="c1">// Да-да. jQuery умеет в Promise</span>
+</code></pre></div></div>
+
+<p>И в консоль было выплюнуто корректное содержание запрошенной страницы. Это ведь то, что нам нужно!
+Достаточно единожды пройтись по страничкам и собрать всю необходимую информацию:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">results</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="kd">var</span> <span class="nx">pages</span> <span class="o">=</span> <span class="mi">73</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="nx">pages</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">results</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="kr">await</span> <span class="nx">$</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s1">'http://example.ru/user/admin?page='</span> <span class="o">+</span> <span class="nx">i</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>И Вуаля! В массиве <code class="highlighter-rouge">results</code> лежат исходники всех 73 страниц.
+Тут можно пойти двумя путями: работать с данными дальше в браузере
+или сохранить их на комп и обрабатывать средствами NodeJs. Я выбрал второй. Так проще и быстрее.</p>
+
+<p>Поэтому следующая задача – сохранить данные в файл. Сделать это можно несколькими способами.
+Я выбрал следующий: сформировать данные как строку и загрузить как файл.</p>
+
+<p>Гугление привело на <a href="https://stackoverflow.com/questions/13405129/javascript-create-and-save-file">эту страничку</a> в StackOverflow, где был приведен вот этот сниппет:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Function to download data to a file</span>
+<span class="kd">function</span> <span class="nx">download</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">filename</span><span class="p">,</span> <span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">file</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Blob</span><span class="p">([</span><span class="nx">data</span><span class="p">],</span> <span class="p">{</span><span class="na">type</span><span class="p">:</span> <span class="nx">type</span><span class="p">});</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nb">navigator</span><span class="p">.</span><span class="nx">msSaveOrOpenBlob</span><span class="p">)</span> <span class="c1">// IE10+</span>
+        <span class="nb">window</span><span class="p">.</span><span class="nb">navigator</span><span class="p">.</span><span class="nx">msSaveOrOpenBlob</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="nx">filename</span><span class="p">);</span>
+    <span class="k">else</span> <span class="p">{</span> <span class="c1">// Others</span>
+        <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"a"</span><span class="p">),</span>
+                <span class="nx">url</span> <span class="o">=</span> <span class="nx">URL</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
+        <span class="nx">a</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="nx">url</span><span class="p">;</span>
+        <span class="nx">a</span><span class="p">.</span><span class="nx">download</span> <span class="o">=</span> <span class="nx">filename</span><span class="p">;</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+        <span class="nx">a</span><span class="p">.</span><span class="nx">click</span><span class="p">();</span>
+        <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+            <span class="nb">window</span><span class="p">.</span><span class="nx">URL</span><span class="p">.</span><span class="nx">revokeObjectURL</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>  
+        <span class="p">},</span> <span class="mi">0</span><span class="p">);</span> 
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Не вдаваясь в подробности того, как это работает, скопировал этот код в консоль, и эта строчка:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">download</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">results</span><span class="p">),</span> <span class="s1">'data.json'</span><span class="p">,</span> <span class="s1">'application/json'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>предложит скачать все нами загруженные данные в виде обычного json файла.</p>
+
+<p>Сбор сырых данных завершен. Можно приступать к анализу.</p>
+
+<h2 id="шаг-второй-анализ">Шаг второй. Анализ</h2>
+
+<p>Каждая запись на странице внешне выглядит так:</p>
+
+<figure>
+  <img src="datum.png" alt="Пример данных">
+  Данные были намеренно искажены. Джонатан Хамстер – мой хомяк.
+</figure>
+
+<p>А HTML код вот такой:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item"</span> <span class="na">data-key=</span><span class="s">"1494"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;hr&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"mb4 brown"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"mt0"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"grey"</span><span class="nt">&gt;</span>Имя:<span class="nt">&lt;/span&gt;</span> Джонатан Хамстер
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/user/update-client?id=1494"</span> <span class="na">class=</span><span class="s">"ml2 size08 hover-nodecor hover-green"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/images/pencil.png"</span> <span class="na">class=</span><span class="s">"mr1 middle"</span><span class="nt">&gt;</span>изменить
+            <span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;/p&gt;</span>
+
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"pull-right size08 grey"</span><span class="nt">&gt;</span>Заходил(а): 16.02.2019 17:38<span class="nt">&lt;/p&gt;</span>
+
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"mt1"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"grey"</span><span class="nt">&gt;</span>Тип:<span class="nt">&lt;/span&gt;</span> Обычный покупатель<span class="nt">&lt;/p&gt;</span>
+
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"mt1"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"grey"</span><span class="nt">&gt;</span>До получения/продления скидки осталось:<span class="nt">&lt;/span&gt;</span> 9000 руб.<span class="nt">&lt;/p&gt;</span>
+
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"mt1"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"grey"</span><span class="nt">&gt;</span>Email:<span class="nt">&lt;/span&gt;</span> jonathan4@gmail.com<span class="nt">&lt;/p&gt;</span>
+        
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"mt1"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"grey"</span><span class="nt">&gt;</span>Телефон:<span class="nt">&lt;/span&gt;</span> 79507757757<span class="nt">&lt;/p&gt;</span>
+        
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"mt1"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"grey"</span><span class="nt">&gt;</span>Адрес:<span class="nt">&lt;/span&gt;</span> 111111 г. Москва, ул. Ленина, 28-123<span class="nt">&lt;/p&gt;</span>
+
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"mt1 size08"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"grey"</span><span class="nt">&gt;</span>Зарегистрирован(а):<span class="nt">&lt;/span&gt;</span> 16.02.2019 17:12<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p>Выглядит ужасно даже после форматирования, но с этим можно работать.</p>
+
+<p>Если кратко прорезюмировать:</p>
+<ul>
+  <li>Все элементы списка располагаются внутри <code class="highlighter-rouge">#centercolumn .list-view</code>.
+На самом деле все <code class="highlighter-rouge">.list-view</code> появляется на странице единожды и нет никакой надобности уточнять его расположение.</li>
+  <li>Каждый элемент списка имеет класс <code class="highlighter-rouge">.item</code>. Это важно, потому что внутри <code class="highlighter-rouge">.list-view</code> еще есть информация о количестве записей (“Показаны записи 1-20 из 1462”) и пагинация.</li>
+  <li>Каждый кусочек данных располагается внутри элемента <code class="highlighter-rouge">p</code>.</li>
+  <li>Каждый тип данных никак не отделяется классом. То есть внутри одинаковых элементов с одинаковыми классами лежат разные данные.</li>
+  <li>Внутри почти каждого параграфа есть элемент с классом <code class="highlighter-rouge">.grey</code>, который и определяет тип.</li>
+  <li>Количество данных не консистентно – не во всех записях есть Email и Телефон.</li>
+  <li>Сами данные тоже не имеют какого-то стандарта.
+Адрес записан в произвольном формате (есть случаи, где в качестве адреса указаны “F”, “SPb” или “………”).
+Имя тоже не имеет единого формата (ФИО, ИФО, ИФ, ФИ, И, Магазин у “Моста”).</li>
+  <li>И самое главное: почти вся полезная информация лежит в тексте, который расположен именно внутри параграфа. То есть если убрать всех потомков и вытащить текст, мы получим то, что нужно.</li>
+</ul>
+
+<h2 id="шаг-третий-реализация">Шаг третий. Реализация</h2>
+
+<h3 id="получение-типов-данных">Получение типов данных</h3>
+
+<p>Первое, что нужно выяснить, какие типы данных у нас в принципе имеются во всех записях.
+Для этого можно вытянуть все <code class="highlighter-rouge">p .grey</code> и найти уникальные значения.
+В современном JS есть замечательный класс <code class="highlighter-rouge">Set</code>, который хранит в себе набор уникальных значений.
+Если добавить то, что уже есть, операция будет проигнорирована.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">cheerio</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'cheerio'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./data.json'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">main</span> <span class="o">=</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">types</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Set</span><span class="p">();</span>
+    
+    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">datum</span> <span class="k">of</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">$</span> <span class="o">=</span> <span class="nx">cheerio</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="nx">datum</span><span class="p">);</span>
+
+        <span class="nx">$</span><span class="p">(</span><span class="s1">'.list-view .item'</span><span class="p">).</span><span class="nx">each</span><span class="p">((</span><span class="nx">i</span><span class="p">,</span> <span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">$</span><span class="p">(</span><span class="nx">item</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">'p'</span><span class="p">).</span><span class="nx">each</span><span class="p">((</span><span class="nx">i</span><span class="p">,</span> <span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="kd">let</span> <span class="nx">type</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">item</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">'.grey'</span><span class="p">).</span><span class="nx">text</span><span class="p">().</span><span class="nx">trim</span><span class="p">();</span>
+
+                <span class="nx">types</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">type</span><span class="p">)</span>
+            <span class="p">});</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">types</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nx">main</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>И на выходе:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Set {
+  'Имя:',
+  '',
+  'Тип:',
+  'До получения/продления скидки осталось:',
+  'Телефон:',
+  'Зарегистрирован(а):',
+  'Email:',
+  'Адрес:' }
+</code></pre></div></div>
+
+<p>То есть у нас есть 7 явных значений и одно “пустое”.
+Краткий анализ содержания этой строки показал, что кроме <code class="highlighter-rouge">Заходил(а)</code> там ничего нет.
+Пустое значение объясняется тем, что в этом поле нет дочернего элемента <code class="highlighter-rouge">.grey</code>. Но нам это никак не мешает.</p>
+
+<h3 id="получение-чистых-данных">Получение чистых данных</h3>
+
+<p>Во время анализа мы выяснили, что нужные нам данные лежат в параграфе (<code class="highlighter-rouge">p</code>) без потомков.</p>
+
+<p>Так и гуглим: <a href="https://www.google.com/search?q=jquery+get+text+without+child+elements">jquery get text without child elements</a></p>
+
+<p>И <a href="https://stackoverflow.com/questions/3442394/using-text-to-retrieve-only-text-not-nested-in-child-tags">получаем</a> вот этот кусочек кода, который делает именно то, что нужно:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">clone</span><span class="p">()</span>    <span class="c1">//clone the element</span>
+    <span class="p">.</span><span class="nx">children</span><span class="p">()</span> <span class="c1">//select all the children</span>
+    <span class="p">.</span><span class="nx">remove</span><span class="p">()</span>   <span class="c1">//remove all the children</span>
+    <span class="p">.</span><span class="nx">end</span><span class="p">()</span>      <span class="c1">//again go back to selected element</span>
+    <span class="p">.</span><span class="nx">text</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>Помимо этого нужно убрать все лишние переносы и повторяющиеся пробелы, поэтому после <code class="highlighter-rouge">.text()</code> добавляем еще 2 вызова:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="p">.</span><span class="nx">trim</span><span class="p">()</span>
+    <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">[\s]</span><span class="sr">+/g</span><span class="p">,</span> <span class="s1">' '</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>И в результате получаем красивую строку без лишнего мусора.</p>
+
+<h3 id="обработка">Обработка</h3>
+
+<p>У нас есть 8 типов данных, которые нам нужно по-отдельности проанализировать и привести к значению, которое можно сохранить в БД.</p>
+
+<p>Конечно нужно было это сделать раньше, но на этом этапе особенно важно знать, какие значения будут сохраняться в БД.</p>
+
+<p>После сбора информации выяснилось следующее:</p>
+
+<ul>
+  <li>Фамилия, Имя и Отчество хранятся в отдельных колонках.</li>
+  <li>Поле “Тип” обычно имеет 2 значения: “Обычный покупатель” и “Постоянный покупатель”, что в БД хранится как флаг (0 или 1 соответственно).</li>
+  <li>Поле “До получения/продления скидки осталось” сохраняется как число без указания валюты. То есть в рублях.</li>
+  <li>Телефон и Email сохраняются как есть.</li>
+  <li>Время регистрации и последнего посещения игнорируются.</li>
+  <li>Адрес в БД разбит на все составляющие, типа страны, города, индекса, улицы и п.р.</li>
+</ul>
+
+<p>Для этого сделаем объект, в котором в качестве ключей будет тип данных, а значениями будут функции, которые обрабатывают пришедшие сырые данных:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">strategies</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'Имя:'</span><span class="p">:</span> <span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="p">},</span>
+    <span class="s1">''</span><span class="p">:</span> <span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="p">},</span>
+    <span class="s1">'Тип:'</span><span class="p">:</span> <span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="p">},</span>
+    <span class="s1">'До получения/продления скидки осталось:'</span><span class="p">:</span> <span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="p">},</span>
+    <span class="s1">'Телефон:'</span><span class="p">:</span> <span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="p">},</span>
+    <span class="s1">'Зарегистрирован(а):'</span><span class="p">:</span> <span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="p">},</span>
+    <span class="s1">'Email:'</span><span class="p">:</span> <span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="p">},</span>
+    <span class="s1">'Адрес:'</span><span class="p">:</span> <span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="p">},</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>Так как каждый тип данных может возвращать несколько значений для БД, то каждая функция должна возвращать объект, который будет объединен с остальными данными.
+Если функция не вернет ничего, то ничего не будем делать.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">strategy</span> <span class="o">=</span> <span class="nx">strategies</span><span class="p">[</span><span class="nx">type</span><span class="p">];</span>
+
+<span class="c1">// Несмотря на то, что мы описали все стратегии обработки типов, </span>
+<span class="c1">// cлучаи "а вдруг" все равно стоит предусматривать</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">strategy</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
+
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">strategy</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span> <span class="o">||</span> <span class="p">{};</span>
+<span class="c1">// Про переменную person я пока ничего не говорил, </span>
+<span class="c1">// но в ней будут храниться все данные конкретного пользователя</span>
+<span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">...</span><span class="nx">person</span><span class="p">,</span>
+    <span class="p">...</span><span class="nx">result</span><span class="p">,</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>В итоге остается только описать стратегии обработки всех данных поочередно проверяя их формат.
+Несмотря на то, что мы немного почистили данные, им все равно нельзя доверять.</p>
+
+<p>Вот что я выяснил на этом этапе:</p>
+<ul>
+  <li>В графе с именем всего 3 части, разделенные пробелом. Всего частей может быть от 1 до 3.
+В одном случае ФИО было разделено 2мя пробелами между частями. Поэтому очистка повторяющихся пробелов была очень кстати.</li>
+  <li>Поле “Тип” в большинстве своем имеет одно их 2-х значений: “Обычный покупатель” и “Постоянный покупатель”.
+Но нашлись 3 записи формата “Представитель из Название_города”. Их решено пометить как “Постоянных покупателей”.</li>
+  <li>Поле “До получения/продления скидки осталось” <strong>всегда</strong> имеет формат <code class="highlighter-rouge">[цифры][пробел]руб.</code>, что упростило задачу.</li>
+  <li>В поле с адресом буквально располагался всякий мусор.
+С этим уже ничего нельзя было сделать, поэтому решено все затолкать в одну колонку без какой-либо дополнительной обработки.</li>
+</ul>
+
+<p>В итоге у нас получается вот такая коллекция со стратегиями:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">strategies</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'Имя:'</span><span class="p">:</span> <span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">parts</span> <span class="o">=</span> <span class="nx">content</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">' '</span><span class="p">);</span>
+
+        <span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="s1">''</span><span class="p">,</span> <span class="nx">surname</span> <span class="o">=</span> <span class="s1">''</span><span class="p">,</span> <span class="nx">middlename</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+        <span class="k">switch</span> <span class="p">(</span><span class="nx">parts</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="nx">name</span> <span class="o">=</span> <span class="nx">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="p">[</span><span class="nx">name</span><span class="p">,</span> <span class="nx">surname</span><span class="p">]</span> <span class="o">=</span> <span class="nx">parts</span><span class="p">;</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="mi">3</span><span class="p">:</span>
+                <span class="p">[</span><span class="nx">name</span><span class="p">,</span> <span class="nx">middlename</span><span class="p">,</span> <span class="nx">surname</span><span class="p">]</span> <span class="o">=</span> <span class="nx">parts</span><span class="p">;</span>
+                <span class="k">break</span><span class="p">;</span>
+
+            <span class="nl">default</span><span class="p">:</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">parts</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="p">{</span><span class="nx">name</span><span class="p">,</span> <span class="nx">middlename</span><span class="p">,</span> <span class="nx">surname</span><span class="p">};</span>
+    <span class="p">},</span>
+    <span class="s1">'Тип:'</span><span class="p">:</span> <span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">regular_customer</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">content</span> <span class="o">===</span> <span class="s1">'Обычный покупатель'</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">regular_customer</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="p">{</span><span class="nx">regular_customer</span><span class="p">};</span>
+    <span class="p">},</span>
+    <span class="s1">'До получения/продления скидки осталось:'</span><span class="p">:</span> <span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">parts</span> <span class="o">=</span> <span class="nx">content</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">' '</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">parts</span><span class="p">.</span><span class="nx">length</span> <span class="o">!==</span> <span class="mi">2</span> <span class="o">&amp;&amp;</span> <span class="nx">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!==</span> <span class="s1">'руб.'</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">parts</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="na">tmp_sum</span><span class="p">:</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s1">'Телефон:'</span><span class="p">:</span> <span class="p">(</span><span class="nx">phone</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span><span class="nx">phone</span><span class="p">}),</span>
+    <span class="s1">'Email:'</span><span class="p">:</span> <span class="p">(</span><span class="nx">email</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span><span class="nx">email</span><span class="p">}),</span>
+    <span class="s1">'Адрес:'</span><span class="p">:</span> <span class="p">(</span><span class="nx">address</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span><span class="nx">address</span><span class="p">}),</span>
+    <span class="s1">'Зарегистрирован(а):'</span><span class="p">:</span> <span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="p">},</span>
+    <span class="s1">''</span><span class="p">:</span> <span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="p">},</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>А сам код теперь выглядит так:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">main</span> <span class="o">=</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">people</span> <span class="o">=</span> <span class="p">[];</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">datum</span> <span class="k">of</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">$</span> <span class="o">=</span> <span class="nx">cheerio</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="nx">datum</span><span class="p">);</span>
+
+        <span class="nx">$</span><span class="p">(</span><span class="s1">'.list-view .item'</span><span class="p">).</span><span class="nx">each</span><span class="p">((</span><span class="nx">i</span><span class="p">,</span> <span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="kd">let</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{};</span>
+
+            <span class="nx">$</span><span class="p">(</span><span class="nx">item</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">'p'</span><span class="p">).</span><span class="nx">each</span><span class="p">((</span><span class="nx">i</span><span class="p">,</span> <span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="kd">let</span> <span class="nx">type</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">item</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">'.grey'</span><span class="p">).</span><span class="nx">text</span><span class="p">().</span><span class="nx">trim</span><span class="p">();</span>
+
+                <span class="kd">let</span> <span class="nx">text</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span>
+                    <span class="p">.</span><span class="nx">clone</span><span class="p">()</span>
+                    <span class="p">.</span><span class="nx">children</span><span class="p">()</span>
+                    <span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
+                    <span class="p">.</span><span class="nx">end</span><span class="p">()</span>
+                    <span class="p">.</span><span class="nx">text</span><span class="p">()</span>
+                    <span class="p">.</span><span class="nx">trim</span><span class="p">()</span>
+                    <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">[\s]</span><span class="sr">+/g</span><span class="p">,</span> <span class="s1">' '</span><span class="p">);</span>
+
+                <span class="kd">let</span> <span class="nx">strategy</span> <span class="o">=</span> <span class="nx">strategies</span><span class="p">[</span><span class="nx">type</span><span class="p">];</span>
+                <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">strategy</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
+
+                    <span class="k">return</span><span class="p">;</span>
+                <span class="p">}</span>
+
+                <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">strategy</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span> <span class="o">||</span> <span class="p">{};</span>
+                <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="p">...</span><span class="nx">person</span><span class="p">,</span>
+                    <span class="p">...</span><span class="nx">result</span><span class="p">,</span>
+                <span class="p">};</span>
+            <span class="p">});</span>
+
+            <span class="nx">people</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">person</span><span class="p">);</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">people</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nx">main</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>Тут как раз можно увидеть появление массива <code class="highlighter-rouge">people</code> наполненный объектами <code class="highlighter-rouge">person</code>.</p>
+
+<h3 id="приведение-к-единому-формату">Приведение к единому формату</h3>
+
+<p>Теперь у нас есть почти все, чтобы идти дальше. Данные получены и обработаны.</p>
+
+<p>Но наша цель – положить все это в БД.</p>
+
+<p>Каждая стратегия описывалась таким образом, чтобы возвращенный объект был в виде, где ключ – колонка в таблице, а значение – ее содержание.</p>
+
+<p>На выходе мы получили массив с информацией о каждом пользователе. Но эта информация не однородна: у кого-то может не быть адреса, у кого-то – телефона или email-a.</p>
+
+<p>Поэтому нужно сделать некоторые атрибуты со значениями по умолчанию.
+Берем все обязательные поля из таблицы и проставляем их в объект <code class="highlighter-rouge">person</code> с указанными стандартными значениям:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">email</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+    <span class="na">password</span><span class="p">:</span> <span class="s1">'trash123'</span><span class="p">,</span>
+    <span class="na">name</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+    <span class="na">middlename</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+    <span class="na">surname</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+    <span class="na">phone</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+    <span class="na">country</span><span class="p">:</span> <span class="s1">'Россия'</span><span class="p">,</span>
+    <span class="na">zip</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+    <span class="na">region</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+    <span class="na">city</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+    <span class="na">address</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+    <span class="na">tmp_sum</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="na">regular_customer</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="na">status</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>Так как пароля мы узнать не можем, а в базе хранится только его хеш, поэтому вставляем туда любой мусор, который не является валидным хешем.</p>
+
+<p>Таким образом на выходе у нас будет массив объектов, каждый из которых имеет одинаковую структуру, порядок атрибутов и заполненные обязательные поля.</p>
+
+<h3 id="формирование-файла-для-импорта-в-бд">Формирование файла для импорта в БД</h3>
+
+<p>Тут решений тоже несколько.</p>
+
+<p>Ранее я пользовался <a href="https://hiddentao.com/squel/">Query Builder’ом</a>, который на выходе давал мне сформированные SQL запросы в файлах,
+которые достаточно было просто импортировать через PMA, либо запустить прямо на сервере.
+Были сложности с экранированием, но в большинстве своем он меня устраивал.</p>
+
+<p>В этот раз я пошел другим путем. PMA вполне успешно умеет работать с различными форматами, включая CSV.</p>
+
+<p>Этот формат по сути подразумевает, что горизонтально твои данные будут разделены запятыми, а вертикально – переносами:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"1","Виталий","Заславский"
+"2","Василий","Пупкин"
+"3","Петр","Васечкин"
+</code></pre></div></div>
+
+<p>Все достаточно просто и соответствовало тому, что мы делаем.</p>
+
+<p>Создание контента для CVS укладывается в 4 строчки:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">people</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">person</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">values</span><span class="p">(</span><span class="nx">person</span><span class="p">)</span> <span class="c1">// Получаем только значения из всех объектов</span>
+    <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">_</span> <span class="o">=&gt;</span> <span class="nx">_</span><span class="p">.</span><span class="nx">replace</span> <span class="p">?</span> <span class="nx">_</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/"/g</span><span class="p">,</span> <span class="s1">'""'</span><span class="p">)</span> <span class="p">:</span> <span class="nx">_</span><span class="p">)</span> <span class="c1">// Экранируем двойные кавычки " =&gt; "" (таков CSV, не я это придумал)</span>
+    <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">_</span> <span class="o">=&gt;</span> <span class="s2">`"</span><span class="p">${</span><span class="nx">_</span><span class="p">}</span><span class="s2">"`</span><span class="p">)</span> <span class="c1">// Обрамление содержимого двойными кавычками</span>
+    <span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">','</span><span class="p">)</span> <span class="c1">// Объединение значений</span>
+<span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="s1">'</span><span class="err">\</span><span class="s1">n'</span><span class="p">);</span> <span class="c1">// Объединение всех полученных значений переносами</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Результатом проделанных действий будет выплюнутое в консоль содержание CSV файла. 
+С сохранением этого через <code class="highlighter-rouge">fs</code> модуль я не стал. Вот эта команда сделала все за меня:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>node index.js <span class="o">&gt;</span> result.csv
+</code></pre></div></div>
+
+<h3 id="соберем-все-воедино">Соберем все воедино</h3>
+
+<p>Вот так будет выглядеть скрипт, если собрать все его части:</p>
+
+<details class="spoiler"><summary class="spoiler-title">Большой кусок кода</summary><div class="spoiler-body">
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">cheerio</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'cheerio'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./data.json'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">strategies</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'Имя:'</span><span class="p">:</span> <span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">parts</span> <span class="o">=</span> <span class="nx">content</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">' '</span><span class="p">);</span>
+
+        <span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="s1">''</span><span class="p">,</span> <span class="nx">surname</span> <span class="o">=</span> <span class="s1">''</span><span class="p">,</span> <span class="nx">middlename</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+        <span class="k">switch</span> <span class="p">(</span><span class="nx">parts</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="nx">name</span> <span class="o">=</span> <span class="nx">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="p">[</span><span class="nx">name</span><span class="p">,</span> <span class="nx">surname</span><span class="p">]</span> <span class="o">=</span> <span class="nx">parts</span><span class="p">;</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="mi">3</span><span class="p">:</span>
+                <span class="p">[</span><span class="nx">name</span><span class="p">,</span> <span class="nx">middlename</span><span class="p">,</span> <span class="nx">surname</span><span class="p">]</span> <span class="o">=</span> <span class="nx">parts</span><span class="p">;</span>
+                <span class="k">break</span><span class="p">;</span>
+
+            <span class="nl">default</span><span class="p">:</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">parts</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="p">{</span><span class="nx">name</span><span class="p">,</span> <span class="nx">middlename</span><span class="p">,</span> <span class="nx">surname</span><span class="p">};</span>
+    <span class="p">},</span>
+    <span class="s1">'Тип:'</span><span class="p">:</span> <span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">regular_customer</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">content</span> <span class="o">===</span> <span class="s1">'Обычный покупатель'</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">regular_customer</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="p">{</span><span class="nx">regular_customer</span><span class="p">};</span>
+    <span class="p">},</span>
+    <span class="s1">'До получения/продления скидки осталось:'</span><span class="p">:</span> <span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">parts</span> <span class="o">=</span> <span class="nx">content</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">' '</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">parts</span><span class="p">.</span><span class="nx">length</span> <span class="o">!==</span> <span class="mi">2</span> <span class="o">&amp;&amp;</span> <span class="nx">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!==</span> <span class="s1">'руб.'</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">parts</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="na">tmp_sum</span><span class="p">:</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s1">'Телефон:'</span><span class="p">:</span> <span class="p">(</span><span class="nx">phone</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span><span class="nx">phone</span><span class="p">}),</span>
+    <span class="s1">'Email:'</span><span class="p">:</span> <span class="p">(</span><span class="nx">email</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span><span class="nx">email</span><span class="p">}),</span>
+    <span class="s1">'Адрес:'</span><span class="p">:</span> <span class="p">(</span><span class="nx">address</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span><span class="nx">address</span><span class="p">}),</span>
+    <span class="s1">'Зарегистрирован(а):'</span><span class="p">:</span> <span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="p">},</span>
+    <span class="s1">''</span><span class="p">:</span> <span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="p">},</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">main</span> <span class="o">=</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">people</span> <span class="o">=</span> <span class="p">[];</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">datum</span> <span class="k">of</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">$</span> <span class="o">=</span> <span class="nx">cheerio</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="nx">datum</span><span class="p">);</span>
+
+        <span class="nx">$</span><span class="p">(</span><span class="s1">'.list-view .item'</span><span class="p">).</span><span class="nx">each</span><span class="p">((</span><span class="nx">i</span><span class="p">,</span> <span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="kd">let</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="na">email</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+                <span class="na">password</span><span class="p">:</span> <span class="s1">'trash123'</span><span class="p">,</span>
+                <span class="na">name</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+                <span class="na">middlename</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+                <span class="na">surname</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+                <span class="na">phone</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+                <span class="na">country</span><span class="p">:</span> <span class="s1">'Россия'</span><span class="p">,</span>
+                <span class="na">zip</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+                <span class="na">region</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+                <span class="na">city</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+                <span class="na">address</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+                <span class="na">tmp_sum</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="na">regular_customer</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="na">status</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="p">};</span>
+
+            <span class="nx">$</span><span class="p">(</span><span class="nx">item</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">'p'</span><span class="p">).</span><span class="nx">each</span><span class="p">((</span><span class="nx">i</span><span class="p">,</span> <span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="kd">let</span> <span class="nx">type</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">item</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">'.grey'</span><span class="p">).</span><span class="nx">text</span><span class="p">().</span><span class="nx">trim</span><span class="p">();</span>
+
+                <span class="kd">let</span> <span class="nx">text</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span>
+                    <span class="p">.</span><span class="nx">clone</span><span class="p">()</span>
+                    <span class="p">.</span><span class="nx">children</span><span class="p">()</span>
+                    <span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
+                    <span class="p">.</span><span class="nx">end</span><span class="p">()</span>
+                    <span class="p">.</span><span class="nx">text</span><span class="p">()</span>
+                    <span class="p">.</span><span class="nx">trim</span><span class="p">()</span>
+                    <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">[\s]</span><span class="sr">+/g</span><span class="p">,</span> <span class="s1">' '</span><span class="p">);</span>
+
+                <span class="kd">let</span> <span class="nx">strategy</span> <span class="o">=</span> <span class="nx">strategies</span><span class="p">[</span><span class="nx">type</span><span class="p">];</span>
+                <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">strategy</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
+
+                    <span class="k">return</span><span class="p">;</span>
+                <span class="p">}</span>
+
+                <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">strategy</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span> <span class="o">||</span> <span class="p">{};</span>
+                <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="p">...</span><span class="nx">person</span><span class="p">,</span>
+                    <span class="p">...</span><span class="nx">result</span><span class="p">,</span>
+                <span class="p">};</span>
+            <span class="p">});</span>
+
+            <span class="nx">people</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">person</span><span class="p">);</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+
+
+    <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">people</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">person</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">values</span><span class="p">(</span><span class="nx">person</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">_</span> <span class="o">=&gt;</span> <span class="nx">_</span><span class="p">.</span><span class="nx">replace</span> <span class="p">?</span> <span class="nx">_</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/"/g</span><span class="p">,</span> <span class="s1">'""'</span><span class="p">)</span> <span class="p">:</span> <span class="nx">_</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">_</span> <span class="o">=&gt;</span> <span class="s2">`"</span><span class="p">${</span><span class="nx">_</span><span class="p">}</span><span class="s2">"`</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">','</span><span class="p">)</span>
+    <span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="s1">'</span><span class="err">\</span><span class="s1">n'</span><span class="p">);</span>
+
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nx">main</span><span class="p">();</span>
+</code></pre></div></div>
+</div></details>
+
+<p>Не думаю, что эта простыня нуждается в каком-либо дополнительном пояснении.</p>
+
+<h2 id="шаг-четвертый-наполнение-таблицы">Шаг четвертый. Наполнение таблицы</h2>
+
+<p>Это самый простой шаг. Все действия будут происходить через PMA панель.</p>
+
+<ul>
+  <li>Нужно перейти в нужную таблицу.</li>
+  <li>Ткнуть в “Импорт”.</li>
+  <li>Выбрать нужный файл.</li>
+  <li>Формат указать “CSV” (“CSV using LOAD DATA” не пробовал).</li>
+  <li>В “Названия столбцов” указать нужные столбцы через запятую.</li>
+</ul>
+
+<p>По поводу последнего шага.
+Несмотря на то, что мы почти скопировали поля из таблицы в указанном порядке, есть случаи, когда данные указываются автоматически самой БД.
+В моем случае это было поле <code class="highlighter-rouge">id</code>. Поэтому при импорте достаточно указать в этом поле все атрибуты из объекта <code class="highlighter-rouge">person</code> через запятую:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>email,password,name,middlename,surname,phone,country,zip,region,city,address,tmp_sum,regular_customer,status
+</code></pre></div></div>
+
+<p>Жмем “Вперёд” и Вуоля! Работа завершена!</p>
+
+<h2 id="что-можно-было-сделать-еще">Что можно было сделать еще</h2>
+
+<p>Моей задачей было сделать то, что хотел заказчик. Его уcтраивало то, что в поле с адресом лежит мусор, а на месте фамилии может стоять отчество.</p>
+
+<p>И подручными средствами решить эту проблему было не столько сложно, сколько невозможно в короткий срок.</p>
+
+<p>Но если с этой проблемой столкнулся я, значит были и другие. А значит есть инструменты, которые решают подобного рода задачи.</p>
+
+<p>Адрес можно было привести к единому виду с помощью <a href="https://tech.yandex.ru/maps/doc/geocoder/desc/concepts/input_params-docpage/">API Яндекс.Карт</a>. Единственное, что он не умеет – определять номер квартиры из адреса.</p>
+
+<p>Либо можно было воспользоваться сервисом <a href="https://dadata.ru/api/clean/">Dadata</a>, который и квартиру в адресе определит, и ФИО из любого формата к красивому приведет.</p>
+
+<p>То есть решения были, только заказчику этого было не нужно <img class="emoji" title=":grin:" alt=":grin:" src="/assets/images/emoji/unicode/1f601.png" height="20" width="20"></p>
+
+<h2 id="в-качестве-заключения">В качестве заключения</h2>
+
+<p>Статья получилась невероятно большой для сравнительно небольшого объема информации. Но содержательной.</p>
+
+<p>То, что я сейчас описал, называется <em>“Веб-скрапинг”</em>.
+В моем случае это просто перенос данных с одного сайта на другой путем вывода информации прямо со страниц.</p>
+
+<p>В других случаях веб-скрапинг используется для сбора информации из нескольких сайтов для агрегирования информации в одном месте.
+Например, <a href="https://habr.com/ru/post/353348/">афиши кинотеатров</a>. Еще этот подход используется для того, чтобы сделать API там, где его официально нет, и т.д.</p>
+
+<p>Да, я знаю и слышал, что есть инструменты более мощные и серьезные. Но в моем случае гораздо быстрее воспользоваться тем, что я уже хорошо знаю.</p>
+
+<hr>
+
+<p>А мораль сей статьи такова: автоматизируйте все, что автоматизируется.
+Используйте все подручные средства, чтобы компьютер сделал за вас бо́льшую часть работы.
+Не делайте руками то, что можно сделать скриптом на 150 строк.
+В определенный момент вы поймете – это окупается <img class="emoji" title=":wink:" alt=":wink:" src="/assets/images/emoji/unicode/1f609.png" height="20" width="20"></p>
+
+
+        </div>
+        <div class="meta tags">
+            
+            <a href="/blog/tag/%D0%B2%D0%B5%D0%B1-%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B0/">Веб-разработка</a>,
+            
+            <a href="/blog/tag/%D0%B1%D0%B0%D0%B7%D1%8B-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85/">Базы данных</a>
+            
+        </div>
+    </div>
+    
+</div>
+
+        </div>
+
+        <aside class="col-md-4 col-sm-12 sidebar">
+            
+                <div class="sidebox box widget">
+                    <h3 class="widget-title section-title">В этой статье:</h3>
+                    <ul class="circled">
+  <li><a href="#%D1%87%D1%82%D0%BE-%D0%B8%D0%BC%D0%B5%D0%B5%D1%82%D1%81%D1%8F">Что имеется</a></li>
+  <li><a href="#%D0%B8%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D1%8B">Инструменты</a></li>
+  <li><a href="#%D1%88%D0%B0%D0%B3-%D0%BF%D0%B5%D1%80%D0%B2%D1%8B%D0%B9-%D1%81%D0%B1%D0%BE%D1%80-%D1%81%D1%8B%D1%80%D0%BE%D0%B9-%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D0%B8">Шаг первый. Сбор сырой информации</a></li>
+  <li><a href="#%D1%88%D0%B0%D0%B3-%D0%B2%D1%82%D0%BE%D1%80%D0%BE%D0%B9-%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7">Шаг второй. Анализ</a></li>
+  <li>
+<a href="#%D1%88%D0%B0%D0%B3-%D1%82%D1%80%D0%B5%D1%82%D0%B8%D0%B9-%D1%80%D0%B5%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F">Шаг третий. Реализация</a>
+    <ul>
+      <li><a href="#%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D1%82%D0%B8%D0%BF%D0%BE%D0%B2-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85">Получение типов данных</a></li>
+      <li><a href="#%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D1%87%D0%B8%D1%81%D1%82%D1%8B%D1%85-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85">Получение чистых данных</a></li>
+      <li><a href="#%D0%BE%D0%B1%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B0">Обработка</a></li>
+      <li><a href="#%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BA-%D0%B5%D0%B4%D0%B8%D0%BD%D0%BE%D0%BC%D1%83-%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%82%D1%83">Приведение к единому формату</a></li>
+      <li><a href="#%D1%84%D0%BE%D1%80%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D1%84%D0%B0%D0%B9%D0%BB%D0%B0-%D0%B4%D0%BB%D1%8F-%D0%B8%D0%BC%D0%BF%D0%BE%D1%80%D1%82%D0%B0-%D0%B2-%D0%B1%D0%B4">Формирование файла для импорта в БД</a></li>
+      <li><a href="#%D1%81%D0%BE%D0%B1%D0%B5%D1%80%D0%B5%D0%BC-%D0%B2%D1%81%D0%B5-%D0%B2%D0%BE%D0%B5%D0%B4%D0%B8%D0%BD%D0%BE">Соберем все воедино</a></li>
+    </ul>
+  </li>
+  <li><a href="#%D1%88%D0%B0%D0%B3-%D1%87%D0%B5%D1%82%D0%B2%D0%B5%D1%80%D1%82%D1%8B%D0%B9-%D0%BD%D0%B0%D0%BF%D0%BE%D0%BB%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-%D1%82%D0%B0%D0%B1%D0%BB%D0%B8%D1%86%D1%8B">Шаг четвертый. Наполнение таблицы</a></li>
+  <li><a href="#%D1%87%D1%82%D0%BE-%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE-%D0%B1%D1%8B%D0%BB%D0%BE-%D1%81%D0%B4%D0%B5%D0%BB%D0%B0%D1%82%D1%8C-%D0%B5%D1%89%D0%B5">Что можно было сделать еще</a></li>
+  <li><a href="#%D0%B2-%D0%BA%D0%B0%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%B5-%D0%B7%D0%B0%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D1%8F">В качестве заключения</a></li>
+</ul>
+
+                </div>
+            
+
+            <div class="sidebox box widget">
+                <h3 class="widget-title section-title">Категории</h3>
+                <ul class="circled">
+                    
+                        <li><a href="/blog/category/%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B0/">Разработка [2]</a></li>
+                    
+                </ul>
+            </div>
+
+            <div class="sidebox box widget">
+                <h3 class="widget-title section-title">Теги</h3>
+                <ul class="tag-list">
+                    
+                        <li><a href="/blog/tag/%D0%B1%D0%BB%D0%BE%D0%B3/" class="btn">Блог [1]</a></li>
+                    
+                        <li><a href="/blog/tag/%D0%B2%D0%B5%D0%B1-%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B0/" class="btn">Веб-разработка [2]</a></li>
+                    
+                        <li><a href="/blog/tag/%D0%B1%D0%B0%D0%B7%D1%8B-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85/" class="btn">Базы данных [1]</a></li>
+                    
+                </ul>
+            </div>
+
+            
+        </aside>
+    </div>
+</div>
+
+</div>
+
+<script src="/assets/js/jquery.min.js"></script> 
+<script src="/assets/js/bootstrap.min.js"></script> 
+<script src="/assets/js/jquery.themepunch.tools.min.js"></script> 
+<script src="/assets/js/classie.js"></script> 
+<script src="/assets/js/plugins.js"></script> 
+<script src="/assets/js/scripts.js"></script>  
+
+        <script type="text/javascript" src="/assets/javascripts/bundle.js" charset="utf-8"></script>
+
+        
+        <!-- Yandex.Metrika counter -->
+        <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(31771726, "init", { id:31771726, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/31771726" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+        <!-- /Yandex.Metrika counter -->
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131047185-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'UA-131047185-1');
+        </script>
+
+        
+    </body>
+</html>
