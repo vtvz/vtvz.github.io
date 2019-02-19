@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ru_RU"><generator uri="https://jekyllrb.com/" version="3.7.3">Jekyll</generator><link href="https://vtvz.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vtvz.ru/" rel="alternate" type="text/html" hreflang="ru_RU" /><updated>2019-02-19T07:20:32+00:00</updated><id>https://vtvz.ru/feed.xml</id><title type="html">Виталий Заславский</title><subtitle>Личный блог веб-разработчика обо всем
-</subtitle><author><name>Виталий Заславский</name><email>vtvz.ru@gmail.com</email></author><entry><title type="html">HTML to MySQL</title><link href="https://vtvz.ru/blog/html-to-mysql/" rel="alternate" type="text/html" title="HTML to MySQL" /><published>2019-02-18T00:00:00+00:00</published><updated>2019-02-18T00:00:00+00:00</updated><id>https://vtvz.ru/blog/html-to-mysql</id><content type="html" xml:base="https://vtvz.ru/blog/html-to-mysql/">&lt;p&gt;Один мой хороший знакомый и коллега обратился ко мне за помощью. Он делал для одной компании новый сайт взамен старому.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ru_RU"><generator uri="https://jekyllrb.com/" version="3.7.3">Jekyll</generator><link href="https://vtvz.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vtvz.ru/" rel="alternate" type="text/html" hreflang="ru_RU" /><updated>2019-02-19T07:27:08+00:00</updated><id>https://vtvz.ru/feed.xml</id><title type="html">Виталий Заславский</title><subtitle>Личный блог веб-разработчика обо всем
+</subtitle><author><name>Виталий Заславский</name><email>vtvz.ru@gmail.com</email></author><entry><title type="html">HTML to MySQL. Или Веб-скрапинг на практике</title><link href="https://vtvz.ru/blog/html-to-mysql/" rel="alternate" type="text/html" title="HTML to MySQL. Или Веб-скрапинг на практике" /><published>2019-02-18T00:00:00+00:00</published><updated>2019-02-18T00:00:00+00:00</updated><id>https://vtvz.ru/blog/html-to-mysql</id><content type="html" xml:base="https://vtvz.ru/blog/html-to-mysql/">&lt;p&gt;Один мой хороший знакомый и коллега обратился ко мне за помощью. Он делал для одной компании новый сайт взамен старому.
 Данные со старого, естественно, должны были переместиться на новый.
 В этом и заключалась моя задача. Было только одно простое условие – доступа к БД старого сайта ни у меня, ни у него не было.&lt;/p&gt;
 
@@ -323,6 +323,7 @@
 
 &lt;p&gt;В итоге у нас получается вот такая коллекция со стратегиями:&lt;/p&gt;
 
+&lt;details class=&quot;spoiler&quot;&gt;&lt;summary class=&quot;spoiler-title&quot;&gt;Карта со стратегиями&lt;/summary&gt;&lt;div class=&quot;spoiler-body&quot;&gt;
 &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;strategies&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;s1&quot;&gt;'Имя:'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;parts&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;' '&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
@@ -373,9 +374,11 @@
     &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;/details&gt;
 
 &lt;p&gt;А сам код теперь выглядит так:&lt;/p&gt;
 
+&lt;details class=&quot;spoiler&quot;&gt;&lt;summary class=&quot;spoiler-title&quot;&gt;Логика&lt;/summary&gt;&lt;div class=&quot;spoiler-body&quot;&gt;
 &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;people&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt;
 
@@ -420,6 +423,7 @@
 
 &lt;span class=&quot;nx&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;/details&gt;
 
 &lt;p&gt;Тут как раз можно увидеть появление массива &lt;code class=&quot;highlighter-rouge&quot;&gt;people&lt;/code&gt; наполненный объектами &lt;code class=&quot;highlighter-rouge&quot;&gt;person&lt;/code&gt;.&lt;/p&gt;
 
