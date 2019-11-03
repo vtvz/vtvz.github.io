@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="en">
+    <!--Built at : 2019-11-03 19:48:21-->
+    <head>
+        
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Как правильно хранить пароли</title>
+
+        <link rel="stylesheet" href="/assets/css/bootstrap.css">
+        <link rel="stylesheet" href="/assets/css/main.css">
+        <link rel="stylesheet" href="/assets/css/type/budicons.css">
+        <link rel="stylesheet" href="/assets/css/type/fontello.css">
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,800&subset=latin,cyrillic" rel="stylesheet" crossorigin="anonymous">
+
+        <link rel="alternate" type="application/rss+xml" title="Виталий Заславский – web-разработчик, который любит свое дело" href="https://vtvz.ru/feed.xml">
+
+        <meta name="theme-color" content="#232323">
+
+        <!-- Begin Jekyll SEO tag v2.6.0 -->
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Как правильно хранить пароли" />
+<meta name="author" content="Виталий Заславский" />
+<meta property="og:locale" content="ru_RU" />
+<meta name="description" content="Безопасный способ хранить пароли от всего и вся, совместимый со всеми существующими операционными системами." />
+<meta property="og:description" content="Безопасный способ хранить пароли от всего и вся, совместимый со всеми существующими операционными системами." />
+<link rel="canonical" href="https://vtvz.ru/blog/right-way-to-store-passwords/" />
+<meta property="og:url" content="https://vtvz.ru/blog/right-way-to-store-passwords/" />
+<meta property="og:site_name" content="Виталий Заславский – web-разработчик, который любит свое дело" />
+<meta property="og:image" content="https://vtvz.ru/assets/images/logo-black.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-11-03T00:00:00+03:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:image" content="https://vtvz.ru/assets/images/logo-black.png" />
+<meta property="twitter:title" content="Как правильно хранить пароли" />
+<meta name="twitter:site" content="@vtvz_ru" />
+<meta name="twitter:creator" content="@vtvz_ru" />
+<meta name="google-site-verification" content="08mKX1M9WC3jlftJg-ZY3MsQEQTRV0w5fQaynQLwMXI" />
+<meta name="yandex-verification" content="66bb5c18895519c2" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","url":"https://vtvz.ru/blog/right-way-to-store-passwords/","headline":"Как правильно хранить пароли","dateModified":"2019-11-03T00:00:00+03:00","datePublished":"2019-11-03T00:00:00+03:00","image":"https://vtvz.ru/assets/images/logo-black.png","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://vtvz.ru/assets/images/logo-black.png"},"name":"Виталий Заславский"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://vtvz.ru/blog/right-way-to-store-passwords/"},"author":{"@type":"Person","name":"Виталий Заславский"},"description":"Безопасный способ хранить пароли от всего и вся, совместимый со всеми существующими операционными системами.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    </head>
+
+    <body class="full-layout">
+        <div id="preloader"><div id="status"><div class="spinner"></div></div></div>
+
+<div id="bg"></div>
+
+<div class="body-wrapper">
+      <nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+      <a class="btn responsive-menu" data-toggle="collapse" data-target=".navbar-collapse"><i></i></a>
+      <div class="navbar-brand text-center">
+        <a href="/">
+          <img src="/assets/images/logo.svg" alt="Logo" class="logo">
+        </a>
+      </div>
+      <!-- /.navbar-brand -->
+    </div>
+    <!-- /.navbar-header -->
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <!-- <li class="current"> -->
+        <li>
+            <a href="/" class="hint--right" data-hint="Главная"><i class="budicon-home-1"></i><span>Главная</span></a>
+        </li>
+        <li class="current">
+            <a href="/blog/" class="hint--right" data-hint="Блог"><i class="budicon-book-1"></i><span>Блог</span></a>
+        </li>
+      </ul>
+      <!-- /.navbar-nav -->
+    </div>
+    <!-- /.navbar-collapse -->
+  </nav>
+  <!-- /.navbar -->
+
+    <div class="container inner">
+    <div class="blog list-view row">
+        <div class="col-md-8 col-sm-12 content">
+            <div class="blog-posts">
+    <div class="post box">
+        <div class="meta">
+    <span class="category"><a href="/blog/category/%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%8B/">Сервисы</a></span>
+    <span class="date">03 ноя 2019</span>
+    
+    <span class="reading-time" title="Примерное время чтения">
+        
+
+        <!--1895-->
+
+        
+            ~10 мин.
+        
+    </span>
+</div>
+
+        <h1 class="post-title">
+            <a href="/blog/right-way-to-store-passwords/">Как правильно хранить пароли</a>
+        </h1>
+        <div>
+            <blockquote>
+  <p>Начало 07.10.2019. Статья обещает быть обширной.</p>
+</blockquote>
+
+<p>Моим первым паролем был <em>“хахаха”</em>. Не даром в ВК меня быстренько взломали.
+Затем у меня был один пароль на все случаи жизни. Инцидентов не было, но метод далек от идеального.
+Стоит узнать один пароль, как учетные записи других сервисов окажутся под угрозой. 
+Следующим шагом был пароль, состоящий из двух частей: общим префиксом и доменным именем сайта.
+Могло это выглядеть примерно так: <em>“МойСуперМощныйПароль123.vk.com”</em>. Это все ещё очень плохо.</p>
+
+<p>Я рос. Росла и моя паранойя. Сейчас у меня для каждого отдельного сайта или приложения свой уникальный, неповторимый,
+устойчивый к атакам пароль.</p>
+
+<p>В этой статье я расскажу, как правильно хранить свои пароли, чтобы было удобно, и безопасность не страдала.</p>
+
+<a id="cut"></a>
+
+<details class="spoiler"><summary class="spoiler-title">TL;DR</summary><div class="spoiler-body">
+<p>Можно пропустить первый подзаголовок и сразу перейти к <a href="#%D1%80%D0%B5%D1%86%D0%B5%D0%BF%D1%82">готовому рецепту</a>.</p>
+
+<p>Но тогда вы пропустите самое интересное <img class="emoji" title=":blush:" alt=":blush:" src="/assets/images/emoji/unicode/1f60a.png" height="20" width="20"></p>
+</div></details>
+
+<h2 id="об-альтернативных-способах">Об альтернативных способах</h2>
+
+<p>Небольшое лирическое отступление. Прежде хочется рассказать о том, как другие люди хранят свои пароли.</p>
+
+<p>Про один пароль для всего и общую приставку я уже рассказал. Так делал не только я. Но есть более диковинные способы.</p>
+
+<p>Вместе с каждым способом будут субъективные ответы на 2 вопроса:</p>
+
+<ul>
+  <li>
+<em>“Безопасно ли это”</em> – как много людей и как легко они могут узнать пароли из этого источника.</li>
+  <li>
+<em>“Надежно ли это”</em> – что будет в чрезвычайных ситуациях; насколько легко можно потерять доступ ко всему.</li>
+</ul>
+
+<h3 id="бумажный-блокнотик">Бумажный блокнотик</h3>
+
+<p>Так делают, но обычно люди преклонного возраста. Небольшая книжечка с различного рода записями,
+где в разных частях можно увидеть пароль от WiFi, Play Store или Одноклассников.
+Помимо блокнотиков используется со всех сторон исписанный листочек или даже упаковка от таблеток <em>*[TODO Сделать фото]</em>.</p>
+
+<ul>
+  <li>
+    <p><em>Безопасно ли это?</em> Условно. Однозначно, что пароль не будет стянут каким-либо хакером, так как доступ только физический.
+Можно ли доверять всем, кто может оказаться рядом? Если ты бабушка, то рисковать особо нечем <img class="emoji" title=":blush:" alt=":blush:" src="/assets/images/emoji/unicode/1f60a.png" height="20" width="20"></p>
+  </li>
+  <li>
+    <p><em>Надежно ли это?</em> Опять же, очень ситуативно. Бумажка может потеряться, сгореть или забыться.
+Зато нет риска потерять доступ к сервису в случае амнезии. <br>
+(Пожалуй, это единственный способ устойчивый к амнезии)</p>
+  </li>
+</ul>
+
+<h3 id="онлайн-заметки">Онлайн-заметки</h3>
+
+<p>Из хорошо известных заметочных сервисов, я знаю только <a href="https://evernote.com/intl/ru" target="_blank" rel="noopener noreferrer">Evernote</a> и <a href="https://keep.google.com/" target="_blank" rel="noopener noreferrer">Google Keep</a>.
+Последним я стал пользоваться в году так 2013, когда он был совсем еще юным.
+(первый мне не понравился).
+Есть еще всякие Google Docs и прочие места, куда можно писать текст и читать его со всех устройств.
+Пароли можно хранить и там. Но…</p>
+
+<ul>
+  <li>
+<em>Безопасно ли это?</em> Вариант с бумажкой был куда более безопасным. Хранить пароли в открытом виде очень даже плохо по нескольким причинам:
+    <ol>
+      <li>Есть только один способ, как узнать пароль из блокнота – стащить сам блокнот.
+  Но есть <code class="highlighter-rouge">N</code> способов, как узнать его из подобного рода сервисов – 
+  <code class="highlighter-rouge">X</code> по количеству устройств + <code class="highlighter-rouge">Y</code> по количеству заинтересованных хакеров + <code class="highlighter-rouge">Z</code> по количеству “забыл выйти у друга”.</li>
+      <li>Любая утечка и <strong>все</strong> пароли буду скомпрометированы. Как веб-разработчик могу уверенно сказать: никому нельзя доверять.
+  Даже если используются все способы того, как обезопасить свои заметки,
+  всегда есть человеческий фактор как с вашей стороны, так и со стороны создателей сервиса.</li>
+    </ol>
+  </li>
+  <li>
+<em>Надежно ли это?</em> Достаточно. Но с одной оговоркой: сервис должен поддерживать историю изменений файла/заметки.
+Иначе любое случайное удаление/редактирование может уничтожить все.</li>
+</ul>
+
+<h3 id="пароль-карта">Пароль-карта</h3>
+
+<p>Есть еще один интересный способ – пароль-карта. Это может быть физически реальный объект или приложение на телефоне.</p>
+
+<p>Вот пример, сгенерированный на <a href="https://www.passwordcard.org/ru" target="_blank" rel="noopener noreferrer">этом сайте</a>:</p>
+
+<figure><img src="./card.png" alt="Пароль-карта"></figure>
+
+<p>Или вот <a href="https://www.e-passwordcard.com/" target="_blank" rel="noopener noreferrer">многообещающее приложение</a>:</p>
+
+<figure><img src="./ecard.png" alt="Еще одна пароль-карта"></figure>
+
+<p>Вторым приложением я не пользовался, но картой пытался.
+Достаточно удобно то, что это может быть 
+как настоящая распечатанная карточка,
+так и приложение на телефоне или ссылка, сохраненная в браузере.</p>
+
+<p>Для этого метода важно помнить и надежно хранить 2 вещи:</p>
+
+<ol>
+  <li>Мастер-ключ (или мастер-пароль – пароль для доступа ко всем паролям).
+В случае с первой картой он является <code class="highlighter-rouge">e1b18dd6f30ed2f5</code> (написан в самом низу), 
+который можно записать куда угодно, но в безопасное место.
+Вводя этот ключ в специальное поле, будет выдана одна и та же карта, что необходимо в случае утери онной.</li>
+  <li>Нужно запоминать способ, как вытягивается пароль. Это может быть простая ассоциация со значком,
+где потом используются все символы подряд. Или что-то более замысловатое.
+На <a href="https://www.passwordcard.org/ru" target="_blank" rel="noopener noreferrer">сайте</a> есть инструкции и рекомендации, как выбирать пароли, чтобы было безопасно.</li>
+</ol>
+
+<ul>
+  <li>
+<em>Безопасно ли это?</em> Все зависит только от тебя. Чем сложнее способ извлечения пароля, тем надежнее он будет.
+Дополнительно надежности дает то, что нельзя наверняка сопоставить значок на карте и сам сервис.
+Даже при утере карточки, новый обладатель вряд ли догадается, что с ней делать.</li>
+  <li>
+<em>Надежно ли это?</em> Вполне. Мастер-ключ можно записать в несколько мест:
+в онлайн-заметки, в блокнотик, нацарапать на стене за диваном.
+Карта может быть восстановлена в любое время.
+Сложнее, когда забывается ассоциация со значком или способ выбора пароля.
+В этом плане этот метод имеет серьезный недостаток, из-за чего лично я отказался от его использования.</li>
+</ul>
+
+<h3 id="онлайн-сервисы">Онлайн сервисы</h3>
+
+<p>Такие сайты-приложения как <a href="https://www.lastpass.com/ru" target="_blank" rel="noopener noreferrer">LastPass</a> и <a href="https://1password.com/ru/" target="_blank" rel="noopener noreferrer">1password</a> предлагают взять весь менеджмент паролей на себя.
+Это как хранить данные в онлайн-заметках, только надежнее. Второй аж прям обещает, что ваши данные остаются только вашими.</p>
+
+<figure><img src="./1password-promise.png" alt="Обещание 1password"></figure>
+
+<p>Эти сервисы богаты функционалом и предлагаемыми решениями:
+программы и приложения для всех ОС, расширения для браузеров и API для тех, кому этого мало.</p>
+
+<p>Но есть одно <strong>НО</strong>: любая информация в интернете вам не принадлежит. Хотя они и обещают полную конфиденциальность,
+в определенный момент это может стать не так. Это касается различных законов со стороны государства, а также хакеров,
+которые денно и нощно придумывают все новые и новые способы обхода защиты подобных сайтов.</p>
+
+<ul>
+  <li>
+<em>Безопасно ли это?</em> Достаточно, но с оговорками. Для обычного пользователя, у которого нет паранойи и особо нечего скрывать,
+это наилучший выбор. Сами компании не заинтересованы, чтобы ваши данные утекли кому-то еще, так как это репутация,
+которая играет важную роль на конкурентном рынке. Главное, чтобы эти данные не утекли из-за вас самих.
+Пароль должен быть достаточно сложным и длинным, чтобы даже в случае утечки данных их нельзя было расшифровать.</li>
+  <li>
+<em>Надежно ли это?</em> Настолько, насколько надежна компания, которой вы доверяете.
+Я думаю, ваши данные не только надежно хранятся и оберегаются, но и регулярно делаются резервные копии на случай какого-либо сбоя.
+Из всех вышеперечисленных способов, этот самый надежный. Приятным бонусом является то, что знать достаточно только один пароль.</li>
+</ul>
+
+<h3 id="keepass">KeePass</h3>
+
+<p>В мире много умных людей, которые сталкивались с этой проблемой.
+И они создали по-настоящему хорошее решение.</p>
+
+<p><strong>Встречайте: KeePass!</strong></p>
+
+<figure><a href="./keepass.png" target="_blank"><img src="./keepass.png" alt="KeePassXC"></a></figure>
+
+<p>Это последний и самый лучший способ хранения паролей, который нужно уметь готовить.</p>
+
+<p>Это одновременно программа, формат файла и алгоритм безопасного хранения данных.
+Все ваши пароли хранятся внутри <code class="highlighter-rouge">.kdbx</code> файла, который зашифрован в цикле несколько тысяч (а то и больше) раз
+кодовым словом, файлом или и тем и другим.</p>
+
+<p>Информация хранится понятным вам способом, в доверенном месте, там, где удобнее всего.
+Прежде, чем я расскажу о плюсах и минусах этого подхода, хочу описать, каким образом и где хранятся мои пароли.</p>
+
+<h2 id="рецепт">Рецепт</h2>
+
+<p>Так как я активный пользователь ОС Linux и Android, моё решение будет заточено в первую очередь под мои потребности и ограничения.</p>
+
+<h3 id="выбор-программного-обеспечения">Выбор программного обеспечения</h3>
+
+<p>Для пользователей Windows стандартом является официальный клиент <a href="https://keepass.info/" target="_blank" rel="noopener noreferrer">KeePass</a>,
+который имеет тонну <a href="https://keepass.info/plugins.html" target="_blank" rel="noopener noreferrer">плагинов и дополнений</a>.
+Его тоже <a href="https://keepass.info/help/v2/setup.html#mono" target="_blank" rel="noopener noreferrer">можно</a> запустить на Linux и Mac OS, но у меня это выглядело весьма уродливо.
+Поэтому мой выбор пал на <a href="https://keepassxc.org/" target="_blank" rel="noopener noreferrer">KeePassXC</a>.
+Он является <acronym title="С английского fork (дословно англ. 'вилка') использование одного проекта в качестве основы другого">форком</acronym>
+<a href="https://www.keepassx.org/" target="_blank" rel="noopener noreferrer">KeePassX</a> (буквы “C” нет)
+с внушительным списком дополнительных возможностей.</p>
+
+<p>В качестве клиента для Android выбор пал на <a href="https://play.google.com/store/apps/details?id=keepass2android.keepass2android&amp;hl=ru" target="_blank" rel="noopener noreferrer">Keepass2Android</a>.
+Для iOS есть какой-то <a href="https://apps.apple.com/ru/app/keepass-touch/id966759076" target="_blank" rel="noopener noreferrer">KeePass Touch</a>, который тоже умеет синхронизироваться с Dropbox, но я им не пользовался,
+поэтому и осознанно порекомендовать ничего не могу.</p>
+
+<p>В качестве хранилища использую <a href="https://www.dropbox.com/" target="_blank" rel="noopener noreferrer">Dropbox</a>, потому что для Linux есть клиент,
+который синхронизирует файлы с теми, что лежат на компе,
+что дает возможность пользоваться одной базой на нескольких устройствах.
+Также <a href="https://play.google.com/store/apps/details?id=keepass2android.keepass2android&amp;hl=ru" target="_blank" rel="noopener noreferrer">Keepass2Android</a> умеет работать с хранилищем почти напрямую.</p>
+
+<p>Если совсем кратко:</p>
+<ul>
+  <li>
+<a href="https://keepass.info/" target="_blank" rel="noopener noreferrer">KeePass</a> или <a href="https://keepassxc.org/" target="_blank" rel="noopener noreferrer">KeePassXC</a> для ПК.</li>
+  <li>
+<a href="https://play.google.com/store/apps/details?id=keepass2android.keepass2android&amp;hl=ru" target="_blank" rel="noopener noreferrer">Keepass2Android</a> или <a href="https://apps.apple.com/ru/app/keepass-touch/id966759076" target="_blank" rel="noopener noreferrer">KeePass Touch</a> для мобильных устройств.</li>
+  <li>
+<a href="https://www.dropbox.com/" target="_blank" rel="noopener noreferrer">Dropbox</a> как хранилище.</li>
+</ul>
+
+<h3 id="ложка-дегтя">Ложка дегтя</h3>
+
+<p>При всей красоте этого варианта, он не лишен недостатков:</p>
+
+<ul>
+  <li>Один пароль от всего является как преимуществом, так и недостатком.
+Стоит злоумышленнику стащить мастер-пароль, <strong>всё</strong>, что вы так бережно хранили, окажется под угрозой.
+Например это значит, что в публичных местах, типа кафе, библиотек и торговых центров, можно засветить пароль на камеру.</li>
+  <li>Хранение базы в Dropbox может казаться хорошей идеей, если бы не одно НО: он хранит старые версии файла в течение 30 дней.
+(насколько я знаю, почистить историю файла можно только при удалении самого файла… не очень удобно)
+Это значит, что менять мастер-пароль чаще, чем раз в 30 дней – не есть хорошая идея.
+Самое лучшее – хранить файл на своем сервере, что позволить и даже осилить может не каждый.</li>
+</ul>
+<details class="spoiler"><summary class="spoiler-title">Журнал версий моего файла с паролями</summary><div class="spoiler-body">
+<figure><img src="./file-history.png" alt="Журнал версий файла с паролями"></figure>
+</div></details>
+<ul>
+  <li>Помимо этого, нужно помнить как минимум 2 пароля: от Dropbox и от хранилища.
+И они должны быть достаточно сложными, надежными и <strong>разными</strong>.
+(а еще нужно помнить пароль от телефона, пинкоды от всех банковских карт и т.д.)</li>
+</ul>
+
+<p>Приходится мириться с этими условностями, чтобы, получив достаточную безопасность, не потерять и удобство использования.
+До идеала в этой схеме не хватает выделенного доверенного хранилища и регулярной смены мастер-пароля.</p>
+
+<ul>
+  <li>
+<em>Безопасно ли это?</em> Из всех вариантов, этот самый лучший.
+Его может осилить любой, кто хоть как-то владеет компьютером и смартфоном.
+При этом данные принадлежат только вам… пока вы сохраняете бдительность и осторожность.</li>
+  <li>
+<em>Надежно ли это?</em> Файл с паролями будет храниться на всех устройствах, куда вы подключите Dropbox, а так же в самом Dropbox’e.
+Бо́льшую надежность, я думаю, не предоставит никто.</li>
+</ul>
+
+<h3 id="бочка-мёда">Бочка мёда</h3>
+
+<p>Но минусы очень хорошо перевешиваются плюсами:</p>
+
+<ul>
+  <li>Подобные программы разработаны быть устойчивыми к вирусам. Из браузера стащить пароль может любое расширение.
+Из программы – только человек.</li>
+  <li>Если все правильно настроить, программа самостоятельно заблокирует хранилище с паролями в течение N минут бездействия.
+Это защищает от случаев “отошел от компа, но забыл заблокировать”.</li>
+  <li>В случае приложения для Android, есть возможность разблокировать хранилище последними несколькими символами пароля.
+Очень удобно и достаточно безопасно – дается всего одна попытка и наступает полная блокировка, где нужно ввести кодовую фразу целиком.</li>
+  <li>Еще раз про это приложение: оно позволяет вводить пароли из встроенной в него клавиатурой.
+Это значит, что пароль не окажется в буфере обмена и его невозможно будет стащить таким образом.</li>
+  <li>Приложения для ПК имеют функцию автоввода: ставишь курсор на поле с логином, открываешь приложение,
+находишь нужную запись, жмешь комбинацию клавиш (обычно <kbd>Ctrl+V</kbd>) и вуоля – все данные введены за вас.
+Если последовательность действий для сайта отличается от классической, то ее можно настроить прямо в записи.</li>
+  <li>Если пароль скопировать, то буфер обмена автоматически будет очищен через определенный промежуток времени.</li>
+  <li>Возможно сохранить секретное слово для двух-этапной аутентификации (TOTP, Steam Guard) и копировать его прямиком из менеджера паролей.
+(<kbd>Ctrl+T</kbd> в случае <a href="https://keepassxc.org/" target="_blank" rel="noopener noreferrer">KeePassXC</a>)</li>
+  <li>Встроенные возможности:
+    <ul>
+      <li>Генератор паролей;</li>
+      <li>Примечания и дополнительные атрибуты;</li>
+      <li>Ссылка на сайт с возможностью открыть прямо из программы;</li>
+      <li>Вложения в виде файлов;</li>
+      <li>Значок к записи (KeePassXC может скачивать значок с сайта, а с <a href="https://keepassxc.org/blog/2019-10-26-2.5.0-released/" target="_blank" rel="noopener noreferrer">последним обновлением</a> для нескольких записей);</li>
+      <li>История изменений и корзина;</li>
+      <li>Напоминание о необходимости изменить пароль;</li>
+      <li>Вложенные папки;</li>
+      <li>И много всего еще…</li>
+    </ul>
+  </li>
+</ul>
+
+<hr>
+
+<p>Вывод очевиден: <strong>храните свои пароли правильно</strong>.
+Никто из вас не заинтересован быть взломанными,
+поэтому воспользуйтесь любым безопасным и надежным способом хранения ваших данных.
+Я надеюсь, эта статья дала понимание существующей проблемы и её решения,
+и вы прислушаетесь к моим советам вам же во благо <img class="emoji" title=":blush:" alt=":blush:" src="/assets/images/emoji/unicode/1f60a.png" height="20" width="20"></p>
+
+
+        </div>
+        <div class="meta tags">
+            
+            <a href="/blog/tag/%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B/">Программы</a>,
+            
+            <a href="/blog/tag/%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%8B/">Сервисы</a>
+            
+        </div>
+    </div>
+    <div class="box">
+        <div class="row">
+            
+            <div class="col-xs-12 col-sm-6 text-left">
+                <div>« Предыдущая</div>
+                <a class="prev" href="/blog/why-audio-streaming-platforms/">Платить или не платить. Или зачем нужны стриминговые платформы</a>
+            </div>
+            
+
+            
+        </div>
+    </div>
+    
+</div>
+
+        </div>
+
+        <aside class="col-md-4 col-sm-12 sidebar">
+                    
+                    <div class="sidebox box widget hidden-sm hidden-xs">
+                        <h3 class="widget-title section-title">В этой статье:</h3>
+                        <ul class="circled">
+  <li>
+<a href="#%D0%BE%D0%B1-%D0%B0%D0%BB%D1%8C%D1%82%D0%B5%D1%80%D0%BD%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D1%8B%D1%85-%D1%81%D0%BF%D0%BE%D1%81%D0%BE%D0%B1%D0%B0%D1%85">Об альтернативных способах</a>
+    <ul>
+      <li><a href="#%D0%B1%D1%83%D0%BC%D0%B0%D0%B6%D0%BD%D1%8B%D0%B9-%D0%B1%D0%BB%D0%BE%D0%BA%D0%BD%D0%BE%D1%82%D0%B8%D0%BA">Бумажный блокнотик</a></li>
+      <li><a href="#%D0%BE%D0%BD%D0%BB%D0%B0%D0%B9%D0%BD-%D0%B7%D0%B0%D0%BC%D0%B5%D1%82%D0%BA%D0%B8">Онлайн-заметки</a></li>
+      <li><a href="#%D0%BF%D0%B0%D1%80%D0%BE%D0%BB%D1%8C-%D0%BA%D0%B0%D1%80%D1%82%D0%B0">Пароль-карта</a></li>
+      <li><a href="#%D0%BE%D0%BD%D0%BB%D0%B0%D0%B9%D0%BD-%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%8B">Онлайн сервисы</a></li>
+      <li><a href="#keepass">KeePass</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#%D1%80%D0%B5%D1%86%D0%B5%D0%BF%D1%82">Рецепт</a>
+    <ul>
+      <li><a href="#%D0%B2%D1%8B%D0%B1%D0%BE%D1%80-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE-%D0%BE%D0%B1%D0%B5%D1%81%D0%BF%D0%B5%D1%87%D0%B5%D0%BD%D0%B8%D1%8F">Выбор программного обеспечения</a></li>
+      <li><a href="#%D0%BB%D0%BE%D0%B6%D0%BA%D0%B0-%D0%B4%D0%B5%D0%B3%D1%82%D1%8F">Ложка дегтя</a></li>
+      <li><a href="#%D0%B1%D0%BE%D1%87%D0%BA%D0%B0-%D0%BC%D1%91%D0%B4%D0%B0">Бочка мёда</a></li>
+    </ul>
+  </li>
+</ul>
+
+                    </div>
+                    
+
+                    <div class="sidebox box widget">
+                        <h3 class="widget-title section-title">Категории</h3>
+                        <ul class="circled">
+                            
+                            <li><a href="/blog/category/%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B0/">Разработка
+                                [3]</a></li>
+                            
+                            <li><a href="/blog/category/%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%8B/">Сервисы
+                                [2]</a></li>
+                            
+                        </ul>
+                    </div>
+
+                    <div class="sidebox box widget">
+                        <h3 class="widget-title section-title">Теги</h3>
+                        <ul class="tag-list">
+                            
+                            <li><a href="/blog/tag/%D0%B1%D0%BB%D0%BE%D0%B3/" class="btn">Блог
+                                [1]</a></li>
+                            
+                            <li><a href="/blog/tag/%D0%B2%D0%B5%D0%B1-%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B0/" class="btn">Веб-разработка
+                                [3]</a></li>
+                            
+                            <li><a href="/blog/tag/%D0%B1%D0%B0%D0%B7%D1%8B-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85/" class="btn">Базы данных
+                                [1]</a></li>
+                            
+                            <li><a href="/blog/tag/jekyll/" class="btn">Jekyll
+                                [1]</a></li>
+                            
+                            <li><a href="/blog/tag/%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0/" class="btn">Музыка
+                                [1]</a></li>
+                            
+                            <li><a href="/blog/tag/%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%8B/" class="btn">Сервисы
+                                [2]</a></li>
+                            
+                            <li><a href="/blog/tag/%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B/" class="btn">Программы
+                                [1]</a></li>
+                            
+                        </ul>
+                    </div>
+
+                    
+        </aside>
+    </div>
+</div>
+
+</div>
+
+<script src="/assets/js/jquery.min.js"></script> 
+<script src="/assets/js/bootstrap.min.js"></script> 
+<script src="/assets/js/jquery.themepunch.tools.min.js"></script> 
+<script src="/assets/js/classie.js"></script> 
+<script src="/assets/js/plugins.js"></script> 
+<script src="/assets/js/scripts.js"></script>  
+
+        <script type="text/javascript" src="/assets/javascripts/bundle.js" charset="utf-8"></script>
+
+        
+        <!-- Yandex.Metrika counter -->
+        <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(31771726, "init", { id:31771726, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/31771726" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+        <!-- /Yandex.Metrika counter -->
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131047185-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'UA-131047185-1');
+        </script>
+
+        
+    </body>
+</html>
