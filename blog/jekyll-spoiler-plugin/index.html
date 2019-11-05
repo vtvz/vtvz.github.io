@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-    <!--Built at : 2019-11-03 20:26:41-->
+    <!--Built at : 2019-11-05 20:51:25-->
     <head>
         
         <meta charset="utf-8">
@@ -91,10 +91,10 @@
     <span class="reading-time" title="Примерное время чтения">
         
 
-        <!--719-->
+        <!--778-->
 
         
-            ~3 мин.
+            ~4 мин.
         
     </span>
 </div>
@@ -111,7 +111,7 @@
 <p>Свое решение я опишу в этой статье.</p>
 
 <a id="cut"></a>
-<details class="spoiler"><summary class="spoiler-title">TL;DR. Для тех, кому лень читать целиком.</summary><div class="spoiler-body">
+<details class="spoiler"><summary class="spoiler-title">TL;DR. Для тех, кому лень читать целиком</summary><div class="spoiler-body">
 <p>Это нужно положить в папку <code class="highlighter-rouge">_plugins</code>:</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">Jekyll</span>
@@ -138,7 +138,22 @@
 <span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="p">.</span><span class="nf">register_tag</span><span class="p">(</span><span class="s1">'spoiler'</span><span class="p">,</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">SpoilerBlock</span><span class="p">)</span>
 </code></pre></div></div>
 
+<p>И использовать в постах так:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% spoiler Заголовок спойлера %}
+<span class="p">```</span><span class="nl">yaml</span>
+<span class="na">content</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s2">"</span><span class="s">some</span><span class="nv"> </span><span class="s">string"</span>
+<span class="p">```</span>
+{% endspoiler %}
+</code></pre></div></div>
+
 </div></details>
+
+<div class="alert alert-danger" role="alert">
+    <p><b>В Github Pages это работать не будет!</b></p>
+    <p>Любые плагины и дополнения работают только при самостоятельной сборке проекта (например, на Gitlab'е)</p>
+</div>
 
 <h2 id="проблема">Проблема</h2>
 

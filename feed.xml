@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ru_RU"><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="https://vtvz.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vtvz.ru/" rel="alternate" type="text/html" hreflang="ru_RU" /><updated>2019-11-03T20:26:40+03:00</updated><id>https://vtvz.ru/feed.xml</id><title type="html">Виталий Заславский – web-разработчик, который любит свое дело</title><subtitle>Личный блог web-разработчика обо всем. Заметки об успехах и неудачах в профессиональной деятельности, о поиске решений практических задач, и просто о жизни.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ru_RU"><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="https://vtvz.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vtvz.ru/" rel="alternate" type="text/html" hreflang="ru_RU" /><updated>2019-11-05T20:51:24+03:00</updated><id>https://vtvz.ru/feed.xml</id><title type="html">Виталий Заславский – web-разработчик, который любит свое дело</title><subtitle>Личный блог web-разработчика обо всем. Заметки об успехах и неудачах в профессиональной деятельности, о поиске решений практических задач, и просто о жизни.
 </subtitle><author><name>Виталий Заславский</name><email>vtvz.ru@gmail.com</email></author><entry><title type="html">Как правильно хранить пароли</title><link href="https://vtvz.ru/blog/right-way-to-store-passwords/" rel="alternate" type="text/html" title="Как правильно хранить пароли" /><published>2019-11-03T00:00:00+03:00</published><updated>2019-11-03T00:00:00+03:00</updated><id>https://vtvz.ru/blog/right-way-to-store-passwords</id><content type="html" xml:base="https://vtvz.ru/blog/right-way-to-store-passwords/">&lt;blockquote&gt;
   &lt;p&gt;Начало 07.10.2019. Статья обещает быть обширной.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -452,7 +452,7 @@
 &lt;p&gt;Свое решение я опишу в этой статье.&lt;/p&gt;
 
 &lt;!--cut--&gt;
-&lt;details class=&quot;spoiler&quot;&gt;&lt;summary class=&quot;spoiler-title&quot;&gt;TL;DR. Для тех, кому лень читать целиком.&lt;/summary&gt;&lt;div class=&quot;spoiler-body&quot;&gt;
+&lt;details class=&quot;spoiler&quot;&gt;&lt;summary class=&quot;spoiler-title&quot;&gt;TL;DR. Для тех, кому лень читать целиком&lt;/summary&gt;&lt;div class=&quot;spoiler-body&quot;&gt;
 &lt;p&gt;Это нужно положить в папку &lt;code class=&quot;highlighter-rouge&quot;&gt;_plugins&lt;/code&gt;:&lt;/p&gt;
 
 &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Jekyll&lt;/span&gt;
@@ -479,7 +479,22 @@
 &lt;span class=&quot;no&quot;&gt;Liquid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Template&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;register_tag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'spoiler'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Jekyll&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;SpoilerBlock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
+&lt;p&gt;И использовать в постах так:&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% spoiler Заголовок спойлера %}
+&lt;span class=&quot;p&quot;&gt;```&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;yaml&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;some&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;string&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;```&lt;/span&gt;
+{% endspoiler %}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;/div&gt;&lt;/details&gt;
+
+&lt;div class=&quot;alert alert-danger&quot; role=&quot;alert&quot;&gt;
+    &lt;p&gt;&lt;b&gt;В Github Pages это работать не будет!&lt;/b&gt;&lt;/p&gt;
+    &lt;p&gt;Любые плагины и дополнения работают только при самостоятельной сборке проекта (например, на Gitlab'е)&lt;/p&gt;
+&lt;/div&gt;
 
 &lt;h2 id=&quot;проблема&quot;&gt;Проблема&lt;/h2&gt;
 
