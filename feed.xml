@@ -1,5 +1,220 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ru_RU"><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="https://vtvz.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vtvz.ru/" rel="alternate" type="text/html" hreflang="ru_RU" /><updated>2019-11-07T10:40:49+03:00</updated><id>https://vtvz.ru/feed.xml</id><title type="html">Виталий Заславский – web-разработчик, который любит свое дело</title><subtitle>Личный блог web-разработчика обо всем. Заметки об успехах и неудачах в профессиональной деятельности, о поиске решений практических задач, и просто о жизни.
-</subtitle><author><name>Виталий Заславский</name><email>vtvz.ru@gmail.com</email></author><entry><title type="html">Пишем свой Doctrine Annotation Fixer для PHP-CS-Fixer</title><link href="https://vtvz.ru/blog/custom-doctrine-annotation-fixer/" rel="alternate" type="text/html" title="Пишем свой Doctrine Annotation Fixer для PHP-CS-Fixer" /><published>2019-11-06T00:00:00+03:00</published><updated>2019-11-06T00:00:00+03:00</updated><id>https://vtvz.ru/blog/custom-doctrine-annotation-fixer</id><content type="html" xml:base="https://vtvz.ru/blog/custom-doctrine-annotation-fixer/">&lt;p&gt;В плане код-стайла я немного маньяк.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ru_RU"><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="https://vtvz.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vtvz.ru/" rel="alternate" type="text/html" hreflang="ru_RU" /><updated>2019-12-31T18:29:25+03:00</updated><id>https://vtvz.ru/feed.xml</id><title type="html">Виталий Заславский – web-разработчик, который любит свое дело</title><subtitle>Личный блог web-разработчика обо всем. Заметки об успехах и неудачах в профессиональной деятельности, о поиске решений практических задач, и просто о жизни.
+</subtitle><author><name>Виталий Заславский</name><email>vtvz.ru@gmail.com</email></author><entry><title type="html">Первый успех. Больше ста визитов за неделю</title><link href="https://vtvz.ru/blog/first-success/" rel="alternate" type="text/html" title="Первый успех. Больше ста визитов за неделю" /><published>2019-11-30T00:00:00+03:00</published><updated>2019-11-30T00:00:00+03:00</updated><id>https://vtvz.ru/blog/first-success</id><content type="html" xml:base="https://vtvz.ru/blog/first-success/">&lt;p&gt;Мой блог, как мой питомец. Я его люблю, вкладываю туда свои время и силы.
+Для создания чего-то нового приходится тратить свой творческий ресурс.
+Да, даже чисто техническая статья должна быть интересной, неоднотонной, без повторяющихся слов, грамотной, корректной
+и другие страшные слова.&lt;/p&gt;
+
+&lt;p&gt;Потратив этот ресурс, так или иначе хочется, чтобы это творение не осталось незамеченным.
+Художники делают выставки, музыканты записывают треки, танцоры выступают на концертах и т.д.
+А авторы статей и блогеры хотят, чтобы их читали. Хоть мой блог и был создал в первую очередь для меня,
+мне все равно не хочется писать впустую, а каждое посещение странички греет мне сердце.
+Тут коротко о моих первых успехах в продвижении сайта.&lt;/p&gt;
+
+&lt;!--cut--&gt;
+
+&lt;figure class=&quot;frame&quot;&gt;
+    &lt;a href=&quot;./intro-report.png&quot; target=&quot;_blank&quot;&gt;
+      &lt;img src=&quot;./intro-report.png&quot; alt=&quot;Отчет по источникам за год&quot; /&gt;
+    &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Есть много способов продвинуть свой сайт в люди без сильных расходов. Да, это будет гораздо медленнее и не так эффективно,
+чем грамотно сделанная реклама. Но и за бесплатно можно достичь некоторых результатов.&lt;/p&gt;
+
+&lt;h2 id=&quot;никнейм&quot;&gt;Никнейм&lt;/h2&gt;
+
+&lt;p&gt;Однажды, незадолго после окончания школы (~2013г.), мне представилась замечательная возможность приобрести свой личный домен.
+Соглашусь, делается это несложно. Но тогда я не умел ничего связанного с реальной разработкой веб-сайтов.
+Я хотел что-то короткое, лаконичное, созвучное с моим ФИО. Все трехбуквенные варианты уже были заняты.
+На придумывание не ушло много времени, я выбрал &lt;code class=&quot;highlighter-rouge&quot;&gt;vtvz&lt;/code&gt;. Вскоре, это стало моим логином/URL’ом/ником везде:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://vk.com/vtvz_ru&quot;&gt;https://vk.com/vtvz_ru&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.facebook.com/vtvz.ru&quot;&gt;https://www.facebook.com/vtvz.ru&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.linkedin.com/in/vtvz/&quot;&gt;https://www.linkedin.com/in/vtvz/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;mailto:vtvz.ru@gmail.com&quot;&gt;vtvz.ru@gmail.com&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;mailto:vtvz@pm.me&quot;&gt;vtvz@pm.me&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://steamcommunity.com/id/vtvz_ru&quot;&gt;https://steamcommunity.com/id/vtvz_ru&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Minecraft username: vtvz&lt;/li&gt;
+  &lt;li&gt;Моя подпись (да, все зашло слишком далеко :grin:)&lt;/li&gt;
+  &lt;li&gt;и т.д.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Даже WiFi сеть и Bluetooth у меня обозваны ссылкой на сайт:&lt;/p&gt;
+
+&lt;figure class=&quot;frame&quot;&gt;
+  &lt;img src=&quot;wifi.png&quot; alt=&quot;Название wifi сети: vtvz.ru&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;До появления блога, когда существовала только визитка, на сайт приходили люди из разных городов и даже стран.
+Сложно сказать, сколько именно пришло из-за никнейма, но однозначно такие люди есть.
+Наверняка из всех 497 посетителей по “прямому заходу” (вбил руками в бразуезе) есть те, кому было любопытно,
+что скрывается под ником-ссылкой.&lt;/p&gt;
+
+&lt;h2 id=&quot;поисковики&quot;&gt;Поисковики&lt;/h2&gt;
+
+&lt;p&gt;На текущий момент, мой сайт не часто попадает в поисковые выдачи, и кликов приходит не так много.
+Это вполне себе логично, так как:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Сайт сравнительно молодой. (6 лет это мало?)&lt;/li&gt;
+  &lt;li&gt;На нем не так много контента.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;С точки зрения SEO у меня почти всё сделано по последним канонам продвижения, но некоторые прорехи есть,
+которые устранить сложнее. Но, как мне сказали, это и может ускорить поднятие в списке выдачи, но самое главное – это контент.
+Тут есть проблемы… За этот год вышло всего шесть статей (эта седьмая), что не есть айс.&lt;/p&gt;
+
+&lt;p&gt;Но есть определенная закономерность: узконаправленные статьи, решающие конкретную проблему,
+гораздо чаще попадают в результаты поиска.&lt;/p&gt;
+
+&lt;figure class=&quot;frame&quot;&gt;
+  &lt;img src=&quot;google-console.png&quot; alt=&quot;Google Search Console&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Гуглу, кстати говоря, я понравился больше. За этот год он показал меня аж 611 раз! Вот страницы-рекордсмены:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/html-to-mysql/&quot;&gt;“HTML to MySQL. Или Веб-скрапинг на практике”&lt;/a&gt; – 426 показов / 3 клика;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/jekyll-spoiler-plugin/&quot;&gt;“Jekyll Spoiler Plugin. Куда и как прятать код”&lt;/a&gt; – 75 показов / 3 клика;&lt;/li&gt;
+  &lt;li&gt;И (внезапно) &lt;a href=&quot;/&quot;&gt;главная страница&lt;/a&gt; и &lt;a href=&quot;/blog/openning/&quot;&gt;“Свершилось! Часть первая. Зачем мне блог”&lt;/a&gt; – 129 показов / 1 + 1 клик;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Самые популярные запросы [в скобочках количество показов]:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;скрапинг [65] / веб скрапинг [32] / скрапинг это [16] / веб-скрапинг [8] / скрапинг публичных сайтов [2]&lt;/li&gt;
+  &lt;li&gt;vtvz [32] (Как так?)&lt;/li&gt;
+  &lt;li&gt;markdown spoiler [11] / код спойлера [8]&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;details class=&quot;spoiler&quot;&gt;&lt;summary class=&quot;spoiler-title&quot;&gt;Небольшое замечание&lt;/summary&gt;&lt;div class=&quot;spoiler-body&quot;&gt;
+&lt;p&gt;У Гугла статистика по запросам и по страницам очень сильно расходится.
+Тогда как он показал мне суммарно 8 кликов из поисковика на вкладке “Страницы”, 
+на вкладке “Запросы” нет &lt;strong&gt;ни одного клика (!)&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Может я что-то упускаю, но очень бы хотелось знать, по каким запросам пришли люди на сайт.&lt;/p&gt;
+
+&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-sm-6&quot;&gt;
+        &lt;figure&gt;&lt;a href=&quot;./google-console-queues.png&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;./google-console-queues.png&quot; alt=&quot;Статистика по запросам&quot; /&gt;&lt;/a&gt;&lt;/figure&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-sm-6&quot;&gt;
+        &lt;figure&gt;&lt;a href=&quot;./google-console-pages.png&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;./google-console-pages.png&quot; alt=&quot;Статистика по страницам&quot; /&gt;&lt;/a&gt;&lt;/figure&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;p&gt;По поводу третьего пункта все ясно – решенная мной задача скорее уникальная, чем распространенная.&lt;/p&gt;
+
+&lt;p&gt;Но почему скрапинг? Тема вроде как достаточно известная. Может быть материала на эту тему действительно мало?
+Возможно это моя золотая жила? Надо исследовать в эту сторону :grin:&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Касательно Яндекса… Может быть в нем контенгент немного другой.
+Как правило, программисты пользуются Гуглом для поиска решений своих проблем.
+Возможно именно поэтому за год я появлялся в выборке всего 63 раза. Это примерно в 10 раз меньше, чем Гугл.&lt;/p&gt;
+
+&lt;p&gt;Яндекс тоже не особо многословен:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;виталий заславский – 6 показов;&lt;/li&gt;
+  &lt;li&gt;заславский виталий – 4 показа;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Стоит отметить, что 6+4≠63. Куда делись остальные 53 показа?&lt;/p&gt;
+
+&lt;details class=&quot;spoiler&quot;&gt;&lt;summary class=&quot;spoiler-title&quot;&gt;Кстати об этом...&lt;/summary&gt;&lt;div class=&quot;spoiler-body&quot;&gt;
+&lt;p&gt;Статистика у него тоже неплохо так расходится. Опять же, возможно я что-то упускаю?&lt;/p&gt;
+
+&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-sm-4&quot;&gt;
+        &lt;figure&gt;&lt;a href=&quot;./yandex-groups.png&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;./yandex-groups.png&quot; alt=&quot;Статистика по группам&quot; /&gt;&lt;/a&gt;&lt;/figure&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-sm-4&quot;&gt;
+        &lt;figure&gt;&lt;a href=&quot;./yandex-pages.png&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;./yandex-pages.png&quot; alt=&quot;Статистика страниц&quot; /&gt;&lt;/a&gt;&lt;/figure&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-sm-4&quot;&gt;
+        &lt;figure&gt;&lt;a href=&quot;./yandex-popular.png&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;./yandex-popular.png&quot; alt=&quot;Статистика по популярным запросам&quot; /&gt;&lt;/a&gt;&lt;/figure&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;p&gt;Мне еще много чего нужно сделать, чтобы поисковики и люди полюбили мой сайт:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Дублировать статьи в &lt;a href=&quot;https://zen.yandex.ru/&quot;&gt;Yandex.Zen&lt;/a&gt;;&lt;/li&gt;
+  &lt;li&gt;Подключить &lt;a href=&quot;https://yandex.ru/dev/turbo/&quot;&gt;Турбо-страницы&lt;/a&gt;;&lt;/li&gt;
+  &lt;li&gt;Сделать &lt;a href=&quot;https://developers.google.com/amp/?hl=ru&quot;&gt;AMP версии страниц&lt;/a&gt;;&lt;/li&gt;
+  &lt;li&gt;На главную страницу расположить список последних постов;&lt;/li&gt;
+  &lt;li&gt;И еще много всякого разного…&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Но мой &lt;a href=&quot;https://www.facebook.com/ifrolov2&quot;&gt;коллега&lt;/a&gt;, который на продвижении уже собоку съел,
+ясно дал понять, что ключ не в поисковых оптимизациях и прочей магии, а в контенте.
+Так что самая важная для меня задача – писать больше статей.&lt;/p&gt;
+
+&lt;h2 id=&quot;социальные-сети&quot;&gt;Социальные сети&lt;/h2&gt;
+
+&lt;p&gt;В какой-то степени, социальные сети являются основным стабильным источником трафика.
+За последний год из соц. сетей было 155 посещений, 122 которых пришлось на ВК (&lt;a href=&quot;https://vk.com/blog_vtvz&quot;&gt;кстати об этом&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Откровенно говоря, мой блог хоть и обо всем, но целевая аудитория – IT-инженеры.
+И тут получается некоторый конфликт: я хочу писать технические статьи, но их особо никто читать не будет,
+потому основной поток читателей приходится из социальных сетей, где в друзьях у меня люди другой направленности.&lt;/p&gt;
+
+&lt;p&gt;Тем не менее, большое спасибо тем, кто приходит, и особенно тем, кто дочитывает до конца. Для меня это важно :blush:&lt;/p&gt;
+
+&lt;h2 id=&quot;дайджесты&quot;&gt;Дайджесты&lt;/h2&gt;
+
+&lt;p&gt;Дайджест – это некоторый агрегатор интересных материалов по определенной тематике за какой-то период.&lt;/p&gt;
+
+&lt;p&gt;Есть 2 основных дайджеста, в которые я потенциально мог попасть:
+&lt;a href=&quot;https://habr.com/ru/users/pronskiy/posts/&quot;&gt;PHP-Дайджест&lt;/a&gt;
+и &lt;a href=&quot;https://habr.com/ru/users/alexzfort/posts/&quot;&gt;Фронтенд дайджест&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Первая статья, которая попала в массы – &lt;a href=&quot;/blog/html-to-mysql/&quot;&gt;“HTML to MySQL. Или Веб-скрапинг на практике”&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;И она не попала ни в один из перечисленных выше дайджестов. Когда я отправил ссылку одному из авторов этих подборок,
+мне дали ясно понять, что эта статья не уровня Хабра. Но, как оказалось позднее, у этих ребят есть еще свой &lt;a href=&quot;https://zfort.com.ua/&quot;&gt;сайт&lt;/a&gt;,
+куда они тоже публикуют дайджесты, куда мне &lt;a href=&quot;https://zfort.com.ua/blog/category/digest/frontend-daidzhest-353-18-24-fevralya-2019&quot;&gt;удалось попасть&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;В итоге, за все это время мне удалось собрать 16 переходов. Не очень много, но это уже приятно :blush:&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Самой успешной оказалась статья &lt;a href=&quot;/blog/custom-doctrine-annotation-fixer/&quot;&gt;“Пишем свой Doctrine Annotation Fixer для PHP-CS-Fixer”&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Это было именно то, что по всем критериям попадало в PHP-Дайджест:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Она напрямую связана с PHP;&lt;/li&gt;
+  &lt;li&gt;Она уникальна в своем роде, так как существующие статьи уже устарели, подобная проблема не решалась, а материалов на русском найти невозможно;&lt;/li&gt;
+  &lt;li&gt;Статья достаточно подробная, чтобы было понятно новичку, но без лишней воды, чтобы уже опытным было интересно.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Откровенно говоря, она и была написана с целью попасть в &lt;a href=&quot;https://habr.com/ru/post/477318/&quot;&gt;этот дайджест&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Более ста визитов за одну неделю и 171 за все время. И целых 2 комментария!
+Цифры пока еще достаточно скромные, но, определенно, это прорыв! Для меня это настоящий успех! :tada:&lt;/p&gt;
+
+&lt;figure&gt;&lt;a href=&quot;./success.png&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;./success.png&quot; alt=&quot;Статистика визитов за неделю&quot; /&gt;&lt;/a&gt;&lt;/figure&gt;
+
+&lt;p&gt;Самое приятное в этой ситуации то, что на сайт приходили не просто люди, а целевая аудитория – те, для кого была написана эта статья.&lt;/p&gt;
+
+&lt;p&gt;Вероятно, это моя первая и последняя статья, которая попала в подобную подборку.
+Просто потому, что я не нашел подходящих дайджестов по моим текущим направлениям (DevOps и немного Go).&lt;/p&gt;
+
+&lt;h2 id=&quot;итого&quot;&gt;Итого&lt;/h2&gt;
+
+&lt;p&gt;Сложно делать какие-то выводы. Цель этой статьи не в том, чтобы кого-то чему-то научить.
+У меня произошло радостное событие, и я хотел с вами им поделиться :blush:&lt;/p&gt;
+
+&lt;p&gt;Писать статьи – очень трудоемкий процесс, который я, возможно, опишу в отдельной статье. 
+Поэтому спасибо всем, кто дочитал до конца; статья вышла достаточно большой.
+Для меня ценно каждое посещение, каждый просмотр.&lt;/p&gt;
+
+&lt;p&gt;Гляди, может быть наберется аудитория преданных читателей :grin:&lt;/p&gt;</content><author><name>Виталий Заславский</name><email>vtvz.ru@gmail.com</email></author><category term="Веб-разработка" /><category term="Блог" /><summary type="html">Мой блог, как мой питомец. Я его люблю, вкладываю туда свои время и силы. Для создания чего-то нового приходится тратить свой творческий ресурс. Да, даже чисто техническая статья должна быть интересной, неоднотонной, без повторяющихся слов, грамотной, корректной и другие страшные слова. Потратив этот ресурс, так или иначе хочется, чтобы это творение не осталось незамеченным. Художники делают выставки, музыканты записывают треки, танцоры выступают на концертах и т.д. А авторы статей и блогеры хотят, чтобы их читали. Хоть мой блог и был создал в первую очередь для меня, мне все равно не хочется писать впустую, а каждое посещение странички греет мне сердце. Тут коротко о моих первых успехах в продвижении сайта.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.ru/assets/images/logo-black.png" /><media:content medium="image" url="https://vtvz.ru/assets/images/logo-black.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Пишем свой Doctrine Annotation Fixer для PHP-CS-Fixer</title><link href="https://vtvz.ru/blog/custom-doctrine-annotation-fixer/" rel="alternate" type="text/html" title="Пишем свой Doctrine Annotation Fixer для PHP-CS-Fixer" /><published>2019-11-06T00:00:00+03:00</published><updated>2019-11-06T00:00:00+03:00</updated><id>https://vtvz.ru/blog/custom-doctrine-annotation-fixer</id><content type="html" xml:base="https://vtvz.ru/blog/custom-doctrine-annotation-fixer/">&lt;p&gt;В плане код-стайла я немного маньяк.
 Я убежден – чем более строгие правила, тем качественнее будет кодовая база.
 Когда я только пришел в компанию &lt;a href=&quot;https://axmit.com/&quot;&gt;Axmit&lt;/a&gt; в качестве разработчика,
 моей личной целью стало создание перечня правил, а также настройка всякого рода фиксеров и снифферов.
@@ -17,14 +232,14 @@
 
 &lt;p&gt;А вот в чем была проблема. Обратите внимание на запятые.&lt;/p&gt;
 
-&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;sd&quot;&gt;/**
+&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cd&quot;&gt;/**
  * @SWG\Definition(
  *     definition=&quot;ActionFilterRequest&quot;,
  *     @SWG\Property(property=&quot;service_id&quot;, type=&quot;integer&quot;)
  * )
  */&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;sd&quot;&gt;/**
+&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cd&quot;&gt;/**
  * @SWG\Definition(
  *     definition=&quot;ActionFilterRequest&quot;,
  *     @SWG\Property(property=&quot;service_id&quot;, type=&quot;integer&quot;,),
@@ -38,7 +253,7 @@
 
 &lt;p&gt;Я хочу, чтобы на выходе после исправления это было так:&lt;/p&gt;
 
-&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;sd&quot;&gt;/**
+&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cd&quot;&gt;/**
  * @SWG\Definition(
  *     definition=&quot;ActionFilterRequest&quot;,
  *     @SWG\Property(property=&quot;service_id&quot;, type=&quot;integer&quot;),
@@ -63,16 +278,16 @@
 &lt;p&gt;Минимально возможный фиксер, который пока ничего не делает, выглядит примерно так:&lt;/p&gt;
 
 &lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//  Тут есть пара неиспользуемых импортов, но скоро они будут нужны&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Doctrine\Common\Annotations\DocLexer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PhpCsFixer\AbstractDoctrineAnnotationFixer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PhpCsFixer\Doctrine\Annotation\Token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PhpCsFixer\Doctrine\Annotation\Tokens&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PhpCsFixer\FixerDefinition\FixerDefinition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PhpCsFixer\FixerDefinition\FixerDefinitionInterface&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Doctrine\Common\Annotations\DocLexer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;PhpCsFixer\AbstractDoctrineAnnotationFixer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;PhpCsFixer\Doctrine\Annotation\Token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;PhpCsFixer\Doctrine\Annotation\Tokens&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;PhpCsFixer\FixerDefinition\FixerDefinition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;PhpCsFixer\FixerDefinition\FixerDefinitionInterface&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 
-&lt;span class=&quot;k&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DoctrineAnnotationCommasFixer&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;AbstractDoctrineAnnotationFixer&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DoctrineAnnotationCommasFixer&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;AbstractDoctrineAnnotationFixer&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;sd&quot;&gt;/**
+    &lt;span class=&quot;cd&quot;&gt;/**
      * @return string
      */&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt;
@@ -80,7 +295,7 @@
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-    &lt;span class=&quot;sd&quot;&gt;/**
+    &lt;span class=&quot;cd&quot;&gt;/**
      * @return string
      */&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt;
@@ -88,7 +303,7 @@
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Axmit/doctrine_annotation_commas'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-    &lt;span class=&quot;sd&quot;&gt;/**
+    &lt;span class=&quot;cd&quot;&gt;/**
      * @return FixerDefinitionInterface
      */&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getDefinition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;FixerDefinitionInterface&lt;/span&gt;
@@ -96,7 +311,7 @@
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;FixerDefinition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Fixes commas in Doctrine annotations'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]);&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-    &lt;span class=&quot;sd&quot;&gt;/**
+    &lt;span class=&quot;cd&quot;&gt;/**
      * Fixes Doctrine annotations from the given PHPDoc style comment.
      *
      * @param Tokens $tokens
@@ -160,7 +375,7 @@
 
 &lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$tokens&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;offsetExists&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;sd&quot;&gt;/** @var Token $token */&lt;/span&gt;
+    &lt;span class=&quot;cd&quot;&gt;/** @var Token $token */&lt;/span&gt;
     &lt;span class=&quot;nv&quot;&gt;$token&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$tokens&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;offsetGet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 
     &lt;span class=&quot;c1&quot;&gt;//TODO Add logic here &lt;/span&gt;
@@ -216,16 +431,16 @@
 &lt;details class=&quot;spoiler&quot;&gt;&lt;summary class=&quot;spoiler-title&quot;&gt;Собрав все воедино&lt;/summary&gt;&lt;div class=&quot;spoiler-body&quot;&gt;
 &lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
 
-&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Doctrine\Common\Annotations\DocLexer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PhpCsFixer\AbstractDoctrineAnnotationFixer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PhpCsFixer\Doctrine\Annotation\Token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PhpCsFixer\Doctrine\Annotation\Tokens&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PhpCsFixer\FixerDefinition\FixerDefinition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PhpCsFixer\FixerDefinition\FixerDefinitionInterface&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Doctrine\Common\Annotations\DocLexer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;PhpCsFixer\AbstractDoctrineAnnotationFixer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;PhpCsFixer\Doctrine\Annotation\Token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;PhpCsFixer\Doctrine\Annotation\Tokens&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;PhpCsFixer\FixerDefinition\FixerDefinition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;PhpCsFixer\FixerDefinition\FixerDefinitionInterface&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 
-&lt;span class=&quot;k&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DoctrineAnnotationCommasFixer&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;AbstractDoctrineAnnotationFixer&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DoctrineAnnotationCommasFixer&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;AbstractDoctrineAnnotationFixer&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;sd&quot;&gt;/**
+    &lt;span class=&quot;cd&quot;&gt;/**
      * @return string
      */&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt;
@@ -233,7 +448,7 @@
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-    &lt;span class=&quot;sd&quot;&gt;/**
+    &lt;span class=&quot;cd&quot;&gt;/**
      * @return string
      */&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt;
@@ -241,7 +456,7 @@
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Axmit/doctrine_annotation_commas'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-    &lt;span class=&quot;sd&quot;&gt;/**
+    &lt;span class=&quot;cd&quot;&gt;/**
      * @return FixerDefinitionInterface
      */&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getDefinition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;FixerDefinitionInterface&lt;/span&gt;
@@ -249,7 +464,7 @@
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;FixerDefinition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Fixes commas in Doctrine annotations'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]);&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-    &lt;span class=&quot;sd&quot;&gt;/**
+    &lt;span class=&quot;cd&quot;&gt;/**
      * Fixes Doctrine annotations from the given PHPDoc style comment.
      *
      * @param Tokens $tokens
@@ -260,7 +475,7 @@
     &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;nv&quot;&gt;$index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$tokens&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;offsetExists&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;sd&quot;&gt;/** @var Token $token */&lt;/span&gt;
+            &lt;span class=&quot;cd&quot;&gt;/** @var Token $token */&lt;/span&gt;
             &lt;span class=&quot;nv&quot;&gt;$token&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$tokens&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;offsetGet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 
             &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$token&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;isType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;DocLexer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;T_CLOSE_CURLY_BRACES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;DocLexer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;T_CLOSE_PARENTHESIS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -311,7 +526,7 @@
 Не стесняйтесь задавать вопросы и указывать на ошибки и неточности.
 Я всегда рад коммуникации :wink:&lt;/p&gt;
 
-&lt;p&gt;Подписывайтесь на обновления в &lt;a href=&quot;tg://resolve?domain=blog_vtvz&quot;&gt;Telegram&lt;/a&gt; и &lt;a href=&quot;https://vk.com/blog_vtvz&quot;&gt;VK&lt;/a&gt;&lt;/p&gt;</content><author><name>Виталий Заславский</name><email>vtvz.ru@gmail.com</email></author><category term="Веб-разработка" /><category term="PHP" /><category term="Code-style" /><summary type="html">В плане код-стайла я немного маньяк. Я убежден – чем более строгие правила, тем качественнее будет кодовая база. Когда я только пришел в компанию Axmit в качестве разработчика, моей личной целью стало создание перечня правил, а также настройка всякого рода фиксеров и снифферов. Теперь у нас используется как CodeSniffer, так и PHP-CS-Fixer. Большинство правил у нас автоматизированы PHPStorm и PHP-CS-Fixer, поэтому следование им не создает слишком много боли. Но был момент, который не был ни в одном из этих инструментов, заставляюший меня страдать.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.ru/assets/images/logo-black.png" /></entry><entry><title type="html">Как правильно хранить пароли</title><link href="https://vtvz.ru/blog/right-way-to-store-passwords/" rel="alternate" type="text/html" title="Как правильно хранить пароли" /><published>2019-11-03T00:00:00+03:00</published><updated>2019-11-03T00:00:00+03:00</updated><id>https://vtvz.ru/blog/right-way-to-store-passwords</id><content type="html" xml:base="https://vtvz.ru/blog/right-way-to-store-passwords/">&lt;blockquote&gt;
+&lt;p&gt;Подписывайтесь на обновления в &lt;a href=&quot;tg://resolve?domain=blog_vtvz&quot;&gt;Telegram&lt;/a&gt; и &lt;a href=&quot;https://vk.com/blog_vtvz&quot;&gt;VK&lt;/a&gt;&lt;/p&gt;</content><author><name>Виталий Заславский</name><email>vtvz.ru@gmail.com</email></author><category term="Веб-разработка" /><category term="PHP" /><category term="Code-style" /><summary type="html">В плане код-стайла я немного маньяк. Я убежден – чем более строгие правила, тем качественнее будет кодовая база. Когда я только пришел в компанию Axmit в качестве разработчика, моей личной целью стало создание перечня правил, а также настройка всякого рода фиксеров и снифферов. Теперь у нас используется как CodeSniffer, так и PHP-CS-Fixer. Большинство правил у нас автоматизированы PHPStorm и PHP-CS-Fixer, поэтому следование им не создает слишком много боли. Но был момент, который не был ни в одном из этих инструментов, заставляюший меня страдать.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.ru/assets/images/logo-black.png" /><media:content medium="image" url="https://vtvz.ru/assets/images/logo-black.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Как правильно хранить пароли</title><link href="https://vtvz.ru/blog/right-way-to-store-passwords/" rel="alternate" type="text/html" title="Как правильно хранить пароли" /><published>2019-11-03T00:00:00+03:00</published><updated>2019-11-03T00:00:00+03:00</updated><id>https://vtvz.ru/blog/right-way-to-store-passwords</id><content type="html" xml:base="https://vtvz.ru/blog/right-way-to-store-passwords/">&lt;blockquote&gt;
   &lt;p&gt;Начало 07.10.2019. Статья обещает быть обширной.&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -573,7 +788,7 @@
 Никто из вас не заинтересован быть взломанными,
 поэтому воспользуйтесь любым безопасным и надежным способом хранения ваших данных.
 Я надеюсь, эта статья дала понимание существующей проблемы и её решения,
-и вы прислушаетесь к моим советам вам же во благо :blush:&lt;/p&gt;</content><author><name>Виталий Заславский</name><email>vtvz.ru@gmail.com</email></author><category term="Программы" /><category term="Сервисы" /><category term="Безопасность" /><summary type="html">Начало 07.10.2019. Статья обещает быть обширной. Моим первым паролем был “хахаха”. Не даром в ВК меня быстренько взломали. Затем у меня был один пароль на все случаи жизни. Инцидентов не было, но метод далек от идеального. Стоит узнать один пароль, как учетные записи других сервисов окажутся под угрозой. Следующим шагом был пароль, состоящий из двух частей: общим префиксом и доменным именем сайта. Могло это выглядеть примерно так: “МойСуперМощныйПароль123.vk.com”. Это все ещё очень плохо. Я рос. Росла и моя паранойя. Сейчас у меня для каждого отдельного сайта или приложения свой уникальный, неповторимый, устойчивый к атакам пароль. В этой статье я расскажу, как правильно хранить свои пароли, чтобы было удобно, и безопасность не страдала.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.ru/assets/images/logo-black.png" /></entry><entry><title type="html">Платить или не платить. Или зачем нужны стриминговые платформы</title><link href="https://vtvz.ru/blog/why-audio-streaming-platforms/" rel="alternate" type="text/html" title="Платить или не платить. Или зачем нужны стриминговые платформы" /><published>2019-10-07T00:00:00+03:00</published><updated>2019-10-07T00:00:00+03:00</updated><id>https://vtvz.ru/blog/why-audio-streaming-platforms</id><content type="html" xml:base="https://vtvz.ru/blog/why-audio-streaming-platforms/">&lt;p&gt;Как-то исторически сложилось, что после того, как в ВК стали активно внедрять меры по защите авторских прав, 
+и вы прислушаетесь к моим советам вам же во благо :blush:&lt;/p&gt;</content><author><name>Виталий Заславский</name><email>vtvz.ru@gmail.com</email></author><category term="Программы" /><category term="Сервисы" /><category term="Безопасность" /><summary type="html">Начало 07.10.2019. Статья обещает быть обширной. Моим первым паролем был “хахаха”. Не даром в ВК меня быстренько взломали. Затем у меня был один пароль на все случаи жизни. Инцидентов не было, но метод далек от идеального. Стоит узнать один пароль, как учетные записи других сервисов окажутся под угрозой. Следующим шагом был пароль, состоящий из двух частей: общим префиксом и доменным именем сайта. Могло это выглядеть примерно так: “МойСуперМощныйПароль123.vk.com”. Это все ещё очень плохо. Я рос. Росла и моя паранойя. Сейчас у меня для каждого отдельного сайта или приложения свой уникальный, неповторимый, устойчивый к атакам пароль. В этой статье я расскажу, как правильно хранить свои пароли, чтобы было удобно, и безопасность не страдала.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.ru/assets/images/logo-black.png" /><media:content medium="image" url="https://vtvz.ru/assets/images/logo-black.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Платить или не платить. Или зачем нужны стриминговые платформы</title><link href="https://vtvz.ru/blog/why-audio-streaming-platforms/" rel="alternate" type="text/html" title="Платить или не платить. Или зачем нужны стриминговые платформы" /><published>2019-10-07T00:00:00+03:00</published><updated>2019-10-07T00:00:00+03:00</updated><id>https://vtvz.ru/blog/why-audio-streaming-platforms</id><content type="html" xml:base="https://vtvz.ru/blog/why-audio-streaming-platforms/">&lt;p&gt;Как-то исторически сложилось, что после того, как в ВК стали активно внедрять меры по защите авторских прав, 
 платных подписок и прочие ограничения на прослушиваине музыки, я перешел на &lt;a href=&quot;https://music.yandex.ru/&quot;&gt;Яндекс.Музыку&lt;/a&gt;,
 в качестве основного источника музыкального дофамина.&lt;/p&gt;
 
@@ -756,7 +971,7 @@
 &lt;p&gt;А пользу я и члены моей семьи ощущем каждый день по дороге с работы и обратно, на работе или в пути в другой город.&lt;/p&gt;
 
 &lt;p&gt;В любом случае, любой из сервисов из списка предоставляет бесплатный (или очень дешевый) период без ограничений.
-Попробуйте. Возможно понравится и Вам :blush:&lt;/p&gt;</content><author><name>Виталий Заславский</name><email>vtvz.ru@gmail.com</email></author><category term="Музыка" /><category term="Сервисы" /><summary type="html">Как-то исторически сложилось, что после того, как в ВК стали активно внедрять меры по защите авторских прав, платных подписок и прочие ограничения на прослушиваине музыки, я перешел на Яндекс.Музыку, в качестве основного источника музыкального дофамина. До этого были активные попытки использовать Google Music, но приложение оказалось тяжелым (в техническом плане), запутанным и не удобным для использования. Через какое-то время была куплена подписка за 99р. в месяц, потом полноценная в 169р/м, а в итоге семейная за 300р/м на 4 человека. Сравнение музыкальных сервисов будет в следующей статье. А в этой хочу рассказать, почему лучше выбрать один из них, чем пользоваться ВК, и почему они стоят своих денег.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.ru/assets/images/logo-black.png" /></entry><entry><title type="html">Jekyll Spoiler Plugin. Куда и как прятать код</title><link href="https://vtvz.ru/blog/jekyll-spoiler-plugin/" rel="alternate" type="text/html" title="Jekyll Spoiler Plugin. Куда и как прятать код" /><published>2019-03-08T00:00:00+03:00</published><updated>2019-03-08T00:00:00+03:00</updated><id>https://vtvz.ru/blog/jekyll-spoiler-plugin</id><content type="html" xml:base="https://vtvz.ru/blog/jekyll-spoiler-plugin/">&lt;p&gt;Когда писал &lt;a href=&quot;/blog/html-to-mysql/&quot;&gt;предыдущую статью&lt;/a&gt;, столкнулся с одной простой проблемой: большие куски кода занимали больше места, чем сам текст.&lt;/p&gt;
+Попробуйте. Возможно понравится и Вам :blush:&lt;/p&gt;</content><author><name>Виталий Заславский</name><email>vtvz.ru@gmail.com</email></author><category term="Музыка" /><category term="Сервисы" /><summary type="html">Как-то исторически сложилось, что после того, как в ВК стали активно внедрять меры по защите авторских прав, платных подписок и прочие ограничения на прослушиваине музыки, я перешел на Яндекс.Музыку, в качестве основного источника музыкального дофамина. До этого были активные попытки использовать Google Music, но приложение оказалось тяжелым (в техническом плане), запутанным и не удобным для использования. Через какое-то время была куплена подписка за 99р. в месяц, потом полноценная в 169р/м, а в итоге семейная за 300р/м на 4 человека. Сравнение музыкальных сервисов будет в следующей статье. А в этой хочу рассказать, почему лучше выбрать один из них, чем пользоваться ВК, и почему они стоят своих денег.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.ru/assets/images/logo-black.png" /><media:content medium="image" url="https://vtvz.ru/assets/images/logo-black.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Jekyll Spoiler Plugin. Куда и как прятать код</title><link href="https://vtvz.ru/blog/jekyll-spoiler-plugin/" rel="alternate" type="text/html" title="Jekyll Spoiler Plugin. Куда и как прятать код" /><published>2019-03-08T00:00:00+03:00</published><updated>2019-03-08T00:00:00+03:00</updated><id>https://vtvz.ru/blog/jekyll-spoiler-plugin</id><content type="html" xml:base="https://vtvz.ru/blog/jekyll-spoiler-plugin/">&lt;p&gt;Когда писал &lt;a href=&quot;/blog/html-to-mysql/&quot;&gt;предыдущую статью&lt;/a&gt;, столкнулся с одной простой проблемой: большие куски кода занимали больше места, чем сам текст.&lt;/p&gt;
 
 &lt;p&gt;Поиск готового решения для спойлеров привел меня на вот &lt;a href=&quot;https://burrowl.com/blog/2015/05/23/spoiler-block/&quot;&gt;эту страничку&lt;/a&gt;.
 Решение простое и гениальное, но имело один большой недостаток: текст внутри спойлера не форматировался.&lt;/p&gt;
@@ -912,7 +1127,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;/div&gt;&lt;/details&gt;
 
-&lt;p&gt;Используйте на здоровье :grin:&lt;/p&gt;</content><author><name>Виталий Заславский</name><email>vtvz.ru@gmail.com</email></author><category term="Веб-разработка" /><category term="Jekyll" /><summary type="html">Когда писал предыдущую статью, столкнулся с одной простой проблемой: большие куски кода занимали больше места, чем сам текст. Поиск готового решения для спойлеров привел меня на вот эту страничку. Решение простое и гениальное, но имело один большой недостаток: текст внутри спойлера не форматировался. Свое решение я опишу в этой статье.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.ru/assets/images/logo-black.png" /></entry><entry><title type="html">HTML to MySQL. Или Веб-скрапинг на практике</title><link href="https://vtvz.ru/blog/html-to-mysql/" rel="alternate" type="text/html" title="HTML to MySQL. Или Веб-скрапинг на практике" /><published>2019-02-19T00:00:00+03:00</published><updated>2019-02-19T00:00:00+03:00</updated><id>https://vtvz.ru/blog/html-to-mysql</id><content type="html" xml:base="https://vtvz.ru/blog/html-to-mysql/">&lt;p&gt;Один мой хороший знакомый и коллега обратился ко мне за помощью. Он делал для одной компании новый сайт взамен старому.
+&lt;p&gt;Используйте на здоровье :grin:&lt;/p&gt;</content><author><name>Виталий Заславский</name><email>vtvz.ru@gmail.com</email></author><category term="Веб-разработка" /><category term="Jekyll" /><summary type="html">Когда писал предыдущую статью, столкнулся с одной простой проблемой: большие куски кода занимали больше места, чем сам текст. Поиск готового решения для спойлеров привел меня на вот эту страничку. Решение простое и гениальное, но имело один большой недостаток: текст внутри спойлера не форматировался. Свое решение я опишу в этой статье.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.ru/assets/images/logo-black.png" /><media:content medium="image" url="https://vtvz.ru/assets/images/logo-black.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">HTML to MySQL. Или Веб-скрапинг на практике</title><link href="https://vtvz.ru/blog/html-to-mysql/" rel="alternate" type="text/html" title="HTML to MySQL. Или Веб-скрапинг на практике" /><published>2019-02-19T00:00:00+03:00</published><updated>2019-02-19T00:00:00+03:00</updated><id>https://vtvz.ru/blog/html-to-mysql</id><content type="html" xml:base="https://vtvz.ru/blog/html-to-mysql/">&lt;p&gt;Один мой хороший знакомый и коллега обратился ко мне за помощью. Он делал для одной компании новый сайт взамен старому.
 Данные со старого, естественно, должны были переместиться на новый.
 В этом и заключалась моя задача. Было только одно простое условие – доступа к БД старого сайта ни у меня, ни у него не было.&lt;/p&gt;
 
@@ -1591,7 +1806,7 @@
 &lt;p&gt;А мораль сей статьи такова: автоматизируйте все, что автоматизируется.
 Используйте все подручные средства, чтобы компьютер сделал за вас бо́льшую часть работы.
 Не делайте руками то, что можно сделать скриптом на 150 строк.
-В определенный момент вы поймете – это окупается :wink:&lt;/p&gt;</content><author><name>Виталий Заславский</name><email>vtvz.ru@gmail.com</email></author><category term="Веб-разработка" /><category term="Базы данных" /><summary type="html">Один мой хороший знакомый и коллега обратился ко мне за помощью. Он делал для одной компании новый сайт взамен старому. Данные со старого, естественно, должны были переместиться на новый. В этом и заключалась моя задача. Было только одно простое условие – доступа к БД старого сайта ни у меня, ни у него не было. В этой статье я хочу на практике показать, что можно сделать в этой ситуации, несмотря на отсутствие адекватной разметки в коде страницы.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.ru/assets/images/logo-black.png" /></entry><entry><title type="html">Свершилось! Часть первая. Зачем мне блог</title><link href="https://vtvz.ru/blog/openning/" rel="alternate" type="text/html" title="Свершилось! Часть первая. Зачем мне блог" /><published>2018-12-19T00:00:00+03:00</published><updated>2018-12-19T00:00:00+03:00</updated><id>https://vtvz.ru/blog/openning</id><content type="html" xml:base="https://vtvz.ru/blog/openning/">&lt;p&gt;Я долго к этому шел. Серьезно, на это ушел не один год (4 года приблизительно, точно не знаю).
+В определенный момент вы поймете – это окупается :wink:&lt;/p&gt;</content><author><name>Виталий Заславский</name><email>vtvz.ru@gmail.com</email></author><category term="Веб-разработка" /><category term="Базы данных" /><summary type="html">Один мой хороший знакомый и коллега обратился ко мне за помощью. Он делал для одной компании новый сайт взамен старому. Данные со старого, естественно, должны были переместиться на новый. В этом и заключалась моя задача. Было только одно простое условие – доступа к БД старого сайта ни у меня, ни у него не было. В этой статье я хочу на практике показать, что можно сделать в этой ситуации, несмотря на отсутствие адекватной разметки в коде страницы.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.ru/assets/images/logo-black.png" /><media:content medium="image" url="https://vtvz.ru/assets/images/logo-black.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Свершилось! Часть первая. Зачем мне блог</title><link href="https://vtvz.ru/blog/openning/" rel="alternate" type="text/html" title="Свершилось! Часть первая. Зачем мне блог" /><published>2018-12-19T00:00:00+03:00</published><updated>2018-12-19T00:00:00+03:00</updated><id>https://vtvz.ru/blog/openning</id><content type="html" xml:base="https://vtvz.ru/blog/openning/">&lt;p&gt;Я долго к этому шел. Серьезно, на это ушел не один год (4 года приблизительно, точно не знаю).
 Мысль была давно. Непосредственно разработка заняла у меня немного. Но созревал я на самом деле долго.&lt;/p&gt;
 
 &lt;p&gt;В дебютной статье я бы хотел рассказать о мотивах и причинах, которые привели меня к этому. 
@@ -1707,4 +1922,4 @@ Facebook – социальная сеть, а Хабр – &lt;strong&gt;не&l
 &lt;p&gt;На этом статья считается завершенной, а блог объявляется открытым! :tada:&lt;/p&gt;
 
 &lt;p&gt;В следующей (а может быть и в нескольких статьях) я расскажу о технической составляющей моего сайта:
-дизайн, используемые технологии, хостинг и прочее.&lt;/p&gt;</content><author><name>Виталий Заславский</name><email>vtvz.ru@gmail.com</email></author><category term="Блог" /><category term="Веб-разработка" /><summary type="html">Я долго к этому шел. Серьезно, на это ушел не один год (4 года приблизительно, точно не знаю). Мысль была давно. Непосредственно разработка заняла у меня немного. Но созревал я на самом деле долго. В дебютной статье я бы хотел рассказать о мотивах и причинах, которые привели меня к этому. А также постараюсь ответить на вопросы, которые мне еще никто не задавал, но, возможно, задаст :blush:</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.ru/assets/images/logo-black.png" /></entry></feed>
+дизайн, используемые технологии, хостинг и прочее.&lt;/p&gt;</content><author><name>Виталий Заславский</name><email>vtvz.ru@gmail.com</email></author><category term="Блог" /><category term="Веб-разработка" /><summary type="html">Я долго к этому шел. Серьезно, на это ушел не один год (4 года приблизительно, точно не знаю). Мысль была давно. Непосредственно разработка заняла у меня немного. Но созревал я на самом деле долго. В дебютной статье я бы хотел рассказать о мотивах и причинах, которые привели меня к этому. А также постараюсь ответить на вопросы, которые мне еще никто не задавал, но, возможно, задаст :blush:</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.ru/assets/images/logo-black.png" /><media:content medium="image" url="https://vtvz.ru/assets/images/logo-black.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
