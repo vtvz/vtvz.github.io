@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ru_RU"><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="https://vtvz.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vtvz.ru/" rel="alternate" type="text/html" hreflang="ru_RU" /><updated>2020-01-06T18:49:27+03:00</updated><id>https://vtvz.ru/feed.xml</id><title type="html">Виталий Заславский – web-разработчик, который любит свое дело</title><subtitle>Личный блог web-разработчика обо всем. Заметки об успехах и неудачах в профессиональной деятельности, о поиске решений практических задач, и просто о жизни.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ru_RU"><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="https://vtvz.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vtvz.ru/" rel="alternate" type="text/html" hreflang="ru_RU" /><updated>2020-01-06T18:58:44+03:00</updated><id>https://vtvz.ru/feed.xml</id><title type="html">Виталий Заславский – web-разработчик, который любит свое дело</title><subtitle>Личный блог web-разработчика обо всем. Заметки об успехах и неудачах в профессиональной деятельности, о поиске решений практических задач, и просто о жизни.
 </subtitle><author><name>Виталий Заславский</name><email>vtvz@pm.me</email></author><entry><title type="html">Очистка Android от предустановленных программ без Root’а и перепрошивки</title><link href="https://vtvz.ru/blog/android-debloating/" rel="alternate" type="text/html" title="Очистка Android от предустановленных программ без Root'а и перепрошивки" /><published>2020-01-06T00:00:00+03:00</published><updated>2020-01-06T00:00:00+03:00</updated><id>https://vtvz.ru/blog/android-debloating</id><content type="html" xml:base="https://vtvz.ru/blog/android-debloating/">&lt;p&gt;До недавнего времени я свято верил, что предустановленные программы в Android устройствах
 могут быть либо выключены, либо удалены только с перепрошивкой телефона.
 Root доступ дает не только большие возможности, но и большие риски.
@@ -67,7 +67,8 @@ Root доступ дает не только большие возможност
  Success
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
-  &lt;li&gt;После удаления всех ненужных приложений выключите “режим разработчика” или хотя бы “отладку по USB”.&lt;/li&gt;
+  &lt;li&gt;После удаления всех ненужных приложений выключите “режим разработчика” или хотя бы “отладку по USB”.
+ Это важно, потому что в режиме отладки устройство очень уязвимо.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;В случае, если у вас Xiaomi, возможно, лучше воспользоваться инструментом “&lt;a href=&quot;https://www.reddit.com/r/Xiaomi/wiki/debloat&quot;&gt;Xiaomi ADB/Fastboot Tools&lt;/a&gt;”.
