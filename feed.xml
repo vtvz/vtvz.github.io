@@ -1,5 +1,88 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ru_RU"><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="https://vtvz.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vtvz.ru/" rel="alternate" type="text/html" hreflang="ru_RU" /><updated>2020-01-04T18:25:11+03:00</updated><id>https://vtvz.ru/feed.xml</id><title type="html">Виталий Заславский – web-разработчик, который любит свое дело</title><subtitle>Личный блог web-разработчика обо всем. Заметки об успехах и неудачах в профессиональной деятельности, о поиске решений практических задач, и просто о жизни.
-</subtitle><author><name>Виталий Заславский</name><email>vtvz@pm.me</email></author><entry><title type="html">Первый успех. Больше ста визитов за неделю</title><link href="https://vtvz.ru/blog/first-success/" rel="alternate" type="text/html" title="Первый успех. Больше ста визитов за неделю" /><published>2019-11-30T00:00:00+03:00</published><updated>2019-11-30T00:00:00+03:00</updated><id>https://vtvz.ru/blog/first-success</id><content type="html" xml:base="https://vtvz.ru/blog/first-success/">&lt;p&gt;Мой блог, как мой питомец. Я его люблю, вкладываю туда свои время и силы.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ru_RU"><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="https://vtvz.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vtvz.ru/" rel="alternate" type="text/html" hreflang="ru_RU" /><updated>2020-01-06T18:43:28+03:00</updated><id>https://vtvz.ru/feed.xml</id><title type="html">Виталий Заславский – web-разработчик, который любит свое дело</title><subtitle>Личный блог web-разработчика обо всем. Заметки об успехах и неудачах в профессиональной деятельности, о поиске решений практических задач, и просто о жизни.
+</subtitle><author><name>Виталий Заславский</name><email>vtvz@pm.me</email></author><entry><title type="html">Очистка Android от предустановленных программ без Root’а и перепрошивки</title><link href="https://vtvz.ru/blog/android-debloating/" rel="alternate" type="text/html" title="Очистка Android от предустановленных программ без Root'а и перепрошивки" /><published>2020-01-06T00:00:00+03:00</published><updated>2020-01-06T00:00:00+03:00</updated><id>https://vtvz.ru/blog/android-debloating</id><content type="html" xml:base="https://vtvz.ru/blog/android-debloating/">&lt;p&gt;До недавнего времени я свято верил, что предустановленные программы в Android устройствах
+могут быть либо выключены, либо удалены только с перепрошивкой телефона.
+Root доступ дает не только большие возможности, но и большие риски.
+Поэтому я не стал перепрошивать свой телефон и оставил родную прошивку.
+Но не так давно я &lt;a href=&quot;https://habr.com/ru/post/482344/&quot;&gt;обнаружил&lt;/a&gt;, что есть вполне рабочий способ удалить намертво установленные программы со своего устройства.&lt;/p&gt;
+
+&lt;!--cut--&gt;
+
+&lt;h2 id=&quot;зачем&quot;&gt;Зачем?&lt;/h2&gt;
+
+&lt;p&gt;При покупке устройства, вместе с телефоном/планшетом идет просто гора различных программ – бесполезных и даже вредных.
+В первую очередь, это все то, что начинается с “Google” (Music, Photo, Video, Maps, Hangouts…).
+А с китайскими телефонами типа Xiaomi тянется еще ворох различного мусора.
+Думаю, проблема еще больше усугубится, когда будет в полной мере заработает &lt;a href=&quot;https://www.kommersant.ru/doc/4179598&quot;&gt;закон&lt;/a&gt; об предустановке российского ПО на новые девайсы.&lt;/p&gt;
+
+&lt;p&gt;Это барахло не только занимает место на телефоне, но и съедает ресурсы, сажает батарею и вечно обновляется через Play Market.
+Последней каплей было то, когда Google Maps спросил меня “Ну и как вам было в Burger King?”.
+Большинство программ, особенно встроенных, отслеживают всё, что вы делаете.
+Даже если вам нечего скрывать, это все равно как-то не этично и немного стрёмно.&lt;/p&gt;
+
+&lt;p&gt;Перепрошивать телефон сложно и не безопасно. Всегда есть шанс превратить устройство в кирпич.
+Но есть один замечательный способ удалить весь этот мусор без подобных рисков.&lt;/p&gt;
+
+&lt;div class=&quot;alert alert-danger&quot; role=&quot;alert&quot;&gt;
+    &lt;p&gt;&lt;b&gt;Будьте очень аккуратны!&lt;/b&gt;&lt;/p&gt;
+    &lt;p&gt;
+        Хоть этот способ очистки устройства намного проще всех остальных мне знакомых,
+        он все равно требует определенных технических знаний и навыков.
+        Будьте очень аккуратны, чтобы не повредить устройство и не удалить ПО, необходимое для работы системы. 
+    &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Весь этот процесс называется “Debloating”, что переводится как “&lt;strong&gt;раз&lt;/strong&gt;раздувать”,
+то есть обратное значение слову “раздувать”.&lt;/p&gt;
+
+&lt;h2 id=&quot;инструкция&quot;&gt;Инструкция&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://4idroid.com/kak-vklyuchit-rezhim-dlya-razrabotchika-v-android/&quot;&gt;Включите&lt;/a&gt; “режим разработчика”;&lt;/li&gt;
+  &lt;li&gt;Включите “Отладка по USB” в разделе “Для разработчиков”;&lt;/li&gt;
+  &lt;li&gt;Установите &lt;a href=&quot;https://play.google.com/store/apps/details?id=bg.projectoria.appinspector&quot;&gt;App Inspector&lt;/a&gt;; &lt;br /&gt;
+ &lt;em&gt;Это не обязательный пункт&lt;/em&gt;. В некоторых системах (как у меня в MIUI 9.6.2) ID приложения можно узнать так:
+    &lt;ul&gt;
+      &lt;li&gt;Настройки&lt;/li&gt;
+      &lt;li&gt;Все приложения&lt;/li&gt;
+      &lt;li&gt;Нужное приложение&lt;/li&gt;
+      &lt;li&gt;Значок ⓘ в верхнем правом углу&lt;/li&gt;
+      &lt;li&gt;Имя пакета&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Установите &lt;a href=&quot;https://www.xda-developers.com/install-adb-windows-macos-linux/&quot;&gt;Adb&lt;/a&gt; на компьютер;&lt;/li&gt;
+  &lt;li&gt;В App Inspector найдите приложение, которое хотите удалить.
+ Из всех данных необходимо только поле “Package name”;&lt;/li&gt;
+  &lt;li&gt;Подключите устройство по USB к компьютеру;&lt;/li&gt;
+  &lt;li&gt;Введите команду &lt;code class=&quot;highlighter-rouge&quot;&gt;adb devices&lt;/code&gt;. Должен быть примерно следующий вывод:
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;adb devices
+ List of devices attached
+ 6c3eaa477cf3    device
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;То есть, после строчки &lt;code class=&quot;highlighter-rouge&quot;&gt;List of devices attached&lt;/code&gt; должна быть еще одна с ID подключенного устройства.
+ Идти дальше нет смысла, если компьютер не видит ваш девайс.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Введите &lt;code class=&quot;highlighter-rouge&quot;&gt;adb uninstall &amp;lt;package-name&amp;gt;&lt;/code&gt;, где &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;package-name&amp;gt;&lt;/code&gt; – поле из пункта 5.
+ В моем случае – &lt;code class=&quot;highlighter-rouge&quot;&gt;com.google.android.tts&lt;/code&gt;. Результат:
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;adb uninstall com.google.android.tts
+ Success
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;После удаления всех ненужных приложений выключите “режим разработчика” или хотя бы “отладку по USB”.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;В случае, если у вас Xiaomi, возможно, лучше воспользоваться инструментом “&lt;a href=&quot;https://www.reddit.com/r/Xiaomi/wiki/debloat&quot;&gt;Xiaomi ADB/Fastboot Tools&lt;/a&gt;”.
+Во-первых, он имеет графический интерфейс. А во-вторых, что самое главное,
+в списке программ доступных для удаления нет того, что является критичным для работоспособности системы.
+Но, хоть и говорят, что из этого списка можно удалять все, я бы не рекомендовал вслепую сносить все подряд.&lt;/p&gt;
+
+&lt;h2 id=&quot;итого&quot;&gt;Итого&lt;/h2&gt;
+
+&lt;p&gt;Пока сложно сказать об объективных результатах очистки телефона,
+но места на устройстве стало значительно больше, анимация стала плавнее,
+а занятой оперативной памяти – меньше.&lt;/p&gt;
+
+&lt;p&gt;Если что-то не получается или есть какие-то вопросы – ниже есть секция с комментариями.
+Буду рад любому фитбеку :blush:&lt;/p&gt;</content><author><name>Виталий Заславский</name><email>vtvz@pm.me</email></author><category term="Android" /><category term="Оптимизация" /><summary type="html">До недавнего времени я свято верил, что предустановленные программы в Android устройствах могут быть либо выключены, либо удалены только с перепрошивкой телефона. Root доступ дает не только большие возможности, но и большие риски. Поэтому я не стал перепрошивать свой телефон и оставил родную прошивку. Но не так давно я обнаружил, что есть вполне рабочий способ удалить намертво установленные программы со своего устройства.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.ru/blog/android-debloating/trash.jpg" /><media:content medium="image" url="https://vtvz.ru/blog/android-debloating/trash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Первый успех. Больше ста визитов за неделю</title><link href="https://vtvz.ru/blog/first-success/" rel="alternate" type="text/html" title="Первый успех. Больше ста визитов за неделю" /><published>2019-11-30T00:00:00+03:00</published><updated>2019-11-30T00:00:00+03:00</updated><id>https://vtvz.ru/blog/first-success</id><content type="html" xml:base="https://vtvz.ru/blog/first-success/">&lt;p&gt;Мой блог, как мой питомец. Я его люблю, вкладываю туда свои время и силы.
 Для создания чего-то нового приходится тратить свой творческий ресурс.
 Да, даже чисто техническая статья должна быть интересной, неоднотонной, без повторяющихся слов, грамотной, корректной
 и другие страшные слова.&lt;/p&gt;
