@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-    <!--Built at : 2020-01-06 22:43:13-->
+    <!--Built at : 2020-01-09 11:32:52-->
     <head>
         
         <meta charset="utf-8">
@@ -10,7 +10,7 @@
         <title>Посты помеченные тегом &quot;Безопасность&quot;</title>
 
         <link rel="stylesheet" href="/assets/css/bootstrap.css?cb=ae8f943" />
-        <link rel="stylesheet" href="/assets/css/main.css?cb=3ce9bac" />
+        <link rel="stylesheet" href="/assets/css/main.css?cb=f5037bf" />
         <link rel="stylesheet" href="/assets/css/type/budicons.css?cb=9909b3f" />
         <link rel="stylesheet" href="/assets/css/type/fontello.css?cb=93a9b45" />
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -43,7 +43,11 @@
     </head>
 
     <body class="full-layout">
-        <div id="preloader"><div id="status"><div class="spinner"></div></div></div>
+        <script>
+    window.callOnReady = [];
+</script>
+
+<div id="preloader"><div id="status"><div class="spinner"></div></div></div>
 
 <div id="bg"></div>
 
@@ -152,6 +156,9 @@
                     <li><a href="/blog/category/android/">Android
                         [1]</a></li>
                     
+                    <li><a href="/blog/category/%D0%B8%D0%BF/">ИП
+                        [1]</a></li>
+                    
                 </ul>
             </div>
 
@@ -195,6 +202,18 @@
                     <li><a class="btn" href="/blog/tag/%D0%BE%D0%BF%D1%82%D0%B8%D0%BC%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F/">Оптимизация
                         [1]</a></li>
                     
+                    <li><a class="btn" href="/blog/tag/%D0%B8%D0%BF/">ИП
+                        [1]</a></li>
+                    
+                    <li><a class="btn" href="/blog/tag/%D0%B1%D0%B8%D0%B7%D0%BD%D0%B5%D1%81/">Бизнес
+                        [1]</a></li>
+                    
+                    <li><a class="btn" href="/blog/tag/%D0%BD%D0%B0%D0%BB%D0%BE%D0%B3%D0%B8/">Налоги
+                        [1]</a></li>
+                    
+                    <li><a class="btn" href="/blog/tag/%D1%83%D1%81%D0%BD/">УСН
+                        [1]</a></li>
+                    
                 </ul>
             </div>
         </aside>
@@ -209,9 +228,17 @@
 <script src="/assets/js/jquery.themepunch.tools.min.js"></script> 
 <script src="/assets/js/classie.js"></script> 
 <script src="/assets/js/plugins.js"></script> 
-<script src="/assets/js/scripts.js"></script>  
+<script src="/assets/js/scripts.js"></script>
 
-        <script type="text/javascript" src="/assets/javascripts/bundle.js" charset="utf-8"></script>
+<script>
+    $(function() {
+        window.callOnReady.forEach(function(item) {
+            item();
+        });
+    });
+</script>
+
+        <script type="text/javascript" src="/assets/javascript/bundle.js" charset="utf-8"></script>
 
         
         <!-- Yandex.Metrika counter -->
