@@ -1,0 +1,2271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss
+        xmlns:turbo="http://turbo.yandex.ru" version="2.0">
+    <channel>
+        <title>Виталий Заславский – web-разработчик, который любит свое дело</title>
+        <link>https://vtvz.ru</link>
+        <description>Личный блог web-разработчика обо всем. Заметки об успехах и неудачах в профессиональной деятельности, о поиске решений практических задач, и просто о жизни.
+</description>
+        <language>ru_RU</language>
+        
+        <turbo:analytics type="Google" id="UA-131047185-1"/>
+        
+        
+        <turbo:analytics type="Yandex" id="31771726"/>
+        
+        
+        <item turbo="true">
+            <title>Калькулятор расходов для ИП по УСН Доходы</title>
+            <link>https://vtvz.ru/blog/entrepreneur-calculator/</link>
+            <pubDate>Wed, 08 Jan 2020 00:00:00 +0300</pubDate>
+            <author>Виталий Заславский</author>
+            <turbo:content>
+                <![CDATA[
+                <header>
+                    <h1>Калькулятор расходов для ИП по УСН Доходы</h1>
+                    <figure>
+                        <img src="/blog/entrepreneur-calculator/cover.jpg">
+                    </figure>
+                </header>
+                <p>Многие знают, что я индивидуальный предприниматель. И все знают, что я программист.
+А это значит, что любая работа поддающаяся автоматизации должна быть автоматизирована.
+Поэтому я решил создать этот калькулятор. Как для своего удобства, так и во благо других.</p>
+
+<!--cut-->
+
+<p>Если ты ИП по УСН по доходам, то этот инструмент будет очень кстати.
+Его цель – высчитать чистый доход с учетом всех основных текущих и будущих затрат.
+В эти затраты входят: банковская комиссия, страховые выплаты (ПФР и ФФОМС) и непосредственно сам налог.</p>
+
+<h2 id="как-это-работает">Как это работает</h2>
+
+<ol>
+  <li>Вбиваете ваш доход за месяц или год в строку “Доход”;</li>
+  <li>В строке “Чистая прибыль” указана сумма, которую можно безопасно вывести;</li>
+  <li>Остаток нужно отложить на отдельный счет или оставить на расчетном счете вашего ИП 
+– эти деньги пригодятся для оплаты страховых взносов и налогов;</li>
+</ol>
+
+<p>Подобный расчет работает только в том случае, если вы выплачиваете ПФР и ФФОМС <strong>ежеквартально</strong>.
+Таким образом можно очень сильно уменьшить или даже исключить налог по УСН.
+До тех пор, пока ежемесячный доход в 2020 году составит не более 45,000 рублей,
+не придется платить <strong>ни рубля налогов</strong> – только страховые взносы!</p>
+
+<h2 id="для-чего-это-нужно">Для чего это нужно</h2>
+
+<ol>
+  <li>Этим можно пользоваться как инструментом бухгалтерии для расчета всех необходимых выплат;</li>
+  <li>Можно оценить чистый доход от сделки или выполненных работ;</li>
+  <li>Или наоборот – подогнать стоимость сделки, чтобы выхлоп был не меньше желаемого;</li>
+</ol>
+
+<h2 id="как-пользоваться">Как пользоваться</h2>
+
+<p>На текущий момент функциональность калькулятора не обширная, и я сомневаюсь,
+что буду делать с ним что-то еще помимо обновления цифр по годам. Но вот что есть уже сейчас:</p>
+
+<ol>
+  <li>Выберите год. Вероятно, год меньше 2020-го будет уже не актуальным,
+но если нужно посчитать страховые взносы за предыдущий год, можно выбрать и 2019.</li>
+  <li>Пункт “Оплата расчетного счета в месяц” позволяет выбрать тарифный план вашего банка.
+Я, например, плачу 1% от всего моего дохода, поэтому я выбираю пункт “Процент от дохода”.
+Если вы платите фиксированную сумму, выберите соответствующий пункт.</li>
+  <li>Поле “Количество” определяет число, применимое к вашему тарифному плану:
+    <ul>
+      <li>В случае “Процент от дохода” – комиссия в процентах от дохода;</li>
+      <li>А в “Фиксированная абонентская плата” – ежемесячная комиссия в рублях за использование расчетного счета.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="калькулятор">Калькулятор</h2>
+
+<div id="calculator-container"></div>
+
+<script>
+window.callOnReady.push(
+    function() {
+        main.calculator(document.getElementById('calculator-container'));
+    }
+);
+</script>
+
+<h2 id="послесловие">Послесловие</h2>
+
+<p>Я очень надеюсь, что нигде не накосячил. Сначала это все рассчитывалось в обычной Excel таблице.
+Расчеты там и тут сходятся. Да и в мобильной бухгалтерии все гладко.
+Но если я что-то сделал не так – пожалуйста, поправьте меня.
+Внизу есть блок с комментариями – пишите ваши замечания и пожелания.</p>
+
+<p>Спасибо за внимание :blush:</p>
+
+                ]]>
+            </turbo:content>
+        </item>
+        
+        <item turbo="true">
+            <title>Очистка Android от предустановленных программ без Root'а и перепрошивки</title>
+            <link>https://vtvz.ru/blog/android-debloating/</link>
+            <pubDate>Mon, 06 Jan 2020 00:00:00 +0300</pubDate>
+            <author>Виталий Заславский</author>
+            <turbo:content>
+                <![CDATA[
+                <header>
+                    <h1>Очистка Android от предустановленных программ без Root'а и перепрошивки</h1>
+                    <figure>
+                        <img src="/blog/android-debloating/cover.jpg">
+                    </figure>
+                </header>
+                <p>До недавнего времени я свято верил, что предустановленные программы в Android устройствах
+могут быть либо выключены, либо удалены только с перепрошивкой телефона.
+Root доступ дает не только большие возможности, но и большие риски.
+Поэтому я не стал перепрошивать свой телефон и оставил родную прошивку.
+Но не так давно я <a href="https://habr.com/ru/post/482344/">обнаружил</a>, что есть вполне рабочий способ удалить намертво установленные программы со своего устройства.</p>
+
+<!--cut-->
+
+<h2 id="зачем">Зачем?</h2>
+
+<p>При покупке устройства, вместе с телефоном/планшетом идет просто гора различных программ – бесполезных и даже вредных.
+В первую очередь, это все то, что начинается с “Google” (Music, Photo, Video, Maps, Hangouts…).
+А с китайскими телефонами типа Xiaomi тянется еще ворох различного мусора.
+Думаю, проблема еще больше усугубится, когда будет в полной мере заработает <a href="https://www.kommersant.ru/doc/4179598">закон</a> об предустановке российского ПО на новые девайсы.</p>
+
+<p>Это барахло не только занимает место на телефоне, но и съедает ресурсы, сажает батарею и вечно обновляется через Play Market.
+Последней каплей было то, когда Google Maps спросил меня “Ну и как вам было в Burger King?”.
+Большинство программ, особенно встроенных, отслеживают всё, что вы делаете.
+Даже если вам нечего скрывать, это все равно как-то не этично и немного жутковато.</p>
+
+<p>Перепрошивать телефон сложно и не безопасно. Всегда есть шанс превратить устройство в кирпич.
+Но есть один замечательный способ удалить весь этот мусор без подобных рисков.</p>
+
+<div class="alert alert-danger" role="alert">
+    <p><b>Будьте очень аккуратны!</b></p>
+    <p>
+        Хоть этот способ очистки устройства намного проще всех остальных мне знакомых,
+        он все равно требует определенных технических знаний и навыков.
+        Будьте очень аккуратны, чтобы не повредить устройство и не удалить ПО, необходимое для работы системы. 
+    </p>
+</div>
+
+<p>Весь этот процесс называется “Debloating”, что переводится как “<strong>раз</strong>раздувать”,
+то есть обратное значение слову “раздувать”.</p>
+
+<h2 id="инструкция">Инструкция</h2>
+
+<ol>
+  <li><a href="https://4idroid.com/kak-vklyuchit-rezhim-dlya-razrabotchika-v-android/">Включите</a> “режим разработчика”;</li>
+  <li>Включите “Отладка по USB” в разделе “Для разработчиков”;</li>
+  <li>Установите <a href="https://play.google.com/store/apps/details?id=bg.projectoria.appinspector">App Inspector</a>; <br />
+ <em>Это не обязательный пункт</em>. В некоторых системах (как у меня в MIUI 9.6.2) ID приложения можно узнать так:
+    <ul>
+      <li>Настройки</li>
+      <li>Все приложения</li>
+      <li>Нужное приложение</li>
+      <li>Значок ⓘ в верхнем правом углу</li>
+      <li>Имя пакета</li>
+    </ul>
+  </li>
+  <li>Установите <a href="https://www.xda-developers.com/install-adb-windows-macos-linux/">Adb</a> на компьютер;</li>
+  <li>В App Inspector найдите приложение, которое хотите удалить.
+ Из всех данных необходимо только поле “Package name”;</li>
+  <li>Подключите устройство по USB к компьютеру;</li>
+  <li>Введите команду <code class="highlighter-rouge">adb devices</code>. Должен быть примерно следующий вывод:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>adb devices
+ List of devices attached
+ 6c3eaa477cf3    device
+</code></pre></div>    </div>
+    <p>То есть, после строчки <code class="highlighter-rouge">List of devices attached</code> должна быть еще одна с ID подключенного устройства.
+ Идти дальше нет смысла, если компьютер не видит ваш девайс.</p>
+  </li>
+  <li>Введите <code class="highlighter-rouge">adb uninstall &lt;package-name&gt;</code>, где <code class="highlighter-rouge">&lt;package-name&gt;</code> – поле из пункта 5.
+ В моем случае – <code class="highlighter-rouge">com.google.android.tts</code>. Результат:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>adb uninstall com.google.android.tts
+ Success
+</code></pre></div>    </div>
+  </li>
+  <li>После удаления всех ненужных приложений выключите “режим разработчика” или хотя бы “отладку по USB”.
+ Это важно, потому что в режиме отладки устройство очень уязвимо.</li>
+</ol>
+
+<p>В случае, если у вас Xiaomi, возможно, лучше воспользоваться инструментом “<a href="https://www.reddit.com/r/Xiaomi/wiki/debloat">Xiaomi ADB/Fastboot Tools</a>”.
+Во-первых, он имеет графический интерфейс. А во-вторых, что самое главное,
+в списке программ доступных для удаления нет того, что является критичным для работоспособности системы.
+Но, хоть и говорят, что из этого списка можно удалять все, я бы не рекомендовал вслепую сносить все подряд.</p>
+
+<h2 id="итого">Итого</h2>
+
+<p>Пока сложно сказать об объективных результатах очистки телефона,
+но места на устройстве стало значительно больше, анимация стала плавнее,
+а занятой оперативной памяти – меньше.</p>
+
+<p>Если что-то не получается или есть какие-то вопросы – ниже есть секция с комментариями.
+Буду рад любому фитбеку :blush:</p>
+
+
+                ]]>
+            </turbo:content>
+        </item>
+        
+        <item turbo="true">
+            <title>Первый успех. Больше ста визитов за неделю</title>
+            <link>https://vtvz.ru/blog/first-success/</link>
+            <pubDate>Sat, 30 Nov 2019 00:00:00 +0300</pubDate>
+            <author>Виталий Заславский</author>
+            <turbo:content>
+                <![CDATA[
+                <header>
+                    <h1>Первый успех. Больше ста визитов за неделю</h1>
+                    <figure>
+                        <img src="/assets/images/logo-black.png">
+                    </figure>
+                </header>
+                <p>Мой блог, как мой питомец. Я его люблю, вкладываю туда свои время и силы.
+Для создания чего-то нового приходится тратить свой творческий ресурс.
+Да, даже чисто техническая статья должна быть интересной, неоднотонной, без повторяющихся слов, грамотной, корректной
+и другие страшные слова.</p>
+
+<p>Потратив этот ресурс, так или иначе хочется, чтобы это творение не осталось незамеченным.
+Художники делают выставки, музыканты записывают треки, танцоры выступают на концертах и т.д.
+А авторы статей и блогеры хотят, чтобы их читали. Хоть мой блог и был создал в первую очередь для меня,
+мне все равно не хочется писать впустую, а каждое посещение странички греет мне сердце.
+Тут коротко о моих первых успехах в продвижении сайта.</p>
+
+<!--cut-->
+
+<figure class="frame">
+    <a href="./intro-report.png" target="_blank">
+      <img src="./intro-report.png" alt="Отчет по источникам за год" />
+    </a>
+</figure>
+
+<p>Есть много способов продвинуть свой сайт в люди без сильных расходов. Да, это будет гораздо медленнее и не так эффективно,
+чем грамотно сделанная реклама. Но и за бесплатно можно достичь некоторых результатов.</p>
+
+<h2 id="никнейм">Никнейм</h2>
+
+<p>Однажды, незадолго после окончания школы (~2013г.), мне представилась замечательная возможность приобрести свой личный домен.
+Соглашусь, делается это несложно. Но тогда я не умел ничего связанного с реальной разработкой веб-сайтов.
+Я хотел что-то короткое, лаконичное, созвучное с моим ФИО. Все трехбуквенные варианты уже были заняты.
+На придумывание не ушло много времени, я выбрал <code class="highlighter-rouge">vtvz</code>. Вскоре, это стало моим логином/URL’ом/ником везде:</p>
+
+<ul>
+  <li><a href="https://vk.com/vtvz_ru">https://vk.com/vtvz_ru</a></li>
+  <li><a href="https://www.facebook.com/vtvz.ru">https://www.facebook.com/vtvz.ru</a></li>
+  <li><a href="https://www.linkedin.com/in/vtvz/">https://www.linkedin.com/in/vtvz/</a></li>
+  <li><a href="mailto:vtvz.ru@gmail.com">vtvz.ru@gmail.com</a></li>
+  <li><a href="mailto:vtvz@pm.me">vtvz@pm.me</a></li>
+  <li><a href="https://steamcommunity.com/id/vtvz_ru">https://steamcommunity.com/id/vtvz_ru</a></li>
+  <li>Minecraft username: vtvz</li>
+  <li>Моя подпись (да, все зашло слишком далеко :grin:)</li>
+  <li>и т.д.</li>
+</ul>
+
+<p>Даже WiFi сеть и Bluetooth у меня обозваны ссылкой на сайт:</p>
+
+<figure class="frame">
+  <img src="wifi.png" alt="Название wifi сети: vtvz.ru" />
+</figure>
+
+<p>До появления блога, когда существовала только визитка, на сайт приходили люди из разных городов и даже стран.
+Сложно сказать, сколько именно пришло из-за никнейма, но однозначно такие люди есть.
+Наверняка из всех 497 посетителей по “прямому заходу” (вбил руками в бразуезе) есть те, кому было любопытно,
+что скрывается под ником-ссылкой.</p>
+
+<h2 id="поисковики">Поисковики</h2>
+
+<p>На текущий момент, мой сайт не часто попадает в поисковые выдачи, и кликов приходит не так много.
+Это вполне себе логично, так как:</p>
+
+<ol>
+  <li>Сайт сравнительно молодой. (6 лет это мало?)</li>
+  <li>На нем не так много контента.</li>
+</ol>
+
+<p>С точки зрения SEO у меня почти всё сделано по последним канонам продвижения, но некоторые прорехи есть,
+которые устранить сложнее. Но, как мне сказали, это и может ускорить поднятие в списке выдачи, но самое главное – это контент.
+Тут есть проблемы… За этот год вышло всего шесть статей (эта седьмая), что не есть айс.</p>
+
+<p>Но есть определенная закономерность: узконаправленные статьи, решающие конкретную проблему,
+гораздо чаще попадают в результаты поиска.</p>
+
+<figure class="frame">
+  <img src="google-console.png" alt="Google Search Console" />
+</figure>
+
+<p>Гуглу, кстати говоря, я понравился больше. За этот год он показал меня аж 611 раз! Вот страницы-рекордсмены:</p>
+
+<ul>
+  <li><a href="/blog/html-to-mysql/">“HTML to MySQL. Или Веб-скрапинг на практике”</a> – 426 показов / 3 клика;</li>
+  <li><a href="/blog/jekyll-spoiler-plugin/">“Jekyll Spoiler Plugin. Куда и как прятать код”</a> – 75 показов / 3 клика;</li>
+  <li>И (внезапно) <a href="/">главная страница</a> и <a href="/blog/openning/">“Свершилось! Часть первая. Зачем мне блог”</a> – 129 показов / 1 + 1 клик;</li>
+</ul>
+
+<p>Самые популярные запросы [в скобочках количество показов]:</p>
+
+<ol>
+  <li>скрапинг [65] / веб скрапинг [32] / скрапинг это [16] / веб-скрапинг [8] / скрапинг публичных сайтов [2]</li>
+  <li>vtvz [32] (Как так?)</li>
+  <li>markdown spoiler [11] / код спойлера [8]</li>
+</ol>
+
+<details class="spoiler"><summary class="spoiler-title">Небольшое замечание</summary><div class="spoiler-body">
+<p>У Гугла статистика по запросам и по страницам очень сильно расходится.
+Тогда как он показал мне суммарно 8 кликов из поисковика на вкладке “Страницы”, 
+на вкладке “Запросы” нет <strong>ни одного клика (!)</strong>.</p>
+
+<p>Может я что-то упускаю, но очень бы хотелось знать, по каким запросам пришли люди на сайт.</p>
+
+<div class="row">
+    <div class="col-sm-6">
+        <figure><a href="./google-console-queues.png" target="_blank"><img src="./google-console-queues.png" alt="Статистика по запросам" /></a></figure>
+    </div>
+    <div class="col-sm-6">
+        <figure><a href="./google-console-pages.png" target="_blank"><img src="./google-console-pages.png" alt="Статистика по страницам" /></a></figure>
+    </div>
+</div>
+</div></details>
+
+<p>По поводу третьего пункта все ясно – решенная мной задача скорее уникальная, чем распространенная.</p>
+
+<p>Но почему скрапинг? Тема вроде как достаточно известная. Может быть материала на эту тему действительно мало?
+Возможно это моя золотая жила? Надо исследовать в эту сторону :grin:</p>
+
+<hr />
+
+<p>Касательно Яндекса… Может быть в нем контенгент немного другой.
+Как правило, программисты пользуются Гуглом для поиска решений своих проблем.
+Возможно именно поэтому за год я появлялся в выборке всего 63 раза. Это примерно в 10 раз меньше, чем Гугл.</p>
+
+<p>Яндекс тоже не особо многословен:</p>
+
+<ul>
+  <li>виталий заславский – 6 показов;</li>
+  <li>заславский виталий – 4 показа;</li>
+</ul>
+
+<p>Стоит отметить, что 6+4≠63. Куда делись остальные 53 показа?</p>
+
+<details class="spoiler"><summary class="spoiler-title">Кстати об этом...</summary><div class="spoiler-body">
+<p>Статистика у него тоже неплохо так расходится. Опять же, возможно я что-то упускаю?</p>
+
+<div class="row">
+    <div class="col-sm-4">
+        <figure><a href="./yandex-groups.png" target="_blank"><img src="./yandex-groups.png" alt="Статистика по группам" /></a></figure>
+    </div>
+    <div class="col-sm-4">
+        <figure><a href="./yandex-pages.png" target="_blank"><img src="./yandex-pages.png" alt="Статистика страниц" /></a></figure>
+    </div>
+    <div class="col-sm-4">
+        <figure><a href="./yandex-popular.png" target="_blank"><img src="./yandex-popular.png" alt="Статистика по популярным запросам" /></a></figure>
+    </div>
+</div>
+</div></details>
+
+<p>Мне еще много чего нужно сделать, чтобы поисковики и люди полюбили мой сайт:</p>
+<ul>
+  <li>Дублировать статьи в <a href="https://zen.yandex.ru/">Yandex.Zen</a>;</li>
+  <li>Подключить <a href="https://yandex.ru/dev/turbo/">Турбо-страницы</a>;</li>
+  <li>Сделать <a href="https://developers.google.com/amp/?hl=ru">AMP версии страниц</a>;</li>
+  <li>На главную страницу расположить список последних постов;</li>
+  <li>И еще много всякого разного…</li>
+</ul>
+
+<p>Но мой <a href="https://www.facebook.com/ifrolov2">коллега</a>, который на продвижении уже собоку съел,
+ясно дал понять, что ключ не в поисковых оптимизациях и прочей магии, а в контенте.
+Так что самая важная для меня задача – писать больше статей.</p>
+
+<h2 id="социальные-сети">Социальные сети</h2>
+
+<p>В какой-то степени, социальные сети являются основным стабильным источником трафика.
+За последний год из соц. сетей было 155 посещений, 122 которых пришлось на ВК (<a href="https://vk.com/blog_vtvz">кстати об этом</a>).</p>
+
+<p>Откровенно говоря, мой блог хоть и обо всем, но целевая аудитория – IT-инженеры.
+И тут получается некоторый конфликт: я хочу писать технические статьи, но их особо никто читать не будет,
+потому основной поток читателей приходится из социальных сетей, где в друзьях у меня люди другой направленности.</p>
+
+<p>Тем не менее, большое спасибо тем, кто приходит, и особенно тем, кто дочитывает до конца. Для меня это важно :blush:</p>
+
+<h2 id="дайджесты">Дайджесты</h2>
+
+<p>Дайджест – это некоторый агрегатор интересных материалов по определенной тематике за какой-то период.</p>
+
+<p>Есть 2 основных дайджеста, в которые я потенциально мог попасть:
+<a href="https://habr.com/ru/users/pronskiy/posts/">PHP-Дайджест</a>
+и <a href="https://habr.com/ru/users/alexzfort/posts/">Фронтенд дайджест</a>.</p>
+
+<p>Первая статья, которая попала в массы – <a href="/blog/html-to-mysql/">“HTML to MySQL. Или Веб-скрапинг на практике”</a>.</p>
+
+<p>И она не попала ни в один из перечисленных выше дайджестов. Когда я отправил ссылку одному из авторов этих подборок,
+мне дали ясно понять, что эта статья не уровня Хабра. Но, как оказалось позднее, у этих ребят есть еще свой <a href="https://zfort.com.ua/">сайт</a>,
+куда они тоже публикуют дайджесты, куда мне <a href="https://zfort.com.ua/blog/category/digest/frontend-daidzhest-353-18-24-fevralya-2019">удалось попасть</a>.</p>
+
+<p>В итоге, за все это время мне удалось собрать 16 переходов. Не очень много, но это уже приятно :blush:</p>
+
+<hr />
+
+<p>Самой успешной оказалась статья <a href="/blog/custom-doctrine-annotation-fixer/">“Пишем свой Doctrine Annotation Fixer для PHP-CS-Fixer”</a></p>
+
+<p>Это было именно то, что по всем критериям попадало в PHP-Дайджест:</p>
+
+<ul>
+  <li>Она напрямую связана с PHP;</li>
+  <li>Она уникальна в своем роде, так как существующие статьи уже устарели, подобная проблема не решалась, а материалов на русском найти невозможно;</li>
+  <li>Статья достаточно подробная, чтобы было понятно новичку, но без лишней воды, чтобы уже опытным было интересно.</li>
+</ul>
+
+<p>Откровенно говоря, она и была написана с целью попасть в <a href="https://habr.com/ru/post/477318/">этот дайджест</a>.</p>
+
+<p>Более ста визитов за одну неделю и 171 за все время. И целых 2 комментария!
+Цифры пока еще достаточно скромные, но, определенно, это прорыв! Для меня это настоящий успех! :tada:</p>
+
+<figure><a href="./success.png" target="_blank"><img src="./success.png" alt="Статистика визитов за неделю" /></a></figure>
+
+<p>Самое приятное в этой ситуации то, что на сайт приходили не просто люди, а целевая аудитория – те, для кого была написана эта статья.</p>
+
+<p>Вероятно, это моя первая и последняя статья, которая попала в подобную подборку.
+Просто потому, что я не нашел подходящих дайджестов по моим текущим направлениям (DevOps и немного Go).</p>
+
+<h2 id="итого">Итого</h2>
+
+<p>Сложно делать какие-то выводы. Цель этой статьи не в том, чтобы кого-то чему-то научить.
+У меня произошло радостное событие, и я хотел с вами им поделиться :blush:</p>
+
+<p>Писать статьи – очень трудоемкий процесс, который я, возможно, опишу в отдельной статье. 
+Поэтому спасибо всем, кто дочитал до конца; статья вышла достаточно большой.
+Для меня ценно каждое посещение, каждый просмотр.</p>
+
+<p>Гляди, может быть наберется аудитория преданных читателей :grin:</p>
+
+                ]]>
+            </turbo:content>
+        </item>
+        
+        <item turbo="true">
+            <title>Пишем свой Doctrine Annotation Fixer для PHP-CS-Fixer</title>
+            <link>https://vtvz.ru/blog/custom-doctrine-annotation-fixer/</link>
+            <pubDate>Wed, 06 Nov 2019 00:00:00 +0300</pubDate>
+            <author>Виталий Заславский</author>
+            <turbo:content>
+                <![CDATA[
+                <header>
+                    <h1>Пишем свой Doctrine Annotation Fixer для PHP-CS-Fixer</h1>
+                    <figure>
+                        <img src="/assets/images/logo-black.png">
+                    </figure>
+                </header>
+                <p>В плане код-стайла я немного маньяк.
+Я убежден – чем более строгие правила, тем качественнее будет кодовая база.
+Когда я только пришел в компанию <a href="https://axmit.com/">Axmit</a> в качестве разработчика,
+моей личной целью стало создание перечня правил, а также настройка всякого рода фиксеров и снифферов.
+Теперь у нас используется как <a href="https://github.com/squizlabs/PHP_CodeSniffer">CodeSniffer</a>, так и <a href="https://github.com/FriendsOfPHP/PHP-CS-Fixer">PHP-CS-Fixer</a>.</p>
+
+<p>Большинство правил у нас автоматизированы <a href="https://www.jetbrains.com/phpstorm/">PHPStorm</a> и <a href="https://github.com/FriendsOfPHP/PHP-CS-Fixer">PHP-CS-Fixer</a>,
+поэтому следование им не создает слишком много боли.</p>
+
+<p>Но был момент, который не был ни в одном из этих инструментов, заставляюший меня страдать.</p>
+
+<!--cut-->
+
+<p>Все дело в Doctrine аннотациях. Шторм с ними ничего не делает совсем.
+А вот фиксер имеет ряд правил, исправляющих отступы, скобочки и т.п.</p>
+
+<p>А вот в чем была проблема. Обратите внимание на запятые.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cd">/**
+ * @SWG\Definition(
+ *     definition="ActionFilterRequest",
+ *     @SWG\Property(property="service_id", type="integer")
+ * )
+ */</span>
+</code></pre></div></div>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cd">/**
+ * @SWG\Definition(
+ *     definition="ActionFilterRequest",
+ *     @SWG\Property(property="service_id", type="integer",),
+ * )
+ */</span>
+</code></pre></div></div>
+
+<p>Эти оба куска абсолютно идентичны с точки зрения Доктрины.
+И нет ни одного фиксера (по крайней мере я не нашел), который расставит все запятые по своим местам.
+Вручную следить за этим достаточно сложно. Поэтому решено было написать своё правило.</p>
+
+<p>Я хочу, чтобы на выходе после исправления это было так:</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cd">/**
+ * @SWG\Definition(
+ *     definition="ActionFilterRequest",
+ *     @SWG\Property(property="service_id", type="integer"),
+ * )
+ */</span>
+</code></pre></div></div>
+
+<p>То есть точно также, как с массивами:
+при однострочной записи без запятой в конце последнего элемента,
+а при многострочной – с.</p>
+
+<p>И так, приступим!</p>
+
+<h2 id="исследование">Исследование</h2>
+
+<p>Внутри библиотеки все фиксеры для доктриновских аннотаций унаследованы от класса <code class="highlighter-rouge">\PhpCsFixer\AbstractDoctrineAnnotationFixer</code>
+с одним единственным абстрактным методом <code class="highlighter-rouge">fixAnnotations</code>.</p>
+
+<p>Исследовав другие фиксеры ближе, можно увидеть, что в этот метод передается только один параметр – коллекция токенов.
+Эта коллекция мутабельная и результат её изменений будет использоваться для формирования итогового кода.</p>
+
+<p>Минимально возможный фиксер, который пока ничего не делает, выглядит примерно так:</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//  Тут есть пара неиспользуемых импортов, но скоро они будут нужны</span>
+<span class="kn">use</span> <span class="nn">Doctrine\Common\Annotations\DocLexer</span><span class="p">;</span>
+<span class="kn">use</span> <span class="nn">PhpCsFixer\AbstractDoctrineAnnotationFixer</span><span class="p">;</span>
+<span class="kn">use</span> <span class="nn">PhpCsFixer\Doctrine\Annotation\Token</span><span class="p">;</span>
+<span class="kn">use</span> <span class="nn">PhpCsFixer\Doctrine\Annotation\Tokens</span><span class="p">;</span>
+<span class="kn">use</span> <span class="nn">PhpCsFixer\FixerDefinition\FixerDefinition</span><span class="p">;</span>
+<span class="kn">use</span> <span class="nn">PhpCsFixer\FixerDefinition\FixerDefinitionInterface</span><span class="p">;</span>
+
+<span class="k">final</span> <span class="kd">class</span> <span class="nc">DoctrineAnnotationCommasFixer</span> <span class="k">extends</span> <span class="nx">AbstractDoctrineAnnotationFixer</span>
+<span class="p">{</span>
+    <span class="cd">/**
+     * @return string
+     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">static</span><span class="o">::</span><span class="na">name</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="cd">/**
+     * @return string
+     */</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">name</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">'Axmit/doctrine_annotation_commas'</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="cd">/**
+     * @return FixerDefinitionInterface
+     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getDefinition</span><span class="p">()</span><span class="o">:</span> <span class="nx">FixerDefinitionInterface</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">FixerDefinition</span><span class="p">(</span><span class="s1">'Fixes commas in Doctrine annotations'</span><span class="p">,</span> <span class="p">[]);</span>
+    <span class="p">}</span>
+
+    <span class="cd">/**
+     * Fixes Doctrine annotations from the given PHPDoc style comment.
+     *
+     * @param Tokens $tokens
+     *
+     * @return void
+     */</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">fixAnnotations</span><span class="p">(</span><span class="nx">Tokens</span> <span class="nv">$tokens</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Обратите особое внимание на методы <code class="highlighter-rouge">name</code> и <code class="highlighter-rouge">getName</code>.
+Имя фиксера должно быть строго в таком формате, иначе будет ошибка
+(регулярки можно посмотреть в <code class="highlighter-rouge">\PhpCsFixer\FixerNameValidator::isValid</code>).
+Статическим методом <code class="highlighter-rouge">name</code> воспользуемся чуть позже.</p>
+
+<p>Дабы не нагромождать статью простынями кода, все остальные куски исходников будут внутри метода <code class="highlighter-rouge">fixAnnotations</code>.</p>
+
+<h2 id="регистрация">Регистрация</h2>
+
+<p>Чтобы понять, как заставить фиксер включить моё правило потребовался почти час.
+Для того, чтобы все заработало, нужно сделать 2 вещи:</p>
+
+<ol>
+  <li>Зарегистрировать фиксер в конфиге (файл <code class="highlighter-rouge">.php_cs.dist</code>):
+    <div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$config</span><span class="o">-&gt;</span><span class="na">registerCustomFixers</span><span class="p">([</span><span class="k">new</span> <span class="nx">DoctrineAnnotationCommasFixer</span><span class="p">()])</span>
+</code></pre></div>    </div>
+    <p>Теперь фиксер знает о существовании этого правила, но пока не использует его.</p>
+  </li>
+  <li>Включить его в рулзах:
+    <div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$config</span><span class="o">-&gt;</span><span class="na">setRules</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="nx">DoctrineAnnotationCommasFixer</span><span class="o">::</span><span class="na">name</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// помните статический метод name? :-)</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>И только тогда фиксер не только подключит это правило, но и будет его использовать.</p>
+
+<h2 id="исправление">Исправление</h2>
+
+<p>Настало время написать логику и оживить наш фикс!</p>
+
+<p>Если описать словами, то суть такова:</p>
+
+<ol>
+  <li>Найти все закрывающие обычные и фигурные скобки;</li>
+  <li>Посмотреть, что перед ними:
+    <ol>
+      <li>Если это пустота (игнорируемый код), то добавить перед ней запятую, если запятой нет;</li>
+      <li>Если это запятая – удалить</li>
+    </ol>
+  </li>
+</ol>
+
+<p>По коллекции токенов можно пройтись циклом, как по массиву.
+Но мы этого делать не будем по причине, которую я объясню позже.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">while</span> <span class="p">(</span><span class="nv">$tokens</span><span class="o">-&gt;</span><span class="na">offsetExists</span><span class="p">(</span><span class="nv">$index</span><span class="p">))</span> <span class="p">{</span>
+    <span class="cd">/** @var Token $token */</span>
+    <span class="nv">$token</span> <span class="o">=</span> <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="na">offsetGet</span><span class="p">(</span><span class="nv">$index</span><span class="p">);</span>
+
+    <span class="c1">//TODO Add logic here </span>
+
+    <span class="nv">$index</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Класс <code class="highlighter-rouge">Token</code> имеет 2 важных свойства – это тип и содержимое.
+Тип является числовым значением, все из которых находятся в классе <code class="highlighter-rouge">DocLexer</code> в виде констант.</p>
+
+<p>Проверить тип токена можно методом <code class="highlighter-rouge">isType</code>, куда можно передать либо одно значение, либо массив:</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$token</span><span class="o">-&gt;</span><span class="na">isType</span><span class="p">([</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_CLOSE_CURLY_BRACES</span><span class="p">,</span> <span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_CLOSE_PARENTHESIS</span><span class="p">]);</span>
+</code></pre></div></div>
+
+<p>С первым пунктом разобрались – мы нашли все закрывающие скобки.
+Далее нужно вытянуть 2 токена перед текущим:</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$prevToken</span>     <span class="o">=</span> <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="na">offsetGet</span><span class="p">(</span><span class="nv">$index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nv">$prevPrevToken</span> <span class="o">=</span> <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="na">offsetGet</span><span class="p">(</span><span class="nv">$index</span> <span class="o">-</span> <span class="mi">2</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Далее просто: если предыдущий токен – ничего 
+(это могут быть пробелы, переносы строк и знак * в любом порядке и количестве;
+стоит отметить, что в коллекции 2 токена “ничего” подряд не бывает),
+и токен перед ним не является запятой, то нужно добавить запятую:</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nv">$prevToken</span><span class="o">-&gt;</span><span class="na">isType</span><span class="p">(</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_NONE</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$prevPrevToken</span><span class="o">-&gt;</span><span class="na">isType</span><span class="p">(</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_COMMA</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="na">insertAt</span><span class="p">(</span><span class="nv">$index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Token</span><span class="p">(</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_COMMA</span><span class="p">,</span> <span class="s1">','</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Иначе, если сразу перед скобкой стоит запятая – убрать:</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">elseif</span> <span class="p">(</span><span class="nv">$prevToken</span><span class="o">-&gt;</span><span class="na">isType</span><span class="p">(</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_COMMA</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nv">$prevToken</span><span class="o">-&gt;</span><span class="na">clear</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>И вроде бы уже все, но если попробовать запустить фиксер с этим правилом, он никогда не завершит свою работу.
+Проблема кроется там, где мы добавляем запятую – программа уходит в бесконечный цикл.
+Чтобы решить эту проблему, достаточно добавить еще один <code class="highlighter-rouge">$index++</code> после добавления запятой:</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nv">$prevToken</span><span class="o">-&gt;</span><span class="na">isType</span><span class="p">(</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_NONE</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$prevPrevToken</span><span class="o">-&gt;</span><span class="na">isType</span><span class="p">(</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_COMMA</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="na">insertAt</span><span class="p">(</span><span class="nv">$index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Token</span><span class="p">(</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_COMMA</span><span class="p">,</span> <span class="s1">','</span><span class="p">));</span>
+    <span class="nv">$index</span><span class="o">++</span><span class="p">;</span> <span class="c1">// причина, по которой нужен был цикл while вместо for</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>И все! Фиксер готов, можно выдохнуть :grin:</p>
+
+<details class="spoiler"><summary class="spoiler-title">Собрав все воедино</summary><div class="spoiler-body">
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+<span class="kn">use</span> <span class="nn">Doctrine\Common\Annotations\DocLexer</span><span class="p">;</span>
+<span class="kn">use</span> <span class="nn">PhpCsFixer\AbstractDoctrineAnnotationFixer</span><span class="p">;</span>
+<span class="kn">use</span> <span class="nn">PhpCsFixer\Doctrine\Annotation\Token</span><span class="p">;</span>
+<span class="kn">use</span> <span class="nn">PhpCsFixer\Doctrine\Annotation\Tokens</span><span class="p">;</span>
+<span class="kn">use</span> <span class="nn">PhpCsFixer\FixerDefinition\FixerDefinition</span><span class="p">;</span>
+<span class="kn">use</span> <span class="nn">PhpCsFixer\FixerDefinition\FixerDefinitionInterface</span><span class="p">;</span>
+
+<span class="k">final</span> <span class="kd">class</span> <span class="nc">DoctrineAnnotationCommasFixer</span> <span class="k">extends</span> <span class="nx">AbstractDoctrineAnnotationFixer</span>
+<span class="p">{</span>
+    <span class="cd">/**
+     * @return string
+     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">static</span><span class="o">::</span><span class="na">name</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="cd">/**
+     * @return string
+     */</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">name</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">'Axmit/doctrine_annotation_commas'</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="cd">/**
+     * @return FixerDefinitionInterface
+     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getDefinition</span><span class="p">()</span><span class="o">:</span> <span class="nx">FixerDefinitionInterface</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">FixerDefinition</span><span class="p">(</span><span class="s1">'Fixes commas in Doctrine annotations'</span><span class="p">,</span> <span class="p">[]);</span>
+    <span class="p">}</span>
+
+    <span class="cd">/**
+     * Fixes Doctrine annotations from the given PHPDoc style comment.
+     *
+     * @param Tokens $tokens
+     *
+     * @return void
+     */</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">fixAnnotations</span><span class="p">(</span><span class="nx">Tokens</span> <span class="nv">$tokens</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="nv">$index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">while</span> <span class="p">(</span><span class="nv">$tokens</span><span class="o">-&gt;</span><span class="na">offsetExists</span><span class="p">(</span><span class="nv">$index</span><span class="p">))</span> <span class="p">{</span>
+            <span class="cd">/** @var Token $token */</span>
+            <span class="nv">$token</span> <span class="o">=</span> <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="na">offsetGet</span><span class="p">(</span><span class="nv">$index</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$token</span><span class="o">-&gt;</span><span class="na">isType</span><span class="p">([</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_CLOSE_CURLY_BRACES</span><span class="p">,</span> <span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_CLOSE_PARENTHESIS</span><span class="p">]))</span> <span class="p">{</span>
+                <span class="nv">$prevToken</span>     <span class="o">=</span> <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="na">offsetGet</span><span class="p">(</span><span class="nv">$index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+                <span class="nv">$prevPrevToken</span> <span class="o">=</span> <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="na">offsetGet</span><span class="p">(</span><span class="nv">$index</span> <span class="o">-</span> <span class="mi">2</span><span class="p">);</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$prevToken</span><span class="o">-&gt;</span><span class="na">isType</span><span class="p">(</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_NONE</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$prevPrevToken</span><span class="o">-&gt;</span><span class="na">isType</span><span class="p">(</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_COMMA</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="na">insertAt</span><span class="p">(</span><span class="nv">$index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Token</span><span class="p">(</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_COMMA</span><span class="p">,</span> <span class="s1">','</span><span class="p">));</span>
+                    <span class="nv">$index</span><span class="o">++</span><span class="p">;</span> <span class="c1">// prevent infinite loop</span>
+                <span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$prevToken</span><span class="o">-&gt;</span><span class="na">isType</span><span class="p">(</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_COMMA</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="nv">$prevToken</span><span class="o">-&gt;</span><span class="na">clear</span><span class="p">();</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+
+            <span class="nv">$index</span><span class="o">++</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+</div></details>
+
+<h2 id="послесловие">Послесловие</h2>
+
+<p>Тут стоит отметить пару моментов:</p>
+
+<ol>
+  <li>Если вы, как и я, пользуетесь PHPStorm, то вы могли увидеть, что классы <code class="highlighter-rouge">AbstractDoctrineAnnotationFixer</code>, <code class="highlighter-rouge">Token</code> и <code class="highlighter-rouge">Tokens</code> зачеркнуты.
+А происходит это по простой причине – они помечены как внутренние тегом <code class="highlighter-rouge">@internal</code>.
+Для нас это означает то, что наш фикс может сломаться в любой момент даже между минорными версиями,
+так как никто не обещает стабильного API во внутреннем коде.
+(на момент написания статьи использовался <code class="highlighter-rouge">friendsofphp/php-cs-fixer:v2.15.1</code>)
+Так что… все на свой страх и риск.</li>
+  <li>Тесты… Я уверен, что для этого можно и нужно писать тесты, в том числе и для проверки совместимости с новой версией фиксера,
+но делать я этого не стал.
+Просто потому что не нашел это необходимым в данный момент.
+Возможно, я с этим разберусь и дополню текущую или напишу новую статью.</li>
+  <li>Потенциально написанное мной правило может работать не так в каких-то крайних случаях.
+Но я прогнал его по двум нашим проектам, где более <strong><nobr>2500 (!)</nobr></strong> вложенных друг в друга аннотаций,
+и он расставил запятые во все места и не испортил ни единого файла.
+Поэтому я считаю этот вариант вполне себе рабочим и проверенным.</li>
+</ol>
+
+<p>Спасибо за прочтение! :blush:</p>
+
+<hr />
+
+<p>P.S. Внизу, после поста, появился блок с комментариями.
+Не стесняйтесь задавать вопросы и указывать на ошибки и неточности.
+Я всегда рад коммуникации :wink:</p>
+
+
+                ]]>
+            </turbo:content>
+        </item>
+        
+        <item turbo="true">
+            <title>Как правильно хранить пароли</title>
+            <link>https://vtvz.ru/blog/right-way-to-store-passwords/</link>
+            <pubDate>Sun, 03 Nov 2019 00:00:00 +0300</pubDate>
+            <author>Виталий Заславский</author>
+            <turbo:content>
+                <![CDATA[
+                <header>
+                    <h1>Как правильно хранить пароли</h1>
+                    <figure>
+                        <img src="/assets/images/logo-black.png">
+                    </figure>
+                </header>
+                <blockquote>
+  <p>Начало 07.10.2019. Статья обещает быть обширной.</p>
+</blockquote>
+
+<p>Моим первым паролем был <em>“хахаха”</em>. Не даром в ВК меня быстренько взломали.
+Затем у меня был один пароль на все случаи жизни. Инцидентов не было, но метод далек от идеального.
+Стоит узнать один пароль, как учетные записи других сервисов окажутся под угрозой. 
+Следующим шагом был пароль, состоящий из двух частей: общим префиксом и доменным именем сайта.
+Могло это выглядеть примерно так: <em>“МойСуперМощныйПароль123.vk.com”</em>. Это все ещё очень плохо.</p>
+
+<p>Я рос. Росла и моя паранойя. Сейчас у меня для каждого отдельного сайта или приложения свой уникальный, неповторимый,
+устойчивый к атакам пароль.</p>
+
+<p>В этой статье я расскажу, как правильно хранить свои пароли, чтобы было удобно, и безопасность не страдала.</p>
+
+<!--cut-->
+
+<details class="spoiler"><summary class="spoiler-title">TL;DR</summary><div class="spoiler-body">
+<p>Можно пропустить первый подзаголовок и сразу перейти к <a href="#рецепт">готовому рецепту</a>.</p>
+
+<p>Но тогда вы пропустите самое интересное :blush:</p>
+</div></details>
+
+<h2 id="об-альтернативных-способах">Об альтернативных способах</h2>
+
+<p>Небольшое лирическое отступление. Прежде хочется рассказать о том, как другие люди хранят свои пароли.</p>
+
+<p>Про один пароль для всего и общую приставку я уже рассказал. Так делал не только я. Но есть более диковинные способы.</p>
+
+<p>Вместе с каждым способом будут субъективные ответы на 2 вопроса:</p>
+
+<ul>
+  <li><em>“Безопасно ли это”</em> – как много людей и как легко они могут узнать пароли из этого источника.</li>
+  <li><em>“Надежно ли это”</em> – что будет в чрезвычайных ситуациях; насколько легко можно потерять доступ ко всему.</li>
+</ul>
+
+<h3 id="бумажный-блокнотик">Бумажный блокнотик</h3>
+
+<p>Так делают, но обычно люди преклонного возраста. Небольшая книжечка с различного рода записями,
+где в разных частях можно увидеть пароль от WiFi, Play Store или Одноклассников.
+Помимо блокнотиков используется со всех сторон исписанный листочек или даже упаковка от таблеток <em>*[TODO Сделать фото]</em>.</p>
+
+<ul>
+  <li>
+    <p><em>Безопасно ли это?</em> Условно. Однозначно, что пароль не будет стянут каким-либо хакером, так как доступ только физический.
+Можно ли доверять всем, кто может оказаться рядом? Если ты бабушка, то рисковать особо нечем :blush:</p>
+  </li>
+  <li>
+    <p><em>Надежно ли это?</em> Опять же, очень ситуативно. Бумажка может потеряться, сгореть или забыться.
+Зато нет риска потерять доступ к сервису в случае амнезии. <br />
+(Пожалуй, это единственный способ устойчивый к амнезии)</p>
+  </li>
+</ul>
+
+<h3 id="онлайн-заметки">Онлайн-заметки</h3>
+
+<p>Из хорошо известных заметочных сервисов, я знаю только <a href="https://evernote.com/intl/ru">Evernote</a> и <a href="https://keep.google.com/">Google Keep</a>.
+Последним я стал пользоваться в году так 2013, когда он был совсем еще юным.
+(первый мне не понравился).
+Есть еще всякие Google Docs и прочие места, куда можно писать текст и читать его со всех устройств.
+Пароли можно хранить и там. Но…</p>
+
+<ul>
+  <li><em>Безопасно ли это?</em> Вариант с бумажкой был куда более безопасным. Хранить пароли в открытом виде очень даже плохо по нескольким причинам:
+    <ol>
+      <li>Есть только один способ, как узнать пароль из блокнота – стащить сам блокнот.
+  Но есть <code class="highlighter-rouge">N</code> способов, как узнать его из подобного рода сервисов – 
+  <code class="highlighter-rouge">X</code> по количеству устройств + <code class="highlighter-rouge">Y</code> по количеству заинтересованных хакеров + <code class="highlighter-rouge">Z</code> по количеству “забыл выйти у друга”.</li>
+      <li>Любая утечка и <strong>все</strong> пароли буду скомпрометированы. Как веб-разработчик могу уверенно сказать: никому нельзя доверять.
+  Даже если используются все способы того, как обезопасить свои заметки,
+  всегда есть человеческий фактор как с вашей стороны, так и со стороны создателей сервиса.</li>
+    </ol>
+  </li>
+  <li><em>Надежно ли это?</em> Достаточно. Но с одной оговоркой: сервис должен поддерживать историю изменений файла/заметки.
+Иначе любое случайное удаление/редактирование может уничтожить все.</li>
+</ul>
+
+<h3 id="пароль-карта">Пароль-карта</h3>
+
+<p>Есть еще один интересный способ – пароль-карта. Это может быть физически реальный объект или приложение на телефоне.</p>
+
+<p>Вот пример, сгенерированный на <a href="https://www.passwordcard.org/ru">этом сайте</a>:</p>
+
+<figure><img src="./card.png" alt="Пароль-карта" /></figure>
+
+<p>Или вот <a href="https://www.e-passwordcard.com/">многообещающее приложение</a>:</p>
+
+<figure><img src="./ecard.png" alt="Еще одна пароль-карта" /></figure>
+
+<p>Вторым приложением я не пользовался, но картой пытался.
+Достаточно удобно то, что это может быть 
+как настоящая распечатанная карточка,
+так и приложение на телефоне или ссылка, сохраненная в браузере.</p>
+
+<p>Для этого метода важно помнить и надежно хранить 2 вещи:</p>
+
+<ol>
+  <li>Мастер-ключ (или мастер-пароль – пароль для доступа ко всем паролям).
+В случае с первой картой он является <code class="highlighter-rouge">e1b18dd6f30ed2f5</code> (написан в самом низу), 
+который можно записать куда угодно, но в безопасное место.
+Вводя этот ключ в специальное поле, будет выдана одна и та же карта, что необходимо в случае утери онной.</li>
+  <li>Нужно запоминать способ, как вытягивается пароль. Это может быть простая ассоциация со значком,
+где потом используются все символы подряд. Или что-то более замысловатое.
+На <a href="https://www.passwordcard.org/ru">сайте</a> есть инструкции и рекомендации, как выбирать пароли, чтобы было безопасно.</li>
+</ol>
+
+<ul>
+  <li><em>Безопасно ли это?</em> Все зависит только от тебя. Чем сложнее способ извлечения пароля, тем надежнее он будет.
+Дополнительно надежности дает то, что нельзя наверняка сопоставить значок на карте и сам сервис.
+Даже при утере карточки, новый обладатель вряд ли догадается, что с ней делать.</li>
+  <li><em>Надежно ли это?</em> Вполне. Мастер-ключ можно записать в несколько мест:
+в онлайн-заметки, в блокнотик, нацарапать на стене за диваном.
+Карта может быть восстановлена в любое время.
+Сложнее, когда забывается ассоциация со значком или способ выбора пароля.
+В этом плане этот метод имеет серьезный недостаток, из-за чего лично я отказался от его использования.</li>
+</ul>
+
+<h3 id="онлайн-сервисы">Онлайн сервисы</h3>
+
+<p>Такие сайты-приложения как <a href="https://www.lastpass.com/ru">LastPass</a> и <a href="https://1password.com/ru/">1password</a> предлагают взять весь менеджмент паролей на себя.
+Это как хранить данные в онлайн-заметках, только надежнее. Второй аж прям обещает, что ваши данные остаются только вашими.</p>
+
+<figure><img src="./1password-promise.png" alt="Обещание 1password" /></figure>
+
+<p>Эти сервисы богаты функционалом и предлагаемыми решениями:
+программы и приложения для всех ОС, расширения для браузеров и API для тех, кому этого мало.</p>
+
+<p>Но есть одно <strong>НО</strong>: любая информация в интернете вам не принадлежит. Хотя они и обещают полную конфиденциальность,
+в определенный момент это может стать не так. Это касается различных законов со стороны государства, а также хакеров,
+которые денно и нощно придумывают все новые и новые способы обхода защиты подобных сайтов.</p>
+
+<ul>
+  <li><em>Безопасно ли это?</em> Достаточно, но с оговорками. Для обычного пользователя, у которого нет паранойи и особо нечего скрывать,
+это наилучший выбор. Сами компании не заинтересованы, чтобы ваши данные утекли кому-то еще, так как это репутация,
+которая играет важную роль на конкурентном рынке. Главное, чтобы эти данные не утекли из-за вас самих.
+Пароль должен быть достаточно сложным и длинным, чтобы даже в случае утечки данных их нельзя было расшифровать.</li>
+  <li><em>Надежно ли это?</em> Настолько, насколько надежна компания, которой вы доверяете.
+Я думаю, ваши данные не только надежно хранятся и оберегаются, но и регулярно делаются резервные копии на случай какого-либо сбоя.
+Из всех вышеперечисленных способов, этот самый надежный. Приятным бонусом является то, что знать достаточно только один пароль.</li>
+</ul>
+
+<h3 id="keepass">KeePass</h3>
+
+<p>В мире много умных людей, которые сталкивались с этой проблемой.
+И они создали по-настоящему хорошее решение.</p>
+
+<p><strong>Встречайте: KeePass!</strong></p>
+
+<figure><a href="./keepass.png" target="_blank"><img src="./keepass.png" alt="KeePassXC" /></a></figure>
+
+<p>Это последний и самый лучший способ хранения паролей, который нужно уметь готовить.</p>
+
+<p>Это одновременно программа, формат файла и алгоритм безопасного хранения данных.
+Все ваши пароли хранятся внутри <code class="highlighter-rouge">.kdbx</code> файла, который зашифрован в цикле несколько тысяч (а то и больше) раз
+кодовым словом, файлом или и тем и другим.</p>
+
+<p>Информация хранится понятным вам способом, в доверенном месте, там, где удобнее всего.
+Прежде, чем я расскажу о плюсах и минусах этого подхода, хочу описать, каким образом и где хранятся мои пароли.</p>
+
+<h2 id="рецепт">Рецепт</h2>
+
+<p>Так как я активный пользователь ОС Linux и Android, моё решение будет заточено в первую очередь под мои потребности и ограничения.</p>
+
+<h3 id="выбор-программного-обеспечения">Выбор программного обеспечения</h3>
+
+<p>Для пользователей Windows стандартом является официальный клиент <a href="https://keepass.info/">KeePass</a>,
+который имеет тонну <a href="https://keepass.info/plugins.html">плагинов и дополнений</a>.
+Его тоже <a href="https://keepass.info/help/v2/setup.html#mono">можно</a> запустить на Linux и Mac OS, но у меня это выглядело весьма уродливо.
+Поэтому мой выбор пал на <a href="https://keepassxc.org/">KeePassXC</a>.
+Он является <acronym title="С английского fork (дословно англ. 'вилка') использование одного проекта в качестве основы другого">форком</acronym>
+<a href="https://www.keepassx.org/">KeePassX</a> (буквы “C” нет)
+с внушительным списком дополнительных возможностей.</p>
+
+<p>В качестве клиента для Android выбор пал на <a href="https://play.google.com/store/apps/details?id=keepass2android.keepass2android&amp;hl=ru">Keepass2Android</a>.
+Для iOS есть какой-то <a href="https://apps.apple.com/ru/app/keepass-touch/id966759076">KeePass Touch</a>, который тоже умеет синхронизироваться с Dropbox, но я им не пользовался,
+поэтому и осознанно порекомендовать ничего не могу.</p>
+
+<p>В качестве хранилища использую <a href="https://www.dropbox.com/">Dropbox</a>, потому что для Linux есть клиент,
+который синхронизирует файлы с теми, что лежат на компе,
+что дает возможность пользоваться одной базой на нескольких устройствах.
+Также <a href="https://play.google.com/store/apps/details?id=keepass2android.keepass2android&amp;hl=ru">Keepass2Android</a> умеет работать с хранилищем почти напрямую.</p>
+
+<p>Если совсем кратко:</p>
+<ul>
+  <li><a href="https://keepass.info/">KeePass</a> или <a href="https://keepassxc.org/">KeePassXC</a> для ПК.</li>
+  <li><a href="https://play.google.com/store/apps/details?id=keepass2android.keepass2android&amp;hl=ru">Keepass2Android</a> или <a href="https://apps.apple.com/ru/app/keepass-touch/id966759076">KeePass Touch</a> для мобильных устройств.</li>
+  <li><a href="https://www.dropbox.com/">Dropbox</a> как хранилище.</li>
+</ul>
+
+<h3 id="ложка-дегтя">Ложка дегтя</h3>
+
+<p>При всей красоте этого варианта, он не лишен недостатков:</p>
+
+<ul>
+  <li>Один пароль от всего является как преимуществом, так и недостатком.
+Стоит злоумышленнику стащить мастер-пароль, <strong>всё</strong>, что вы так бережно хранили, окажется под угрозой.
+Например это значит, что в публичных местах, типа кафе, библиотек и торговых центров, можно засветить пароль на камеру.</li>
+  <li>Хранение базы в Dropbox может казаться хорошей идеей, если бы не одно НО: он хранит старые версии файла в течение 30 дней.
+(насколько я знаю, почистить историю файла можно только при удалении самого файла… не очень удобно)
+Это значит, что менять мастер-пароль чаще, чем раз в 30 дней – не есть хорошая идея.
+Самое лучшее – хранить файл на своем сервере, что позволить и даже осилить может не каждый.</li>
+</ul>
+<details class="spoiler"><summary class="spoiler-title">Журнал версий моего файла с паролями</summary><div class="spoiler-body">
+<figure><img src="./file-history.png" alt="Журнал версий файла с паролями" /></figure>
+</div></details>
+<ul>
+  <li>Помимо этого, нужно помнить как минимум 2 пароля: от Dropbox и от хранилища.
+И они должны быть достаточно сложными, надежными и <strong>разными</strong>.
+(а еще нужно помнить пароль от телефона, пинкоды от всех банковских карт и т.д.)</li>
+</ul>
+
+<p>Приходится мириться с этими условностями, чтобы, получив достаточную безопасность, не потерять и удобство использования.
+До идеала в этой схеме не хватает выделенного доверенного хранилища и регулярной смены мастер-пароля.</p>
+
+<ul>
+  <li><em>Безопасно ли это?</em> Из всех вариантов, этот самый лучший.
+Его может осилить любой, кто хоть как-то владеет компьютером и смартфоном.
+При этом данные принадлежат только вам… пока вы сохраняете бдительность и осторожность.</li>
+  <li><em>Надежно ли это?</em> Файл с паролями будет храниться на всех устройствах, куда вы подключите Dropbox, а так же в самом Dropbox’e.
+Бо́льшую надежность, я думаю, не предоставит никто.</li>
+</ul>
+
+<h3 id="бочка-мёда">Бочка мёда</h3>
+
+<p>Но минусы очень хорошо перевешиваются плюсами:</p>
+
+<ul>
+  <li>Подобные программы разработаны быть устойчивыми к вирусам. Из браузера стащить пароль может любое расширение.
+Из программы – только человек.</li>
+  <li>Если все правильно настроить, программа самостоятельно заблокирует хранилище с паролями в течение N минут бездействия.
+Это защищает от случаев “отошел от компа, но забыл заблокировать”.</li>
+  <li>В случае приложения для Android, есть возможность разблокировать хранилище последними несколькими символами пароля.
+Очень удобно и достаточно безопасно – дается всего одна попытка и наступает полная блокировка, где нужно ввести кодовую фразу целиком.</li>
+  <li>Еще раз про это приложение: оно позволяет вводить пароли из встроенной в него клавиатурой.
+Это значит, что пароль не окажется в буфере обмена и его невозможно будет стащить таким образом.</li>
+  <li>Приложения для ПК имеют функцию автоввода: ставишь курсор на поле с логином, открываешь приложение,
+находишь нужную запись, жмешь комбинацию клавиш (обычно <kbd>Ctrl+V</kbd>) и вуоля – все данные введены за вас.
+Если последовательность действий для сайта отличается от классической, то ее можно настроить прямо в записи.</li>
+  <li>Если пароль скопировать, то буфер обмена автоматически будет очищен через определенный промежуток времени.</li>
+  <li>Возможно сохранить секретное слово для двух-этапной аутентификации (TOTP, Steam Guard) и копировать его прямиком из менеджера паролей.
+(<kbd>Ctrl+T</kbd> в случае <a href="https://keepassxc.org/">KeePassXC</a>)</li>
+  <li>Встроенные возможности:
+    <ul>
+      <li>Генератор паролей;</li>
+      <li>Примечания и дополнительные атрибуты;</li>
+      <li>Ссылка на сайт с возможностью открыть прямо из программы;</li>
+      <li>Вложения в виде файлов;</li>
+      <li>Значок к записи (KeePassXC может скачивать значок с сайта, а с <a href="https://keepassxc.org/blog/2019-10-26-2.5.0-released/">последним обновлением</a> для нескольких записей);</li>
+      <li>История изменений и корзина;</li>
+      <li>Напоминание о необходимости изменить пароль;</li>
+      <li>Вложенные папки;</li>
+      <li>И много всего еще…</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<p>Вывод очевиден: <strong>храните свои пароли правильно</strong>.
+Никто из вас не заинтересован быть взломанными,
+поэтому воспользуйтесь любым безопасным и надежным способом хранения ваших данных.
+Я надеюсь, эта статья дала понимание существующей проблемы и её решения,
+и вы прислушаетесь к моим советам вам же во благо :blush:</p>
+
+
+                ]]>
+            </turbo:content>
+        </item>
+        
+        <item turbo="true">
+            <title>Платить или не платить. Или зачем нужны стриминговые платформы</title>
+            <link>https://vtvz.ru/blog/why-audio-streaming-platforms/</link>
+            <pubDate>Mon, 07 Oct 2019 00:00:00 +0300</pubDate>
+            <author>Виталий Заславский</author>
+            <turbo:content>
+                <![CDATA[
+                <header>
+                    <h1>Платить или не платить. Или зачем нужны стриминговые платформы</h1>
+                    <figure>
+                        <img src="/assets/images/logo-black.png">
+                    </figure>
+                </header>
+                <p>Как-то исторически сложилось, что после того, как в ВК стали активно внедрять меры по защите авторских прав, 
+платных подписок и прочие ограничения на прослушиваине музыки, я перешел на <a href="https://music.yandex.ru/">Яндекс.Музыку</a>,
+в качестве основного источника музыкального дофамина.</p>
+
+<p>До этого были активные попытки использовать <a href="https://play.google.com/music">Google Music</a>, но приложение оказалось тяжелым (в техническом плане),
+запутанным и не удобным для использования.</p>
+
+<p>Через какое-то время была куплена подписка за 99р. в месяц, потом полноценная в <nobr>169р/м</nobr>, 
+а в итоге семейная за <nobr>300р/м</nobr> на 4 человека.</p>
+
+<p>Сравнение музыкальных сервисов будет в следующей статье.
+А в этой хочу рассказать, почему лучше выбрать один из них, чем пользоваться ВК, и почему они стоят своих денег.</p>
+
+<!--cut-->
+<h2 id="всех-людей-можно-разделить-на">Всех людей можно разделить на…</h2>
+
+<p>Метод, который работает. Через разделение людей на категории можно выявить плюсы и минусы различных подходов. Так вот. Всех людей можно разделить на…</p>
+
+<h3 id="пираты">Пираты!</h3>
+
+<p>Огромный пласт людей, которых можно охарактеризовать, как “старые пираты”. 
+Вся их музыка хранится на компе, аккуратно (или нет) распихана по папочкам, 
+избранные треки скачиваются на телефон для дальнейшего прослушивания до дыр.</p>
+
+<p>Библиотеки таких меломанов могут занимать десятки, 
+а то и сотни гигабайт дискового пространства полностью скачанными дискографиями любимых исполнителей с какого-нибудь торрента,
+которые обновляются достаточно редко, а любимые треки перестают быть любимыми, потому что от них уже тошнит.
+Новые исполнители появляются достаточно редко и обычно в результате случайно найденных в ВК треков или по рекомендации друзей.
+Этот подход мне напоминает времена, когда на телефонах с ИК портом было всего 19мб памяти. 
+Ты скачиваешь всего один трек в течение полу часа, а потом в течение месяца случаешь одно и то же.</p>
+
+<p>Недостатки такого подхода очевидны – библиотека треков устаревает, хранится обычно в одном месте, 
+которое может исчезнуть в результате случайного технического сбоя,
+пополнения нет, о рекомендациях и упоминать не стоит.</p>
+
+<p>Плюсы: оно бесплатно. И идеально подходит для параноиков, которые не сидят в обычных соц. сетях, а весь трафик пропускают через Tor.</p>
+
+<h3 id="халявщики">Халявщики</h3>
+
+<p>Этот тип отличается от пиратов тем, что в большинстве случаев они используют что-то бесплатное, но официально доступное.
+Не скажу, что это неправильно, и людей этого типа большинство. Такие люди пользуются бесплатными возможностями музыкальных сервисов 
+и готовы мириться с теми ограничениями, которые накладывает на них “халява”.</p>
+
+<p>Такими неудобствами являются ограничения на количество переключений на следующий трек в час (обычно около шести),
+невозможность прослушать конкретного автора или композицию, ограниченное время прослушивание в фоновом режиме,
+ограничение по качеству звука, реклама и отсутствие возможности слушать оффлайн.
+Обычно это применимо только к мобильным и десктопным приложениям.
+Прослушивание же онлайн на сайте у большинства сервисов не накладывает практически никаких ограничений.</p>
+
+<p>Почти все халявщики являются псевдо-пиратами. В основном они готовы терпеть неудобства,
+но иногда прибегают к тем же торрентам, пиратским сайтам 
+и различного рода расширениям и приложениям для скачивания треков.
+Откровенно говоря, даже не-халявщикам приходится это делать, потому что:</p>
+
+<ol>
+  <li>Поставить трек на вызов нельзя;</li>
+  <li>Слушать музыку оффлайн без телефона не всегда получится;</li>
+</ol>
+
+<p>Также у некоторых сервисов есть ломанные клиенты (у Яндекс.Музыки, например),
+которые снимают все ограничения бесплатного тарифа.
+И в этот момент грань между пиратами и халявщиками начинает стираться.</p>
+
+<details class="spoiler"><summary class="spoiler-title">Кстати</summary><div class="spoiler-body">
+<p>Хоть я и плачу́ денежку за музыку, сам иногда пользуюсь вот <a href="http://ytdl-org.github.io/youtube-dl/">этой мощной тулзой</a>,
+которая умеет скачивать не только видео с Youtube, но и целиком альбомы и плейлисты с Яндекс.Музыки.</p>
+
+<p>Иногда это бывает просто необходимо :expressionless:</p>
+</div></details>
+
+<h3 id="остальные">Остальные</h3>
+
+<p>Тот небольшой процент людей, которые готовы платить деньги за то, что им нравится. Но об этом потом.</p>
+
+<h2 id="почему-вконтакте">Почему ВКонтакте?</h2>
+
+<p>Дурову нужно отдать должное – он создал по-настоящему удобную и хорошо спроектированную социальную сеть.
+Да, она не лишена недостатков, но в ней есть все, что нужно. И нет того мусора, которым полон Facebook.</p>
+
+<p>В ВК есть то, чего нет нигде: авторские треки, уникальные композиции, всяческие ремиксы и т.д.
+Если что-то где-то появится, то это почти обязательно попадет в ВК через несколько минут после релиза.
+Платные треки с <a href="https://bandcamp.com/">Bandcamp</a> можно послушать за бесплатно.
+Удобно обмениваться треками со своими друзьями (соц. сеть же!).
+И с недавних пор там появились нормальные альбомы с обложками и п.р.</p>
+
+<p>Поиск треков осуществляется через друзей или через паблики, посвященные какому-то определенному направлению.</p>
+
+<p>И пока все было бесплатно, это был 100% выбор большинства русских, в том числе и меня.
+Но Дурова не стало и в ВК настали смутные времена. И следующий вопрос стал как никогда актуален…</p>
+
+<h2 id="почему-не-вконтакте">Почему не ВКонтакте?</h2>
+
+<p>Давайте будем честными… Музыка в ВК – сплошная свалка.
+Если попытаться провести поиск по автору, можно много чего обнаружить:</p>
+
+<ol>
+  <li>Десятки повторяющихся треков…</li>
+  <li>И их ремиксы;</li>
+  <li>А также треки не этого автора;</li>
+  <li>Нужный трек может быть на второй или третьей странице поиска.</li>
+  <li>Треки малопопулярных авторов с названием, состоящим из популярных английских слов найти сложно, 
+потому что на выдаче все, что угодно, но не то, что нужно. А <a href="https://music.yandex.ru/album/810866/track/7735656">некоторых</a> треков и вовсе нет.</li>
+  <li>Проблема с группами с пересекающимися названиями. Для примера: есть группа <a href="https://ru.wikipedia.org/wiki/Red_(%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D0%B0)">Red</a>, но ты ее не найдешь, потому что ВК выдаст “<em>Red</em> Hot Chili Peppers”.</li>
+</ol>
+
+<p>Структуры никакой: ни разбиения по авторам, ни тем более по альбомам.
+И только фан-группы энтузиасты берут на себя эту ответственность и наводят более менее порядок.</p>
+
+<p>В определенный момент треки начали пачками удаляться из списков за нарушение авторских прав.
+И вот тут наступили действительно тяжелые времена.</p>
+
+<p>Это было раньше, в тот момент, когда я перестал использовать ВК для музыки. 
+Сейчас вроде лучше, как я вижу. Команда ВКонтакте очень постаралась привести порядок в этой куче мусора и не мусора,
+а также заключить контракты с лейблами, чтобы не приходилось удалять все подряд.</p>
+
+<p>Но комон! Стоимость платной подписки ровно такая же, как и полная подписка в <a href="https://music.yandex.ru/">Яндекс.Музыке</a> и <a href="https://www.deezer.com/">Deezer</a>.
+Веских причин использовать ВК у меня нет. Аргумент “у меня в ВК вся музыка” – не аргумент,
+потому что почти везде есть либо встроенная функция импорта, либо сторонние инструменты,
+которые могут перегнать список треков в плейлист.</p>
+
+<p>Система рекомендаций ВК работает очень слабо. Если вообще работает.
+Решил попробовать “Специально для вас” – советует всякий треш, который я даже в фоне слушать не смогу.
+В “Новинках” Артур Пирожков, в “Новых Альбомах” 4 из 5-ти с ненормативной лексикой и так далее…</p>
+
+<p>Я думаю, вы меня поняли. ВК не то место, куда я бы стал вкладывать свои средства.</p>
+
+<h2 id="что-если-не-вконтакте">Что, если не ВКонтакте?</h2>
+
+<p>Благо монополии тут нет и выбор достаточно велик:</p>
+
+<ul>
+  <li><a href="https://www.spotify.com/">Spotify</a></li>
+  <li><a href="https://www.deezer.com/">Deezer</a></li>
+  <li><a href="https://music.yandex.ru/">Яндекс.Музыка</a></li>
+  <li><a href="https://play.google.com/music">Google Play Music</a></li>
+  <li><a href="https://www.apple.com/ru/itunes/">Apple iTunes</a></li>
+  <li><a href="https://music.youtube.com/">YouTube Music</a></li>
+  <li><a href="https://soundcloud.com/">SoundCloud</a></li>
+  <li><a href="https://tidal.com/">Tidal</a></li>
+  <li><a href="https://zvuk.com/">Zvooq</a></li>
+</ul>
+
+<p>Порядок сугубо произвольный и не отражает сути и приоритета.</p>
+
+<h2 id="но-что-мне-выбрать">Но что мне выбрать?</h2>
+
+<p>Об этом я расскажу в следующей статье, где подробно опишу опыт использования некоторых сервисов из списка выше,
+и почему я выбрал именно <a href="https://music.yandex.ru/">Яндекс</a>.</p>
+
+<h2 id="нужно-ли-мне-что-то-выбирать">Нужно ли мне что-то выбирать?</h2>
+
+<p>Нет. Но я настоятельно рекомендую выбрать продукт, который c самого зачатия затачивался под музыку.
+К тому же после того, как в ВК ввели платные подписки, условия всех стриминговых платформ почти уравнялись,
+и агрументов в пользу ВК почти не осталось, кроме тесной интеграции музыки с самой соц. сетью.</p>
+
+<h2 id="зачем-платить-деньги-если-можно-и-бесплатно">Зачем платить деньги, если можно и бесплатно?</h2>
+
+<p>На самом деле не нужно. Многими плюшками можно пользоваться не заплатив ни копейки. Это за вас сделает вездесущая реклама.</p>
+
+<hr />
+
+<h2 id="что-то-вроде-вывода">Что-то вроде вывода</h2>
+
+<p>Необходимость в платной подписке обусловливается только Вашими потребностями и возможностями.</p>
+
+<ul>
+  <li>Нужна ли Вам музыка вне компьютера или оффлайн?</li>
+  <li>Есть ли у Вас возможность выделять 100-300 рублей на подписку?
+<small>(если Вы можете позволить себе ходить раз в месяц в кафе, значит есть)</small></li>
+  <li>Нуждаетесь ли Вы в каком-либо механизме рекомендаций или готовых подборок?</li>
+</ul>
+
+<p>В моем случае все ответы утвердительные.</p>
+
+<p>300 рублей – это тоже деньги, не могу сказать, что это мелочь.
+Но благодаря этому 4 человека (могло быть и 6, но Яндекс жадина)
+имеют доступ к большому музыкальному банку. Это 75 рублей с человека. 
+Это меньше, чем заказать такси или купить 2 литра бензина,
+и чуть больше, чем съездить на работу и обратно на автобусе.</p>
+
+<p>А пользу я и члены моей семьи ощущем каждый день по дороге с работы и обратно, на работе или в пути в другой город.</p>
+
+<p>В любом случае, любой из сервисов из списка предоставляет бесплатный (или очень дешевый) период без ограничений.
+Попробуйте. Возможно понравится и Вам :blush:</p>
+
+
+                ]]>
+            </turbo:content>
+        </item>
+        
+        <item turbo="true">
+            <title>Jekyll Spoiler Plugin. Куда и как прятать код</title>
+            <link>https://vtvz.ru/blog/jekyll-spoiler-plugin/</link>
+            <pubDate>Fri, 08 Mar 2019 00:00:00 +0300</pubDate>
+            <author>Виталий Заславский</author>
+            <turbo:content>
+                <![CDATA[
+                <header>
+                    <h1>Jekyll Spoiler Plugin. Куда и как прятать код</h1>
+                    <figure>
+                        <img src="/assets/images/logo-black.png">
+                    </figure>
+                </header>
+                <p>Когда писал <a href="/blog/html-to-mysql/">предыдущую статью</a>, столкнулся с одной простой проблемой: большие куски кода занимали больше места, чем сам текст.</p>
+
+<p>Поиск готового решения для спойлеров привел меня на вот <a href="https://burrowl.com/blog/2015/05/23/spoiler-block/">эту страничку</a>.
+Решение простое и гениальное, но имело один большой недостаток: текст внутри спойлера не форматировался.</p>
+
+<p>Свое решение я опишу в этой статье.</p>
+
+<!--cut-->
+<details class="spoiler"><summary class="spoiler-title">TL;DR. Для тех, кому лень читать целиком</summary><div class="spoiler-body">
+<p>Это нужно положить в папку <code class="highlighter-rouge">_plugins</code>:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">Jekyll</span>
+  <span class="k">class</span> <span class="nc">SpoilerBlock</span> <span class="o">&lt;</span> <span class="no">Liquid</span><span class="o">::</span><span class="no">Block</span>
+    <span class="k">def</span> <span class="nf">initialize</span> <span class="p">(</span><span class="n">tag_name</span><span class="p">,</span> <span class="n">markup</span><span class="p">,</span> <span class="n">tokens</span><span class="p">)</span>
+      <span class="k">super</span>
+      <span class="vi">@summary</span> <span class="o">=</span> <span class="n">markup</span><span class="p">.</span><span class="nf">strip</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+      <span class="n">site</span> <span class="o">=</span> <span class="n">context</span><span class="p">.</span><span class="nf">registers</span><span class="p">[</span><span class="ss">:site</span><span class="p">]</span>
+      <span class="n">converter</span> <span class="o">=</span> <span class="n">site</span><span class="p">.</span><span class="nf">find_converter_instance</span><span class="p">(</span><span class="no">Jekyll</span><span class="o">::</span><span class="no">Converters</span><span class="o">::</span><span class="no">Markdown</span><span class="p">)</span>
+
+      <span class="n">output</span> <span class="o">=</span> <span class="s1">'&lt;details class="spoiler"&gt;'</span>
+      <span class="n">output</span> <span class="o">&lt;&lt;</span> <span class="s2">"&lt;summary class=</span><span class="se">\"</span><span class="s2">spoiler-title</span><span class="se">\"</span><span class="s2">&gt;</span><span class="si">#{</span><span class="vi">@summary</span><span class="p">.</span><span class="nf">empty?</span> <span class="p">?</span> <span class="s1">'Открыть'</span> <span class="p">:</span> <span class="vi">@summary</span><span class="si">}</span><span class="s2">&lt;/summary&gt;"</span>
+      <span class="n">output</span> <span class="o">&lt;&lt;</span> <span class="s1">'&lt;div class="spoiler-body"&gt;'</span>
+      <span class="n">output</span> <span class="o">&lt;&lt;</span> <span class="n">converter</span><span class="p">.</span><span class="nf">convert</span><span class="p">(</span><span class="k">super</span><span class="p">)</span>
+      <span class="n">output</span> <span class="o">&lt;&lt;</span> <span class="s1">'&lt;/div&gt;'</span>
+      <span class="n">output</span> <span class="o">&lt;&lt;</span> <span class="s1">'&lt;/details&gt;'</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="p">.</span><span class="nf">register_tag</span><span class="p">(</span><span class="s1">'spoiler'</span><span class="p">,</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">SpoilerBlock</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>И использовать в постах так:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% spoiler Заголовок спойлера %}
+<span class="p">```</span><span class="nl">yaml
+</span><span class="na">content</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s2">"</span><span class="s">some</span><span class="nv"> </span><span class="s">string"</span>
+<span class="p">```</span>
+{% endspoiler %}
+</code></pre></div></div>
+
+</div></details>
+
+<div class="alert alert-danger" role="alert">
+    <p><b>В Github Pages это работать не будет!</b></p>
+    <p>Любые плагины и дополнения работают только при самостоятельной сборке проекта (например, на Gitlab'е)</p>
+</div>
+
+<h2 id="проблема">Проблема</h2>
+
+<p>Если любой код поместить внутрь HTML тега, то он будет отрисован как есть. То есть вот этот кусок кода:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;details</span> <span class="na">class=</span><span class="s">"spoiler"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;summary</span> <span class="na">class=</span><span class="s">"spoiler-title"</span><span class="nt">&gt;</span>Заголовок спойлера<span class="nt">&lt;/summary&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"spoiler-body"</span><span class="nt">&gt;</span>
+**Тут должен быть жирный текст**
+
+```
+А это *должен* быть кусок кода
+```
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/details&gt;</span>
+</code></pre></div></div>
+
+<p>Выдаст вот такой результат:</p>
+
+<details class="spoiler">
+    <summary class="spoiler-title">Заголовок спойлера</summary>
+    <div class="spoiler-body">
+    **Тут должен быть жирный текст**
+    
+    ```
+    А это *должен* быть кусок кода
+    ```
+    </div>
+</details>
+
+<p>Мы можем заставить Jekyll парсить код внутри HTML элементов:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># _config.yml</span>
+<span class="na">kramdown</span><span class="pi">:</span>
+  <span class="na">parse_block_html</span><span class="pi">:</span> <span class="no">true</span>
+</code></pre></div></div>
+
+<p>Но результат сильно лучше не станет:</p>
+
+<figure class="frame">
+  <img src="broken-html.png" alt="Поехавшая разметка" />
+</figure>
+
+<h2 id="решение">Решение</h2>
+
+<p>Решение напрашивается само собой: нужно содержание спойлера индивидуально прогонять через конвертёр.</p>
+
+<p>Когда-то я читал спецификацию по Ruby, но для меня он до сей поры остается языком инопланетян.
+(Говорят, что Ruby очень популярен в Японии. Кажется, это все объясняет).
+Я даже кажется <a href="https://github.com/jekyll/jekyll/blob/master/lib/jekyll/filters.rb#L16">нашел</a> используемый в Liquid фильтр для конвертации. Но так и не смог его победить.</p>
+
+<p>В итоге после короткого гугления нашел вот этот рецепт:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">site</span> <span class="o">=</span> <span class="n">context</span><span class="p">.</span><span class="nf">registers</span><span class="p">[</span><span class="ss">:site</span><span class="p">]</span>
+<span class="n">converter</span> <span class="o">=</span> <span class="n">site</span><span class="p">.</span><span class="nf">find_converter_instance</span><span class="p">(</span><span class="no">Jekyll</span><span class="o">::</span><span class="no">Converters</span><span class="o">::</span><span class="no">Markdown</span><span class="p">)</span>
+<span class="n">converter</span><span class="p">.</span><span class="nf">convert</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Остается все это дело собрать воедино вот так:</p>
+
+<details class="spoiler"><summary class="spoiler-title">Все то же, что и в TL;DR выше</summary><div class="spoiler-body">
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">Jekyll</span>
+  <span class="k">class</span> <span class="nc">SpoilerBlock</span> <span class="o">&lt;</span> <span class="no">Liquid</span><span class="o">::</span><span class="no">Block</span>
+    <span class="k">def</span> <span class="nf">initialize</span> <span class="p">(</span><span class="n">tag_name</span><span class="p">,</span> <span class="n">markup</span><span class="p">,</span> <span class="n">tokens</span><span class="p">)</span>
+      <span class="k">super</span>
+      <span class="vi">@summary</span> <span class="o">=</span> <span class="n">markup</span><span class="p">.</span><span class="nf">strip</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+      <span class="n">site</span> <span class="o">=</span> <span class="n">context</span><span class="p">.</span><span class="nf">registers</span><span class="p">[</span><span class="ss">:site</span><span class="p">]</span>
+      <span class="n">converter</span> <span class="o">=</span> <span class="n">site</span><span class="p">.</span><span class="nf">find_converter_instance</span><span class="p">(</span><span class="no">Jekyll</span><span class="o">::</span><span class="no">Converters</span><span class="o">::</span><span class="no">Markdown</span><span class="p">)</span>
+
+      <span class="n">output</span> <span class="o">=</span> <span class="s1">'&lt;details class="spoiler"&gt;'</span>
+      <span class="n">output</span> <span class="o">&lt;&lt;</span> <span class="s2">"&lt;summary class=</span><span class="se">\"</span><span class="s2">spoiler-title</span><span class="se">\"</span><span class="s2">&gt;</span><span class="si">#{</span><span class="vi">@summary</span><span class="p">.</span><span class="nf">empty?</span> <span class="p">?</span> <span class="s1">'Открыть'</span> <span class="p">:</span> <span class="vi">@summary</span><span class="si">}</span><span class="s2">&lt;/summary&gt;"</span>
+      <span class="n">output</span> <span class="o">&lt;&lt;</span> <span class="s1">'&lt;div class="spoiler-body"&gt;'</span>
+      <span class="n">output</span> <span class="o">&lt;&lt;</span> <span class="n">converter</span><span class="p">.</span><span class="nf">convert</span><span class="p">(</span><span class="k">super</span><span class="p">)</span>
+      <span class="n">output</span> <span class="o">&lt;&lt;</span> <span class="s1">'&lt;/div&gt;'</span>
+      <span class="n">output</span> <span class="o">&lt;&lt;</span> <span class="s1">'&lt;/details&gt;'</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="p">.</span><span class="nf">register_tag</span><span class="p">(</span><span class="s1">'spoiler'</span><span class="p">,</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">SpoilerBlock</span><span class="p">)</span>
+</code></pre></div></div>
+
+</div></details>
+
+<p>Положить в папку <code class="highlighter-rouge">_plugins</code>. И далее можно использовать в любом Markdown документе вот так:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% spoiler Заголовок спойлера %}
+<span class="p">```</span><span class="nl">yaml
+</span><span class="na">content</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s2">"</span><span class="s">some</span><span class="nv"> </span><span class="s">string"</span>
+<span class="p">```</span>
+{% endspoiler %}
+</code></pre></div></div>
+
+<p>Вот с таким вот результатом:</p>
+
+<details class="spoiler"><summary class="spoiler-title">Заголовок спойлера</summary><div class="spoiler-body">
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">content</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s2">"</span><span class="s">some</span><span class="nv"> </span><span class="s">string"</span>
+</code></pre></div></div>
+</div></details>
+
+<p>Используйте на здоровье :grin:</p>
+
+
+                ]]>
+            </turbo:content>
+        </item>
+        
+        <item turbo="true">
+            <title>HTML to MySQL. Или Веб-скрапинг на практике</title>
+            <link>https://vtvz.ru/blog/html-to-mysql/</link>
+            <pubDate>Tue, 19 Feb 2019 00:00:00 +0300</pubDate>
+            <author>Виталий Заславский</author>
+            <turbo:content>
+                <![CDATA[
+                <header>
+                    <h1>HTML to MySQL. Или Веб-скрапинг на практике</h1>
+                    <figure>
+                        <img src="/assets/images/logo-black.png">
+                    </figure>
+                </header>
+                <p>Один мой хороший знакомый и коллега обратился ко мне за помощью. Он делал для одной компании новый сайт взамен старому.
+Данные со старого, естественно, должны были переместиться на новый.
+В этом и заключалась моя задача. Было только одно простое условие – доступа к БД старого сайта ни у меня, ни у него не было.</p>
+
+<p>В этой статье я хочу на практике показать, что можно сделать в этой ситуации, несмотря на отсутствие адекватной разметки в коде страницы.</p>
+
+<!--cut-->
+
+<p><em>// Не ждите высокотехнологичных мемуаров. 
+Статья предназначена скорее для новичков среднего уровня, поэтому излишне подробная.
+Но может быть и разработчики уровня повыше смогут найти для себя интересные подходы к решению описанной проблемы :blush:</em></p>
+
+<h2 id="что-имеется">Что имеется</h2>
+
+<p>Есть сайт с панелью администратора, доступной по логину-паролю, которые имеются, и около 1500 записей по 20 на страницу.</p>
+
+<p>Также есть доступ к БД через панель PhpMyAdmin. (На крайний случай есть SSH доступ, но это для очень больших объемов данных)</p>
+
+<p>Ну и на этом все.</p>
+
+<p>Работа единоразовая, поэтому писать целую инфраструктуру не требуется.</p>
+
+<h2 id="инструменты">Инструменты</h2>
+
+<p>Для таких задач мне не раз приходил на выручку NodeJs.</p>
+
+<ul>
+  <li>Во-первых, я его знаю и знаю достаточно хорошо.</li>
+  <li>Во-вторых, под него есть огромное количество библиотек, в том числе и для работы с HTML разметкой.</li>
+  <li>В-третьих, в случае большого количества данных запросы можно распараллелить и это даст значительный прирост к скорости выполнения скрипта. PHP так же может.</li>
+  <li>Ну и последнее, я уже не первый раз выполнял подобную работу и на бо́льших объемах и могу сказать, что лучше JS ничто не выполнит эту задачу лучше.</li>
+</ul>
+
+<p>Так же в некоторых, в том числе и в этом, случаях приходится писать некоторые скрипты прямо в браузер. А там JS по умолчанию.</p>
+
+<p>Часто используемые библиотеки это:</p>
+
+<ul>
+  <li><a href="https://github.com/request/request">request</a> + <a href="https://github.com/request/request-promise">request-promise</a>
+которые в удобном виде умеют делать HTTP запросы и делают это хорошо. 
+Можно было использовать встроенный http модуль, надстройкой которому является эта библиотека, 
+но в request уже из коробки учтены такие мелочи, 
+как использование http или https, обработка редиректов, сбор информации из буферов и стримов 
+и прочее, чем обычно заниматься не хочется совсем. 
+<br />
+В нашем случае она не понадобится, но обычно она незаменимый инструмент.</li>
+  <li><a href="https://github.com/cheeriojs/cheerio">cheerio</a>
+как удобная замена jQuery для NodeJs с идентичным интерфейсом. То, что доктор прописал.
+Возможно, кто-то со мной не согласится и скажет, что есть что-то удобнее. И я скорее всего соглашусь.
+Но я пользовался jQuery еще до того, как NodeJS, NPM и прочие появились.
+Поэтому я использую его, потому что хорошо знаю и люблю.</li>
+</ul>
+
+<h2 id="шаг-первый-сбор-сырой-информации">Шаг первый. Сбор сырой информации</h2>
+
+<p>Был у меня опыт вытягивания данных из новостной ленты одного сайта.
+Это были публичные данные, поэтому собрать их не с труда любым способом. И я использовал <code class="highlighter-rouge">request</code>.</p>
+
+<p>Тут ситуация немного другая – доступ был запаролен, скорее всего с помощью PHP сессий.
+Быстрый эксперимент с подстановкой Cookie из браузера не дал положительного результата.
+Возможно, да и скорее всего, я просто сделал что-то не так. Как бы то ни было я решил пойти другим путем.</p>
+
+<p>Оказалось проще вытянуть данные прямо в пределах браузера. На сайте уже использовался jQuery, так что пол дела уже сделано.</p>
+
+<p>Первая проверка на работоспособность прошла успешно:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">await</span> <span class="nx">$</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">http://example.ru/user/admin?page=1</span><span class="dl">'</span><span class="p">);</span>
+<span class="c1">// Да-да. jQuery умеет в Promise</span>
+</code></pre></div></div>
+
+<p>И в консоль было выплюнуто корректное содержание запрошенной страницы. Это ведь то, что нам нужно!
+Достаточно единожды пройтись по страничкам и собрать всю необходимую информацию:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">results</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="kd">var</span> <span class="nx">pages</span> <span class="o">=</span> <span class="mi">73</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="nx">pages</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">results</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="k">await</span> <span class="nx">$</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">http://example.ru/user/admin?page=</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">i</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>И Вуаля! В массиве <code class="highlighter-rouge">results</code> лежат исходники всех 73 страниц.
+Тут можно пойти двумя путями: работать с данными дальше в браузере
+или сохранить их на комп и обрабатывать средствами NodeJs. Я выбрал второй. Так проще и быстрее.</p>
+
+<p>Поэтому следующая задача – сохранить данные в файл. Сделать это можно несколькими способами.
+Я выбрал следующий: сформировать данные как строку и загрузить как файл.</p>
+
+<p>Гугление привело на <a href="https://stackoverflow.com/questions/13405129/javascript-create-and-save-file">эту страничку</a> в StackOverflow, где был приведен вот этот сниппет:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Function to download data to a file</span>
+<span class="kd">function</span> <span class="nx">download</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">filename</span><span class="p">,</span> <span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">file</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Blob</span><span class="p">([</span><span class="nx">data</span><span class="p">],</span> <span class="p">{</span><span class="na">type</span><span class="p">:</span> <span class="nx">type</span><span class="p">});</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nb">navigator</span><span class="p">.</span><span class="nx">msSaveOrOpenBlob</span><span class="p">)</span> <span class="c1">// IE10+</span>
+        <span class="nb">window</span><span class="p">.</span><span class="nb">navigator</span><span class="p">.</span><span class="nx">msSaveOrOpenBlob</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="nx">filename</span><span class="p">);</span>
+    <span class="k">else</span> <span class="p">{</span> <span class="c1">// Others</span>
+        <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">),</span>
+                <span class="nx">url</span> <span class="o">=</span> <span class="nx">URL</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
+        <span class="nx">a</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="nx">url</span><span class="p">;</span>
+        <span class="nx">a</span><span class="p">.</span><span class="nx">download</span> <span class="o">=</span> <span class="nx">filename</span><span class="p">;</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+        <span class="nx">a</span><span class="p">.</span><span class="nx">click</span><span class="p">();</span>
+        <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+            <span class="nb">window</span><span class="p">.</span><span class="nx">URL</span><span class="p">.</span><span class="nx">revokeObjectURL</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>  
+        <span class="p">},</span> <span class="mi">0</span><span class="p">);</span> 
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Не вдаваясь в подробности того, как это работает, скопировал этот код в консоль, и эта строчка:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">download</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">results</span><span class="p">),</span> <span class="dl">'</span><span class="s1">data.json</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>предложит скачать все нами загруженные данные в виде обычного json файла.</p>
+
+<p>Сбор сырых данных завершен. Можно приступать к анализу.</p>
+
+<h2 id="шаг-второй-анализ">Шаг второй. Анализ</h2>
+
+<p>Каждая запись на странице внешне выглядит так:</p>
+
+<figure class="frame">
+  <img src="datum.png" alt="Пример данных" />
+  <figcaption>Данные были намеренно искажены. Джонатан Хамстер – мой хомяк.</figcaption>
+</figure>
+
+<p>А HTML код вот такой:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item"</span> <span class="na">data-key=</span><span class="s">"1494"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;hr&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"mb4 brown"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"mt0"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"grey"</span><span class="nt">&gt;</span>Имя:<span class="nt">&lt;/span&gt;</span> Джонатан Хамстер
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/user/update-client?id=1494"</span> <span class="na">class=</span><span class="s">"ml2 size08 hover-nodecor hover-green"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/images/pencil.png"</span> <span class="na">class=</span><span class="s">"mr1 middle"</span><span class="nt">&gt;</span>изменить
+            <span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;/p&gt;</span>
+
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"pull-right size08 grey"</span><span class="nt">&gt;</span>Заходил(а): 16.02.2019 17:38<span class="nt">&lt;/p&gt;</span>
+
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"mt1"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"grey"</span><span class="nt">&gt;</span>Тип:<span class="nt">&lt;/span&gt;</span> Обычный покупатель<span class="nt">&lt;/p&gt;</span>
+
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"mt1"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"grey"</span><span class="nt">&gt;</span>До получения/продления скидки осталось:<span class="nt">&lt;/span&gt;</span> 9000 руб.<span class="nt">&lt;/p&gt;</span>
+
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"mt1"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"grey"</span><span class="nt">&gt;</span>Email:<span class="nt">&lt;/span&gt;</span> jonathan4@gmail.com<span class="nt">&lt;/p&gt;</span>
+        
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"mt1"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"grey"</span><span class="nt">&gt;</span>Телефон:<span class="nt">&lt;/span&gt;</span> 79507757757<span class="nt">&lt;/p&gt;</span>
+        
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"mt1"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"grey"</span><span class="nt">&gt;</span>Адрес:<span class="nt">&lt;/span&gt;</span> 111111 г. Москва, ул. Ленина, 28-123<span class="nt">&lt;/p&gt;</span>
+
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"mt1 size08"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"grey"</span><span class="nt">&gt;</span>Зарегистрирован(а):<span class="nt">&lt;/span&gt;</span> 16.02.2019 17:12<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p>Выглядит ужасно даже после форматирования, но с этим можно работать.</p>
+
+<p>Если кратко прорезюмировать:</p>
+<ul>
+  <li>Все элементы списка располагаются внутри <code class="highlighter-rouge">#centercolumn .list-view</code>.
+На самом деле все <code class="highlighter-rouge">.list-view</code> появляется на странице единожды и нет никакой надобности уточнять его расположение.</li>
+  <li>Каждый элемент списка имеет класс <code class="highlighter-rouge">.item</code>. Это важно, потому что внутри <code class="highlighter-rouge">.list-view</code> еще есть информация о количестве записей (“Показаны записи 1-20 из 1462”) и пагинация.</li>
+  <li>Каждый кусочек данных располагается внутри элемента <code class="highlighter-rouge">p</code>.</li>
+  <li>Каждый тип данных никак не отделяется классом. То есть внутри одинаковых элементов с одинаковыми классами лежат разные данные.</li>
+  <li>Внутри почти каждого параграфа есть элемент с классом <code class="highlighter-rouge">.grey</code>, который и определяет тип.</li>
+  <li>Количество данных не консистентно – не во всех записях есть Email и Телефон.</li>
+  <li>Сами данные тоже не имеют какого-то стандарта.
+Адрес записан в произвольном формате (есть случаи, где в качестве адреса указаны “F”, “SPb” или “………”).
+Имя тоже не имеет единого формата (ФИО, ИФО, ИФ, ФИ, И, Магазин у “Моста”).</li>
+  <li>И самое главное: почти вся полезная информация лежит в тексте, который расположен именно внутри параграфа. То есть если убрать всех потомков и вытащить текст, мы получим то, что нужно.</li>
+</ul>
+
+<h2 id="шаг-третий-реализация">Шаг третий. Реализация</h2>
+
+<h3 id="получение-типов-данных">Получение типов данных</h3>
+
+<p>Первое, что нужно выяснить, какие типы данных у нас в принципе имеются во всех записях.
+Для этого можно вытянуть все <code class="highlighter-rouge">p .grey</code> и найти уникальные значения.
+В современном JS есть замечательный класс <code class="highlighter-rouge">Set</code>, который хранит в себе набор уникальных значений.
+Если добавить то, что уже есть, операция будет проигнорирована.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">cheerio</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">cheerio</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">./data.json</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">main</span> <span class="o">=</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">types</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Set</span><span class="p">();</span>
+    
+    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">datum</span> <span class="k">of</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">$</span> <span class="o">=</span> <span class="nx">cheerio</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="nx">datum</span><span class="p">);</span>
+
+        <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.list-view .item</span><span class="dl">'</span><span class="p">).</span><span class="nx">each</span><span class="p">((</span><span class="nx">i</span><span class="p">,</span> <span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">$</span><span class="p">(</span><span class="nx">item</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="dl">'</span><span class="s1">p</span><span class="dl">'</span><span class="p">).</span><span class="nx">each</span><span class="p">((</span><span class="nx">i</span><span class="p">,</span> <span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="kd">let</span> <span class="nx">type</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">item</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="dl">'</span><span class="s1">.grey</span><span class="dl">'</span><span class="p">).</span><span class="nx">text</span><span class="p">().</span><span class="nx">trim</span><span class="p">();</span>
+
+                <span class="nx">types</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">type</span><span class="p">)</span>
+            <span class="p">});</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">types</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nx">main</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>И на выходе:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Set {
+  'Имя:',
+  '',
+  'Тип:',
+  'До получения/продления скидки осталось:',
+  'Телефон:',
+  'Зарегистрирован(а):',
+  'Email:',
+  'Адрес:' }
+</code></pre></div></div>
+
+<p>То есть у нас есть 7 явных значений и одно “пустое”.
+Краткий анализ содержания этой строки показал, что кроме <code class="highlighter-rouge">Заходил(а)</code> там ничего нет.
+Пустое значение объясняется тем, что в этом поле нет дочернего элемента <code class="highlighter-rouge">.grey</code>. Но нам это никак не мешает.</p>
+
+<h3 id="получение-чистых-данных">Получение чистых данных</h3>
+
+<p>Во время анализа мы выяснили, что нужные нам данные лежат в параграфе (<code class="highlighter-rouge">p</code>) без потомков.</p>
+
+<p>Так и гуглим: <a href="https://www.google.com/search?q=jquery+get+text+without+child+elements">jquery get text without child elements</a></p>
+
+<p>И <a href="https://stackoverflow.com/questions/3442394/using-text-to-retrieve-only-text-not-nested-in-child-tags">получаем</a> вот этот кусочек кода, который делает именно то, что нужно:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">clone</span><span class="p">()</span>    <span class="c1">//clone the element</span>
+    <span class="p">.</span><span class="nx">children</span><span class="p">()</span> <span class="c1">//select all the children</span>
+    <span class="p">.</span><span class="nx">remove</span><span class="p">()</span>   <span class="c1">//remove all the children</span>
+    <span class="p">.</span><span class="nx">end</span><span class="p">()</span>      <span class="c1">//again go back to selected element</span>
+    <span class="p">.</span><span class="nx">text</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>Помимо этого нужно убрать все лишние переносы и повторяющиеся пробелы, поэтому после <code class="highlighter-rouge">.text()</code> добавляем еще 2 вызова:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="p">.</span><span class="nx">trim</span><span class="p">()</span>
+    <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">[\s]</span><span class="sr">+/g</span><span class="p">,</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>И в результате получаем красивую строку без лишнего мусора.</p>
+
+<h3 id="обработка">Обработка</h3>
+
+<p>У нас есть 8 типов данных, которые нам нужно по-отдельности проанализировать и привести к значению, которое можно сохранить в БД.</p>
+
+<p>Конечно нужно было это сделать раньше, но на этом этапе особенно важно знать, какие значения будут сохраняться в БД.</p>
+
+<p>После сбора информации выяснилось следующее:</p>
+
+<ul>
+  <li>Фамилия, Имя и Отчество хранятся в отдельных колонках.</li>
+  <li>Поле “Тип” обычно имеет 2 значения: “Обычный покупатель” и “Постоянный покупатель”, что в БД хранится как флаг (0 или 1 соответственно).</li>
+  <li>Поле “До получения/продления скидки осталось” сохраняется как число без указания валюты. То есть в рублях.</li>
+  <li>Телефон и Email сохраняются как есть.</li>
+  <li>Время регистрации и последнего посещения игнорируются.</li>
+  <li>Адрес в БД разбит на все составляющие, типа страны, города, индекса, улицы и п.р.</li>
+</ul>
+
+<p>Для этого сделаем объект, в котором в качестве ключей будет тип данных, а значениями будут функции, которые обрабатывают пришедшие сырые данных:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">strategies</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="dl">'</span><span class="s1">Имя:</span><span class="dl">'</span><span class="p">:</span> <span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="p">},</span>
+    <span class="dl">''</span><span class="p">:</span> <span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="p">},</span>
+    <span class="dl">'</span><span class="s1">Тип:</span><span class="dl">'</span><span class="p">:</span> <span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="p">},</span>
+    <span class="dl">'</span><span class="s1">До получения/продления скидки осталось:</span><span class="dl">'</span><span class="p">:</span> <span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="p">},</span>
+    <span class="dl">'</span><span class="s1">Телефон:</span><span class="dl">'</span><span class="p">:</span> <span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="p">},</span>
+    <span class="dl">'</span><span class="s1">Зарегистрирован(а):</span><span class="dl">'</span><span class="p">:</span> <span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="p">},</span>
+    <span class="dl">'</span><span class="s1">Email:</span><span class="dl">'</span><span class="p">:</span> <span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="p">},</span>
+    <span class="dl">'</span><span class="s1">Адрес:</span><span class="dl">'</span><span class="p">:</span> <span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="p">},</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>Так как каждый тип данных может возвращать несколько значений для БД, то каждая функция должна возвращать объект, который будет объединен с остальными данными.
+Если функция не вернет ничего, то ничего не будем делать.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">strategy</span> <span class="o">=</span> <span class="nx">strategies</span><span class="p">[</span><span class="nx">type</span><span class="p">];</span>
+
+<span class="c1">// Несмотря на то, что мы описали все стратегии обработки типов, </span>
+<span class="c1">// cлучаи "а вдруг" все равно стоит предусматривать</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">strategy</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
+
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">strategy</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span> <span class="o">||</span> <span class="p">{};</span>
+<span class="c1">// Про переменную person я пока ничего не говорил, </span>
+<span class="c1">// но в ней будут храниться все данные конкретного пользователя</span>
+<span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">...</span><span class="nx">person</span><span class="p">,</span>
+    <span class="p">...</span><span class="nx">result</span><span class="p">,</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>В итоге остается только описать стратегии обработки всех данных поочередно проверяя их формат.
+Несмотря на то, что мы немного почистили данные, им все равно нельзя доверять.</p>
+
+<p>Вот что я выяснил на этом этапе:</p>
+<ul>
+  <li>В графе с именем всего 3 части, разделенные пробелом. Всего частей может быть от 1 до 3.
+В одном случае ФИО было разделено 2мя пробелами между частями. Поэтому очистка повторяющихся пробелов была очень кстати.</li>
+  <li>Поле “Тип” в большинстве своем имеет одно их 2-х значений: “Обычный покупатель” и “Постоянный покупатель”.
+Но нашлись 3 записи формата “Представитель из Название_города”. Их решено пометить как “Постоянных покупателей”.</li>
+  <li>Поле “До получения/продления скидки осталось” <strong>всегда</strong> имеет формат <code class="highlighter-rouge">[цифры][пробел]руб.</code>, что упростило задачу.</li>
+  <li>В поле с адресом буквально располагался всякий мусор.
+С этим уже ничего нельзя было сделать, поэтому решено все затолкать в одну колонку без какой-либо дополнительной обработки.</li>
+</ul>
+
+<p>В итоге у нас получается вот такая коллекция со стратегиями:</p>
+
+<details class="spoiler"><summary class="spoiler-title">Карта со стратегиями</summary><div class="spoiler-body">
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">strategies</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="dl">'</span><span class="s1">Имя:</span><span class="dl">'</span><span class="p">:</span> <span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">parts</span> <span class="o">=</span> <span class="nx">content</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">'</span><span class="s1"> </span><span class="dl">'</span><span class="p">);</span>
+
+        <span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">''</span><span class="p">,</span> <span class="nx">surname</span> <span class="o">=</span> <span class="dl">''</span><span class="p">,</span> <span class="nx">middlename</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>
+        <span class="k">switch</span> <span class="p">(</span><span class="nx">parts</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="nx">name</span> <span class="o">=</span> <span class="nx">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="p">[</span><span class="nx">name</span><span class="p">,</span> <span class="nx">surname</span><span class="p">]</span> <span class="o">=</span> <span class="nx">parts</span><span class="p">;</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="mi">3</span><span class="p">:</span>
+                <span class="p">[</span><span class="nx">name</span><span class="p">,</span> <span class="nx">middlename</span><span class="p">,</span> <span class="nx">surname</span><span class="p">]</span> <span class="o">=</span> <span class="nx">parts</span><span class="p">;</span>
+                <span class="k">break</span><span class="p">;</span>
+
+            <span class="nl">default</span><span class="p">:</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">parts</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="p">{</span><span class="nx">name</span><span class="p">,</span> <span class="nx">middlename</span><span class="p">,</span> <span class="nx">surname</span><span class="p">};</span>
+    <span class="p">},</span>
+    <span class="dl">'</span><span class="s1">Тип:</span><span class="dl">'</span><span class="p">:</span> <span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">regular_customer</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">content</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">Обычный покупатель</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">regular_customer</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="p">{</span><span class="nx">regular_customer</span><span class="p">};</span>
+    <span class="p">},</span>
+    <span class="dl">'</span><span class="s1">До получения/продления скидки осталось:</span><span class="dl">'</span><span class="p">:</span> <span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">parts</span> <span class="o">=</span> <span class="nx">content</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">'</span><span class="s1"> </span><span class="dl">'</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">parts</span><span class="p">.</span><span class="nx">length</span> <span class="o">!==</span> <span class="mi">2</span> <span class="o">&amp;&amp;</span> <span class="nx">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">руб.</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">parts</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="na">tmp_sum</span><span class="p">:</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="dl">'</span><span class="s1">Телефон:</span><span class="dl">'</span><span class="p">:</span> <span class="p">(</span><span class="nx">phone</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span><span class="nx">phone</span><span class="p">}),</span>
+    <span class="dl">'</span><span class="s1">Email:</span><span class="dl">'</span><span class="p">:</span> <span class="p">(</span><span class="nx">email</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span><span class="nx">email</span><span class="p">}),</span>
+    <span class="dl">'</span><span class="s1">Адрес:</span><span class="dl">'</span><span class="p">:</span> <span class="p">(</span><span class="nx">address</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span><span class="nx">address</span><span class="p">}),</span>
+    <span class="dl">'</span><span class="s1">Зарегистрирован(а):</span><span class="dl">'</span><span class="p">:</span> <span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="p">},</span>
+    <span class="dl">''</span><span class="p">:</span> <span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="p">},</span>
+<span class="p">};</span>
+</code></pre></div></div>
+</div></details>
+
+<p>А сам код теперь выглядит так:</p>
+
+<details class="spoiler"><summary class="spoiler-title">Логика</summary><div class="spoiler-body">
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">main</span> <span class="o">=</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">people</span> <span class="o">=</span> <span class="p">[];</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">datum</span> <span class="k">of</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">$</span> <span class="o">=</span> <span class="nx">cheerio</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="nx">datum</span><span class="p">);</span>
+
+        <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.list-view .item</span><span class="dl">'</span><span class="p">).</span><span class="nx">each</span><span class="p">((</span><span class="nx">i</span><span class="p">,</span> <span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="kd">let</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{};</span>
+
+            <span class="nx">$</span><span class="p">(</span><span class="nx">item</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="dl">'</span><span class="s1">p</span><span class="dl">'</span><span class="p">).</span><span class="nx">each</span><span class="p">((</span><span class="nx">i</span><span class="p">,</span> <span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="kd">let</span> <span class="nx">type</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">item</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="dl">'</span><span class="s1">.grey</span><span class="dl">'</span><span class="p">).</span><span class="nx">text</span><span class="p">().</span><span class="nx">trim</span><span class="p">();</span>
+
+                <span class="kd">let</span> <span class="nx">text</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span>
+                    <span class="p">.</span><span class="nx">clone</span><span class="p">()</span>
+                    <span class="p">.</span><span class="nx">children</span><span class="p">()</span>
+                    <span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
+                    <span class="p">.</span><span class="nx">end</span><span class="p">()</span>
+                    <span class="p">.</span><span class="nx">text</span><span class="p">()</span>
+                    <span class="p">.</span><span class="nx">trim</span><span class="p">()</span>
+                    <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">[\s]</span><span class="sr">+/g</span><span class="p">,</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span><span class="p">);</span>
+
+                <span class="kd">let</span> <span class="nx">strategy</span> <span class="o">=</span> <span class="nx">strategies</span><span class="p">[</span><span class="nx">type</span><span class="p">];</span>
+                <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">strategy</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
+
+                    <span class="k">return</span><span class="p">;</span>
+                <span class="p">}</span>
+
+                <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">strategy</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span> <span class="o">||</span> <span class="p">{};</span>
+                <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="p">...</span><span class="nx">person</span><span class="p">,</span>
+                    <span class="p">...</span><span class="nx">result</span><span class="p">,</span>
+                <span class="p">};</span>
+            <span class="p">});</span>
+
+            <span class="nx">people</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">person</span><span class="p">);</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">people</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nx">main</span><span class="p">();</span>
+</code></pre></div></div>
+</div></details>
+
+<p>Тут как раз можно увидеть появление массива <code class="highlighter-rouge">people</code> наполненный объектами <code class="highlighter-rouge">person</code>.</p>
+
+<h3 id="приведение-к-единому-формату">Приведение к единому формату</h3>
+
+<p>Теперь у нас есть почти все, чтобы идти дальше. Данные получены и обработаны.</p>
+
+<p>Но наша цель – положить все это в БД.</p>
+
+<p>Каждая стратегия описывалась таким образом, чтобы возвращенный объект был в виде, где ключ – колонка в таблице, а значение – ее содержание.</p>
+
+<p>На выходе мы получили массив с информацией о каждом пользователе. Но эта информация не однородна: у кого-то может не быть адреса, у кого-то – телефона или email-a.</p>
+
+<p>Поэтому нужно сделать некоторые атрибуты со значениями по умолчанию.
+Берем все обязательные поля из таблицы и проставляем их в объект <code class="highlighter-rouge">person</code> с указанными стандартными значениям:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">email</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+    <span class="na">password</span><span class="p">:</span> <span class="dl">'</span><span class="s1">trash123</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">name</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+    <span class="na">middlename</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+    <span class="na">surname</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+    <span class="na">phone</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+    <span class="na">country</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Россия</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">zip</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+    <span class="na">region</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+    <span class="na">city</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+    <span class="na">address</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+    <span class="na">tmp_sum</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="na">regular_customer</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="na">status</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>Так как пароля мы узнать не можем, а в базе хранится только его хеш, поэтому вставляем туда любой мусор, который не является валидным хешем.</p>
+
+<p>Таким образом на выходе у нас будет массив объектов, каждый из которых имеет одинаковую структуру, порядок атрибутов и заполненные обязательные поля.</p>
+
+<h3 id="формирование-файла-для-импорта-в-бд">Формирование файла для импорта в БД</h3>
+
+<p>Тут решений тоже несколько.</p>
+
+<p>Ранее я пользовался <a href="https://hiddentao.com/squel/">Query Builder’ом</a>, который на выходе давал мне сформированные SQL запросы в файлах,
+которые достаточно было просто импортировать через PMA, либо запустить прямо на сервере.
+Были сложности с экранированием, но в большинстве своем он меня устраивал.</p>
+
+<p>В этот раз я пошел другим путем. PMA вполне успешно умеет работать с различными форматами, включая CSV.</p>
+
+<p>Этот формат по сути подразумевает, что горизонтально твои данные будут разделены запятыми, а вертикально – переносами:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"1","Виталий","Заславский"
+"2","Василий","Пупкин"
+"3","Петр","Васечкин"
+</code></pre></div></div>
+
+<p>Все достаточно просто и соответствовало тому, что мы делаем.</p>
+
+<p>Создание контента для CVS укладывается в 4 строчки:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">people</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">person</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">values</span><span class="p">(</span><span class="nx">person</span><span class="p">)</span> <span class="c1">// Получаем только значения из всех объектов</span>
+    <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">_</span> <span class="o">=&gt;</span> <span class="nx">_</span><span class="p">.</span><span class="nx">replace</span> <span class="p">?</span> <span class="nx">_</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/"/g</span><span class="p">,</span> <span class="dl">'</span><span class="s1">""</span><span class="dl">'</span><span class="p">)</span> <span class="p">:</span> <span class="nx">_</span><span class="p">)</span> <span class="c1">// Экранируем двойные кавычки " =&gt; "" (таков CSV, не я это придумал)</span>
+    <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">_</span> <span class="o">=&gt;</span> <span class="s2">`"</span><span class="p">${</span><span class="nx">_</span><span class="p">}</span><span class="s2">"`</span><span class="p">)</span> <span class="c1">// Обрамление содержимого двойными кавычками</span>
+    <span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="dl">'</span><span class="s1">,</span><span class="dl">'</span><span class="p">)</span> <span class="c1">// Объединение значений</span>
+<span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="dl">'</span><span class="se">\n</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// Объединение всех полученных значений переносами</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Результатом проделанных действий будет выплюнутое в консоль содержание CSV файла. 
+С сохранением этого через <code class="highlighter-rouge">fs</code> модуль я не стал. Вот эта команда сделала все за меня:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>node index.js <span class="o">&gt;</span> result.csv
+</code></pre></div></div>
+
+<h3 id="соберем-все-воедино">Соберем все воедино</h3>
+
+<p>Вот так будет выглядеть скрипт, если собрать все его части:</p>
+
+<details class="spoiler"><summary class="spoiler-title">Большой кусок кода</summary><div class="spoiler-body">
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">cheerio</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">cheerio</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">./data.json</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">strategies</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="dl">'</span><span class="s1">Имя:</span><span class="dl">'</span><span class="p">:</span> <span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">parts</span> <span class="o">=</span> <span class="nx">content</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">'</span><span class="s1"> </span><span class="dl">'</span><span class="p">);</span>
+
+        <span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">''</span><span class="p">,</span> <span class="nx">surname</span> <span class="o">=</span> <span class="dl">''</span><span class="p">,</span> <span class="nx">middlename</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>
+        <span class="k">switch</span> <span class="p">(</span><span class="nx">parts</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="nx">name</span> <span class="o">=</span> <span class="nx">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="p">[</span><span class="nx">name</span><span class="p">,</span> <span class="nx">surname</span><span class="p">]</span> <span class="o">=</span> <span class="nx">parts</span><span class="p">;</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="mi">3</span><span class="p">:</span>
+                <span class="p">[</span><span class="nx">name</span><span class="p">,</span> <span class="nx">middlename</span><span class="p">,</span> <span class="nx">surname</span><span class="p">]</span> <span class="o">=</span> <span class="nx">parts</span><span class="p">;</span>
+                <span class="k">break</span><span class="p">;</span>
+
+            <span class="nl">default</span><span class="p">:</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">parts</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="p">{</span><span class="nx">name</span><span class="p">,</span> <span class="nx">middlename</span><span class="p">,</span> <span class="nx">surname</span><span class="p">};</span>
+    <span class="p">},</span>
+    <span class="dl">'</span><span class="s1">Тип:</span><span class="dl">'</span><span class="p">:</span> <span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">regular_customer</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">content</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">Обычный покупатель</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">regular_customer</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="p">{</span><span class="nx">regular_customer</span><span class="p">};</span>
+    <span class="p">},</span>
+    <span class="dl">'</span><span class="s1">До получения/продления скидки осталось:</span><span class="dl">'</span><span class="p">:</span> <span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">parts</span> <span class="o">=</span> <span class="nx">content</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">'</span><span class="s1"> </span><span class="dl">'</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">parts</span><span class="p">.</span><span class="nx">length</span> <span class="o">!==</span> <span class="mi">2</span> <span class="o">&amp;&amp;</span> <span class="nx">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">руб.</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">parts</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="na">tmp_sum</span><span class="p">:</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="dl">'</span><span class="s1">Телефон:</span><span class="dl">'</span><span class="p">:</span> <span class="p">(</span><span class="nx">phone</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span><span class="nx">phone</span><span class="p">}),</span>
+    <span class="dl">'</span><span class="s1">Email:</span><span class="dl">'</span><span class="p">:</span> <span class="p">(</span><span class="nx">email</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span><span class="nx">email</span><span class="p">}),</span>
+    <span class="dl">'</span><span class="s1">Адрес:</span><span class="dl">'</span><span class="p">:</span> <span class="p">(</span><span class="nx">address</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span><span class="nx">address</span><span class="p">}),</span>
+    <span class="dl">'</span><span class="s1">Зарегистрирован(а):</span><span class="dl">'</span><span class="p">:</span> <span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="p">},</span>
+    <span class="dl">''</span><span class="p">:</span> <span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="p">},</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">main</span> <span class="o">=</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">people</span> <span class="o">=</span> <span class="p">[];</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">datum</span> <span class="k">of</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">$</span> <span class="o">=</span> <span class="nx">cheerio</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="nx">datum</span><span class="p">);</span>
+
+        <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.list-view .item</span><span class="dl">'</span><span class="p">).</span><span class="nx">each</span><span class="p">((</span><span class="nx">i</span><span class="p">,</span> <span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="kd">let</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="na">email</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+                <span class="na">password</span><span class="p">:</span> <span class="dl">'</span><span class="s1">trash123</span><span class="dl">'</span><span class="p">,</span>
+                <span class="na">name</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+                <span class="na">middlename</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+                <span class="na">surname</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+                <span class="na">phone</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+                <span class="na">country</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Россия</span><span class="dl">'</span><span class="p">,</span>
+                <span class="na">zip</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+                <span class="na">region</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+                <span class="na">city</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+                <span class="na">address</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+                <span class="na">tmp_sum</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="na">regular_customer</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="na">status</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="p">};</span>
+
+            <span class="nx">$</span><span class="p">(</span><span class="nx">item</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="dl">'</span><span class="s1">p</span><span class="dl">'</span><span class="p">).</span><span class="nx">each</span><span class="p">((</span><span class="nx">i</span><span class="p">,</span> <span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="kd">let</span> <span class="nx">type</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">item</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="dl">'</span><span class="s1">.grey</span><span class="dl">'</span><span class="p">).</span><span class="nx">text</span><span class="p">().</span><span class="nx">trim</span><span class="p">();</span>
+
+                <span class="kd">let</span> <span class="nx">text</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span>
+                    <span class="p">.</span><span class="nx">clone</span><span class="p">()</span>
+                    <span class="p">.</span><span class="nx">children</span><span class="p">()</span>
+                    <span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
+                    <span class="p">.</span><span class="nx">end</span><span class="p">()</span>
+                    <span class="p">.</span><span class="nx">text</span><span class="p">()</span>
+                    <span class="p">.</span><span class="nx">trim</span><span class="p">()</span>
+                    <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">[\s]</span><span class="sr">+/g</span><span class="p">,</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span><span class="p">);</span>
+
+                <span class="kd">let</span> <span class="nx">strategy</span> <span class="o">=</span> <span class="nx">strategies</span><span class="p">[</span><span class="nx">type</span><span class="p">];</span>
+                <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">strategy</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
+
+                    <span class="k">return</span><span class="p">;</span>
+                <span class="p">}</span>
+
+                <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">strategy</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span> <span class="o">||</span> <span class="p">{};</span>
+                <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="p">...</span><span class="nx">person</span><span class="p">,</span>
+                    <span class="p">...</span><span class="nx">result</span><span class="p">,</span>
+                <span class="p">};</span>
+            <span class="p">});</span>
+
+            <span class="nx">people</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">person</span><span class="p">);</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+
+
+    <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">people</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">person</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">values</span><span class="p">(</span><span class="nx">person</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">_</span> <span class="o">=&gt;</span> <span class="nx">_</span><span class="p">.</span><span class="nx">replace</span> <span class="p">?</span> <span class="nx">_</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/"/g</span><span class="p">,</span> <span class="dl">'</span><span class="s1">""</span><span class="dl">'</span><span class="p">)</span> <span class="p">:</span> <span class="nx">_</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">_</span> <span class="o">=&gt;</span> <span class="s2">`"</span><span class="p">${</span><span class="nx">_</span><span class="p">}</span><span class="s2">"`</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="dl">'</span><span class="s1">,</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="dl">'</span><span class="se">\n</span><span class="dl">'</span><span class="p">);</span>
+
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nx">main</span><span class="p">();</span>
+</code></pre></div></div>
+</div></details>
+
+<p>Не думаю, что эта простыня нуждается в каком-либо дополнительном пояснении.</p>
+
+<h2 id="шаг-четвертый-наполнение-таблицы">Шаг четвертый. Наполнение таблицы</h2>
+
+<p>Это самый простой шаг. Все действия будут происходить через PMA панель.</p>
+
+<ul>
+  <li>Нужно перейти в нужную таблицу.</li>
+  <li>Ткнуть в “Импорт”.</li>
+  <li>Выбрать нужный файл.</li>
+  <li>Формат указать “CSV” (“CSV using LOAD DATA” не пробовал).</li>
+  <li>В “Названия столбцов” указать нужные столбцы через запятую.</li>
+</ul>
+
+<p>По поводу последнего шага.
+Несмотря на то, что мы почти скопировали поля из таблицы в указанном порядке, есть случаи, когда данные указываются автоматически самой БД.
+В моем случае это было поле <code class="highlighter-rouge">id</code>. Поэтому при импорте достаточно указать в этом поле все атрибуты из объекта <code class="highlighter-rouge">person</code> через запятую:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>email,password,name,middlename,surname,phone,country,zip,region,city,address,tmp_sum,regular_customer,status
+</code></pre></div></div>
+
+<p>Жмем “Вперёд” и Вуоля! Работа завершена!</p>
+
+<h2 id="что-можно-было-сделать-еще">Что можно было сделать еще</h2>
+
+<p>Моей задачей было сделать то, что хотел заказчик. Его уcтраивало то, что в поле с адресом лежит мусор, а на месте фамилии может стоять отчество.</p>
+
+<p>И подручными средствами решить эту проблему было не столько сложно, сколько невозможно в короткий срок.</p>
+
+<p>Но если с этой проблемой столкнулся я, значит были и другие. А значит есть инструменты, которые решают подобного рода задачи.</p>
+
+<p>Адрес можно было привести к единому виду с помощью <a href="https://tech.yandex.ru/maps/doc/geocoder/desc/concepts/input_params-docpage/">API Яндекс.Карт</a>. Единственное, что он не умеет – определять номер квартиры из адреса.</p>
+
+<p>Либо можно было воспользоваться сервисом <a href="https://dadata.ru/api/clean/">Dadata</a>, который и квартиру в адресе определит, и ФИО из любого формата к красивому приведет.</p>
+
+<p>То есть решения были, только заказчику этого было не нужно :grin:</p>
+
+<h2 id="в-качестве-заключения">В качестве заключения</h2>
+
+<p>Статья получилась невероятно большой для сравнительно небольшого объема информации. Но содержательной.</p>
+
+<p>То, что я сейчас описал, называется <em>“Веб-скрапинг”</em>.
+В моем случае это просто перенос данных с одного сайта на другой путем вывода информации прямо со страниц.</p>
+
+<p>В других случаях веб-скрапинг используется для сбора информации из нескольких сайтов для агрегирования информации в одном месте.
+Например, <a href="https://habr.com/ru/post/353348/">афиши кинотеатров</a>. Еще этот подход используется для того, чтобы сделать API там, где его официально нет, и т.д.</p>
+
+<p>Да, я знаю и слышал, что есть инструменты более мощные и серьезные. Но в моем случае гораздо быстрее воспользоваться тем, что я уже хорошо знаю.</p>
+
+<hr />
+
+<p>А мораль сей статьи такова: автоматизируйте все, что автоматизируется.
+Используйте все подручные средства, чтобы компьютер сделал за вас бо́льшую часть работы.
+Не делайте руками то, что можно сделать скриптом на 150 строк.
+В определенный момент вы поймете – это окупается :wink:</p>
+
+
+                ]]>
+            </turbo:content>
+        </item>
+        
+        <item turbo="true">
+            <title>Свершилось! Часть первая. Зачем мне блог</title>
+            <link>https://vtvz.ru/blog/openning/</link>
+            <pubDate>Wed, 19 Dec 2018 00:00:00 +0300</pubDate>
+            <author>Виталий Заславский</author>
+            <turbo:content>
+                <![CDATA[
+                <header>
+                    <h1>Свершилось! Часть первая. Зачем мне блог</h1>
+                    <figure>
+                        <img src="/assets/images/logo-black.png">
+                    </figure>
+                </header>
+                <p>Я долго к этому шел. Серьезно, на это ушел не один год (4 года приблизительно, точно не знаю).
+Мысль была давно. Непосредственно разработка заняла у меня немного. Но созревал я на самом деле долго.</p>
+
+<p>В дебютной статье я бы хотел рассказать о мотивах и причинах, которые привели меня к этому. 
+А также постараюсь ответить на вопросы, которые мне еще никто не задавал, но, возможно, задаст :blush:</p>
+
+<!--cut-->
+
+<h3 id="немного-истории">Немного истории</h3>
+
+<p>Где-то в “далеком” 2013м был приобретен домен <code class="highlighter-rouge">vtvz.ru</code></p>
+
+<p><em>- Что означают эти буквы?</em></p>
+
+<p>Это почти аббревиатура моего ФИО. Домен из трех букв застолбить не удалось – все 3 варианта (<code class="highlighter-rouge">zvv</code>, <code class="highlighter-rouge">vzv</code>, <code class="highlighter-rouge">vvz</code>) были уже заняты. 
+Из всех доступных четырехбуквенных вариантов этот приглянулся мне больше всего.</p>
+
+<p>Долгое время это было просто домен, который делал целое ничего.</p>
+
+<p>Первое, что на нем появилось, был обычный сайт визитка. Выглядел он так:</p>
+
+<figure>
+  <img src="screen.png" alt="Скриншот" />
+</figure>
+
+<p>Знакомо? Это было временное решение. Но ничто так не постоянно, как временное.</p>
+
+<p>Долгое время сайт был чисто визиткой. До блога он дорос только сейчас.</p>
+
+<h3 id="зачем-тебе-блог">“Зачем тебе блог?”</h3>
+
+<p>На этот вопрос есть 2 ответа: потому что <strong>могу</strong> и потому что <strong>хочу</strong>.</p>
+
+<p>Целями этого блога не являются получение прибыли или обретение популярности. Оно работает немного не так.</p>
+
+<p>Есть вещи, которыми хочется делиться:</p>
+
+<ul>
+  <li>Я победил какую-то ошибку;</li>
+  <li>Познакомился с новой технологией или программой;</li>
+  <li>Съездил в новую для себя страну или город;</li>
+  <li>Нашел новый для себя подход к решению какой-то проблемы;</li>
+  <li>Меня что-то очень сильно раздражает;</li>
+  <li>И так далее…</li>
+</ul>
+
+<p>Блог – это идеальное место, чтобы выплеснуть все, что не дает спать по ночам.</p>
+
+<h3 id="почему-ты-не-использовал-название_сервиса-для-этого">“Почему ты не использовал <code class="highlighter-rouge">%название_сервиса%</code> для этого?”</h3>
+
+<p>Я прекрасно понимаю, что многое до меня уже было сделано:</p>
+
+<ul>
+  <li>Олдскульный <a href="https://www.livejournal.com/">LiveJournal</a></li>
+  <li>Новомодный <a href="https://medium.com/">Medium</a></li>
+  <li>Малоизвестный <a href="https://www.blogger.com/">Blogger</a></li>
+  <li>И куча социальных сетей, которые поддерживают лонгриды</li>
+</ul>
+
+<p>Выбор велик. Я мог взять любой и получил бы тачку плюсов впридачу:</p>
+
+<ul>
+  <li>Такие сервисы хорошо индексируются поисковиками без дополнительных усилий, поэтому в поисковые выдачи хороший пост может попасть достаточно быстро;</li>
+  <li>Если ты хороший автор, сам сервис может тебя рекомендовать к прочтению пользователям;</li>
+  <li>Минимальные затраты на создание поста и блога – зарегистрировался и пиши;</li>
+  <li>Люди будут охотнее переходить на уже знакомые им сайты, чем на что-то им неизвестное;</li>
+  <li>Пользователям более привычен интерфейс используемого ими сервиса, а не какого-то чужого сайта;</li>
+  <li>Популярные сервисы выдерживают большие нагрузки и скорее всего будут жить дольше, чем сайт на своем сервере.</li>
+</ul>
+
+<p>Сам не ожидал, что найду столько по-настоящему весомых плюсов. Но есть и минусы:</p>
+
+<ul>
+  <li>Используя какой-то сервис, ты даришь ему свой контент и он распоряжается им как хочет:
+может забанить,
+может удалить,
+может зарабатывать на нем деньги, что они, собственно, и делают.</li>
+  <li>Ты упираешься в серьезные ограничения, которые накладывает на тебя этот сервис в техническом плане:
+    <ul>
+      <li>Что-то кастомизировать бывает очень сложно или даже невозможно;</li>
+      <li>Если и возможно, то с болью и мучениями;</li>
+      <li>А некоторые функции вообще могут быть платными, типа привязки к своему домену.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Когда создаешь свой блог, ты получаешь одно большое преимущество: он <strong>абсолютно и полностью твой</strong>.
+Ты распоряжаешься им как хочешь, и делаешь с ним, что пожелаешь.
+Единственные твои ограничения – браузер, выбранные технологии и твоя фантазия.</p>
+
+<p>Да, продвигать свой сайт намного сложнее. Для этого нужны специальные знания и подготовка.
+Но если цель блога творческая, а не коммерческая, то это не является сильной проблемой.</p>
+
+<p>Я написал статью на <a href="https://www.facebook.com/notes/%D0%B2%D0%B8%D1%82%D0%B0%D0%BB%D0%B8%D0%B9-%D0%B7%D0%B0%D1%81%D0%BB%D0%B0%D0%B2%D1%81%D0%BA%D0%B8%D0%B9/%D0%BC%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%B5%D1%80-%D0%BF%D0%B0%D1%80%D0%BE%D0%BB%D0%B5%D0%B9-%D1%81-%D1%81%D0%B0%D1%85%D0%B0%D1%80%D0%BE%D0%BC/1107932535931749/">Facebook</a> про некоторые возможности менеджера паролей.
+Несколько мыслей и заметок там-же на <a href="https://www.facebook.com/vtvz.ru">моей странице</a>.
+Есть две статьи на Хабре (<a href="https://habrahabr.ru/post/343572/">первая</a>, <a href="https://habr.com/post/354742/">вторая</a>),
+которые суммарно посмотрело около 47т. человек.</p>
+
+<p>Но они оба обладают всеми описанными недостатками.
+Facebook – социальная сеть, а Хабр – <strong>не</strong> то место, где можно просто выговориться.
+Туда можно писать только то, что будет интересно IT сообществу, а не личные заметки типа “как я провел лето”.</p>
+
+<hr />
+
+<p>В итоге я и пришел к тому, что хочу сделать свой личный сайт-визитку-блог.
+Потому что хочу. Потому что могу.
+В нем еще нет некоторой функциональности, типа комментариев,
+куча мертвого кода и неиспользуемых стилей,
+проблемы с дизайном и отступами, нужно разобраться со шрифтами и п.р.
+И пусть его особо никто читать не будет. Я буду рад даже двум посетителям (жене и маме :wink:).</p>
+
+<p>Статистику я, конечно же, сюда подключу. Все равно интересно :stuck_out_tongue_closed_eyes:</p>
+
+<p>На этом статья считается завершенной, а блог объявляется открытым! :tada:</p>
+
+<p>В следующей (а может быть и в нескольких статьях) я расскажу о технической составляющей моего сайта:
+дизайн, используемые технологии, хостинг и прочее.</p>
+
+
+                ]]>
+            </turbo:content>
+        </item>
+        
+    </channel>
+</rss>
