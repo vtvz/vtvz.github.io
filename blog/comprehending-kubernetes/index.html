@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="en">
+    <!--Built at : 2020-01-12 16:55:48-->
+    <head>
+        
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Постигая Kubernetes — мощь и величие</title>
+
+        <link rel="stylesheet" href="/assets/css/bootstrap.css?cb=ae8f943" />
+        <link rel="stylesheet" href="/assets/css/main.css?cb=f5037bf" />
+        <link rel="stylesheet" href="/assets/css/type/budicons.css?cb=9909b3f" />
+        <link rel="stylesheet" href="/assets/css/type/fontello.css?cb=93a9b45" />
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,800&subset=latin,cyrillic" rel="stylesheet" crossorigin="anonymous">
+
+        <link rel="alternate" type="application/rss+xml" title="Виталий Заславский – web-разработчик, который любит свое дело" href="https://vtvz.ru/feed.xml">
+
+        <meta name="theme-color" content="#232323">
+
+        <!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Постигая Kubernetes — мощь и величие" />
+<meta name="author" content="Виталий Заславский" />
+<meta property="og:locale" content="ru_RU" />
+<meta name="description" content="Коротко об основных возможностях Kubernetes — мощном инструменте оркестрации контейнеров" />
+<meta property="og:description" content="Коротко об основных возможностях Kubernetes — мощном инструменте оркестрации контейнеров" />
+<link rel="canonical" href="https://vtvz.ru/blog/comprehending-kubernetes/" />
+<meta property="og:url" content="https://vtvz.ru/blog/comprehending-kubernetes/" />
+<meta property="og:site_name" content="Виталий Заславский – web-разработчик, который любит свое дело" />
+<meta property="og:image" content="https://vtvz.ru/blog/comprehending-kubernetes/cover.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-01-12T00:00:00+03:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:image" content="https://vtvz.ru/blog/comprehending-kubernetes/cover.jpg" />
+<meta property="twitter:title" content="Постигая Kubernetes — мощь и величие" />
+<meta name="twitter:site" content="@vtvz_ru" />
+<meta name="twitter:creator" content="@vtvz_ru" />
+<meta name="google-site-verification" content="08mKX1M9WC3jlftJg-ZY3MsQEQTRV0w5fQaynQLwMXI" />
+<meta name="yandex-verification" content="66bb5c18895519c2" />
+<script type="application/ld+json">
+{"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://vtvz.ru/assets/images/logo-black.png"},"name":"Виталий Заславский"},"author":{"@type":"Person","name":"Виталий Заславский"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://vtvz.ru/blog/comprehending-kubernetes/"},"description":"Коротко об основных возможностях Kubernetes — мощном инструменте оркестрации контейнеров","@type":"BlogPosting","url":"https://vtvz.ru/blog/comprehending-kubernetes/","headline":"Постигая Kubernetes — мощь и величие","dateModified":"2020-01-12T00:00:00+03:00","datePublished":"2020-01-12T00:00:00+03:00","image":"https://vtvz.ru/blog/comprehending-kubernetes/cover.jpg","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+        <script>
+            window.callOnReady = [];
+        </script>
+    </head>
+
+    <body class="full-layout">
+        <div id="preloader"><div id="status"><div class="spinner"></div></div></div>
+
+<div id="bg"></div>
+
+<div class="body-wrapper">
+      <nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+      <a class="btn responsive-menu" data-toggle="collapse" data-target=".navbar-collapse"><i></i></a>
+      <div class="navbar-brand text-center">
+        <a href="/">
+          <img src="/assets/images/logo.svg" alt="Logo" class="logo">
+        </a>
+      </div>
+      <!-- /.navbar-brand -->
+    </div>
+    <!-- /.navbar-header -->
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <!-- <li class="current"> -->
+        <li>
+            <a href="/" class="hint--right" data-hint="Главная"><i class="budicon-home-1"></i><span>Главная</span></a>
+        </li>
+        <li class="current">
+            <a href="/blog/" class="hint--right" data-hint="Блог"><i class="budicon-book-1"></i><span>Блог</span></a>
+        </li>
+      </ul>
+      <!-- /.navbar-nav -->
+    </div>
+    <!-- /.navbar-collapse -->
+  </nav>
+  <!-- /.navbar -->
+
+    <div class="container inner">
+    <div class="blog list-view row">
+        <div class="col-md-8 col-sm-12 content">
+            <div class="blog-posts">
+    
+<div class="post-image post-image--post" style="background-image: url(/blog/comprehending-kubernetes/cover.jpg)">
+    <a href="/blog/comprehending-kubernetes/">
+        <img src="/blog/comprehending-kubernetes/cover.jpg" alt="Постигая Kubernetes — мощь и величие">
+    </a>
+</div>
+
+
+    <div class="post box" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="meta">
+    <span class="meta__item category"><a href="/blog/category/devops/">DevOps</a></span>
+    <time class="meta__item date" itemprop="datePublished" datetime="2020-01-12T00:00:00+03:00">12 янв 2020</time>
+    <span class="meta__item comments" title="Комментарии"><a href="/blog/comprehending-kubernetes/#commento"></a></span>
+    <span class="meta__item reading-time" title="Примерное время чтения">
+        
+
+        <!--1176-->
+
+        
+            ~6 мин.
+        
+    </span>
+
+    <meta itemprop="identifier" content="/blog/comprehending-kubernetes">
+</div>
+
+        <h1 class="post-title">
+            <a href="/blog/comprehending-kubernetes/" itemprop="headline">Постигая Kubernetes — мощь и величие</a>
+        </h1>
+        <article itemprop="articleBody">
+            <p>Kubernetes (куб, k8s) во истину огромный комбайн, который очень много что умеет.
+И не даром его так любят и так боятся.
+Когда начинаешь осваивать какую-то технологию, пытаешься начать с чего-то малого.
+Но где то малое у Kubernetes, с чего нужно начать? Я бы начал с обзора основных его возможностей.
+О чем и пойдет речь в этой статье.</p>
+
+<a id="cut"></a>
+
+<p>Прежде хочу обратить внимание на то, что никакая из описанных здесь возможностей, по моему, не является основной.
+Весь функционал очень сильно пересекается и взаимозависим от остального.</p>
+
+<h2 id="запуск-сервисов-и-мониторинг">Запуск сервисов и мониторинг</h2>
+
+<p>K8S – это оркестратор контейнеров. Его обязанность – запускать ПО, укутанное в контейнер, и следить за его состоянием.</p>
+
+<p>Куб может:</p>
+
+<ul>
+  <li>Запустить сервис;</li>
+  <li>Остановить сервис;</li>
+  <li>Переподнять умерший сервис;</li>
+  <li>Направлять трафик только на те сервисы, которые уже готовы его принять;</li>
+  <li>И наоборот – ограничить трафик на те процессы, которые уже не могут его принять;</li>
+  <li>Проверять сервис на его жизнеспособность и убить его, если он превратился в зомби;</li>
+</ul>
+
+<p>Реальные кейсы:</p>
+
+<ul>
+  <li>Сервер с NodeJS требующий на инициализацию около 1.5 минут.
+Пока сервис не готов, на него нельзя направлять трафик, иначе будет 503 или какой-нибудь timeout.</li>
+  <li>Тоже сервер с NodeJS, но где-то подтекает память.
+Со временем процесс съедает всю доступную ему память и превращается в зомби.
+То есть процесс живой, но он ничего не делает, обработка http запросов тоже сломана.
+K8S со своей стороны закрывает трафик на этот сервис, убивает его и поднимает новый.
+Это не идеальное решение – протечку все еще нужно найти и залатать.
+Но это решение лучше, чем совсем уйти в оффлайн.</li>
+</ul>
+
+<h3 id="как-это-работает">Как это работает</h3>
+
+<p>У куба в БД хранится текущее состояние системы и желаемое.
+В случае, если какой-то сервис погибает, куб пытается его поднять снова. И снова. И снова.
+Этим он похож на обычный супервизор.</p>
+
+<p>Также у куба есть 2 вида проверки (их больше, но эти основные):</p>
+
+<ul>
+  <li>Проверка готовности (<a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-readiness-probes" target="_blank" rel="noopener noreferrer">readiness</a>) отвечает за возможность сервиса принять на себя трафик.
+Когда сервис отвечает успехом, куб начинает направлять туда трафик.
+И наоборот – как только проверка начинает проваливаться, трафик на сервис ограничивается.</li>
+  <li>Проверка жизнеспособности (<a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-a-liveness-http-request" target="_blank" rel="noopener noreferrer">liveness</a>) отвечает на вопрос “Ты живой?”.
+Сервис вполне может быть живым, но не готовым.
+Но если эта проверка проваливается (один или несколько раз; все зависит от настроек),
+куб сначала просит сервис умереть самостоятельно (graceful shutdown),
+а потом, через достаточно короткое время, убивает его.
+Что в свою очередь инициирует запуск этого сервиса вновь.</li>
+</ul>
+
+<figure class="frame">
+  <img src="./rolling-update.png" alt="Стратегия деплоя - RollingUpdate">
+</figure>
+
+<h2 id="деплой">Деплой</h2>
+
+<p>Пожалуй, это одна из самых приятных фич, которую предоставляет куб.
+И вот в чем соль. Представьте, что у вас есть приложение, и вам нужно выкатить новую версию на production.
+Задача в том, чтобы не допустить ни миллисекунды downtime’а.
+В PHP это сделать достаточно просто:</p>
+
+<ul>
+  <li>Загрузить код на сервер;</li>
+  <li>Переключить симлинк на папку с новым кодом;</li>
+  <li>Перезапустить сервер на всякий случай.</li>
+</ul>
+
+<p>Но что делать, если у вас нода? А если на разогрев приложения уходит более двух минут?
+А еще и не один сервер, а несколько?
+Задача эта типовая, и решения бывает разные. Но вот, что можно сделать с помощью k8s.</p>
+
+<p>У куба есть отдельная сущность, которая так и называется <a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/" target="_blank" rel="noopener noreferrer">Deployment</a>.
+Это дает возможность постепенного накатывания новой версии приложения.
+В зависимости от настроек поведение будет разным, но вот один из сценариев:</p>
+
+<ul>
+  <li>Куб создает контейнер с новым приложением;</li>
+  <li>Дожидается его готовности;</li>
+  <li>Убивает контейнер со старым кодом.</li>
+</ul>
+
+<p>Заметьте, как гармонично деплой работает с инструментами мониторинга (liveness &amp; readiness probes).
+Если в прод попадет заведомо сломанное приложение, куб остановит процесс накатывания и оставит код на старой версии.
+Про существующие стратегии деплоя можно почитать <a href="https://habr.com/ru/company/flant/blog/471620/" target="_blank" rel="noopener noreferrer">тут</a>.</p>
+
+<figure class="frame">
+  <img src="./load-balancing.png" alt="Балансировка нагрузки">
+</figure>
+
+<h2 id="балансировка-распределение-и-масштабирование">Балансировка, распределение и масштабирование</h2>
+
+<p>Каждый отдельный сервис может иметь несколько реплик себя. Например, backend.
+В этом случае куб, при правильной настройке конечно, распределяет нагрузку между сервисами,
+что в некоторой степени гарантирует стабильность компонентов.
+Для kubernetes совершенно не важно, сколько реплик имеет сервис.
+Он не завязывается на конкретных экземплярах, но может динамически подключаться к новым и отвязываться от удаленных.</p>
+
+<p>Что решает проблему масштабирования: можно увеличивать и уменьшать количество реплик
+без необходимости делать что-либо вручную – куб сам все подтянет.</p>
+
+<p>Таким образом, благодаря компонентной архитектуре, в k8s есть отдельная сущность <a href="https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/" target="_blank" rel="noopener noreferrer">Horizontal Pod Autoscaler</a>,
+которая и отвечает за масштабирование компонентов в обе стороны – и на увеличение, и на уменьшение.</p>
+
+<p>Также, хостинги, предоставляющие куб как сервис, могут автоматически подключать и удалять
+новые сервера в зависимости от нагрузки. Что, следовательно, может неплохо так сэкономить денег.</p>
+
+<p>Помимо обычной балансировки и масштабирования, которые выполняют исключительно свои задачи,
+иногда нужно не только увеличить количество экземпляров,
+но и как можно более равномерно распределить их по серверам в кластере.
+Или наоборот – группировать некоторые компоненты в пределах одного сервера для уменьшения сетевых задержек.
+Для этой цели существует т.н. <a href="https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity" target="_blank" rel="noopener noreferrer">Affinity and anti-affinity</a> (не знаю, как правильно перевести).
+Тут как раз и задаются правила выбора ноды.</p>
+
+<figure class="frame">
+  <img src="./resources.jpg" alt="Распределение ресурсов">
+</figure>
+
+<h2 id="менеджмент-ресурсов">Менеджмент ресурсов</h2>
+
+<p>Куб умеет:</p>
+
+<ul>
+  <li>Гарантировать (RAM, CPU) доступность ресурсов сервисам.</li>
+  <li>Ограничивать ресурсы сервисам.</li>
+</ul>
+
+<p>Реальные кейсы:</p>
+
+<ul>
+  <li>Есть тестовый кластер, где крутятся более 10 различных проектов.
+На этапе разработки всегда что-то может пойти не так, и некоторые процессы начинают подтекать или выедать весь процессор.
+Куб может ограничивать использование процессора (например, не более 20% одного ядра) и памяти (убивая при этом процесс).</li>
+  <li>В продовой среде может быть несколько серверов (нод в терминологии k8s) и сервисов.
+Грамотное распределение ресурсов будет гарантировать,
+что 2 емких по памяти или процессору процесса не будут лежать вместе и бороться за одни и те же ресурсы.
+Куб будет гарантировать те ресурсы, которые необходимы этому сервису.</li>
+</ul>
+
+<h3 id="как-это-работает-1">Как это работает</h3>
+
+<p>У куба есть 2 способа распределения ресурсов:</p>
+
+<ul>
+  <li>Лимиты (limits) отвечают за ограничения. 
+Если сервис начинает потреблять больше позволенного,
+то куб начинает ограничивать потребление ЦПУ и убивает в случае оперативной памяти</li>
+  <li>Заявки (requests) – это запрашиваемые сущностью ресурсы.
+Указывая кубу в заявках количество процессорного времени и оперативной памяти,
+мы даем ему возможность более обдуманно выбирать сервер, на котором сервис будет чувствовать наиболее комфортно.</li>
+</ul>
+
+<p>И на самом деле это еще не все. Можно указывать квоту на целое пространство имен,
+ограничивая при этом, суммарное ресурсопотребление.
+Можно указать максимально возможное значение по лимитам и заявкам для каждого отдельного пода.</p>
+
+<p>В общем, про это можно почитать <a href="https://cloud.google.com/blog/products/gcp/kubernetes-best-practices-resource-requests-and-limits" target="_blank" rel="noopener noreferrer">тут</a> и посмотреть <a href="https://www.youtube.com/watch?v=10ZR-fbyuSY" target="_blank" rel="noopener noreferrer">здесь</a>.</p>
+
+<p>Выбор ресурсов также влияет на приоритизацию сервисов в случае проблем – кто из них будет убит первым.
+Почитать можно <a href="https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/" target="_blank" rel="noopener noreferrer">тут</a>.</p>
+
+<h2 id="выводы">Выводы</h2>
+
+<p>Kubernetes – не просто модное словечко или хайповая вещица, которая умрет через несколько лет.
+Это очень (очень) мощный и удобный инструмент. Я до сей поры восхищаюсь творением Google.
+Работа с ним доставляет мне массу позитивных эмоций.</p>
+
+<p>Да, он пугает своими размерами и возможностями.
+Я тоже долго не осмеливался подступить к нему.
+В этом мне очень помогла книга <a href="https://www.ozon.ru/context/detail/id/148388621/" target="_blank" rel="noopener noreferrer">Kubernetes в действии (Лукша Марко)</a>.
+Качественная подача материала, читается легко и хороший перевод. <strong>Очень советую</strong>.</p>
+
+<p>Всё описанное в этой статье – только лишь верхушка айсберга.
+Еще есть задачи, сron-задачи, демоны, сервисы с состоянием, подключаемые хранилища, конфигурации и секреты и т.д.
+Но все это приходит с опытом и потребностями.</p>
+
+<hr>
+
+<p>Если есть вопросы, внизу есть блок с комментариями и ссылками на соц. сети.
+Для меня важна любая обратная связь <img class="emoji" title=":blush:" alt=":blush:" src="/assets/images/emoji/unicode/1f60a.png" height="20" width="20"></p>
+
+        </article>
+        <div class="meta tags">
+            
+            <a href="/blog/tag/kubernetes/" itemprop="about">Kubernetes</a>,
+            
+            <a href="/blog/tag/docker/" itemprop="about">Docker</a>
+            
+        </div>
+    </div>
+    <div class="box subscribe">
+        <p>Подписывайтесь на обновления в социальных сетях (и не только):</p>
+        <div class="subscribe__items">
+            <a class="subscribe__link subscribe__link--rss" href="/feed.xml"><i class="fa fa-fw fa-rss"></i><span class="subscribe__label"> RSS</span></a><a class="subscribe__link subscribe__link--telegram" href="tg://resolve?domain=blog_vtvz"><i class="fa fa-fw fa-telegram"></i><span class="subscribe__label"> Telegram</span></a><a class="subscribe__link subscribe__link--vk" href="https://vk.com/blog_vtvz" target="_blank" rel="noopener noreferrer"><i class="fa fa-fw fa-vk"></i><span class="subscribe__label"> VK</span></a><a class="subscribe__link subscribe__link--linkedin" href="https://www.linkedin.com/in/vtvz/" target="_blank" rel="noopener noreferrer"><i class="fa fa-fw fa-linkedin"></i><span class="subscribe__label"> LinkedIn</span></a><a class="subscribe__link subscribe__link--facebook" href="https://www.facebook.com/vtvz.ru" target="_blank" rel="noopener noreferrer"><i class="fa fa-fw fa-facebook"></i><span class="subscribe__label"> Facebook</span></a><a class="subscribe__link subscribe__link--twitter" href="https://twitter.com/vtvz_ru" target="_blank" rel="noopener noreferrer"><i class="fa fa-fw fa-twitter"></i><span class="subscribe__label"> Twitter</span></a>
+        </div>
+    </div>
+    <div class="divide20"></div>
+    <div class="box">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 text-left">
+                
+                <div>« Предыдущая</div>
+                <a class="prev" href="/blog/entrepreneur-calculator/">Калькулятор расходов для ИП по УСН Доходы</a>
+                
+            </div>
+
+            
+        </div>
+    </div>
+    
+    <div class="divide20"></div>
+    <div class="box commento">
+        <div id="commento"></div>
+        <script data-css-override="/assets/css/commento.css" data-no-fonts="true" src="https://cdn.commento.io/js/commento.js"></script>
+    </div>
+</div>
+
+        </div>
+
+        <aside class="col-md-4 col-sm-12 sidebar">
+            
+            <div class="sidebox box widget hidden-sm hidden-xs">
+                <h3 class="widget-title section-title">В этой статье:</h3>
+                <ul class="circled">
+  <li>
+<a href="#%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D0%BA-%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D0%BE%D0%B2-%D0%B8-%D0%BC%D0%BE%D0%BD%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D0%BD%D0%B3">Запуск сервисов и мониторинг</a>
+    <ul>
+      <li><a href="#%D0%BA%D0%B0%D0%BA-%D1%8D%D1%82%D0%BE-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D0%B5%D1%82">Как это работает</a></li>
+    </ul>
+  </li>
+  <li><a href="#%D0%B4%D0%B5%D0%BF%D0%BB%D0%BE%D0%B9">Деплой</a></li>
+  <li><a href="#%D0%B1%D0%B0%D0%BB%D0%B0%D0%BD%D1%81%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0-%D1%80%D0%B0%D1%81%D0%BF%D1%80%D0%B5%D0%B4%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B8-%D0%BC%D0%B0%D1%81%D1%88%D1%82%D0%B0%D0%B1%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5">Балансировка, распределение и масштабирование</a></li>
+  <li>
+<a href="#%D0%BC%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%BC%D0%B5%D0%BD%D1%82-%D1%80%D0%B5%D1%81%D1%83%D1%80%D1%81%D0%BE%D0%B2">Менеджмент ресурсов</a>
+    <ul>
+      <li><a href="#%D0%BA%D0%B0%D0%BA-%D1%8D%D1%82%D0%BE-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D0%B5%D1%82-1">Как это работает</a></li>
+    </ul>
+  </li>
+  <li><a href="#%D0%B2%D1%8B%D0%B2%D0%BE%D0%B4%D1%8B">Выводы</a></li>
+</ul>
+
+            </div>
+            
+
+            <div class="sidebox box widget">
+                <h3 class="widget-title section-title">Категории</h3>
+                <ul class="circled">
+                    
+                    <li><a href="/blog/category/%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B0/">Разработка
+                        [4]</a></li>
+                    
+                    <li><a href="/blog/category/%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%8B/">Сервисы
+                        [2]</a></li>
+                    
+                    <li><a href="/blog/category/livelog/">LiveLog
+                        [1]</a></li>
+                    
+                    <li><a href="/blog/category/android/">Android
+                        [1]</a></li>
+                    
+                    <li><a href="/blog/category/%D0%B8%D0%BF/">ИП
+                        [1]</a></li>
+                    
+                    <li><a href="/blog/category/devops/">DevOps
+                        [1]</a></li>
+                    
+                </ul>
+            </div>
+
+            <div class="sidebox box widget">
+                <h3 class="widget-title section-title">Теги</h3>
+                <ul class="tag-list">
+                    
+                    <li><a class="btn" href="/blog/tag/%D0%B1%D0%BB%D0%BE%D0%B3/">Блог
+                        [2]</a></li>
+                    
+                    <li><a class="btn" href="/blog/tag/%D0%B2%D0%B5%D0%B1-%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B0/">Веб-разработка
+                        [5]</a></li>
+                    
+                    <li><a class="btn" href="/blog/tag/%D0%B1%D0%B0%D0%B7%D1%8B-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85/">Базы данных
+                        [1]</a></li>
+                    
+                    <li><a class="btn" href="/blog/tag/jekyll/">Jekyll
+                        [1]</a></li>
+                    
+                    <li><a class="btn" href="/blog/tag/%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0/">Музыка
+                        [1]</a></li>
+                    
+                    <li><a class="btn" href="/blog/tag/%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%8B/">Сервисы
+                        [2]</a></li>
+                    
+                    <li><a class="btn" href="/blog/tag/%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B/">Программы
+                        [1]</a></li>
+                    
+                    <li><a class="btn" href="/blog/tag/%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D1%8C/">Безопасность
+                        [1]</a></li>
+                    
+                    <li><a class="btn" href="/blog/tag/php/">PHP
+                        [1]</a></li>
+                    
+                    <li><a class="btn" href="/blog/tag/code-style/">Code-style
+                        [1]</a></li>
+                    
+                    <li><a class="btn" href="/blog/tag/android/">Android
+                        [1]</a></li>
+                    
+                    <li><a class="btn" href="/blog/tag/%D0%BE%D0%BF%D1%82%D0%B8%D0%BC%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F/">Оптимизация
+                        [1]</a></li>
+                    
+                    <li><a class="btn" href="/blog/tag/%D0%B8%D0%BF/">ИП
+                        [1]</a></li>
+                    
+                    <li><a class="btn" href="/blog/tag/%D0%B1%D0%B8%D0%B7%D0%BD%D0%B5%D1%81/">Бизнес
+                        [1]</a></li>
+                    
+                    <li><a class="btn" href="/blog/tag/%D0%BD%D0%B0%D0%BB%D0%BE%D0%B3%D0%B8/">Налоги
+                        [1]</a></li>
+                    
+                    <li><a class="btn" href="/blog/tag/%D1%83%D1%81%D0%BD/">УСН
+                        [1]</a></li>
+                    
+                    <li><a class="btn" href="/blog/tag/kubernetes/">Kubernetes
+                        [1]</a></li>
+                    
+                    <li><a class="btn" href="/blog/tag/docker/">Docker
+                        [1]</a></li>
+                    
+                </ul>
+            </div>
+        </aside>
+    </div>
+</div>
+<script src="https://cdn.commento.io/js/count.js"></script>
+
+</div>
+
+
+        <script src="/assets/js/jquery.min.js?cb=0571615"></script>
+        <script src="/assets/js/bootstrap.min.js?cb=1dad3b3"></script>
+        <script src="/assets/js/jquery.themepunch.tools.min.js?cb=f639822"></script>
+        <script src="/assets/js/classie.js?cb=7371f85"></script>
+        <script src="/assets/js/plugins.js?cb=80097c5"></script>
+        <script src="/assets/js/scripts.js?cb=14911ec"></script>
+        <script src="/assets/javascript/bundle.js?cb=9a677a6"></script>
+
+        <script>
+            $(function() {
+                window.callOnReady.forEach(function(item) {
+                    item();
+                });
+            });
+        </script>
+
+        
+        <!-- Yandex.Metrika counter -->
+        <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym({;{ site.analytics.yandex }}, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true };) </script> <noscript><div><img src="https://mc.yandex.ru/watch/31771726" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+        <!-- /Yandex.Metrika counter -->
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131047185-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'UA-131047185-1');
+        </script>
+        
+    </body>
+</html>
