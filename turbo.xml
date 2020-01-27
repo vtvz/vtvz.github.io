@@ -3,7 +3,7 @@
         xmlns:turbo="http://turbo.yandex.ru" version="2.0">
     <channel>
         <title>Vitaly Zaslavsky – DevOps Engineer, who loves his job</title>
-        <link>https://vtvz.ru</link>
+        <link>https://vtvz.me</link>
         <description>DevOps engineer's personal blog about everything. Notes on successes and failures in professional activities, about finding solutions to practical problems, and just about life.
 </description>
         <language>en_GB</language>
@@ -16,7 +16,7 @@
         
         <item turbo="true">
             <title>Постигая Kubernetes — мощь и величие</title>
-            <link>https://vtvz.ru/blog/comprehending-kubernetes/</link>
+            <link>https://vtvz.me/blog/comprehending-kubernetes/</link>
             <pubDate>Sun, 12 Jan 2020 00:00:00 +0300</pubDate>
             <author>Vitaly Zaslavsky</author>
             <turbo:content>
@@ -222,7 +222,7 @@ K8S со своей стороны закрывает трафик на этот
         
         <item turbo="true">
             <title>Калькулятор расходов для ИП по УСН Доходы</title>
-            <link>https://vtvz.ru/blog/entrepreneur-calculator/</link>
+            <link>https://vtvz.me/blog/entrepreneur-calculator/</link>
             <pubDate>Wed, 08 Jan 2020 00:00:00 +0300</pubDate>
             <author>Vitaly Zaslavsky</author>
             <turbo:content>
@@ -311,7 +311,7 @@ window.callOnReady.push(
         
         <item turbo="true">
             <title>Очистка Android от предустановленных программ без Root'а и перепрошивки</title>
-            <link>https://vtvz.ru/blog/android-debloating/</link>
+            <link>https://vtvz.me/blog/android-debloating/</link>
             <pubDate>Mon, 06 Jan 2020 00:00:00 +0300</pubDate>
             <author>Vitaly Zaslavsky</author>
             <turbo:content>
@@ -415,7 +415,7 @@ Root доступ дает не только большие возможност
         
         <item turbo="true">
             <title>Первый успех. Больше ста визитов за неделю</title>
-            <link>https://vtvz.ru/blog/first-success/</link>
+            <link>https://vtvz.me/blog/first-success/</link>
             <pubDate>Sat, 30 Nov 2019 00:00:00 +0300</pubDate>
             <author>Vitaly Zaslavsky</author>
             <turbo:content>
@@ -649,7 +649,7 @@ Root доступ дает не только большие возможност
         
         <item turbo="true">
             <title>Пишем свой Doctrine Annotation Fixer для PHP-CS-Fixer</title>
-            <link>https://vtvz.ru/blog/custom-doctrine-annotation-fixer/</link>
+            <link>https://vtvz.me/blog/custom-doctrine-annotation-fixer/</link>
             <pubDate>Wed, 06 Nov 2019 00:00:00 +0300</pubDate>
             <author>Vitaly Zaslavsky</author>
             <turbo:content>
@@ -979,7 +979,7 @@ Root доступ дает не только большие возможност
         
         <item turbo="true">
             <title>Как правильно хранить пароли</title>
-            <link>https://vtvz.ru/blog/right-way-to-store-passwords/</link>
+            <link>https://vtvz.me/blog/right-way-to-store-passwords/</link>
             <pubDate>Sun, 03 Nov 2019 00:00:00 +0300</pubDate>
             <author>Vitaly Zaslavsky</author>
             <turbo:content>
@@ -1261,7 +1261,7 @@ Root доступ дает не только большие возможност
         
         <item turbo="true">
             <title>Платить или не платить. Или зачем нужны стриминговые платформы</title>
-            <link>https://vtvz.ru/blog/why-audio-streaming-platforms/</link>
+            <link>https://vtvz.me/blog/why-audio-streaming-platforms/</link>
             <pubDate>Mon, 07 Oct 2019 00:00:00 +0300</pubDate>
             <author>Vitaly Zaslavsky</author>
             <turbo:content>
@@ -1464,7 +1464,7 @@ Root доступ дает не только большие возможност
         
         <item turbo="true">
             <title>Jekyll Spoiler Plugin. Куда и как прятать код</title>
-            <link>https://vtvz.ru/blog/jekyll-spoiler-plugin/</link>
+            <link>https://vtvz.me/blog/jekyll-spoiler-plugin/</link>
             <pubDate>Fri, 08 Mar 2019 00:00:00 +0300</pubDate>
             <author>Vitaly Zaslavsky</author>
             <turbo:content>
@@ -1640,7 +1640,7 @@ Root доступ дает не только большие возможност
         
         <item turbo="true">
             <title>HTML to MySQL. Или Веб-скрапинг на практике</title>
-            <link>https://vtvz.ru/blog/html-to-mysql/</link>
+            <link>https://vtvz.me/blog/html-to-mysql/</link>
             <pubDate>Tue, 19 Feb 2019 00:00:00 +0300</pubDate>
             <author>Vitaly Zaslavsky</author>
             <turbo:content>
@@ -2339,7 +2339,7 @@ Root доступ дает не только большие возможност
         
         <item turbo="true">
             <title>Свершилось! Часть первая. Зачем мне блог</title>
-            <link>https://vtvz.ru/blog/openning/</link>
+            <link>https://vtvz.me/blog/openning/</link>
             <pubDate>Wed, 19 Dec 2018 00:00:00 +0300</pubDate>
             <author>Vitaly Zaslavsky</author>
             <turbo:content>
