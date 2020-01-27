@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en_GB"><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="https://vtvz.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vtvz.me/" rel="alternate" type="text/html" hreflang="en_GB" /><updated>2020-01-27T21:06:37+03:00</updated><id>https://vtvz.me/feed.xml</id><title type="html">Vitaly Zaslavsky – DevOps Engineer, who loves his job</title><subtitle>DevOps engineer's personal blog about everything. Notes on successes and failures in professional activities, about finding solutions to practical problems, and just about life.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en_GB"><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="https://vtvz.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vtvz.me/" rel="alternate" type="text/html" hreflang="en_GB" /><updated>2020-01-27T21:20:38+03:00</updated><id>https://vtvz.me/feed.xml</id><title type="html">Vitaly Zaslavsky – DevOps Engineer, who loves his job</title><subtitle>DevOps engineer's personal blog about everything. Notes on successes and failures in professional activities, about finding solutions to practical problems, and just about life.
 </subtitle><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><entry xml:lang="ru"><title type="html">Калькулятор расходов для ИП по УСН Доходы</title><link href="https://vtvz.me/blog/entrepreneur-calculator/" rel="alternate" type="text/html" title="Калькулятор расходов для ИП по УСН Доходы" /><published>2020-01-08T00:00:00+03:00</published><updated>2020-01-08T00:00:00+03:00</updated><id>https://vtvz.me/blog/entrepreneur-calculator</id><content type="html" xml:base="https://vtvz.me/blog/entrepreneur-calculator/">&lt;p&gt;Многие знают, что я индивидуальный предприниматель. И все знают, что я программист.
 А это значит, что любая работа поддающаяся автоматизации должна быть автоматизирована.
 Поэтому я решил создать этот калькулятор. Как для своего удобства, так и во благо других.&lt;/p&gt;
@@ -193,6 +193,8 @@ Root доступ дает не только большие возможност
   &lt;li&gt;Моя подпись (да, все зашло слишком далеко :grin:)&lt;/li&gt;
   &lt;li&gt;и т.д.&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;Update: Некоторые из этих ссылок могут не работать&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;Даже WiFi сеть и Bluetooth у меня обозваны ссылкой на сайт:&lt;/p&gt;
 
@@ -2052,7 +2054,7 @@ Root доступ дает не только большие возможност
 Но если цель блога творческая, а не коммерческая, то это не является сильной проблемой.&lt;/p&gt;
 
 &lt;p&gt;Я написал статью на &lt;a href=&quot;https://www.facebook.com/notes/%D0%B2%D0%B8%D1%82%D0%B0%D0%BB%D0%B8%D0%B9-%D0%B7%D0%B0%D1%81%D0%BB%D0%B0%D0%B2%D1%81%D0%BA%D0%B8%D0%B9/%D0%BC%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%B5%D1%80-%D0%BF%D0%B0%D1%80%D0%BE%D0%BB%D0%B5%D0%B9-%D1%81-%D1%81%D0%B0%D1%85%D0%B0%D1%80%D0%BE%D0%BC/1107932535931749/&quot;&gt;Facebook&lt;/a&gt; про некоторые возможности менеджера паролей.
-Несколько мыслей и заметок там-же на &lt;a href=&quot;https://www.facebook.com/vtvz.ru&quot;&gt;моей странице&lt;/a&gt;.
+Несколько мыслей и заметок там-же на &lt;a href=&quot;https://www.facebook.com/vtvz.me&quot;&gt;моей странице&lt;/a&gt;.
 Есть две статьи на Хабре (&lt;a href=&quot;https://habrahabr.ru/post/343572/&quot;&gt;первая&lt;/a&gt;, &lt;a href=&quot;https://habr.com/post/354742/&quot;&gt;вторая&lt;/a&gt;),
 которые суммарно посмотрело около 47т. человек.&lt;/p&gt;
 
