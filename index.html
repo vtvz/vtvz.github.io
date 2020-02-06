@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-    <!--Built at : 2020-01-27 21:50:17-->
+    <!--Built at : 2020-02-06 21:35:40-->
     <head>
         
         <meta charset="utf-8">
@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="/assets/css/bootstrap.css?cb=ae8f943" />
 
         
-        <link rel="stylesheet" href="/assets/css/main.css?cb=6b5f717" />
+        <link rel="stylesheet" href="/assets/css/main.css?cb=c4a790d" />
         
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,800&subset=latin,cyrillic" rel="stylesheet" crossorigin="anonymous">
@@ -69,7 +69,14 @@
       <ul class="nav navbar-nav">
         <!-- <li class="current"> -->
         <li class="current">
-            <a href="/" class="hint--right" data-hint="Main"><i class="fas fa-home fa-fw"></i><span>Main</span></a>
+            <a href="/#main" class="hint--right" data-hint="Main" data-section-id="main">
+                <i class="fas fa-home fa-fw"></i><span>Main</span>
+            </a>
+        </li>
+        <li>
+            <a href="/#cv" class="hint--right" data-hint="CV" data-section-id="cv">
+                <i class="far fa-address-card fa-fw"></i><span>CV</span>
+            </a>
         </li>
         <li>
             <a href="/blog/" class="hint--right" data-hint="Blog"><i class="fas fa-pencil-alt fa-fw"></i><span>Blog</span></a>
@@ -81,12 +88,40 @@
   </nav>
   <!-- /.navbar -->
 
-    <div class="page-index">
+    <script>
+    window.callOnReady.push(
+        function () {
+            var scrollTo = function () {
+                var id = window.location.hash.slice(1);
+
+                if (!id) return;
+
+                var elem = document.getElementById(decodeURIComponent(id));
+
+                if (!elem) return;
+
+                elem.scrollIntoView({behavior: 'smooth'});
+            };
+
+            scrollTo();
+            window.addEventListener('hashchange', scrollTo);
+
+            var $cvTooltip = $('.cv__tooltip');
+            if ($cvTooltip.length) {
+                $cvTooltip.tooltip({placement: 'top'});
+                $cvTooltip.click(function (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                })
+            }
+        }
+    );
+</script>
+<div class="page-index hidden-print" id="main">
     <header class="page-index__header">
         <h1>
 <span class="bracket">[ </span>Vitaly Zaslavsky<span class="bracket"> ]</span>
 </h1>
-        
         <nav>
             <ul>
                 
@@ -108,7 +143,7 @@
                     </a>
                 </li>
                 
-                <li>
+                <li class="page-index__contact--hideable">
                     <a target="_blank" href="https://vk.com/vtvz_me" class="icon fab fa-vk" title="VKontakte" rel="noopener noreferrer">
                         <span class="label">VKontakte</span>
                     </a>
@@ -128,14 +163,499 @@
                 
             </ul>
         </nav>
+        
+        <p class="page-index__article">
+            Latest Article: <br class="page-index__article-br"> <a href="/blog/big-changes/">Большие перемены</a>
+        </p>
+        
     </header>
 
     <footer class="page-index__footer">
-          <span class="page-index__copyright">© Vitaly Zaslavsky<span class="page-index__footer-links">,
-            <a class="page-index__footer-link" href="tel:+7%20(953)%20543-89-97">+7 (953) 543-89-97</a>,
-            <a class="page-index__footer-link" href="mailto:vtvz@pm.me">vtvz@pm.me</a>
-          </span>
-        </span>
+        <div class="page-index__footer-scroll">
+            <i class="fas fa-long-arrow-alt-down"></i> Scroll Down <i class="fas fa-long-arrow-alt-down"></i>
+        </div>
+    </footer>
+</div>
+<div class="container cv" id="cv">
+    <div class="box post">
+        <h1>
+            Vitaly Zaslavsky
+            <small>Petrozavodsk, Karelia</small>
+        </h1>
+    </div>
+    <div class="box post">
+        <h2>Summary</h2>
+        <p>
+            I have Linux on all my home and job devices.
+            When the headmaster gave me a MacBook I asked him can I install Linux on it. He said "No" and gave me HP.
+            I'm not a Linux-maniac. But for me, it's the most comfortable OS.
+        </p>
+
+        <p>
+            Love everything about DevOps, automatization, and stability. I have a passion to everything I do.
+            Have sufficient experience in Docker.
+            I can <span class="text-muted">(and do)</span> wrap everything in a container.
+            Even if it's a GUI application.
+            <span class="text-muted">(Sometimes it's easier to use Docker than resolve dependencies issues)</span>
+        </p>
+
+        <p>
+            I love to create a local development process for Backend developers
+            <span class="text-muted">(as Backend developer in the past)</span>
+            as comfortable as possible from the very start.
+            Do not allow bad code to be in a project.
+            All code should be well tested,
+            checked in CI on code-style issues and reviewed by at least two persons.
+        </p>
+        <p>
+            I have experience in Scram and Kanban methodologies.
+            Can track time and move cards in the right columns.
+            Sometimes I can annoy a little when trying to clarify every little thing related to my task.
+        </p>
+
+        <p>
+            Have good relations with employees.
+            In the current job, I have the duty is to buy cookies, nuts and other tasty things.
+        </p>
+        <p>
+            I have no bad habits. I don't smoke anddon't have morning headaches after drinking
+            <span class="text-muted">(in a cause, I don't drink to drunk)</span>
+        </p>
+
+        <h3>Languages</h3>
+
+        <ul>
+            <li>
+<strong>Russian</strong> Native</li>
+            <li>
+<strong>English</strong> Conversational <span class="text-muted">(Thanks YouTube)</span>
+</li>
+        </ul>
+    </div>
+    
+    <div class="box post">
+        <h2>Personal Life <small>a little about</small>
+</h2>
+        <p>
+            Some of my current hobbies:
+        </p>
+        <ul>
+            <li>
+                Music. Guitar and Piano playing. Singing sometimes. And (of course) listening.
+                Graduated from music school class classical guitar;
+            </li>
+            <li>
+<a href="/blog/">Blogging</a> about everything. Not only about work;</li>
+            <li>Programming. Yes, even after work. Currently, actively use Golang to automate some things.</li>
+            <li>Archery, classic bow. Most recent hobby;</li>
+        </ul>
+        <p>
+            I'm a happy husband of my beloved wife for 
+    3.5
+     years.
+            She really helps me in my path of life emotionally and physically as a family hearth keeper.
+        </p>
+        <p>
+            We love animals. We have the black pantera-like cat Json
+            <span class="text-muted">(this word always sounds like a name for me)</span>.
+            And elderly hamster Johnny who will be dead soon.
+        </p>
+    </div>
+    <div class="box post">
+        <h2>Employment History</h2>
+
+        <h3>
+            DevOps Engineer — <a href="https://axmit.com/" target="_blank" rel="noopener noreferrer">Axmit</a>
+            <small>November 2019 - Present</small>
+            <small class="pull-right">Petrozavodsk, Republic of Karelia</small>
+            <div class="clearfix"></div>
+        </h3>
+
+        <dl class="dl-horizontal">
+            <dt>DevOps:</dt>
+            <dd>
+                Kubernetes, Helm, Docker, Docker-Compose, Kaniko, GitLab-CI (CI/CD) <span class="text-muted">(sincere love for to of them)</span>
+            </dd>
+            <dt>Cloud Platforms:</dt>
+            <dd>
+                GCP, DigitalOcean, Scaleway
+            </dd>
+            <dt>Monitoring:</dt>
+            <dd>
+                ELK Stack, Prometheus &amp; Grafana, Google StackDriver
+            </dd>
+            <dt>Tools:</dt>
+            <dd>
+                Nginx, RabbitMQ, Redis, PostgreSQL, MySQL, S3
+            </dd>
+            <dt>Linux:</dt>
+            <dd>
+                SSH, Bash, Makefile, Git
+            </dd>
+            <dt>Work Flow:</dt>
+            <dd>
+                Youtrack, Confluence, Kanban, GitFlow
+            </dd>
+            <dt>Extra:</dt>
+            <dd>
+                Ansible, Jenkins, Python, Go
+            </dd>
+        </dl>
+
+        <hr>
+
+        <h3>
+            Middle PHP-developer — <a href="https://axmit.com/" target="_blank" rel="noopener noreferrer">Axmit</a>
+            <small>October 2018 - November 2019</small>
+            <small class="pull-right">Petrozavodsk, Republic of Karelia</small>
+            <div class="clearfix"></div>
+        </h3>
+
+        <dl class="dl-horizontal">
+            <dt>Primary Project:</dt>
+            <dd>
+                <a href="https://www.getzelos.com/" target="_blank" rel="noopener noreferrer">Zelos</a>
+            </dd>
+            <dt>Dev Tools:</dt>
+            <dd>
+                Laravel, Symphony Components, Composer, OAuth (Social Network), JWT, PostgreSQL, Nginx
+            </dd>
+            <dt>Code Quality:</dt>
+            <dd>
+                Codeception, CodeSniffer, PHP-CS-FIXER, PSR-2, PSR-12
+            </dd>
+            <dt>Work Flow:</dt>
+            <dd>
+                Youtrack, Confluence, Scram, GitFlow
+            </dd>
+            <dt>Linux:</dt>
+            <dd>
+                SSH, Bash, Makefile, Git
+            </dd>
+            <dt>DevOps:</dt>
+            <dd>
+                Docker, Docker-Compose, GitLab-CI (CI/CD), Kubernetes, Selenium
+                <span class="text-muted">(As side skills)</span>
+            </dd>
+        </dl>
+
+        <hr>
+
+        <h3>
+            Full Stack Web Developer — <a href="https://molticlub.ru/" target="_blank" rel="noopener noreferrer">Molticlub</a>
+            <small>August 2016 - October 2018</small>
+            <small class="pull-right">Saint Petersburg (remote)</small>
+            <div class="clearfix"></div>
+        </h3>
+
+        <dl class="dl-horizontal">
+            <dt>Primary Project:</dt>
+            <dd>
+                <a href="https://molticlub.ru/" target="_blank" rel="noopener noreferrer">Molticlub</a>
+            </dd>
+            <dt>Backend:</dt>
+            <dd>
+                PHP7.x, Yii2 &amp; Extensions, Symphony Components, Composer
+            </dd>
+            <dt>Code Quality:</dt>
+            <dd>
+                Codeception &amp; Behat &amp; Selenium, CodeSniffer, PSR-2
+            </dd>
+            <dt>Frontend:</dt>
+            <dd>
+                ReactJS &amp; Redux &amp; Saga &amp; React-Router, Bootstrap, Webpack, Gulp, Sass, BEM, ESLint
+            </dd>
+            <dt>Infrastructure:</dt>
+            <dd>
+                MySQL, Apache2, RabbitMQ, WebsocketD
+            </dd>
+            <dt>Linux:</dt>
+            <dd>
+                SSH, Bash, Makefile, Git
+            </dd>
+            <dt>DevOps:</dt>
+            <dd>
+                Vagrant, Docker, Docker-Compose, Bitbucket-Pipelines
+            </dd>
+        </dl>
+
+        <hr>
+
+        <h3>
+            <a href="https://en.wikipedia.org/wiki/House_painter_and_decorator" target="_blank" rel="noopener noreferrer">House Painter</a>
+            — <a href="https://en.wikipedia.org/wiki/Alternative_civilian_service" target="_blank" rel="noopener noreferrer">ACS</a>
+            <small>November 2014 - July 2016</small>
+            <small class="pull-right"><a href="http://bit.ly/vz-videl" target="_blank" rel="noopener noreferrer">Videl</a>, Republic of Karelia</small>
+            <div class="clearfix"></div>
+        </h3>
+
+        <dl class="dl-horizontal">
+            <dt>Primary Project:</dt>
+            <dd>
+                <a href="http://viddi-karelia.ru/" target="_blank" rel="noopener noreferrer">Videl Boarding House</a>
+            </dd>
+            <dt>Backend:</dt>
+            <dd>
+                Knauf Rotband, Primer
+            </dd>
+            <dt>Frontend:</dt>
+            <dd>
+                Weber Vetonit, Emulsion Paint, Enamel Paint
+            </dd>
+            <dt>Extra:</dt>
+            <dd>
+                Cleaning of Premises, Garbage Removal, Wall Crushing
+            </dd>
+        </dl>
+
+        <hr>
+
+        <h3>
+            Full Stack Web Developer — <a href="https://macropod.ru/" target="_blank" rel="noopener noreferrer">Macropod</a>
+            <small>June 2013 - August 2014</small>
+            <small class="pull-right">Saint Petersburg</small>
+            <div class="clearfix"></div>
+        </h3>
+
+        <dl class="dl-horizontal">
+            <dt>Backend:</dt>
+            <dd>
+                PHP5.x <span class="text-muted">(pure)</span>, Apache2, MySQL, PHPMyAdmin
+            </dd>
+            <dt>Frontend:</dt>
+            <dd>
+                CSS3 <span class="text-muted">(pure)</span>, HTML, jQuery &amp; Plugins
+            </dd>
+        </dl>
+    </div>
+    <div class="box post">
+        <h2>Professional Skills <small>Skills Grid</small>
+</h2>
+        <p>
+            All ratings of skills are super subjective.
+            To learn more about my experience contact me with any available way.
+        </p>
+        <p>
+            Some skills have notes. Just hover your cursor (or tap) over the skill with a blue name.
+        </p>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <table class="table skills">
+                    <caption>DevOps</caption>
+                    <tr>
+                        <th>Docker</th>
+                        <td><span class="cv__stars cv__stars--45"></span></td>
+                    </tr>
+                    <tr>
+                        <th><a class="cv__tooltip" href="#" data-title="Use it mostly for comfort local development">
+                            Docker-Compose
+                        </a></th>
+                        <td><span class="cv__stars cv__stars--45"></span></td>
+                    </tr>
+                    <tr>
+                        <th>CI/CD</th>
+                        <td><span class="cv__stars cv__stars--45"></span></td>
+                    </tr>
+                    <tr>
+                        <th>GitLab</th>
+                        <td><span class="cv__stars cv__stars--40"></span></td>
+                    </tr>
+                    <tr>
+                        <th><a class="cv__tooltip" href="#" data-title="Including Kubernetes Nginx Ingress">
+                            Nginx
+                        </a></th>
+                        <td><span class="cv__stars cv__stars--40"></span></td>
+                    </tr>
+                    <tr>
+                        <th><a class="cv__tooltip" href="#" data-title="Don't have experience in configuring and administrating clusters on VPS or Bare Metal. Only cloud solution">
+                            Kubernetes
+                        </a></th>
+                        <td><span class="cv__stars cv__stars--35"></span></td>
+                    </tr>
+                    <tr>
+                        <th>Helm</th>
+                        <td><span class="cv__stars cv__stars--35"></span></td>
+                    </tr>
+                    <tr>
+                        <th>GitLab</th>
+                        <td><span class="cv__stars cv__stars--35"></span></td>
+                    </tr>
+                    <tr>
+                        <th>Prometheus &amp; Grafana</th>
+                        <td><span class="cv__stars cv__stars--30"></span></td>
+                    </tr>
+                    <tr>
+                        <th>ELK Stack</th>
+                        <td><span class="cv__stars cv__stars--30"></span></td>
+                    </tr>
+                    <tr>
+                        <th>Bitbucket</th>
+                        <td><span class="cv__stars cv__stars--30"></span></td>
+                    </tr>
+                    <tr>
+                        <th>Jenkins</th>
+                        <td><span class="cv__stars cv__stars--20"></span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <table class="table skills">
+                    <caption>Backend</caption>
+                    <tr>
+                        <th>PHP</th>
+                        <td><span class="cv__stars cv__stars--45"></span></td>
+                    </tr>
+                    <tr>
+                        <th>Laravel</th>
+                        <td><span class="cv__stars cv__stars--40"></span></td>
+                    </tr>
+                    <tr>
+                        <th>Yii2</th>
+                        <td><span class="cv__stars cv__stars--40"></span></td>
+                    </tr>
+                    <tr>
+                        <th>Codeception</th>
+                        <td><span class="cv__stars cv__stars--40"></span></td>
+                    </tr>
+                    <tr>
+                        <th>SQL</th>
+                        <td><span class="cv__stars cv__stars--40"></span></td>
+                    </tr>
+                    <tr>
+                        <th>Symphony Components</th>
+                        <td><span class="cv__stars cv__stars--35"></span></td>
+                    </tr>
+                    <tr>
+                        <th>MySQL</th>
+                        <td><span class="cv__stars cv__stars--35"></span></td>
+                    </tr>
+                    <tr>
+                        <th>PostgreSQL</th>
+                        <td><span class="cv__stars cv__stars--35"></span></td>
+                    </tr>
+                    <tr>
+                        <th>Apache2</th>
+                        <td><span class="cv__stars cv__stars--30"></span></td>
+                    </tr>
+                    <tr>
+                        <th><a class="cv__tooltip" href="#" data-title="Used it in some pet projects">NodeJS
+                        </a></th>
+                        <td><span class="cv__stars cv__stars--30"></span></td>
+                    </tr>
+                    <tr>
+                        <th><a class="cv__tooltip" href="#" data-title="Know the difference between exchange and queue and the difference between exchange types. No serious experience in administrating, configuring and clustering or dealing with highload">
+                            RabbitMQ
+                        </a></th>
+                        <td><span class="cv__stars cv__stars--25"></span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="clearfix hidden-md hidden-lg"></div>
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <table class="table skills">
+                    <caption>Frontend</caption>
+                    <tr>
+                        <th>JavaScript</th>
+                        <td><span class="cv__stars cv__stars--40"></span></td>
+                    </tr>
+                    <tr>
+                        <th>Html</th>
+                        <td><span class="cv__stars cv__stars--40"></span></td>
+                    </tr>
+                    <tr>
+                        <th>Css</th>
+                        <td><span class="cv__stars cv__stars--40"></span></td>
+                    </tr>
+                    <tr>
+                        <th>Sass &amp; BEM</th>
+                        <td><span class="cv__stars cv__stars--40"></span></td>
+                    </tr>
+                    <tr>
+                        <th>jQuery</th>
+                        <td><span class="cv__stars cv__stars--40"></span></td>
+                    </tr>
+                    <tr>
+                        <th>Bootstrap</th>
+                        <td><span class="cv__stars cv__stars--40"></span></td>
+                    </tr>
+                    <tr>
+                        <th>ReactJS</th>
+                        <td><span class="cv__stars cv__stars--35"></span></td>
+                    </tr>
+                    <tr>
+                        <th>Redux &amp; Saga</th>
+                        <td><span class="cv__stars cv__stars--35"></span></td>
+                    </tr>
+                    <tr>
+                        <th>Jekyll</th>
+                        <td><span class="cv__stars cv__stars--35"></span></td>
+                    </tr>
+                    <tr>
+                        <th>Webpack</th>
+                        <td><span class="cv__stars cv__stars--30"></span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="text-muted">All these tools are used in my blog</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <table class="table skills">
+                    <caption>Extra</caption>
+                    <tr>
+                        <th>Git</th>
+                        <td><span class="cv__stars cv__stars--40"></span></td>
+                    </tr>
+                    <tr>
+                        <th>SSH</th>
+                        <td><span class="cv__stars cv__stars--40"></span></td>
+                    </tr>
+                    <tr>
+                        <th>Bash</th>
+                        <td><span class="cv__stars cv__stars--40"></span></td>
+                    </tr>
+                    <tr>
+                        <th>GitFlow</th>
+                        <td><span class="cv__stars cv__stars--40"></span></td>
+                    </tr>
+                    <tr>
+                        <th>Makefile</th>
+                        <td><span class="cv__stars cv__stars--35"></span></td>
+                    </tr>
+                    <tr>
+                        <th>Youtrack</th>
+                        <td><span class="cv__stars cv__stars--30"></span></td>
+                    </tr>
+                    <tr>
+                        <th>Kanban</th>
+                        <td><span class="cv__stars cv__stars--30"></span></td>
+                    </tr>
+                    <tr>
+                        <th>Scram</th>
+                        <td><span class="cv__stars cv__stars--30"></span></td>
+                    </tr>
+                    <tr>
+                        <th>Confluence</th>
+                        <td><span class="cv__stars cv__stars--25"></span></td>
+                    </tr>
+                    <tr>
+                        <th><a class="cv__tooltip" href="#" data-title="Used it in the past to reproduce production environment in a local machine before I found Docker">
+                            Vagrant
+                        </a></th>
+                        <td><span class="cv__stars cv__stars--25"></span></td>
+                    </tr>
+                    <tr>
+                        <th><a class="cv__tooltip" href="#" data-title="Create a couple of pet applications to automate some things. No experience in real projects">
+                            React Native
+                        </a></th>
+                        <td><span class="cv__stars cv__stars--20"></span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <footer class="box text-center">
+        © 2020 Vitaly Zaslavsky. All rights reserved.
     </footer>
 </div>
 
@@ -146,8 +666,8 @@
         <script src="/assets/js/bootstrap.min.js?cb=1dad3b3"></script>
         <script src="/assets/js/jquery.themepunch.tools.min.js?cb=f639822"></script>
         <script src="/assets/js/classie.js?cb=7371f85"></script>
-        <script src="/assets/js/plugins.js?cb=80097c5"></script>
-        <script src="/assets/js/scripts.js?cb=14911ec"></script>
+        <script src="/assets/js/plugins.js?cb=118f05b"></script>
+        <script src="/assets/js/scripts.js?cb=f2ee61c"></script>
         <script src="/assets/javascript/bundle.js?cb=9a677a6"></script>
 
         <script>
