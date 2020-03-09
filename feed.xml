@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en_GB"><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="https://vtvz.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vtvz.me/" rel="alternate" type="text/html" hreflang="en_GB" /><updated>2020-02-12T23:20:04+03:00</updated><id>https://vtvz.me/feed.xml</id><title type="html">Vitaly Zaslavsky – DevOps Engineer, who loves his job</title><subtitle>DevOps engineer's personal blog about everything. Notes on successes and failures in professional activities, about finding solutions to practical problems, and just about life.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en_GB"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://vtvz.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vtvz.me/" rel="alternate" type="text/html" hreflang="en_GB" /><updated>2020-03-09T19:23:17+03:00</updated><id>https://vtvz.me/feed.xml</id><title type="html">Vitaly Zaslavsky – DevOps Engineer, who loves his job</title><subtitle>DevOps engineer's personal blog about everything. Notes on successes and failures in professional activities, about finding solutions to practical problems, and just about life.
 </subtitle><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><entry xml:lang="ru"><title type="html">Как прокормить целый офис в Петрозаводске</title><link href="https://vtvz.me/blog/cheap-food-for-team/" rel="alternate" type="text/html" title="Как прокормить целый офис в Петрозаводске" /><published>2020-02-12T00:00:00+03:00</published><updated>2020-02-12T00:00:00+03:00</updated><id>https://vtvz.me/blog/cheap-food-for-team</id><content type="html" xml:base="https://vtvz.me/blog/cheap-food-for-team/">&lt;p&gt;IT компании обычно кормят своих работников всякими печеньками, кофе, чаем и прочими плюшками.
 Когда я пришел работать в Axmit, с этим были &lt;del&gt;не&lt;/del&gt;большие проблемы.
 Часто случалось так, что из провизии оставалось только абсолютное ничего.
@@ -38,7 +38,7 @@
 &lt;p&gt;Есть еще “Светофор”. Стоит тоже посмотреть в его сторону, тем у кого есть машина.
 У меня ее нет. Поэтому для меня этот вариант однозначно отпадает.&lt;/p&gt;
 
-&lt;h2 id=&quot;ozon&quot;&gt;&lt;a href=&quot;https://www.ozon.ru/&quot;&gt;Ozon&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;ozon&quot;&gt;Ozon&lt;/h2&gt;
 
 &lt;figure class=&quot;post-image&quot;&gt;
     &lt;img src=&quot;./ozon.png&quot; alt=&quot;Логотип Ozon&quot; /&gt;
@@ -51,7 +51,7 @@
 &lt;p&gt;Я думаю, что прежде, чем что-то покупать в больших количествах где-либо, стоит посмотреть цены в Озоне.
 Ведь как в других магазинах, там бывают очень неплохие скидки.&lt;/p&gt;
 
-&lt;h2 id=&quot;kdv&quot;&gt;&lt;a href=&quot;https://kdvonline.ru/&quot;&gt;KDV&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;kdv&quot;&gt;KDV&lt;/h2&gt;
 
 &lt;figure class=&quot;post-image post-image--left&quot;&gt;
     &lt;img src=&quot;./kdv.png&quot; alt=&quot;Логотип KDV&quot; /&gt;
@@ -80,7 +80,7 @@
 
 &lt;p&gt;В общем, очень хороший магазин, вкусная продукция и выгодные цены. Советую всем посмотреть.&lt;/p&gt;
 
-&lt;h2 id=&quot;хрум-хрум&quot;&gt;&lt;a href=&quot;https://hrumkaem.ru/&quot;&gt;Хрум-Хрум&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;хрум-хрум&quot;&gt;Хрум-Хрум&lt;/h2&gt;
 
 &lt;figure class=&quot;frame post-image&quot;&gt;
     &lt;img src=&quot;./hrum.jpg&quot; alt=&quot;Хрум-Хрум&quot; /&gt;
@@ -99,13 +99,13 @@
 &lt;p&gt;В итоге, в этом магазине я заказывал единожды.
 Этого было достаточно, чтобы убедиться в том, что я точно не буду укладываться в выделенный мне месячный бюджет.&lt;/p&gt;
 
-&lt;h2 id=&quot;без-упаковки&quot;&gt;&lt;a href=&quot;https://vk.com/bez_upakovki_ptz&quot;&gt;“Без упаковки”&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;без-упаковки&quot;&gt;“Без упаковки”&lt;/h2&gt;
 
 &lt;figure class=&quot;frame post-image post-image--left&quot;&gt;
     &lt;img src=&quot;./bez.jpg&quot; alt=&quot;Без упаковки&quot; /&gt;
 &lt;/figure&gt;
 
-&lt;p&gt;Этот магазин очень популярен среди эко-активистов, так как они продают продукцию исключительно в свою тару,
+&lt;p&gt;&lt;a href=&quot;https://vk.com/bez_upakovki_ptz&quot;&gt;Этот магазин&lt;/a&gt; очень популярен среди эко-активистов, так как они продают продукцию исключительно в свою тару,
 либо в биоразлагаемые бумажные пакеты, многоразовые пластиковые контейнеры или стеклянную тару.&lt;/p&gt;
 
 &lt;p&gt;Почти все, что у них есть, продается на развес. С ассортиментом можно ознакомиться в &lt;a href=&quot;https://vk.com/bez_upakovki_ptz&quot;&gt;группе в ВК&lt;/a&gt;.
@@ -122,7 +122,7 @@
 И это в том случае, если там нет очереди. Но если перед вами есть хоть один человек…
 Короче, если у вас не много времени, лучше просто развернуться и уйти.&lt;/p&gt;
 
-&lt;h2 id=&quot;ecogreen&quot;&gt;&lt;a href=&quot;https://vk.com/suxofrukti_petrozavodsk&quot;&gt;Ecogreen&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;ecogreen&quot;&gt;Ecogreen&lt;/h2&gt;
 
 &lt;figure class=&quot;frame&quot;&gt;
     &lt;img src=&quot;./ecogreen.jpg&quot; alt=&quot;Ecogreen&quot; /&gt;
@@ -181,7 +181,7 @@
 &lt;p&gt;Я прекрасно понимаю, что орехи – это дорого.
 Но почему бы не провести эксперимент. Один месяц покупать обычные сладости: печеньки, конфеты, и т.п.
 А потом – орехи и сухофрукты. Сначала дайте полезностям фору – позвольте организму пару недель наесться.
-А потом посчитайте, сколько денег уйдет на то и другое. И тогда делайте выводы – стоит ли оно того (стоит)&lt;/p&gt;</content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Еда" /><category term="Магазины" /><summary type="html">IT компании обычно кормят своих работников всякими печеньками, кофе, чаем и прочими плюшками. Когда я пришел работать в Axmit, с этим были небольшие проблемы. Часто случалось так, что из провизии оставалось только абсолютное ничего. В лучшем случае был чай. В идеальном – упаковка чокопаек. Поэтому я выдвинул инициативу взять на себя обязанности “завхоза”, менеджера по закупке провизии в офис. За полтора года работы в Axmit я успел набраться опыта в этом деле и хочу поделиться с вами. Эта статья рассказывает о том, где в Петрозаводске можно закупаться провизией для своих ребят.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/cheap-food-for-team/cover.jpg" /><media:content medium="image" url="https://vtvz.me/blog/cheap-food-for-team/cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Большие перемены</title><link href="https://vtvz.me/blog/big-changes/" rel="alternate" type="text/html" title="Большие перемены" /><published>2020-02-05T00:00:00+03:00</published><updated>2020-02-05T00:00:00+03:00</updated><id>https://vtvz.me/blog/big-changes</id><content type="html" xml:base="https://vtvz.me/blog/big-changes/">&lt;p&gt;За последние несколько месяцев на моем сайте произошли тотальные изменения.
+А потом посчитайте, сколько денег уйдет на то и другое. И тогда делайте выводы – стоит ли оно того (стоит) :fox:&lt;/p&gt;</content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Еда" /><category term="Магазины" /><summary type="html">IT компании обычно кормят своих работников всякими печеньками, кофе, чаем и прочими плюшками. Когда я пришел работать в Axmit, с этим были небольшие проблемы. Часто случалось так, что из провизии оставалось только абсолютное ничего. В лучшем случае был чай. В идеальном – упаковка чокопаек. Поэтому я выдвинул инициативу взять на себя обязанности “завхоза”, менеджера по закупке провизии в офис. За полтора года работы в Axmit я успел набраться опыта в этом деле и хочу поделиться с вами. Эта статья рассказывает о том, где в Петрозаводске можно закупаться провизией для своих ребят.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/cheap-food-for-team/cover.jpg" /><media:content medium="image" url="https://vtvz.me/blog/cheap-food-for-team/cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Большие перемены</title><link href="https://vtvz.me/blog/big-changes/" rel="alternate" type="text/html" title="Большие перемены" /><published>2020-02-05T00:00:00+03:00</published><updated>2020-02-05T00:00:00+03:00</updated><id>https://vtvz.me/blog/big-changes</id><content type="html" xml:base="https://vtvz.me/blog/big-changes/">&lt;p&gt;За последние несколько месяцев на моем сайте произошли тотальные изменения.
 Он по-прежнему темный и на фоне лис &lt;span class=&quot;text-muted&quot;&gt;(не енот!)&lt;/span&gt;,
 но после последних обновлений он никогда не будет прежним. Это что-то вроде отчетного поста о моих трудах и результатах.&lt;/p&gt;
 

@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-    <!--Built at : 2020-02-12 23:20:04-->
+    <!--Built at : 2020-03-09 19:23:18-->
     <head>
         
         <meta charset="utf-8">
@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="/assets/css/bootstrap.css?cb=ae8f943" />
 
         
-        <link rel="stylesheet" href="/assets/css/main.css?cb=55d49f4" />
+        <link rel="stylesheet" href="/assets/css/main.css?cb=91d7f65" />
         
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,800&subset=latin,cyrillic" rel="stylesheet" crossorigin="anonymous">
@@ -22,7 +22,7 @@
         <meta name="theme-color" content="#232323">
 
         <!-- Begin Jekyll SEO tag v2.6.1 -->
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v4.0.0" />
 <meta property="og:title" content="HTML to MySQL. Или Веб-скрапинг на практике" />
 <meta name="author" content="Vitaly Zaslavsky" />
 <meta property="og:locale" content="ru" />
@@ -42,7 +42,7 @@
 <meta name="google-site-verification" content="40uemu1o4UDeTOeeLKqJVoaPU4CVUjlGI5D9AI1EkNE" />
 <meta name="yandex-verification" content="fa3eb4fcd2ebc4ad" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Vitaly Zaslavsky"},"description":"Как перенести данные из одного сайта в другой, если нет доступа к БД","@type":"BlogPosting","url":"https://vtvz.me/blog/html-to-mysql/","headline":"HTML to MySQL. Или Веб-скрапинг на практике","dateModified":"2019-02-19T00:00:00+03:00","datePublished":"2019-02-19T00:00:00+03:00","image":"https://vtvz.me/assets/images/logo-black.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://vtvz.me/blog/html-to-mysql/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://vtvz.me/assets/images/logo-black.png"},"name":"Vitaly Zaslavsky"},"@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"Vitaly Zaslavsky"},"description":"Как перенести данные из одного сайта в другой, если нет доступа к БД","headline":"HTML to MySQL. Или Веб-скрапинг на практике","@type":"BlogPosting","dateModified":"2019-02-19T00:00:00+03:00","datePublished":"2019-02-19T00:00:00+03:00","image":"https://vtvz.me/assets/images/logo-black.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://vtvz.me/blog/html-to-mysql/"},"url":"https://vtvz.me/blog/html-to-mysql/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://vtvz.me/assets/images/logo-black.png"},"name":"Vitaly Zaslavsky"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
         <script>
@@ -51,7 +51,7 @@
     </head>
 
     <body class="full-layout">
-        <div id="preloader"><div id="status"><div class="spinner"></div></div></div>
+        <div id="preloader"><div class="preloader__spinner"></div></div>
 
 <div id="bg"></div>
 
@@ -117,7 +117,7 @@
         <h1 class="post-title">
             <a href="/blog/html-to-mysql/" itemprop="headline">HTML to MySQL. Или Веб-скрапинг на практике</a>
         </h1>
-        <article itemprop="articleBody">
+        <article itemprop="articleBody" class="js-emojify">
             <p>Один мой хороший знакомый и коллега обратился ко мне за помощью. Он делал для одной компании новый сайт взамен старому.
 Данные со старого, естественно, должны были переместиться на новый.
 В этом и заключалась моя задача. Было только одно простое условие – доступа к БД старого сайта ни у меня, ни у него не было.</p>
@@ -128,7 +128,7 @@
 
 <p><em>// Не ждите высокотехнологичных мемуаров. 
 Статья предназначена скорее для новичков среднего уровня, поэтому излишне подробная.
-Но может быть и разработчики уровня повыше смогут найти для себя интересные подходы к решению описанной проблемы <img class="emoji" title=":blush:" alt=":blush:" src="/assets/images/emoji/unicode/1f60a.png" height="20" width="20"></em></p>
+Но может быть и разработчики уровня повыше смогут найти для себя интересные подходы к решению описанной проблемы :blush:</em></p>
 
 <h2 id="что-имеется">Что имеется</h2>
 
@@ -780,7 +780,7 @@
 
 <p>Либо можно было воспользоваться сервисом <a href="https://dadata.ru/api/clean/" target="_blank" rel="noopener noreferrer">Dadata</a>, который и квартиру в адресе определит, и ФИО из любого формата к красивому приведет.</p>
 
-<p>То есть решения были, только заказчику этого было не нужно <img class="emoji" title=":grin:" alt=":grin:" src="/assets/images/emoji/unicode/1f601.png" height="20" width="20"></p>
+<p>То есть решения были, только заказчику этого было не нужно :grin:</p>
 
 <h2 id="в-качестве-заключения">В качестве заключения</h2>
 
@@ -799,7 +799,7 @@
 <p>А мораль сей статьи такова: автоматизируйте все, что автоматизируется.
 Используйте все подручные средства, чтобы компьютер сделал за вас бо́льшую часть работы.
 Не делайте руками то, что можно сделать скриптом на 150 строк.
-В определенный момент вы поймете – это окупается <img class="emoji" title=":wink:" alt=":wink:" src="/assets/images/emoji/unicode/1f609.png" height="20" width="20"></p>
+В определенный момент вы поймете – это окупается :wink:</p>
 
 
         </article>
@@ -985,11 +985,11 @@
 
         <script src="/assets/js/jquery.min.js?cb=0571615"></script>
         <script src="/assets/js/bootstrap.min.js?cb=1dad3b3"></script>
-        <script src="/assets/js/jquery.themepunch.tools.min.js?cb=f639822"></script>
-        <script src="/assets/js/classie.js?cb=7371f85"></script>
-        <script src="/assets/js/plugins.js?cb=118f05b"></script>
-        <script src="/assets/js/scripts.js?cb=f2ee61c"></script>
+        <!-- <script src="/assets/js/jquery.themepunch.tools.min.js?cb=f639822"></script>-->
+        <script src="/assets/js/plugins.js?cb=918645b"></script>
+        <script src="/assets/js/scripts.js?cb=c4ae8b0"></script>
         <script src="/assets/javascript/bundle.js?cb=9a677a6"></script>
+        <script src="/assets/js/emoji.min.js?cb=cab785e"></script>
 
         <script>
             $(function() {

@@ -1,32 +1,6 @@
 $(document).ready(function () {
     'use strict';
     /*-----------------------------------------------------------------------------------*/
-    /*	REVOLUTION
-    /*-----------------------------------------------------------------------------------*/
-
-    /*-----------------------------------------------------------------------------------*/
-    /*	PRETTIFY
-    /*-----------------------------------------------------------------------------------*/
-    window.prettyPrint && prettyPrint();
-
-    /*-----------------------------------------------------------------------------------*/
-    /*	SLIDER PRO
-    /*-----------------------------------------------------------------------------------*/
-    $('.portfolio-slider').sliderPro({
-        width:           1070,
-        height:          600,
-        fade:            true,
-        arrows:          true,
-        buttons:         false,
-        autoHeight:      true,
-        autoScaleLayers: true,
-        thumbnailArrows: false,
-        autoplay:        false,
-        slideDistance:   0,
-        thumbnailWidth:  125,
-        thumbnailHeight: 80,
-    });
-    /*-----------------------------------------------------------------------------------*/
     /*	IMAGE ICON HOVER
     /*-----------------------------------------------------------------------------------*/
     $('.icon-overlay a').prepend('<span class="icn-more"></span>');
@@ -63,13 +37,7 @@ $(document).ready(function () {
             }
         });
     });
-    /*-----------------------------------------------------------------------------------*/
-    /*	TABS & TOGGLE
-    /*-----------------------------------------------------------------------------------*/
-    $('.tabs.tabs-top').easytabs({
-        animationSpeed: 300,
-        updateHash:     false,
-    });
+
     $('.panel-group').find('.panel-default:has(".in")').addClass('panel-active');
     $('.panel-group').on('shown.bs.collapse', function (e) {
         $(e.target).closest('.panel-default').addClass(' panel-active');
@@ -79,10 +47,6 @@ $(document).ready(function () {
     /*-----------------------------------------------------------------------------------*/
     /*	MENU
     /*-----------------------------------------------------------------------------------*/
-    $('.js-activated').dropdownHover({
-        instantlyCloseOthers: false,
-        delay:                0,
-    }).dropdown();
     $('.dropdown-menu a, .social .dropdown-menu, .social .dropdown-menu input').click(function (e) {
         e.stopPropagation();
     });
@@ -104,7 +68,7 @@ $(document).ready(function () {
 /*	PRELOADER
 /*-----------------------------------------------------------------------------------*/
 $(window).load(function () {
-    $('#status').fadeOut();
+    $('.preloader__spinner').fadeOut();
     $('#preloader').delay(350).fadeOut('slow');
     $('body').delay(350).css({ 'overflow': 'visible' }).addClass('loaded');
 });
@@ -117,18 +81,16 @@ function init() {
     window.addEventListener('scroll', function (e) {
         var distanceY = window.pageYOffset || document.documentElement.scrollTop,
             shrinkOn = 50,
-            header = document.querySelector('.navbar');
+            header = $('.navbar');
         if (distanceY > shrinkOn) {
-            classie.add(header, 'fixed');
+            header.addClass('fixed');
         } else {
-            if (classie.has(header, 'fixed')) {
-                classie.remove(header, 'fixed');
-            }
+            header.removeClass('fixed');
         }
     });
 }
 
-window.onload = init();
+window.onload = init;
 
 /*-----------------------------------------------------------------------------------*/
 /*	SCROLL NAVIGATION HIGHLIGHT
