@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-    <!--Built at : 2020-03-09 19:23:19-->
+    <!--Built at : 2020-03-14 15:11:24-->
     <head>
         
         <meta charset="utf-8">
@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="/assets/css/bootstrap.css?cb=ae8f943" />
 
         
-        <link rel="stylesheet" href="/assets/css/main.css?cb=91d7f65" />
+        <link rel="stylesheet" href="/assets/css/main.css?cb=00daf94" />
         
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,800&subset=latin,cyrillic" rel="stylesheet" crossorigin="anonymous">
@@ -177,14 +177,21 @@
     </footer>
 </div>
 <div class="container cv" id="cv">
-    <div class="box post">
+    <div class="box post cv__head">
         <h1>
+            <img src="/assets/images/logo-black.png" alt="Logo" class="cv__logo visible-print-inline-block">
+
             Vitaly Zaslavsky
             <small>Petrozavodsk, Karelia</small>
         </h1>
     </div>
     <div class="box post">
         <h2>Summary</h2>
+
+        <div class="cv__photo">
+            <img src="/assets/images/cv-photo.jpg" alt="">
+        </div>
+
         <p>
             I have Linux on all my home and job devices.
             When the headmaster gave me a MacBook I asked him can I install Linux on it. He said "No" and gave me HP.
@@ -218,7 +225,7 @@
             In the current job, I have the duty is to buy cookies, nuts and other tasty things.
         </p>
         <p>
-            I have no bad habits. I don't smoke anddon't have morning headaches after drinking
+            I have no bad habits. I don't smoke and don't have morning headaches after drinking
             <span class="text-muted">(in a cause, I don't drink to drunk)</span>
         </p>
 
@@ -233,7 +240,7 @@
         </ul>
     </div>
     
-    <div class="box post">
+    <div class="box post cv__last-on-page">
         <h2>Personal Life <small>a little about</small>
 </h2>
         <p>
@@ -261,7 +268,7 @@
             And elderly hamster Johnny who will be dead soon.
         </p>
     </div>
-    <div class="box post">
+    <div class="box post cv__new-page cv__last-on-page">
         <h2>Employment History</h2>
 
         <h3>
@@ -428,14 +435,14 @@
             </dd>
         </dl>
     </div>
-    <div class="box post">
+    <div class="box post cv__new-page cv__last-on-page">
         <h2>Professional Skills <small>Skills Grid</small>
 </h2>
         <p>
             All ratings of skills are super subjective.
             To learn more about my experience contact me with any available way.
         </p>
-        <p>
+        <p class="hidden-print">
             Some skills have notes. Just hover your cursor (or tap) over the skill with a blue name.
         </p>
         <div class="row">
@@ -481,11 +488,11 @@
                         <td><span class="cv__stars cv__stars--35"></span></td>
                     </tr>
                     <tr>
-                        <th>Prometheus &amp; Grafana</th>
-                        <td><span class="cv__stars cv__stars--30"></span></td>
+                        <th>ELK Stack</th>
+                        <td><span class="cv__stars cv__stars--35"></span></td>
                     </tr>
                     <tr>
-                        <th>ELK Stack</th>
+                        <th>Prometheus &amp; Grafana</th>
                         <td><span class="cv__stars cv__stars--30"></span></td>
                     </tr>
                     <tr>
@@ -650,11 +657,11 @@
                         </a></th>
                         <td><span class="cv__stars cv__stars--20"></span></td>
                     </tr>
-                </table>
+            </table>
             </div>
         </div>
     </div>
-    <footer class="box text-center">
+    <footer class="box text-center hidden-print">
         © 2020 Vitaly Zaslavsky. All rights reserved.
     </footer>
 </div>
