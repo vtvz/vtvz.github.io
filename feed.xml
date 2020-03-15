@@ -1,5 +1,118 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en_GB"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://vtvz.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vtvz.me/" rel="alternate" type="text/html" hreflang="en_GB" /><updated>2020-03-14T15:11:23+03:00</updated><id>https://vtvz.me/feed.xml</id><title type="html">Vitaly Zaslavsky – DevOps Engineer, who loves his job</title><subtitle>DevOps engineer's personal blog about everything. Notes on successes and failures in professional activities, about finding solutions to practical problems, and just about life.
-</subtitle><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><entry xml:lang="ru"><title type="html">Как прокормить целый офис в Петрозаводске</title><link href="https://vtvz.me/blog/cheap-food-for-team/" rel="alternate" type="text/html" title="Как прокормить целый офис в Петрозаводске" /><published>2020-02-12T00:00:00+03:00</published><updated>2020-02-12T00:00:00+03:00</updated><id>https://vtvz.me/blog/cheap-food-for-team</id><content type="html" xml:base="https://vtvz.me/blog/cheap-food-for-team/">&lt;p&gt;IT компании обычно кормят своих работников всякими печеньками, кофе, чаем и прочими плюшками.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en_GB"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://vtvz.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vtvz.me/" rel="alternate" type="text/html" hreflang="en_GB" /><updated>2020-03-15T15:16:20+03:00</updated><id>https://vtvz.me/feed.xml</id><title type="html">Vitaly Zaslavsky – DevOps Engineer, who loves his job</title><subtitle>DevOps engineer's personal blog about everything. Notes on successes and failures in professional activities, about finding solutions to practical problems, and just about life.
+</subtitle><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><entry xml:lang="ru"><title type="html">Ковыряясь под капотом #1</title><link href="https://vtvz.me/blog/under-the-hood-1st/" rel="alternate" type="text/html" title="Ковыряясь под капотом #1" /><published>2020-03-15T00:00:00+03:00</published><updated>2020-03-15T00:00:00+03:00</updated><id>https://vtvz.me/blog/under-the-hood-1st</id><content type="html" xml:base="https://vtvz.me/blog/under-the-hood-1st/">&lt;p&gt;Мне кажется, что не само “блоговедение” доставляет мне удовольствие, сколько его разработка и улучшение.
+За последний месяц не было написано ни одной статьи.
+А последняя техническая статья была опубликована более &lt;strong&gt;двух&lt;/strong&gt; месяцев назад.
+Но зато за это время мой сайт, а особенно главная страница, претерпел несколько мелких (и не мелких) улучшений.&lt;/p&gt;
+
+&lt;!--cut--&gt;
+
+&lt;p&gt;Именно поэтому я решил вынести подобные статьи в отдельную категорию с нумерацией.
+Как настоящий программист я должен был начать отсчет с нуля.
+Но формально, нулевой пост &lt;a href=&quot;/blog/big-changes/&quot;&gt;уже был&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Думаю, теперь я &lt;strong&gt;всё&lt;/strong&gt; буду писать в блог. Я не умею писать маленькие посты.
+Каждый пост в социальных сетях больше похож на сочинение или целую повесть, чем на короткую историю.
+Пусть это будет даже небольшая заметка. Но для меня куда важнее улучшать и продвигать свой блог, чем профили в соц. сетях.
+Пусть это даже не так эффективно.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;figure class=&quot;frame&quot;&gt;
+  &lt;a href=&quot;./meeting.png&quot; target=&quot;_blank&quot;&gt;
+    &lt;img src=&quot;./meeting.png&quot; alt=&quot;Приглашение на митап&quot; /&gt;
+  &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Прежде, чем приступить к повествованию, хочу сделать небольшой анонс.
+26 марта в 19:00 я буду выступать с публичным докладом,
+где расскажу про свою работу, мою роль в компании и используемые инструменты.&lt;/p&gt;
+
+&lt;p&gt;Для этого нужно зарегистрироваться по этой ссылке: &lt;br /&gt;
+&lt;a href=&quot;https://forms.gle/iuTm97u1s1ui82ga8&quot;&gt;Регистрация на встречу IT Networking #6&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Приходите, будет интересно :fox:&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;А теперь к обновлениям. Что было сделано:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Спасибо &lt;a href=&quot;https://vk.com/dimkabeloved&quot;&gt;Дмитрию Белову&lt;/a&gt; за замечательное фото,
+которое я, конечно же, добавил в свое резюме.
+Ведь любое резюме должно иметь фотографию.
+Самым сложным было заставить картинку хорошо смотреться на всех устройствах.
+До сей поры не уверен, что она хорошо отображается на узкоэкранных девайсах.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Пока это не пригодилось, но вполне может наступить такой момент, 
+что потенциальный работодатель захочет не онлайн версию резюме, а PDF файлик на почту.
+Перспектива верстать страницы в каком-нибудь LibreOffice Writer мне вообще не улыбается по одной простой причине:
+придется поддерживать актуальную информацию сразу в двух местах, из-за чего может произойти рассинхрон.
+Но есть один простой и очевидный способ сделать из странички сайта PDF – “распечатать” его.
+Bootstrap из коробки предоставляет стили для печати. Но как уродливо он это делает!
+Пришлось столкнуться с двумя проблемами:&lt;/p&gt;
+    &lt;ol&gt;
+      &lt;li&gt;Обычный А4 формат листа указанный при печати имеет ширину меньше 768 пикселей.
+ Это значит, что вся колоночная верстка размазывается на всю ширину листа.
+ Документ считается “small” только если он шире 270mm.
+ Поэтому пришлось уйти от стандартов и указать размер документа 271mm x 383mm. Тем не менее, пропорции 1:√2 я сохранил.&lt;/li&gt;
+      &lt;li&gt;Bootstrap очень агрессивно накладывает стили для печати,
+ из-за чего пришлось натыкать &lt;code class=&quot;highlighter-rouge&quot;&gt;!important&lt;/code&gt; столько, сколько не делал этого за всю свою жизнь.
+ Например, он отключает фон всем элементам страницы, выкрашивает весь текст в черный цвет,
+ а ссылкам &lt;code class=&quot;highlighter-rouge&quot;&gt;a[href]&lt;/code&gt; справа добавляет содержимое &lt;code class=&quot;highlighter-rouge&quot;&gt;href&lt;/code&gt; в скобках.
+ Выглядит это примерно так:&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;figure class=&quot;frame&quot;&gt;
+  &lt;a href=&quot;./broken-links.png&quot; target=&quot;_blank&quot;&gt;
+    &lt;img src=&quot;./broken-links.png&quot; alt=&quot;Уродливые ссылки&quot; /&gt;
+  &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Тем не менее, я его победил и результатом очень даже доволен.
+Единственная проблема, которая осталась, и которую я, вероятно, решать не буду –
+нормально печатать может только Chrome, и то с несколькими донастройками: выключенные колонтитулы и включенный фон.
+Firefox в этом плане очень проигрывает.
+Как минимум потому, что у него нет preview текста перед печатью (или я просто не нашел).&lt;/p&gt;
+
+&lt;p&gt;Вот вам небольшая подсказка. Если вам тоже нужно отдебажить то, как будет выглядеть сайт для печати, сделайте следующее:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Откройте панель разработчика &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+Shift+I&lt;/code&gt;;&lt;/li&gt;
+  &lt;li&gt;Жмякните 3 точки сверху справа, около крестика &lt;code class=&quot;highlighter-rouge&quot;&gt;1&lt;/code&gt;;&lt;/li&gt;
+  &lt;li&gt;“More tools” &lt;code class=&quot;highlighter-rouge&quot;&gt;2&lt;/code&gt;;&lt;/li&gt;
+  &lt;li&gt;“Rendering” &lt;code class=&quot;highlighter-rouge&quot;&gt;3&lt;/code&gt;;&lt;/li&gt;
+  &lt;li&gt;“Emulate CSS media type”;&lt;/li&gt;
+  &lt;li&gt;“Print” &lt;code class=&quot;highlighter-rouge&quot;&gt;4&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure class=&quot;frame&quot;&gt;
+  &lt;a href=&quot;./print-media-type.png&quot; target=&quot;_blank&quot;&gt;
+    &lt;img src=&quot;./print-media-type.png&quot; alt=&quot;Инструкция включения режима печати&quot; /&gt;
+  &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;В итоге вам все равно придется проверять, как будет выглядеть документ на листе, используя реальный режим печати &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+P&lt;/code&gt;,
+потому что, как я говорил ранее, верстка при итоговой печати отличается от отображаемого в браузере.
+Но этого должно быть достаточно, чтобы разобраться с цветами, шрифтами и отступами.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Ну и последняя супер мелочь. Обратите внимание на индикатор загрузки страницы. Теперь он навороченный :grin:.
+Взял я его &lt;a href=&quot;https://freefrontend.com/css-loaders/&quot;&gt;тут&lt;/a&gt;.
+Там есть много впечатляющих примеров, но этот мне понравился своей относительной простотой.&lt;/p&gt;
+
+&lt;p&gt;Также он был вынесен в отдельный файл со стилями. Это критично для устройств с медленным интернетом.
+Пока в коде сайта всё еще много мусора, поэтому загружается он немного дольше желаемого.
+Но индикатор должен отобразиться как можно раньше.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;У меня есть идея, сделать на сайте раздел достижений, прям как в играх – иметь историю моих побед прямо тут.
+Туда я мог бы складывать не только сухую информацию о факте победы над проблемой,
+но и полезные материалы, которые я нарыл во время решения задач :fox:&lt;/p&gt;</content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Блог" /><category term="Веб-разработка" /><category term="Jekyll" /><category term="Обновления" /><summary type="html">Мне кажется, что не само “блоговедение” доставляет мне удовольствие, сколько его разработка и улучшение. За последний месяц не было написано ни одной статьи. А последняя техническая статья была опубликована более двух месяцев назад. Но зато за это время мой сайт, а особенно главная страница, претерпел несколько мелких (и не мелких) улучшений.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/under-the-hood-1st/cover.jpg" /><media:content medium="image" url="https://vtvz.me/blog/under-the-hood-1st/cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Как прокормить целый офис в Петрозаводске</title><link href="https://vtvz.me/blog/cheap-food-for-team/" rel="alternate" type="text/html" title="Как прокормить целый офис в Петрозаводске" /><published>2020-02-12T00:00:00+03:00</published><updated>2020-02-12T00:00:00+03:00</updated><id>https://vtvz.me/blog/cheap-food-for-team</id><content type="html" xml:base="https://vtvz.me/blog/cheap-food-for-team/">&lt;p&gt;IT компании обычно кормят своих работников всякими печеньками, кофе, чаем и прочими плюшками.
 Когда я пришел работать в Axmit, с этим были &lt;del&gt;не&lt;/del&gt;большие проблемы.
 Часто случалось так, что из провизии оставалось только абсолютное ничего.
 В лучшем случае был чай. В идеальном – упаковка чокопаек.&lt;/p&gt;
@@ -1605,160 +1718,4 @@ Root доступ дает не только большие возможност
 &lt;p&gt;А пользу я и члены моей семьи ощущем каждый день по дороге с работы и обратно, на работе или в пути в другой город.&lt;/p&gt;
 
 &lt;p&gt;В любом случае, любой из сервисов из списка предоставляет бесплатный (или очень дешевый) период без ограничений.
-Попробуйте. Возможно понравится и Вам :blush:&lt;/p&gt;</content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Музыка" /><category term="Сервисы" /><summary type="html">Как-то исторически сложилось, что после того, как в ВК стали активно внедрять меры по защите авторских прав, платных подписок и прочие ограничения на прослушиваине музыки, я перешел на Яндекс.Музыку, в качестве основного источника музыкального дофамина. До этого были активные попытки использовать Google Music, но приложение оказалось тяжелым (в техническом плане), запутанным и не удобным для использования. Через какое-то время была куплена подписка за 99р. в месяц, потом полноценная в 169р/м, а в итоге семейная за 300р/м на 4 человека. Сравнение музыкальных сервисов будет в следующей статье. А в этой хочу рассказать, почему лучше выбрать один из них, чем пользоваться ВК, и почему они стоят своих денег.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/assets/images/logo-black.png" /><media:content medium="image" url="https://vtvz.me/assets/images/logo-black.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Jekyll Spoiler Plugin. Куда и как прятать код</title><link href="https://vtvz.me/blog/jekyll-spoiler-plugin/" rel="alternate" type="text/html" title="Jekyll Spoiler Plugin. Куда и как прятать код" /><published>2019-03-08T00:00:00+03:00</published><updated>2019-03-08T00:00:00+03:00</updated><id>https://vtvz.me/blog/jekyll-spoiler-plugin</id><content type="html" xml:base="https://vtvz.me/blog/jekyll-spoiler-plugin/">&lt;p&gt;Когда писал &lt;a href=&quot;/blog/html-to-mysql/&quot;&gt;предыдущую статью&lt;/a&gt;, столкнулся с одной простой проблемой: большие куски кода занимали больше места, чем сам текст.&lt;/p&gt;
-
-&lt;p&gt;Поиск готового решения для спойлеров привел меня на вот &lt;a href=&quot;https://burrowl.com/blog/2015/05/23/spoiler-block/&quot;&gt;эту страничку&lt;/a&gt;.
-Решение простое и гениальное, но имело один большой недостаток: текст внутри спойлера не форматировался.&lt;/p&gt;
-
-&lt;p&gt;Свое решение я опишу в этой статье.&lt;/p&gt;
-
-&lt;!--cut--&gt;
-&lt;details class=&quot;spoiler&quot;&gt;&lt;summary class=&quot;spoiler-title&quot;&gt;TL;DR. Для тех, кому лень читать целиком&lt;/summary&gt;&lt;div class=&quot;spoiler-body&quot;&gt;
-&lt;p&gt;Это нужно положить в папку &lt;code class=&quot;highlighter-rouge&quot;&gt;_plugins&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Jekyll&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SpoilerBlock&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Liquid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Block&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initialize&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tag_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;markup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tokens&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;super&lt;/span&gt;
-      &lt;span class=&quot;vi&quot;&gt;@summary&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;markup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;strip&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;site&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;registers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;converter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;find_converter_instance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Jekyll&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Converters&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Markdown&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-      &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&amp;lt;details class=&quot;spoiler&quot;&amp;gt;'&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&amp;lt;summary class=&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;spoiler-title&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@summary&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;empty?&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Открыть'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@summary&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;lt;/summary&amp;gt;&quot;&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&amp;lt;div class=&quot;spoiler-body&quot;&amp;gt;'&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;converter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;convert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&amp;lt;/div&amp;gt;'&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&amp;lt;/details&amp;gt;'&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-&lt;span class=&quot;no&quot;&gt;Liquid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Template&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;register_tag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'spoiler'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Jekyll&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;SpoilerBlock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;И использовать в постах так:&lt;/p&gt;
-
-&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% spoiler Заголовок спойлера %}
-&lt;span class=&quot;p&quot;&gt;```&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;yaml
-&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;some&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;string&quot;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;```&lt;/span&gt;
-{% endspoiler %}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;/div&gt;&lt;/details&gt;
-
-&lt;div class=&quot;alert alert-danger&quot; role=&quot;alert&quot;&gt;
-    &lt;p&gt;&lt;b&gt;В Github Pages это работать не будет!&lt;/b&gt;&lt;/p&gt;
-    &lt;p&gt;Любые плагины и дополнения работают только при самостоятельной сборке проекта (например, на Gitlab'е)&lt;/p&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;проблема&quot;&gt;Проблема&lt;/h2&gt;
-
-&lt;p&gt;Если любой код поместить внутрь HTML тега, то он будет отрисован как есть. То есть вот этот кусок кода:&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;details&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;spoiler&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;summary&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;spoiler-title&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Заголовок спойлера&lt;span class=&quot;nt&quot;&gt;&amp;lt;/summary&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;spoiler-body&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-**Тут должен быть жирный текст**
-
-```
-А это *должен* быть кусок кода
-```
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/details&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Выдаст вот такой результат:&lt;/p&gt;
-
-&lt;details class=&quot;spoiler&quot;&gt;
-    &lt;summary class=&quot;spoiler-title&quot;&gt;Заголовок спойлера&lt;/summary&gt;
-    &lt;div class=&quot;spoiler-body&quot;&gt;
-    **Тут должен быть жирный текст**
-    
-    ```
-    А это *должен* быть кусок кода
-    ```
-    &lt;/div&gt;
-&lt;/details&gt;
-
-&lt;p&gt;Мы можем заставить Jekyll парсить код внутри HTML элементов:&lt;/p&gt;
-
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# _config.yml&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;kramdown&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;parse_block_html&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Но результат сильно лучше не станет:&lt;/p&gt;
-
-&lt;figure class=&quot;frame&quot;&gt;
-  &lt;img src=&quot;broken-html.png&quot; alt=&quot;Поехавшая разметка&quot; /&gt;
-&lt;/figure&gt;
-
-&lt;h2 id=&quot;решение&quot;&gt;Решение&lt;/h2&gt;
-
-&lt;p&gt;Решение напрашивается само собой: нужно содержание спойлера индивидуально прогонять через конвертёр.&lt;/p&gt;
-
-&lt;p&gt;Когда-то я читал спецификацию по Ruby, но для меня он до сей поры остается языком инопланетян.
-(Говорят, что Ruby очень популярен в Японии. Кажется, это все объясняет).
-Я даже кажется &lt;a href=&quot;https://github.com/jekyll/jekyll/blob/master/lib/jekyll/filters.rb#L16&quot;&gt;нашел&lt;/a&gt; используемый в Liquid фильтр для конвертации. Но так и не смог его победить.&lt;/p&gt;
-
-&lt;p&gt;В итоге после короткого гугления нашел вот этот рецепт:&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;site&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;registers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;converter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;find_converter_instance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Jekyll&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Converters&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Markdown&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;converter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;convert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Остается все это дело собрать воедино вот так:&lt;/p&gt;
-
-&lt;details class=&quot;spoiler&quot;&gt;&lt;summary class=&quot;spoiler-title&quot;&gt;Все то же, что и в TL;DR выше&lt;/summary&gt;&lt;div class=&quot;spoiler-body&quot;&gt;
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Jekyll&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SpoilerBlock&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Liquid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Block&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initialize&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tag_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;markup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tokens&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;super&lt;/span&gt;
-      &lt;span class=&quot;vi&quot;&gt;@summary&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;markup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;strip&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;site&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;registers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;converter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;find_converter_instance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Jekyll&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Converters&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Markdown&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-      &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&amp;lt;details class=&quot;spoiler&quot;&amp;gt;'&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&amp;lt;summary class=&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;spoiler-title&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@summary&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;empty?&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Открыть'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@summary&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;lt;/summary&amp;gt;&quot;&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&amp;lt;div class=&quot;spoiler-body&quot;&amp;gt;'&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;converter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;convert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&amp;lt;/div&amp;gt;'&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&amp;lt;/details&amp;gt;'&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-&lt;span class=&quot;no&quot;&gt;Liquid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Template&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;register_tag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'spoiler'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Jekyll&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;SpoilerBlock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;/div&gt;&lt;/details&gt;
-
-&lt;p&gt;Положить в папку &lt;code class=&quot;highlighter-rouge&quot;&gt;_plugins&lt;/code&gt;. И далее можно использовать в любом Markdown документе вот так:&lt;/p&gt;
-
-&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% spoiler Заголовок спойлера %}
-&lt;span class=&quot;p&quot;&gt;```&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;yaml
-&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;some&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;string&quot;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;```&lt;/span&gt;
-{% endspoiler %}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Вот с таким вот результатом:&lt;/p&gt;
-
-&lt;details class=&quot;spoiler&quot;&gt;&lt;summary class=&quot;spoiler-title&quot;&gt;Заголовок спойлера&lt;/summary&gt;&lt;div class=&quot;spoiler-body&quot;&gt;
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;some&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;string&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;/div&gt;&lt;/details&gt;
-
-&lt;p&gt;Используйте на здоровье :grin:&lt;/p&gt;</content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Веб-разработка" /><category term="Jekyll" /><summary type="html">Когда писал предыдущую статью, столкнулся с одной простой проблемой: большие куски кода занимали больше места, чем сам текст. Поиск готового решения для спойлеров привел меня на вот эту страничку. Решение простое и гениальное, но имело один большой недостаток: текст внутри спойлера не форматировался. Свое решение я опишу в этой статье.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/assets/images/logo-black.png" /><media:content medium="image" url="https://vtvz.me/assets/images/logo-black.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+Попробуйте. Возможно понравится и Вам :blush:&lt;/p&gt;</content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Музыка" /><category term="Сервисы" /><summary type="html">Как-то исторически сложилось, что после того, как в ВК стали активно внедрять меры по защите авторских прав, платных подписок и прочие ограничения на прослушиваине музыки, я перешел на Яндекс.Музыку, в качестве основного источника музыкального дофамина. До этого были активные попытки использовать Google Music, но приложение оказалось тяжелым (в техническом плане), запутанным и не удобным для использования. Через какое-то время была куплена подписка за 99р. в месяц, потом полноценная в 169р/м, а в итоге семейная за 300р/м на 4 человека. Сравнение музыкальных сервисов будет в следующей статье. А в этой хочу рассказать, почему лучше выбрать один из них, чем пользоваться ВК, и почему они стоят своих денег.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/assets/images/logo-black.png" /><media:content medium="image" url="https://vtvz.me/assets/images/logo-black.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
