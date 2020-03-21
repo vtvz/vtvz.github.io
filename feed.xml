@@ -1,5 +1,108 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en_GB"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://vtvz.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vtvz.me/" rel="alternate" type="text/html" hreflang="en_GB" /><updated>2020-03-15T15:16:20+03:00</updated><id>https://vtvz.me/feed.xml</id><title type="html">Vitaly Zaslavsky – DevOps Engineer, who loves his job</title><subtitle>DevOps engineer's personal blog about everything. Notes on successes and failures in professional activities, about finding solutions to practical problems, and just about life.
-</subtitle><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><entry xml:lang="ru"><title type="html">Ковыряясь под капотом #1</title><link href="https://vtvz.me/blog/under-the-hood-1st/" rel="alternate" type="text/html" title="Ковыряясь под капотом #1" /><published>2020-03-15T00:00:00+03:00</published><updated>2020-03-15T00:00:00+03:00</updated><id>https://vtvz.me/blog/under-the-hood-1st</id><content type="html" xml:base="https://vtvz.me/blog/under-the-hood-1st/">&lt;p&gt;Мне кажется, что не само “блоговедение” доставляет мне удовольствие, сколько его разработка и улучшение.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en_GB"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://vtvz.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vtvz.me/" rel="alternate" type="text/html" hreflang="en_GB" /><updated>2020-03-21T19:15:44+03:00</updated><id>https://vtvz.me/feed.xml</id><title type="html">Vitaly Zaslavsky – DevOps Engineer, who loves his job</title><subtitle>DevOps engineer's personal blog about everything. Notes on successes and failures in professional activities, about finding solutions to practical problems, and just about life.
+</subtitle><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><entry xml:lang="ru"><title type="html">Настройка robots.txt в Kubernetes</title><link href="https://vtvz.me/blog/robots-txt-in-kubernetes/" rel="alternate" type="text/html" title="Настройка robots.txt в Kubernetes" /><published>2020-03-21T00:00:00+03:00</published><updated>2020-03-21T00:00:00+03:00</updated><id>https://vtvz.me/blog/robots-txt-in-kubernetes</id><content type="html" xml:base="https://vtvz.me/blog/robots-txt-in-kubernetes/">&lt;p&gt;Представьте себе, что на ваших плечах лежит инфраструктура около дюжины проектов,
+которые написаны на разных языках программирования и имеют свой стек технологий.
+Некоторые из них совсем свежие и используют самые современные веяния веб-индустрии,
+а другие – кладезь легаси и устаревшего кода.&lt;/p&gt;
+
+&lt;p&gt;У каждого из этих проектов, помимо продового, есть еще 1-3 окружения для тестирования.
+И вот вам, как DevOps инженеру прилетает следующая задача:
+нужно для каждого тестового окружения добавить robots.txt файл,
+который будет запрещать поисковикам индексацию.&lt;/p&gt;
+
+&lt;p&gt;Есть несколько способов, как это сделать, но я нашел самый простой и оптимальный.&lt;/p&gt;
+
+&lt;!--cut--&gt;
+
+&lt;p&gt;Конечно, можно заставить всех бекендеров добавить этот файл в каждый проект,
+но это сложный подход, который DevOps инженер не контролирует.
+Поэтому мы пойдем по другому пути.&lt;/p&gt;
+
+&lt;p&gt;Решение очень зависит от используемых вами технологий.
+У нас используются следущие:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://kubernetes.io/&quot;&gt;Kubernetes&lt;/a&gt; кластер;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://kubernetes.github.io/ingress-nginx/&quot;&gt;Ingress Nginx&lt;/a&gt;;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://helm.sh/&quot;&gt;Helm&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Каждый из этих инструментов вносит свои улучшения в решение этой задачи.&lt;/p&gt;
+
+&lt;h2 id=&quot;чистый-kubernetes&quot;&gt;Чистый Kubernetes&lt;/h2&gt;
+
+&lt;p&gt;Если у вас используется чистый Kubernetes без установленного Nginx Ingress, то у вас есть 2 пути.&lt;/p&gt;
+
+&lt;h3 id=&quot;nginx&quot;&gt;Nginx&lt;/h3&gt;
+
+&lt;p&gt;Вы можете взять самый легкий чистый образ с Nginx,
+куда с помощью ConfigMap примонтировать как конфиг сервера,
+так и содержимое файла &lt;code class=&quot;highlighter-rouge&quot;&gt;robots.txt&lt;/code&gt;.
+После этого достаточно только настроить Ingress на то, чтобы он все запросы на &lt;code class=&quot;highlighter-rouge&quot;&gt;/robots.txt&lt;/code&gt; направлял в этот контейнер.&lt;/p&gt;
+
+&lt;p&gt;Примеры конфигов приводить не буду, так как есть вариант получше.&lt;/p&gt;
+
+&lt;h3 id=&quot;robots-disallow&quot;&gt;“Robots Disallow”&lt;/h3&gt;
+
+&lt;p&gt;Второе, еще более простое решение, это взять &lt;a href=&quot;https://hub.docker.com/r/wikiwi/robots-disallow&quot;&gt;wikiwi/robots-disallow&lt;/a&gt;
+образ в Docker Hub. Принцип работы абсолютно такой же, только теперь не придется ничего настраивать. Только Ingress.&lt;/p&gt;
+
+&lt;h2 id=&quot;ingress-nginx&quot;&gt;Ingress Nginx&lt;/h2&gt;
+
+&lt;p&gt;Если вы еще не установили его себе в кластер, то я вам &lt;strong&gt;настоятельно&lt;/strong&gt; рекомендую это сделать.
+Это мощный инструмент, который умеет делать все, что умеет Nginx,
+но имеет такой же подход к использованию, как и все сущности в Kubernetes.&lt;/p&gt;
+
+&lt;p&gt;Вы только посмотрите на количество параметров, 
+которые можно настроить через &lt;a href=&quot;https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/&quot;&gt;аннотации&lt;/a&gt; или &lt;a href=&quot;https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/&quot;&gt;конфиг мапы&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;В общем, этим мы и воспользуемся, чтобы решить поставленную задачу.
+Достаточно добавить в Ingress приложения следующие строки:&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;annotations&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;kubernetes.io/ingress.class&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;nginx&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;nginx.ingress.kubernetes.io/server-snippet&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;|&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;location = /robots.txt {&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;add_header Content-Type text/plain;&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;return 200 'User-agent: *\nDisallow: /\n';&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Да, Nginx умеет не только выдавать статику или проксировать запросы. Он может генерировать ответ самостоятельно.
+Строка &lt;code class=&quot;highlighter-rouge&quot;&gt;return 200 'Content'&lt;/code&gt; именно это и делает.&lt;/p&gt;
+
+&lt;p&gt;Таким образом, мы решили задачу буквально в &lt;strong&gt;5 строк&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;helm&quot;&gt;Helm&lt;/h2&gt;
+
+&lt;p&gt;В этой ситуации Helm не делает ничего особенного, но позволяет переиспользовать один манифест в разных окружениях.
+В простейшем его использовании, Helm по своей сути является шаблонизатором для конфигов Kubernetes.&lt;/p&gt;
+
+&lt;p&gt;Поэтому можно сделать так:&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;pi&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;- if ne .Values.env &quot;production&quot;&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;}}&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;nginx.ingress.kubernetes.io/server-snippet&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;location = /robots.txt {&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;add_header Content-Type text/plain;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;return 200 'User-agent: *\nDisallow: /\n';&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;pi&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;- end&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;}}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;То есть если окружение не продовое, запрещаем поисковикам индексирование.&lt;/p&gt;
+
+&lt;p&gt;Либо так, если хочется большей власти:&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;pi&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;- if .Values.disallowRobots&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;}}&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;nginx.ingress.kubernetes.io/server-snippet&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;location = /robots.txt {&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;add_header Content-Type text/plain;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;return 200 'User-agent: *\nDisallow: /\n';&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;pi&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;- end&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;}}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Пользуйтесь на здоровье :blush:&lt;/p&gt;</content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Kubernetes" /><category term="Docker" /><category term="Helm" /><category term="Nginx" /><summary type="html">Представьте себе, что на ваших плечах лежит инфраструктура около дюжины проектов, которые написаны на разных языках программирования и имеют свой стек технологий. Некоторые из них совсем свежие и используют самые современные веяния веб-индустрии, а другие – кладезь легаси и устаревшего кода. У каждого из этих проектов, помимо продового, есть еще 1-3 окружения для тестирования. И вот вам, как DevOps инженеру прилетает следующая задача: нужно для каждого тестового окружения добавить robots.txt файл, который будет запрещать поисковикам индексацию. Есть несколько способов, как это сделать, но я нашел самый простой и оптимальный.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/robots-txt-in-kubernetes/cover.png" /><media:content medium="image" url="https://vtvz.me/blog/robots-txt-in-kubernetes/cover.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Ковыряясь под капотом #1</title><link href="https://vtvz.me/blog/under-the-hood-1st/" rel="alternate" type="text/html" title="Ковыряясь под капотом #1" /><published>2020-03-15T00:00:00+03:00</published><updated>2020-03-15T00:00:00+03:00</updated><id>https://vtvz.me/blog/under-the-hood-1st</id><content type="html" xml:base="https://vtvz.me/blog/under-the-hood-1st/">&lt;p&gt;Мне кажется, что не само “блоговедение” доставляет мне удовольствие, сколько его разработка и улучшение.
 За последний месяц не было написано ни одной статьи.
 А последняя техническая статья была опубликована более &lt;strong&gt;двух&lt;/strong&gt; месяцев назад.
 Но зато за это время мой сайт, а особенно главная страница, претерпел несколько мелких (и не мелких) улучшений.&lt;/p&gt;
@@ -1535,187 +1638,4 @@ Root доступ дает не только большие возможност
 Никто из вас не заинтересован быть взломанными,
 поэтому воспользуйтесь любым безопасным и надежным способом хранения ваших данных.
 Я надеюсь, эта статья дала понимание существующей проблемы и её решения,
-и вы прислушаетесь к моим советам вам же во благо :blush:&lt;/p&gt;</content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Программы" /><category term="Сервисы" /><category term="Безопасность" /><summary type="html">Начало 07.10.2019. Статья обещает быть обширной. Моим первым паролем был “хахаха”. Не даром в ВК меня быстренько взломали. Затем у меня был один пароль на все случаи жизни. Инцидентов не было, но метод далек от идеального. Стоит узнать один пароль, как учетные записи других сервисов окажутся под угрозой. Следующим шагом был пароль, состоящий из двух частей: общим префиксом и доменным именем сайта. Могло это выглядеть примерно так: “МойСуперМощныйПароль123.vk.com”. Это все ещё очень плохо. Я рос. Росла и моя паранойя. Сейчас у меня для каждого отдельного сайта или приложения свой уникальный, неповторимый, устойчивый к атакам пароль. В этой статье я расскажу, как правильно хранить свои пароли, чтобы было удобно, и безопасность не страдала.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/assets/images/logo-black.png" /><media:content medium="image" url="https://vtvz.me/assets/images/logo-black.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Платить или не платить. Или зачем нужны стриминговые платформы</title><link href="https://vtvz.me/blog/why-audio-streaming-platforms/" rel="alternate" type="text/html" title="Платить или не платить. Или зачем нужны стриминговые платформы" /><published>2019-10-07T00:00:00+03:00</published><updated>2019-10-07T00:00:00+03:00</updated><id>https://vtvz.me/blog/why-audio-streaming-platforms</id><content type="html" xml:base="https://vtvz.me/blog/why-audio-streaming-platforms/">&lt;p&gt;Как-то исторически сложилось, что после того, как в ВК стали активно внедрять меры по защите авторских прав, 
-платных подписок и прочие ограничения на прослушиваине музыки, я перешел на &lt;a href=&quot;https://music.yandex.ru/&quot;&gt;Яндекс.Музыку&lt;/a&gt;,
-в качестве основного источника музыкального дофамина.&lt;/p&gt;
-
-&lt;p&gt;До этого были активные попытки использовать &lt;a href=&quot;https://play.google.com/music&quot;&gt;Google Music&lt;/a&gt;, но приложение оказалось тяжелым (в техническом плане),
-запутанным и не удобным для использования.&lt;/p&gt;
-
-&lt;p&gt;Через какое-то время была куплена подписка за 99р. в месяц, потом полноценная в &lt;nobr&gt;169р/м&lt;/nobr&gt;, 
-а в итоге семейная за &lt;nobr&gt;300р/м&lt;/nobr&gt; на 4 человека.&lt;/p&gt;
-
-&lt;p&gt;Сравнение музыкальных сервисов будет в следующей статье.
-А в этой хочу рассказать, почему лучше выбрать один из них, чем пользоваться ВК, и почему они стоят своих денег.&lt;/p&gt;
-
-&lt;!--cut--&gt;
-&lt;h2 id=&quot;всех-людей-можно-разделить-на&quot;&gt;Всех людей можно разделить на…&lt;/h2&gt;
-
-&lt;p&gt;Метод, который работает. Через разделение людей на категории можно выявить плюсы и минусы различных подходов. Так вот. Всех людей можно разделить на…&lt;/p&gt;
-
-&lt;h3 id=&quot;пираты&quot;&gt;Пираты!&lt;/h3&gt;
-
-&lt;p&gt;Огромный пласт людей, которых можно охарактеризовать, как “старые пираты”. 
-Вся их музыка хранится на компе, аккуратно (или нет) распихана по папочкам, 
-избранные треки скачиваются на телефон для дальнейшего прослушивания до дыр.&lt;/p&gt;
-
-&lt;p&gt;Библиотеки таких меломанов могут занимать десятки, 
-а то и сотни гигабайт дискового пространства полностью скачанными дискографиями любимых исполнителей с какого-нибудь торрента,
-которые обновляются достаточно редко, а любимые треки перестают быть любимыми, потому что от них уже тошнит.
-Новые исполнители появляются достаточно редко и обычно в результате случайно найденных в ВК треков или по рекомендации друзей.
-Этот подход мне напоминает времена, когда на телефонах с ИК портом было всего 19мб памяти. 
-Ты скачиваешь всего один трек в течение полу часа, а потом в течение месяца случаешь одно и то же.&lt;/p&gt;
-
-&lt;p&gt;Недостатки такого подхода очевидны – библиотека треков устаревает, хранится обычно в одном месте, 
-которое может исчезнуть в результате случайного технического сбоя,
-пополнения нет, о рекомендациях и упоминать не стоит.&lt;/p&gt;
-
-&lt;p&gt;Плюсы: оно бесплатно. И идеально подходит для параноиков, которые не сидят в обычных соц. сетях, а весь трафик пропускают через Tor.&lt;/p&gt;
-
-&lt;h3 id=&quot;халявщики&quot;&gt;Халявщики&lt;/h3&gt;
-
-&lt;p&gt;Этот тип отличается от пиратов тем, что в большинстве случаев они используют что-то бесплатное, но официально доступное.
-Не скажу, что это неправильно, и людей этого типа большинство. Такие люди пользуются бесплатными возможностями музыкальных сервисов 
-и готовы мириться с теми ограничениями, которые накладывает на них “халява”.&lt;/p&gt;
-
-&lt;p&gt;Такими неудобствами являются ограничения на количество переключений на следующий трек в час (обычно около шести),
-невозможность прослушать конкретного автора или композицию, ограниченное время прослушивание в фоновом режиме,
-ограничение по качеству звука, реклама и отсутствие возможности слушать оффлайн.
-Обычно это применимо только к мобильным и десктопным приложениям.
-Прослушивание же онлайн на сайте у большинства сервисов не накладывает практически никаких ограничений.&lt;/p&gt;
-
-&lt;p&gt;Почти все халявщики являются псевдо-пиратами. В основном они готовы терпеть неудобства,
-но иногда прибегают к тем же торрентам, пиратским сайтам 
-и различного рода расширениям и приложениям для скачивания треков.
-Откровенно говоря, даже не-халявщикам приходится это делать, потому что:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Поставить трек на вызов нельзя;&lt;/li&gt;
-  &lt;li&gt;Слушать музыку оффлайн без телефона не всегда получится;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Также у некоторых сервисов есть ломанные клиенты (у Яндекс.Музыки, например),
-которые снимают все ограничения бесплатного тарифа.
-И в этот момент грань между пиратами и халявщиками начинает стираться.&lt;/p&gt;
-
-&lt;details class=&quot;spoiler&quot;&gt;&lt;summary class=&quot;spoiler-title&quot;&gt;Кстати&lt;/summary&gt;&lt;div class=&quot;spoiler-body&quot;&gt;
-&lt;p&gt;Хоть я и плачу́ денежку за музыку, сам иногда пользуюсь вот &lt;a href=&quot;http://ytdl-org.github.io/youtube-dl/&quot;&gt;этой мощной тулзой&lt;/a&gt;,
-которая умеет скачивать не только видео с Youtube, но и целиком альбомы и плейлисты с Яндекс.Музыки.&lt;/p&gt;
-
-&lt;p&gt;Иногда это бывает просто необходимо :expressionless:&lt;/p&gt;
-&lt;/div&gt;&lt;/details&gt;
-
-&lt;h3 id=&quot;остальные&quot;&gt;Остальные&lt;/h3&gt;
-
-&lt;p&gt;Тот небольшой процент людей, которые готовы платить деньги за то, что им нравится. Но об этом потом.&lt;/p&gt;
-
-&lt;h2 id=&quot;почему-вконтакте&quot;&gt;Почему ВКонтакте?&lt;/h2&gt;
-
-&lt;p&gt;Дурову нужно отдать должное – он создал по-настоящему удобную и хорошо спроектированную социальную сеть.
-Да, она не лишена недостатков, но в ней есть все, что нужно. И нет того мусора, которым полон Facebook.&lt;/p&gt;
-
-&lt;p&gt;В ВК есть то, чего нет нигде: авторские треки, уникальные композиции, всяческие ремиксы и т.д.
-Если что-то где-то появится, то это почти обязательно попадет в ВК через несколько минут после релиза.
-Платные треки с &lt;a href=&quot;https://bandcamp.com/&quot;&gt;Bandcamp&lt;/a&gt; можно послушать за бесплатно.
-Удобно обмениваться треками со своими друзьями (соц. сеть же!).
-И с недавних пор там появились нормальные альбомы с обложками и п.р.&lt;/p&gt;
-
-&lt;p&gt;Поиск треков осуществляется через друзей или через паблики, посвященные какому-то определенному направлению.&lt;/p&gt;
-
-&lt;p&gt;И пока все было бесплатно, это был 100% выбор большинства русских, в том числе и меня.
-Но Дурова не стало и в ВК настали смутные времена. И следующий вопрос стал как никогда актуален…&lt;/p&gt;
-
-&lt;h2 id=&quot;почему-не-вконтакте&quot;&gt;Почему не ВКонтакте?&lt;/h2&gt;
-
-&lt;p&gt;Давайте будем честными… Музыка в ВК – сплошная свалка.
-Если попытаться провести поиск по автору, можно много чего обнаружить:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Десятки повторяющихся треков…&lt;/li&gt;
-  &lt;li&gt;И их ремиксы;&lt;/li&gt;
-  &lt;li&gt;А также треки не этого автора;&lt;/li&gt;
-  &lt;li&gt;Нужный трек может быть на второй или третьей странице поиска.&lt;/li&gt;
-  &lt;li&gt;Треки малопопулярных авторов с названием, состоящим из популярных английских слов найти сложно, 
-потому что на выдаче все, что угодно, но не то, что нужно. А &lt;a href=&quot;https://music.yandex.ru/album/810866/track/7735656&quot;&gt;некоторых&lt;/a&gt; треков и вовсе нет.&lt;/li&gt;
-  &lt;li&gt;Проблема с группами с пересекающимися названиями. Для примера: есть группа &lt;a href=&quot;https://ru.wikipedia.org/wiki/Red_(%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D0%B0)&quot;&gt;Red&lt;/a&gt;, но ты ее не найдешь, потому что ВК выдаст “&lt;em&gt;Red&lt;/em&gt; Hot Chili Peppers”.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Структуры никакой: ни разбиения по авторам, ни тем более по альбомам.
-И только фан-группы энтузиасты берут на себя эту ответственность и наводят более менее порядок.&lt;/p&gt;
-
-&lt;p&gt;В определенный момент треки начали пачками удаляться из списков за нарушение авторских прав.
-И вот тут наступили действительно тяжелые времена.&lt;/p&gt;
-
-&lt;p&gt;Это было раньше, в тот момент, когда я перестал использовать ВК для музыки. 
-Сейчас вроде лучше, как я вижу. Команда ВКонтакте очень постаралась привести порядок в этой куче мусора и не мусора,
-а также заключить контракты с лейблами, чтобы не приходилось удалять все подряд.&lt;/p&gt;
-
-&lt;p&gt;Но комон! Стоимость платной подписки ровно такая же, как и полная подписка в &lt;a href=&quot;https://music.yandex.ru/&quot;&gt;Яндекс.Музыке&lt;/a&gt; и &lt;a href=&quot;https://www.deezer.com/&quot;&gt;Deezer&lt;/a&gt;.
-Веских причин использовать ВК у меня нет. Аргумент “у меня в ВК вся музыка” – не аргумент,
-потому что почти везде есть либо встроенная функция импорта, либо сторонние инструменты,
-которые могут перегнать список треков в плейлист.&lt;/p&gt;
-
-&lt;p&gt;Система рекомендаций ВК работает очень слабо. Если вообще работает.
-Решил попробовать “Специально для вас” – советует всякий треш, который я даже в фоне слушать не смогу.
-В “Новинках” Артур Пирожков, в “Новых Альбомах” 4 из 5-ти с ненормативной лексикой и так далее…&lt;/p&gt;
-
-&lt;p&gt;Я думаю, вы меня поняли. ВК не то место, куда я бы стал вкладывать свои средства.&lt;/p&gt;
-
-&lt;h2 id=&quot;что-если-не-вконтакте&quot;&gt;Что, если не ВКонтакте?&lt;/h2&gt;
-
-&lt;p&gt;Благо монополии тут нет и выбор достаточно велик:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.spotify.com/&quot;&gt;Spotify&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.deezer.com/&quot;&gt;Deezer&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://music.yandex.ru/&quot;&gt;Яндекс.Музыка&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://play.google.com/music&quot;&gt;Google Play Music&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.apple.com/ru/itunes/&quot;&gt;Apple iTunes&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://music.youtube.com/&quot;&gt;YouTube Music&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://soundcloud.com/&quot;&gt;SoundCloud&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://tidal.com/&quot;&gt;Tidal&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://zvuk.com/&quot;&gt;Zvooq&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Порядок сугубо произвольный и не отражает сути и приоритета.&lt;/p&gt;
-
-&lt;h2 id=&quot;но-что-мне-выбрать&quot;&gt;Но что мне выбрать?&lt;/h2&gt;
-
-&lt;p&gt;Об этом я расскажу в следующей статье, где подробно опишу опыт использования некоторых сервисов из списка выше,
-и почему я выбрал именно &lt;a href=&quot;https://music.yandex.ru/&quot;&gt;Яндекс&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;нужно-ли-мне-что-то-выбирать&quot;&gt;Нужно ли мне что-то выбирать?&lt;/h2&gt;
-
-&lt;p&gt;Нет. Но я настоятельно рекомендую выбрать продукт, который c самого зачатия затачивался под музыку.
-К тому же после того, как в ВК ввели платные подписки, условия всех стриминговых платформ почти уравнялись,
-и агрументов в пользу ВК почти не осталось, кроме тесной интеграции музыки с самой соц. сетью.&lt;/p&gt;
-
-&lt;h2 id=&quot;зачем-платить-деньги-если-можно-и-бесплатно&quot;&gt;Зачем платить деньги, если можно и бесплатно?&lt;/h2&gt;
-
-&lt;p&gt;На самом деле не нужно. Многими плюшками можно пользоваться не заплатив ни копейки. Это за вас сделает вездесущая реклама.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;что-то-вроде-вывода&quot;&gt;Что-то вроде вывода&lt;/h2&gt;
-
-&lt;p&gt;Необходимость в платной подписке обусловливается только Вашими потребностями и возможностями.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Нужна ли Вам музыка вне компьютера или оффлайн?&lt;/li&gt;
-  &lt;li&gt;Есть ли у Вас возможность выделять 100-300 рублей на подписку?
-&lt;small&gt;(если Вы можете позволить себе ходить раз в месяц в кафе, значит есть)&lt;/small&gt;&lt;/li&gt;
-  &lt;li&gt;Нуждаетесь ли Вы в каком-либо механизме рекомендаций или готовых подборок?&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;В моем случае все ответы утвердительные.&lt;/p&gt;
-
-&lt;p&gt;300 рублей – это тоже деньги, не могу сказать, что это мелочь.
-Но благодаря этому 4 человека (могло быть и 6, но Яндекс жадина)
-имеют доступ к большому музыкальному банку. Это 75 рублей с человека. 
-Это меньше, чем заказать такси или купить 2 литра бензина,
-и чуть больше, чем съездить на работу и обратно на автобусе.&lt;/p&gt;
-
-&lt;p&gt;А пользу я и члены моей семьи ощущем каждый день по дороге с работы и обратно, на работе или в пути в другой город.&lt;/p&gt;
-
-&lt;p&gt;В любом случае, любой из сервисов из списка предоставляет бесплатный (или очень дешевый) период без ограничений.
-Попробуйте. Возможно понравится и Вам :blush:&lt;/p&gt;</content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Музыка" /><category term="Сервисы" /><summary type="html">Как-то исторически сложилось, что после того, как в ВК стали активно внедрять меры по защите авторских прав, платных подписок и прочие ограничения на прослушиваине музыки, я перешел на Яндекс.Музыку, в качестве основного источника музыкального дофамина. До этого были активные попытки использовать Google Music, но приложение оказалось тяжелым (в техническом плане), запутанным и не удобным для использования. Через какое-то время была куплена подписка за 99р. в месяц, потом полноценная в 169р/м, а в итоге семейная за 300р/м на 4 человека. Сравнение музыкальных сервисов будет в следующей статье. А в этой хочу рассказать, почему лучше выбрать один из них, чем пользоваться ВК, и почему они стоят своих денег.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/assets/images/logo-black.png" /><media:content medium="image" url="https://vtvz.me/assets/images/logo-black.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+и вы прислушаетесь к моим советам вам же во благо :blush:&lt;/p&gt;</content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Программы" /><category term="Сервисы" /><category term="Безопасность" /><summary type="html">Начало 07.10.2019. Статья обещает быть обширной. Моим первым паролем был “хахаха”. Не даром в ВК меня быстренько взломали. Затем у меня был один пароль на все случаи жизни. Инцидентов не было, но метод далек от идеального. Стоит узнать один пароль, как учетные записи других сервисов окажутся под угрозой. Следующим шагом был пароль, состоящий из двух частей: общим префиксом и доменным именем сайта. Могло это выглядеть примерно так: “МойСуперМощныйПароль123.vk.com”. Это все ещё очень плохо. Я рос. Росла и моя паранойя. Сейчас у меня для каждого отдельного сайта или приложения свой уникальный, неповторимый, устойчивый к атакам пароль. В этой статье я расскажу, как правильно хранить свои пароли, чтобы было удобно, и безопасность не страдала.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/assets/images/logo-black.png" /><media:content medium="image" url="https://vtvz.me/assets/images/logo-black.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

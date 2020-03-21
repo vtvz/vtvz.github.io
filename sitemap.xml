@@ -53,6 +53,10 @@
 <lastmod>2020-03-15T00:00:00+03:00</lastmod>
 </url>
 <url>
+<loc>https://vtvz.me/blog/robots-txt-in-kubernetes/</loc>
+<lastmod>2020-03-21T00:00:00+03:00</lastmod>
+</url>
+<url>
 <loc>https://vtvz.me/</loc>
 </url>
 <url>
@@ -120,6 +124,12 @@
 </url>
 <url>
 <loc>https://vtvz.me/blog/tag/%D0%BC%D0%B0%D0%B3%D0%B0%D0%B7%D0%B8%D0%BD%D1%8B/</loc>
+</url>
+<url>
+<loc>https://vtvz.me/blog/tag/helm/</loc>
+</url>
+<url>
+<loc>https://vtvz.me/blog/tag/nginx/</loc>
 </url>
 <url>
 <loc>https://vtvz.me/blog/category/%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B0/</loc>

@@ -15,6 +15,129 @@
         
         
         <item turbo="true">
+            <title>Настройка robots.txt в Kubernetes</title>
+            <link>https://vtvz.me/blog/robots-txt-in-kubernetes/</link>
+            <pubDate>Sat, 21 Mar 2020 00:00:00 +0300</pubDate>
+            <author>Vitaly Zaslavsky</author>
+            <turbo:content>
+                <![CDATA[
+                <header>
+                    <h1>Настройка robots.txt в Kubernetes</h1>
+                    <figure>
+                        <img src="/blog/robots-txt-in-kubernetes/cover.png">
+                    </figure>
+                </header>
+                <p>Представьте себе, что на ваших плечах лежит инфраструктура около дюжины проектов,
+которые написаны на разных языках программирования и имеют свой стек технологий.
+Некоторые из них совсем свежие и используют самые современные веяния веб-индустрии,
+а другие – кладезь легаси и устаревшего кода.</p>
+
+<p>У каждого из этих проектов, помимо продового, есть еще 1-3 окружения для тестирования.
+И вот вам, как DevOps инженеру прилетает следующая задача:
+нужно для каждого тестового окружения добавить robots.txt файл,
+который будет запрещать поисковикам индексацию.</p>
+
+<p>Есть несколько способов, как это сделать, но я нашел самый простой и оптимальный.</p>
+
+<!--cut-->
+
+<p>Конечно, можно заставить всех бекендеров добавить этот файл в каждый проект,
+но это сложный подход, который DevOps инженер не контролирует.
+Поэтому мы пойдем по другому пути.</p>
+
+<p>Решение очень зависит от используемых вами технологий.
+У нас используются следущие:</p>
+
+<ul>
+  <li><a href="https://kubernetes.io/">Kubernetes</a> кластер;</li>
+  <li><a href="https://kubernetes.github.io/ingress-nginx/">Ingress Nginx</a>;</li>
+  <li><a href="https://helm.sh/">Helm</a>.</li>
+</ul>
+
+<p>Каждый из этих инструментов вносит свои улучшения в решение этой задачи.</p>
+
+<h2 id="чистый-kubernetes">Чистый Kubernetes</h2>
+
+<p>Если у вас используется чистый Kubernetes без установленного Nginx Ingress, то у вас есть 2 пути.</p>
+
+<h3 id="nginx">Nginx</h3>
+
+<p>Вы можете взять самый легкий чистый образ с Nginx,
+куда с помощью ConfigMap примонтировать как конфиг сервера,
+так и содержимое файла <code class="highlighter-rouge">robots.txt</code>.
+После этого достаточно только настроить Ingress на то, чтобы он все запросы на <code class="highlighter-rouge">/robots.txt</code> направлял в этот контейнер.</p>
+
+<p>Примеры конфигов приводить не буду, так как есть вариант получше.</p>
+
+<h3 id="robots-disallow">“Robots Disallow”</h3>
+
+<p>Второе, еще более простое решение, это взять <a href="https://hub.docker.com/r/wikiwi/robots-disallow">wikiwi/robots-disallow</a>
+образ в Docker Hub. Принцип работы абсолютно такой же, только теперь не придется ничего настраивать. Только Ingress.</p>
+
+<h2 id="ingress-nginx">Ingress Nginx</h2>
+
+<p>Если вы еще не установили его себе в кластер, то я вам <strong>настоятельно</strong> рекомендую это сделать.
+Это мощный инструмент, который умеет делать все, что умеет Nginx,
+но имеет такой же подход к использованию, как и все сущности в Kubernetes.</p>
+
+<p>Вы только посмотрите на количество параметров, 
+которые можно настроить через <a href="https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/">аннотации</a> или <a href="https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/">конфиг мапы</a>.</p>
+
+<p>В общем, этим мы и воспользуемся, чтобы решить поставленную задачу.
+Достаточно добавить в Ingress приложения следующие строки:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">annotations</span><span class="pi">:</span>
+    <span class="s">kubernetes.io/ingress.class</span><span class="pi">:</span> <span class="s">nginx</span>
+    <span class="s">nginx.ingress.kubernetes.io/server-snippet</span><span class="pi">:</span> <span class="pi">|</span>
+      <span class="s">location = /robots.txt {</span>
+        <span class="s">add_header Content-Type text/plain;</span>
+        <span class="s">return 200 'User-agent: *\nDisallow: /\n';</span>
+      <span class="s">}</span>
+</code></pre></div></div>
+
+<p>Да, Nginx умеет не только выдавать статику или проксировать запросы. Он может генерировать ответ самостоятельно.
+Строка <code class="highlighter-rouge">return 200 'Content'</code> именно это и делает.</p>
+
+<p>Таким образом, мы решили задачу буквально в <strong>5 строк</strong>.</p>
+
+<h2 id="helm">Helm</h2>
+
+<p>В этой ситуации Helm не делает ничего особенного, но позволяет переиспользовать один манифест в разных окружениях.
+В простейшем его использовании, Helm по своей сути является шаблонизатором для конфигов Kubernetes.</p>
+
+<p>Поэтому можно сделать так:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">{{</span><span class="nv">- if ne .Values.env "production"</span> <span class="pi">}}</span>
+<span class="s">nginx.ingress.kubernetes.io/server-snippet</span><span class="pi">:</span> <span class="pi">|</span>
+  <span class="s">location = /robots.txt {</span>
+    <span class="s">add_header Content-Type text/plain;</span>
+    <span class="s">return 200 'User-agent: *\nDisallow: /\n';</span>
+  <span class="s">}</span>
+<span class="pi">{{</span><span class="nv">- end</span> <span class="pi">}}</span>
+</code></pre></div></div>
+
+<p>То есть если окружение не продовое, запрещаем поисковикам индексирование.</p>
+
+<p>Либо так, если хочется большей власти:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">{{</span><span class="nv">- if .Values.disallowRobots</span> <span class="pi">}}</span>
+<span class="s">nginx.ingress.kubernetes.io/server-snippet</span><span class="pi">:</span> <span class="pi">|</span>
+  <span class="s">location = /robots.txt {</span>
+    <span class="s">add_header Content-Type text/plain;</span>
+    <span class="s">return 200 'User-agent: *\nDisallow: /\n';</span>
+  <span class="s">}</span>
+<span class="pi">{{</span><span class="nv">- end</span> <span class="pi">}}</span>
+</code></pre></div></div>
+
+<p>Пользуйтесь на здоровье :blush:</p>
+
+
+                ]]>
+            </turbo:content>
+        </item>
+        
+        <item turbo="true">
             <title>Ковыряясь под капотом #1</title>
             <link>https://vtvz.me/blog/under-the-hood-1st/</link>
             <pubDate>Sun, 15 Mar 2020 00:00:00 +0300</pubDate>
