@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-    <!--Built at : 2020-03-22 21:51:58-->
+    <!--Built at : 2020-03-23 23:28:00-->
     <head>
         
         <meta charset="utf-8">
@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="/assets/css/bootstrap.css?cb=ae8f943" />
 
         
-        <link rel="stylesheet" href="/assets/css/main.css?cb=c34fac3" />
+        <link rel="stylesheet" href="/assets/css/main.css?cb=f6a869d" />
         
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,800&subset=latin,cyrillic" rel="stylesheet" crossorigin="anonymous">
@@ -43,7 +43,7 @@
 <meta name="google-site-verification" content="40uemu1o4UDeTOeeLKqJVoaPU4CVUjlGI5D9AI1EkNE" />
 <meta name="yandex-verification" content="fa3eb4fcd2ebc4ad" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Vitaly Zaslavsky"},"description":"Коротко об основных возможностях Kubernetes — мощном инструменте оркестрации контейнеров","headline":"Постигая Kubernetes — мощь и величие","@type":"BlogPosting","dateModified":"2020-01-12T00:00:00+03:00","datePublished":"2020-01-12T00:00:00+03:00","image":"https://vtvz.me/blog/comprehending-kubernetes/cover.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://vtvz.me/blog/comprehending-kubernetes/"},"url":"https://vtvz.me/blog/comprehending-kubernetes/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://vtvz.me/assets/images/logo-black.png"},"name":"Vitaly Zaslavsky"},"@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"Vitaly Zaslavsky"},"description":"Коротко об основных возможностях Kubernetes — мощном инструменте оркестрации контейнеров","@type":"BlogPosting","headline":"Постигая Kubernetes — мощь и величие","dateModified":"2020-01-12T00:00:00+03:00","datePublished":"2020-01-12T00:00:00+03:00","url":"https://vtvz.me/blog/comprehending-kubernetes/","mainEntityOfPage":{"@type":"WebPage","@id":"https://vtvz.me/blog/comprehending-kubernetes/"},"image":"https://vtvz.me/blog/comprehending-kubernetes/cover.jpg","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://vtvz.me/assets/images/logo-black.png"},"name":"Vitaly Zaslavsky"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
         <script>
@@ -115,7 +115,7 @@
     <span class="meta__item reading-time" title="Estimated Read Time">
         
 
-        <!--1176-->
+        <!--1184-->
 
         
             ~6 min.
@@ -188,9 +188,7 @@ K8S со своей стороны закрывает трафик на этот
 Что в свою очередь инициирует запуск этого сервиса вновь.</li>
 </ul>
 
-<figure class="frame">
-  <img src="./rolling-update.png" alt="Стратегия деплоя - RollingUpdate">
-</figure>
+<figure class="frame"><a href="./rolling-update.png" target="_blank"><img src="./rolling-update.png" alt="Стратегия деплоя - RollingUpdate" title="Стратегия деплоя - RollingUpdate"></a></figure>
 
 <h2 id="деплой">Деплой</h2>
 
@@ -223,9 +221,7 @@ K8S со своей стороны закрывает трафик на этот
 Если в прод попадет заведомо сломанное приложение, куб остановит процесс накатывания и оставит код на старой версии.
 Про существующие стратегии деплоя можно почитать <a href="https://habr.com/ru/company/flant/blog/471620/" target="_blank" rel="noopener noreferrer">тут</a>.</p>
 
-<figure class="frame">
-  <img src="./load-balancing.png" alt="Балансировка нагрузки">
-</figure>
+<figure class="frame"><a href="./load-balancing.png" target="_blank"><img src="./load-balancing.png" alt="Балансировка нагрузки" title="Балансировка нагрузки"></a></figure>
 
 <h2 id="балансировка-распределение-и-масштабирование">Балансировка, распределение и масштабирование</h2>
 
@@ -251,9 +247,7 @@ K8S со своей стороны закрывает трафик на этот
 Для этой цели существует т.н. <a href="https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity" target="_blank" rel="noopener noreferrer">Affinity and anti-affinity</a> (не знаю, как правильно перевести).
 Тут как раз и задаются правила выбора ноды.</p>
 
-<figure class="frame">
-  <img src="./resources.jpg" alt="Распределение ресурсов">
-</figure>
+<figure class="frame"><a href="./resources.jpg" target="_blank"><img src="./resources.jpg" alt="Распределение ресурсов" title="Распределение ресурсов"></a></figure>
 
 <h2 id="менеджмент-ресурсов">Менеджмент ресурсов</h2>
 

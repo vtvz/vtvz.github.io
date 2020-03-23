@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en_GB"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://vtvz.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vtvz.me/" rel="alternate" type="text/html" hreflang="en_GB" /><updated>2020-03-22T21:51:56+03:00</updated><id>https://vtvz.me/feed.xml</id><title type="html">Vitaly Zaslavsky – DevOps Engineer, who loves his job</title><subtitle>DevOps engineer's personal blog about everything. Notes on successes and failures in professional activities, about finding solutions to practical problems, and just about life.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en_GB"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://vtvz.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vtvz.me/" rel="alternate" type="text/html" hreflang="en_GB" /><updated>2020-03-23T23:27:59+03:00</updated><id>https://vtvz.me/feed.xml</id><title type="html">Vitaly Zaslavsky – DevOps Engineer, who loves his job</title><subtitle>DevOps engineer's personal blog about everything. Notes on successes and failures in professional activities, about finding solutions to practical problems, and just about life.
 </subtitle><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><entry xml:lang="ru"><title type="html">Настройка robots.txt в Kubernetes</title><link href="https://vtvz.me/blog/robots-txt-in-kubernetes/" rel="alternate" type="text/html" title="Настройка robots.txt в Kubernetes" /><published>2020-03-21T00:00:00+03:00</published><updated>2020-03-21T00:00:00+03:00</updated><id>https://vtvz.me/blog/robots-txt-in-kubernetes</id><content type="html" xml:base="https://vtvz.me/blog/robots-txt-in-kubernetes/">&lt;p&gt;Представьте себе, что на ваших плечах лежит инфраструктура около дюжины проектов,
 которые написаны на разных языках программирования и имеют свой стек технологий.
 Некоторые из них совсем свежие и используют самые современные веяния веб-индустрии,
@@ -120,11 +120,7 @@
 
 &lt;hr /&gt;
 
-&lt;figure class=&quot;frame&quot;&gt;
-  &lt;a href=&quot;./meeting.png&quot; target=&quot;_blank&quot;&gt;
-    &lt;img src=&quot;./meeting.png&quot; alt=&quot;Приглашение на митап&quot; /&gt;
-  &lt;/a&gt;
-&lt;/figure&gt;
+&lt;figure class=&quot;frame&quot;&gt;&lt;a href=&quot;./meeting.png&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;./meeting.png&quot; alt=&quot;Приглашение на митап&quot; title=&quot;Приглашение на митап&quot; /&gt;&lt;/a&gt;&lt;/figure&gt;
 
 &lt;p&gt;Прежде, чем приступить к повествованию, хочу сделать небольшой анонс.
 26 марта в 19:00 я буду выступать с публичным докладом,
@@ -169,11 +165,7 @@ Bootstrap из коробки предоставляет стили для пе�
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;figure class=&quot;frame&quot;&gt;
-  &lt;a href=&quot;./broken-links.png&quot; target=&quot;_blank&quot;&gt;
-    &lt;img src=&quot;./broken-links.png&quot; alt=&quot;Уродливые ссылки&quot; /&gt;
-  &lt;/a&gt;
-&lt;/figure&gt;
+&lt;figure class=&quot;frame&quot;&gt;&lt;a href=&quot;./broken-links.png&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;./broken-links.png&quot; alt=&quot;Уродливые ссылки&quot; title=&quot;Уродливые ссылки&quot; /&gt;&lt;/a&gt;&lt;/figure&gt;
 
 &lt;p&gt;Тем не менее, я его победил и результатом очень даже доволен.
 Единственная проблема, которая осталась, и которую я, вероятно, решать не буду –
@@ -191,11 +183,7 @@ Firefox в этом плане очень проигрывает.
   &lt;li&gt;“Print” &lt;code class=&quot;highlighter-rouge&quot;&gt;4&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;figure class=&quot;frame&quot;&gt;
-  &lt;a href=&quot;./print-media-type.png&quot; target=&quot;_blank&quot;&gt;
-    &lt;img src=&quot;./print-media-type.png&quot; alt=&quot;Инструкция включения режима печати&quot; /&gt;
-  &lt;/a&gt;
-&lt;/figure&gt;
+&lt;figure class=&quot;frame&quot;&gt;&lt;a href=&quot;./print-media-type.png&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;./print-media-type.png&quot; alt=&quot;Инструкция включения режима печати&quot; title=&quot;Инструкция включения режима печати&quot; /&gt;&lt;/a&gt;&lt;/figure&gt;
 
 &lt;p&gt;В итоге вам все равно придется проверять, как будет выглядеть документ на листе, используя реальный режим печати &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+P&lt;/code&gt;,
 потому что, как я говорил ранее, верстка при итоговой печати отличается от отображаемого в браузере.
@@ -340,9 +328,7 @@ Firefox в этом плане очень проигрывает.
 
 &lt;h2 id=&quot;ecogreen&quot;&gt;Ecogreen&lt;/h2&gt;
 
-&lt;figure class=&quot;frame&quot;&gt;
-    &lt;img src=&quot;./ecogreen.jpg&quot; alt=&quot;Ecogreen&quot; /&gt;
-&lt;/figure&gt;
+&lt;figure class=&quot;frame&quot;&gt;&lt;a href=&quot;./ecogreen.jpg&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;./ecogreen.jpg&quot; alt=&quot;Ecogreen&quot; title=&quot;Ecogreen&quot; /&gt;&lt;/a&gt;&lt;/figure&gt;
 
 &lt;p&gt;Герой этой статьи – магазин &lt;a href=&quot;https://vk.com/suxofrukti_petrozavodsk&quot;&gt;Ecogreen&lt;/a&gt;.
 Стоит сказать сразу, что почти весь товар продается пакетами минимум пол кило,
@@ -567,9 +553,7 @@ K8S со своей стороны закрывает трафик на этот
 Что в свою очередь инициирует запуск этого сервиса вновь.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;figure class=&quot;frame&quot;&gt;
-  &lt;img src=&quot;./rolling-update.png&quot; alt=&quot;Стратегия деплоя - RollingUpdate&quot; /&gt;
-&lt;/figure&gt;
+&lt;figure class=&quot;frame&quot;&gt;&lt;a href=&quot;./rolling-update.png&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;./rolling-update.png&quot; alt=&quot;Стратегия деплоя - RollingUpdate&quot; title=&quot;Стратегия деплоя - RollingUpdate&quot; /&gt;&lt;/a&gt;&lt;/figure&gt;
 
 &lt;h2 id=&quot;деплой&quot;&gt;Деплой&lt;/h2&gt;
 
@@ -602,9 +586,7 @@ K8S со своей стороны закрывает трафик на этот
 Если в прод попадет заведомо сломанное приложение, куб остановит процесс накатывания и оставит код на старой версии.
 Про существующие стратегии деплоя можно почитать &lt;a href=&quot;https://habr.com/ru/company/flant/blog/471620/&quot;&gt;тут&lt;/a&gt;.&lt;/p&gt;
 
-&lt;figure class=&quot;frame&quot;&gt;
-  &lt;img src=&quot;./load-balancing.png&quot; alt=&quot;Балансировка нагрузки&quot; /&gt;
-&lt;/figure&gt;
+&lt;figure class=&quot;frame&quot;&gt;&lt;a href=&quot;./load-balancing.png&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;./load-balancing.png&quot; alt=&quot;Балансировка нагрузки&quot; title=&quot;Балансировка нагрузки&quot; /&gt;&lt;/a&gt;&lt;/figure&gt;
 
 &lt;h2 id=&quot;балансировка-распределение-и-масштабирование&quot;&gt;Балансировка, распределение и масштабирование&lt;/h2&gt;
 
@@ -630,9 +612,7 @@ K8S со своей стороны закрывает трафик на этот
 Для этой цели существует т.н. &lt;a href=&quot;https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity&quot;&gt;Affinity and anti-affinity&lt;/a&gt; (не знаю, как правильно перевести).
 Тут как раз и задаются правила выбора ноды.&lt;/p&gt;
 
-&lt;figure class=&quot;frame&quot;&gt;
-  &lt;img src=&quot;./resources.jpg&quot; alt=&quot;Распределение ресурсов&quot; /&gt;
-&lt;/figure&gt;
+&lt;figure class=&quot;frame&quot;&gt;&lt;a href=&quot;./resources.jpg&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;./resources.jpg&quot; alt=&quot;Распределение ресурсов&quot; title=&quot;Распределение ресурсов&quot; /&gt;&lt;/a&gt;&lt;/figure&gt;
 
 &lt;h2 id=&quot;менеджмент-ресурсов&quot;&gt;Менеджмент ресурсов&lt;/h2&gt;
 
@@ -862,11 +842,7 @@ Root доступ дает не только большие возможност
 
 &lt;!--cut--&gt;
 
-&lt;figure class=&quot;frame&quot;&gt;
-    &lt;a href=&quot;./intro-report.png&quot; target=&quot;_blank&quot;&gt;
-      &lt;img src=&quot;./intro-report.png&quot; alt=&quot;Отчет по источникам за год&quot; /&gt;
-    &lt;/a&gt;
-&lt;/figure&gt;
+&lt;figure class=&quot;frame&quot;&gt;&lt;a href=&quot;./intro-report.png&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;./intro-report.png&quot; alt=&quot;Отчет по источникам за год&quot; title=&quot;Отчет по источникам за год&quot; /&gt;&lt;/a&gt;&lt;/figure&gt;
 
 &lt;p&gt;Есть много способов продвинуть свой сайт в люди без сильных расходов. Да, это будет гораздо медленнее и не так эффективно,
 чем грамотно сделанная реклама. Но и за бесплатно можно достичь некоторых результатов.&lt;/p&gt;
@@ -894,9 +870,7 @@ Root доступ дает не только большие возможност
 
 &lt;p&gt;Даже WiFi сеть и Bluetooth у меня обозваны ссылкой на сайт:&lt;/p&gt;
 
-&lt;figure class=&quot;frame&quot;&gt;
-  &lt;img src=&quot;wifi.png&quot; alt=&quot;Название wifi сети: vtvz.ru&quot; /&gt;
-&lt;/figure&gt;
+&lt;figure class=&quot;frame&quot;&gt;&lt;a href=&quot;./wifi.png&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;./wifi.png&quot; alt=&quot;Название wifi сети: vtvz.ru&quot; title=&quot;Название wifi сети: vtvz.ru&quot; /&gt;&lt;/a&gt;&lt;/figure&gt;
 
 &lt;p&gt;До появления блога, когда существовала только визитка, на сайт приходили люди из разных городов и даже стран.
 Сложно сказать, сколько именно пришло из-за никнейма, но однозначно такие люди есть.
@@ -920,9 +894,7 @@ Root доступ дает не только большие возможност
 &lt;p&gt;Но есть определенная закономерность: узконаправленные статьи, решающие конкретную проблему,
 гораздо чаще попадают в результаты поиска.&lt;/p&gt;
 
-&lt;figure class=&quot;frame&quot;&gt;
-  &lt;img src=&quot;google-console.png&quot; alt=&quot;Google Search Console&quot; /&gt;
-&lt;/figure&gt;
+&lt;figure class=&quot;frame&quot;&gt;&lt;a href=&quot;./google-console.png&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;./google-console.png&quot; alt=&quot;Google Search Console&quot; title=&quot;Google Search Console&quot; /&gt;&lt;/a&gt;&lt;/figure&gt;
 
 &lt;p&gt;Гуглу, кстати говоря, я понравился больше. За этот год он показал меня аж 611 раз! Вот страницы-рекордсмены:&lt;/p&gt;
 
@@ -949,10 +921,10 @@ Root доступ дает не только большие возможност
 
 &lt;div class=&quot;row&quot;&gt;
     &lt;div class=&quot;col-sm-6&quot;&gt;
-        &lt;figure&gt;&lt;a href=&quot;./google-console-queues.png&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;./google-console-queues.png&quot; alt=&quot;Статистика по запросам&quot; /&gt;&lt;/a&gt;&lt;/figure&gt;
+        &lt;figure class=&quot;frame&quot;&gt;&lt;a href=&quot;./google-console-queues.png&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;./google-console-queues.png&quot; alt=&quot;Статистика по запросам&quot; title=&quot;Статистика по запросам&quot; /&gt;&lt;/a&gt;&lt;/figure&gt;
     &lt;/div&gt;
     &lt;div class=&quot;col-sm-6&quot;&gt;
-        &lt;figure&gt;&lt;a href=&quot;./google-console-pages.png&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;./google-console-pages.png&quot; alt=&quot;Статистика по страницам&quot; /&gt;&lt;/a&gt;&lt;/figure&gt;
+        &lt;figure class=&quot;frame&quot;&gt;&lt;a href=&quot;./google-console-pages.png&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;./google-console-pages.png&quot; alt=&quot;Статистика по страницам&quot; title=&quot;Статистика по страницам&quot; /&gt;&lt;/a&gt;&lt;/figure&gt;
     &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;/details&gt;
@@ -982,13 +954,13 @@ Root доступ дает не только большие возможност
 
 &lt;div class=&quot;row&quot;&gt;
     &lt;div class=&quot;col-sm-4&quot;&gt;
-        &lt;figure&gt;&lt;a href=&quot;./yandex-groups.png&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;./yandex-groups.png&quot; alt=&quot;Статистика по группам&quot; /&gt;&lt;/a&gt;&lt;/figure&gt;
+        &lt;figure class=&quot;frame&quot;&gt;&lt;a href=&quot;./yandex-groups.png&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;./yandex-groups.png&quot; alt=&quot;Статистика по группам&quot; title=&quot;Статистика по группам&quot; /&gt;&lt;/a&gt;&lt;/figure&gt;
     &lt;/div&gt;
     &lt;div class=&quot;col-sm-4&quot;&gt;
-        &lt;figure&gt;&lt;a href=&quot;./yandex-pages.png&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;./yandex-pages.png&quot; alt=&quot;Статистика страниц&quot; /&gt;&lt;/a&gt;&lt;/figure&gt;
+        &lt;figure class=&quot;frame&quot;&gt;&lt;a href=&quot;./yandex-pages.png&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;./yandex-pages.png&quot; alt=&quot;Статистика страниц&quot; title=&quot;Статистика страниц&quot; /&gt;&lt;/a&gt;&lt;/figure&gt;
     &lt;/div&gt;
     &lt;div class=&quot;col-sm-4&quot;&gt;
-        &lt;figure&gt;&lt;a href=&quot;./yandex-popular.png&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;./yandex-popular.png&quot; alt=&quot;Статистика по популярным запросам&quot; /&gt;&lt;/a&gt;&lt;/figure&gt;
+        &lt;figure class=&quot;frame&quot;&gt;&lt;a href=&quot;./yandex-popular.png&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;./yandex-popular.png&quot; alt=&quot;Статистика по популярным запросам&quot; title=&quot;Статистика по популярным запросам&quot; /&gt;&lt;/a&gt;&lt;/figure&gt;
     &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;/details&gt;
