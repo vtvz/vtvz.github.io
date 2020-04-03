@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-    <!--Built at : 2020-03-23 23:28:00-->
+    <!--Built at : 2020-04-03 21:11:00-->
     <head>
         
         <meta charset="utf-8">
@@ -9,14 +9,16 @@
 
         <title>Настройка robots.txt в Kubernetes</title>
 
+        <link rel="shortcut icon" href="/favicon.png" type="image/png">
+
         <link rel="stylesheet" href="/assets/css/preloader.css" />
-        <link rel="stylesheet" href="/assets/css/bootstrap.css?cb=ae8f943" />
+        <link rel="stylesheet" href="/assets/css/bootstrap.css?cb=d57eb14" />
 
         
-        <link rel="stylesheet" href="/assets/css/main.css?cb=f6a869d" />
+        <link rel="stylesheet" href="/assets/css/main.css?cb=c59999a" />
         
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,800&subset=latin,cyrillic" rel="stylesheet" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,500,600,700,800|Roboto:300,400,500,600,700,800&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet" crossorigin="anonymous">
 
         <link rel="alternate" type="application/rss+xml" title="Vitaly Zaslavsky – DevOps Engineer, who loves his job" href="https://vtvz.me/feed.xml">
 
@@ -43,7 +45,7 @@
 <meta name="google-site-verification" content="40uemu1o4UDeTOeeLKqJVoaPU4CVUjlGI5D9AI1EkNE" />
 <meta name="yandex-verification" content="fa3eb4fcd2ebc4ad" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Vitaly Zaslavsky"},"description":"Универсальный способ указания robots.txt файла с использованием механизмов Kubernetes","@type":"BlogPosting","headline":"Настройка robots.txt в Kubernetes","dateModified":"2020-03-21T00:00:00+03:00","datePublished":"2020-03-21T00:00:00+03:00","url":"https://vtvz.me/blog/robots-txt-in-kubernetes/","mainEntityOfPage":{"@type":"WebPage","@id":"https://vtvz.me/blog/robots-txt-in-kubernetes/"},"image":"https://vtvz.me/blog/robots-txt-in-kubernetes/cover.png","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://vtvz.me/assets/images/logo-black.png"},"name":"Vitaly Zaslavsky"},"@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"Vitaly Zaslavsky"},"description":"Универсальный способ указания robots.txt файла с использованием механизмов Kubernetes","@type":"BlogPosting","url":"https://vtvz.me/blog/robots-txt-in-kubernetes/","headline":"Настройка robots.txt в Kubernetes","dateModified":"2020-03-21T00:00:00+03:00","datePublished":"2020-03-21T00:00:00+03:00","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://vtvz.me/assets/images/logo-black.png"},"name":"Vitaly Zaslavsky"},"image":"https://vtvz.me/blog/robots-txt-in-kubernetes/cover.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://vtvz.me/blog/robots-txt-in-kubernetes/"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
         <script>
@@ -117,10 +119,10 @@
     <span class="meta__item reading-time" title="Estimated Read Time">
         
 
-        <!--532-->
+        <!--390-->
 
         
-            ~2 min.
+            ~1 min.
         
     </span>
 
@@ -130,7 +132,7 @@
         <h1 class="post-title">
             <a href="/blog/robots-txt-in-kubernetes/" itemprop="headline">Настройка robots.txt в Kubernetes</a>
         </h1>
-        <article itemprop="articleBody" class="js-emojify">
+        <article itemprop="articleBody" class="js-emojify post__content">
             <p>Представьте себе, что на ваших плечах лежит инфраструктура около дюжины проектов,
 которые написаны на разных языках программирования и имеют свой стек технологий.
 Некоторые из них совсем свежие и используют самые современные веяния веб-индустрии,
@@ -162,12 +164,23 @@
 </ul>
 
 <p>Каждый из этих инструментов вносит свои улучшения в решение этой задачи.</p>
-
-<h2 id="чистый-kubernetes">Чистый Kubernetes</h2>
+      <h2 id="чистый-kubernetes">
+        
+        
+          Чистый Kubernetes <a href="#%D1%87%D0%B8%D1%81%D1%82%D1%8B%D0%B9-kubernetes" class="post__header-anchor" title="Anchor">#</a>
+        
+        
+      </h2>
 
 <p>Если у вас используется чистый Kubernetes без установленного Nginx Ingress, то у вас есть 2 пути.</p>
-
-<h3 id="nginx">Nginx</h3>
+    
+      <h3 id="nginx">
+        
+        
+          Nginx <a href="#nginx" class="post__header-anchor" title="Anchor">#</a>
+        
+        
+      </h3>
 
 <p>Вы можете взять самый легкий чистый образ с Nginx,
 куда с помощью ConfigMap примонтировать как конфиг сервера,
@@ -175,13 +188,25 @@
 После этого достаточно только настроить Ingress на то, чтобы он все запросы на <code class="highlighter-rouge">/robots.txt</code> направлял в этот контейнер.</p>
 
 <p>Примеры конфигов приводить не буду, так как есть вариант получше.</p>
-
-<h3 id="robots-disallow">“Robots Disallow”</h3>
+    
+      <h3 id="robots-disallow">
+        
+        
+          “Robots Disallow” <a href="#robots-disallow" class="post__header-anchor" title="Anchor">#</a>
+        
+        
+      </h3>
 
 <p>Второе, еще более простое решение, это взять <a href="https://hub.docker.com/r/wikiwi/robots-disallow" target="_blank" rel="noopener noreferrer">wikiwi/robots-disallow</a>
 образ в Docker Hub. Принцип работы абсолютно такой же, только теперь не придется ничего настраивать. Только Ingress.</p>
-
-<h2 id="ingress-nginx">Ingress Nginx</h2>
+    
+      <h2 id="ingress-nginx">
+        
+        
+          Ingress Nginx <a href="#ingress-nginx" class="post__header-anchor" title="Anchor">#</a>
+        
+        
+      </h2>
 
 <p>Если вы еще не установили его себе в кластер, то я вам <strong>настоятельно</strong> рекомендую это сделать.
 Это мощный инструмент, который умеет делать все, что умеет Nginx,
@@ -207,8 +232,14 @@
 Строка <code class="highlighter-rouge">return 200 'Content'</code> именно это и делает.</p>
 
 <p>Таким образом, мы решили задачу буквально в <strong>5 строк</strong>.</p>
-
-<h2 id="helm">Helm</h2>
+    
+      <h2 id="helm">
+        
+        
+          Helm <a href="#helm" class="post__header-anchor" title="Anchor">#</a>
+        
+        
+      </h2>
 
 <p>В этой ситуации Helm не делает ничего особенного, но позволяет переиспользовать один манифест в разных окружениях.
 В простейшем его использовании, Helm по своей сути является шаблонизатором для конфигов Kubernetes.</p>
@@ -238,8 +269,6 @@
 </code></pre></div></div>
 
 <p>Пользуйтесь на здоровье :fox:</p>
-
-
         </article>
 
         <hr>
@@ -298,7 +327,6 @@
   <li><a href="#ingress-nginx">Ingress Nginx</a></li>
   <li><a href="#helm">Helm</a></li>
 </ul>
-
             </div>
             
             
@@ -503,7 +531,9 @@
                     
                 </li>
 </ul>
-                <button class="btn btn-block tag-list__more">Show more...</button>
+                <div class="tag-list__more-wrapper">
+                    <button class="btn btn-block tag-list__more">Show 17 more...</button>
+                </div>
             </div>
         </aside>
     </div>

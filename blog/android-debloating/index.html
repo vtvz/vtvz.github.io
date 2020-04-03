@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-    <!--Built at : 2020-03-23 23:28:00-->
+    <!--Built at : 2020-04-03 21:11:00-->
     <head>
         
         <meta charset="utf-8">
@@ -9,14 +9,16 @@
 
         <title>Очистка Android от предустановленных программ без Root&#39;а и перепрошивки</title>
 
+        <link rel="shortcut icon" href="/favicon.png" type="image/png">
+
         <link rel="stylesheet" href="/assets/css/preloader.css" />
-        <link rel="stylesheet" href="/assets/css/bootstrap.css?cb=ae8f943" />
+        <link rel="stylesheet" href="/assets/css/bootstrap.css?cb=d57eb14" />
 
         
-        <link rel="stylesheet" href="/assets/css/main.css?cb=f6a869d" />
+        <link rel="stylesheet" href="/assets/css/main.css?cb=c59999a" />
         
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,800&subset=latin,cyrillic" rel="stylesheet" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,500,600,700,800|Roboto:300,400,500,600,700,800&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet" crossorigin="anonymous">
 
         <link rel="alternate" type="application/rss+xml" title="Vitaly Zaslavsky – DevOps Engineer, who loves his job" href="https://vtvz.me/feed.xml">
 
@@ -43,7 +45,7 @@
 <meta name="google-site-verification" content="40uemu1o4UDeTOeeLKqJVoaPU4CVUjlGI5D9AI1EkNE" />
 <meta name="yandex-verification" content="fa3eb4fcd2ebc4ad" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Vitaly Zaslavsky"},"description":"Как удалить предустановленный в мобильное устройство мусор без сильной головной боли, не сломав при этом всю систему.","@type":"BlogPosting","headline":"Очистка Android от предустановленных программ без Root’а и перепрошивки","dateModified":"2020-01-06T00:00:00+03:00","datePublished":"2020-01-06T00:00:00+03:00","url":"https://vtvz.me/blog/android-debloating/","mainEntityOfPage":{"@type":"WebPage","@id":"https://vtvz.me/blog/android-debloating/"},"image":"https://vtvz.me/blog/android-debloating/cover.jpg","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://vtvz.me/assets/images/logo-black.png"},"name":"Vitaly Zaslavsky"},"@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"Vitaly Zaslavsky"},"description":"Как удалить предустановленный в мобильное устройство мусор без сильной головной боли, не сломав при этом всю систему.","@type":"BlogPosting","url":"https://vtvz.me/blog/android-debloating/","headline":"Очистка Android от предустановленных программ без Root’а и перепрошивки","dateModified":"2020-01-06T00:00:00+03:00","datePublished":"2020-01-06T00:00:00+03:00","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://vtvz.me/assets/images/logo-black.png"},"name":"Vitaly Zaslavsky"},"image":"https://vtvz.me/blog/android-debloating/cover.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://vtvz.me/blog/android-debloating/"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
         <script>
@@ -115,10 +117,10 @@
     <span class="meta__item reading-time" title="Estimated Read Time">
         
 
-        <!--571-->
+        <!--499-->
 
         
-            ~3 min.
+            ~1 min.
         
     </span>
 
@@ -128,7 +130,7 @@
         <h1 class="post-title">
             <a href="/blog/android-debloating/" itemprop="headline">Очистка Android от предустановленных программ без Root'а и перепрошивки</a>
         </h1>
-        <article itemprop="articleBody" class="js-emojify">
+        <article itemprop="articleBody" class="js-emojify post__content">
             <p>До недавнего времени я свято верил, что предустановленные программы в Android устройствах
 могут быть либо выключены, либо удалены только с перепрошивкой телефона.
 Root доступ дает не только большие возможности, но и большие риски.
@@ -136,8 +138,13 @@ Root доступ дает не только большие возможност
 Но не так давно я <a href="https://habr.com/ru/post/482344/" target="_blank" rel="noopener noreferrer">обнаружил</a>, что есть вполне рабочий способ удалить намертво установленные программы со своего устройства.</p>
 
 <a id="cut"></a>
-
-<h2 id="зачем">Зачем?</h2>
+      <h2 id="зачем">
+        
+        
+          Зачем? <a href="#%D0%B7%D0%B0%D1%87%D0%B5%D0%BC" class="post__header-anchor" title="Anchor">#</a>
+        
+        
+      </h2>
 
 <p>При покупке устройства, вместе с телефоном/планшетом идет просто гора различных программ – бесполезных и даже вредных.
 В первую очередь, это все то, что начинается с “Google” (Music, Photo, Video, Maps, Hangouts…).
@@ -163,8 +170,14 @@ Root доступ дает не только большие возможност
 
 <p>Весь этот процесс называется “Debloating”, что переводится как “<strong>раз</strong>раздувать”,
 то есть обратное значение слову “раздувать”.</p>
-
-<h2 id="инструкция">Инструкция</h2>
+    
+      <h2 id="инструкция">
+        
+        
+          Инструкция <a href="#%D0%B8%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D0%B8%D1%8F" class="post__header-anchor" title="Anchor">#</a>
+        
+        
+      </h2>
 
 <ol>
   <li>
@@ -208,17 +221,22 @@ Root доступ дает не только большие возможност
 Во-первых, он имеет графический интерфейс. А во-вторых, что самое главное,
 в списке программ доступных для удаления нет того, что является критичным для работоспособности системы.
 Но, хоть и говорят, что из этого списка можно удалять все, я бы не рекомендовал вслепую сносить все подряд.</p>
-
-<h2 id="итого">Итого</h2>
+    
+      <h2 id="итого">
+        
+        
+          Итого <a href="#%D0%B8%D1%82%D0%BE%D0%B3%D0%BE" class="post__header-anchor" title="Anchor">#</a>
+        
+        
+      </h2>
 
 <p>Пока сложно сказать об объективных результатах очистки телефона,
 но места на устройстве стало значительно больше, анимация стала плавнее,
 а занятой оперативной памяти – меньше.</p>
 
-<p>Если что-то не получается или есть какие-то вопросы – ниже есть секция с комментариями.
-Буду рад любому фитбеку :blush:</p>
-
-
+<!-- TODO Вернуть, когда появятся комментарии -->
+<p><del>Если что-то не получается или есть какие-то вопросы – ниже есть секция с комментариями.
+Буду рад любому фитбеку :blush:</del></p>
         </article>
 
         <hr>
@@ -272,7 +290,6 @@ Root доступ дает не только большие возможност
   <li><a href="#%D0%B8%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D0%B8%D1%8F">Инструкция</a></li>
   <li><a href="#%D0%B8%D1%82%D0%BE%D0%B3%D0%BE">Итого</a></li>
 </ul>
-
             </div>
             
             
@@ -477,7 +494,9 @@ Root доступ дает не только большие возможност
                     
                 </li>
 </ul>
-                <button class="btn btn-block tag-list__more">Show more...</button>
+                <div class="tag-list__more-wrapper">
+                    <button class="btn btn-block tag-list__more">Show 17 more...</button>
+                </div>
             </div>
         </aside>
     </div>
