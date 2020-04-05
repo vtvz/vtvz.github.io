@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>https://vtvz.me/achievements/achievements-introduction</loc>
+<lastmod>2020-04-04T00:00:00+03:00</lastmod>
+</url>
+<url>
 <loc>https://vtvz.me/blog/openning/</loc>
 <lastmod>2018-12-19T00:00:00+03:00</lastmod>
 </url>
@@ -153,12 +157,6 @@
 <loc>https://vtvz.me/blog/category/%D0%BE%D0%BF%D1%8B%D1%82/</loc>
 </url>
 <url>
-<loc>https://vtvz.me/blog/collection/posts/</loc>
-</url>
-<url>
-<loc>https://vtvz.me/blog/collection/posts/page-2/</loc>
-</url>
-<url>
-<loc>https://vtvz.me/blog/collection/posts/page-3/</loc>
+<loc>https://vtvz.me/blog/category/%D0%B1%D0%BB%D0%BE%D0%B3/</loc>
 </url>
 </urlset>
