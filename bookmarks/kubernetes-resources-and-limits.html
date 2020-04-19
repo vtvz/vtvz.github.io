@@ -7,7 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>My Bookmarks | Vitaly Zaslavsky</title>
+        <title>Ресурсы и лимиты в Kubernetes | Vitaly Zaslavsky</title>
 
         <link rel="shortcut icon" href="/favicon.png" type="image/png">
 
@@ -29,24 +29,26 @@
 
         <!-- Begin Jekyll SEO tag v2.6.1 -->
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="My Bookmarks" />
+<meta property="og:title" content="Ресурсы и лимиты в Kubernetes" />
 <meta name="author" content="Vitaly Zaslavsky" />
 <meta property="og:locale" content="en_GB" />
-<meta name="description" content="DevOps engineer’s personal blog about everything. Notes on successes and failures in professional activities, about finding solutions to practical problems, and just about life." />
-<meta property="og:description" content="DevOps engineer’s personal blog about everything. Notes on successes and failures in professional activities, about finding solutions to practical problems, and just about life." />
-<link rel="canonical" href="https://vtvz.me/bookmarks/" />
-<meta property="og:url" content="https://vtvz.me/bookmarks/" />
+<meta name="description" content="Небольшой пак материалов на тему ресурсов и лимитов в Kubernetes и управления ими. Очень рекомендую посмотреть видео, доступное по первым двум ссылкам." />
+<meta property="og:description" content="Небольшой пак материалов на тему ресурсов и лимитов в Kubernetes и управления ими. Очень рекомендую посмотреть видео, доступное по первым двум ссылкам." />
+<link rel="canonical" href="https://vtvz.me/bookmarks/kubernetes-resources-and-limits" />
+<meta property="og:url" content="https://vtvz.me/bookmarks/kubernetes-resources-and-limits" />
 <meta property="og:site_name" content="Vitaly Zaslavsky – DevOps Engineer, who loves his job" />
 <meta property="og:image" content="https://vtvz.me/assets/images/logo-black.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-04-19T00:00:00+03:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:image" content="https://vtvz.me/assets/images/logo-black.png" />
-<meta property="twitter:title" content="My Bookmarks" />
+<meta property="twitter:title" content="Ресурсы и лимиты в Kubernetes" />
 <meta name="twitter:site" content="@vtvz_me" />
 <meta name="twitter:creator" content="@vtvz_me" />
 <meta name="google-site-verification" content="40uemu1o4UDeTOeeLKqJVoaPU4CVUjlGI5D9AI1EkNE" />
 <meta name="yandex-verification" content="fa3eb4fcd2ebc4ad" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Vitaly Zaslavsky"},"description":"DevOps engineer’s personal blog about everything. Notes on successes and failures in professional activities, about finding solutions to practical problems, and just about life.","@type":"WebPage","url":"https://vtvz.me/bookmarks/","headline":"My Bookmarks","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://vtvz.me/assets/images/logo-black.png"},"name":"Vitaly Zaslavsky"},"image":"https://vtvz.me/assets/images/logo-black.png","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"Vitaly Zaslavsky"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://vtvz.me/bookmarks/kubernetes-resources-and-limits"},"description":"Небольшой пак материалов на тему ресурсов и лимитов в Kubernetes и управления ими. Очень рекомендую посмотреть видео, доступное по первым двум ссылкам.","@type":"BlogPosting","url":"https://vtvz.me/bookmarks/kubernetes-resources-and-limits","headline":"Ресурсы и лимиты в Kubernetes","dateModified":"2020-04-19T00:00:00+03:00","datePublished":"2020-04-19T00:00:00+03:00","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://vtvz.me/assets/images/logo-black.png"},"name":"Vitaly Zaslavsky"},"image":"https://vtvz.me/assets/images/logo-black.png","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
         <script>
@@ -65,7 +67,7 @@
         <a class="btn responsive-menu" data-toggle="collapse" data-target=".navbar-collapse"><i></i></a>
         <div class="navbar-brand text-center">
             <a href="/">
-                <img src="/assets/images/logo.svg" alt="Logo" class="logo"/>
+                <img src="/assets/images/logo.svg" alt="Logo" class="logo">
             </a>
         </div>
     </div>
@@ -100,15 +102,7 @@
 </nav>
 
     <div class="container inner">
-    <div class="row">
-        <div class="col-md-8 col-sm-12 content">
-            <div class="box">
-                <h1><i class="fas fa-bookmark fa-fw"></i> My Bookmarks</h1>
-            </div>
-
-            
-                
-                        <div class="box bookmark ">
+    <div class="box bookmark ">
     
     <div class="bookmark-gradient bookmark-gradient--variant-19"><a href="/bookmarks/kubernetes-resources-and-limits"></a></div>
     <h2 class="bookmark-title">
@@ -125,17 +119,18 @@
         </time>
     </div>
 
-    <div class="bookmark-content js-emojify"><p>Небольшой пак материалов на тему ресурсов и лимитов в Kubernetes и управления ими.
+    <div class="bookmark-content js-emojify">
+<p>Небольшой пак материалов на тему ресурсов и лимитов в Kubernetes и управления ими.
 Очень рекомендую посмотреть видео, доступное по первым двум ссылкам.</p>
 
 <ul>
-  <li><a href="https://habr.com/ru/company/flant/blog/459326/">Автомасштабирование и управление ресурсами в Kubernetes</a></li>
-  <li><a href="https://cloud.google.com/blog/products/gcp/kubernetes-best-practices-resource-requests-and-limits">Kubernetes best practices: Resource requests and limits</a></li>
-  <li><a href="https://habr.com/ru/company/nixys/blog/480072/">Kubernetes: почему так важно настроить управление ресурсами системы</a></li>
+  <li><a href="https://habr.com/ru/company/flant/blog/459326/" target="_blank" rel="noopener noreferrer">Автомасштабирование и управление ресурсами в Kubernetes</a></li>
+  <li><a href="https://cloud.google.com/blog/products/gcp/kubernetes-best-practices-resource-requests-and-limits" target="_blank" rel="noopener noreferrer">Kubernetes best practices: Resource requests and limits</a></li>
+  <li><a href="https://habr.com/ru/company/nixys/blog/480072/" target="_blank" rel="noopener noreferrer">Kubernetes: почему так важно настроить управление ресурсами системы</a></li>
 </ul>
 
-<p>Также советую подписаться на <a href="https://habr.com/ru/company/flant/">этих ребят</a> в Хабре,
-либо <a href="https://vk.com/flant_ru">других</a> <a href="https://www.facebook.com/flantco/">соц.</a> <a href="https://twitter.com/flant_ru">сетях</a>.
+<p>Также советую подписаться на <a href="https://habr.com/ru/company/flant/" target="_blank" rel="noopener noreferrer">этих ребят</a> в Хабре,
+либо <a href="https://vk.com/flant_ru" target="_blank" rel="noopener noreferrer">других</a> <a href="https://www.facebook.com/flantco/" target="_blank" rel="noopener noreferrer">соц.</a> <a href="https://twitter.com/flant_ru" target="_blank" rel="noopener noreferrer">сетях</a>.
 Регулярный годный контент на тему DevOps.</p>
 
 </div>
@@ -149,48 +144,11 @@
     </div>
 </div>
 
-                    
-            
 
-            
-
-
-        </div>
-        <aside class="col-md-4 col-sm-12 sidebar">
-            <div class="sidebox box">
-                <h3 class="section-title">Collections</h3>
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="/achievements/">
-                            <i class="fas fa-trophy fa-fw"></i> Achievements
-                            <span class="badge">1</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/bookmarks/">
-                            <i class="fas fa-bookmark fa-fw"></i> Bookmarks
-                            <span class="badge">1</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/notes/">
-                            <i class="fas fa-sticky-note fa-fw"></i> Notes
-                            <span class="badge">1</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </aside>
-    </div>
-    <div class="clearfix"></div>
-    <div class="row">
-        <div class="col-md-8 col-sm-12">
-            <footer class="box text-center">
-    &copy;&nbsp;2020 Vitaly Zaslavsky. All rights reserved.
+    <footer class="box text-center">
+    © 2020 Vitaly Zaslavsky. All rights reserved.
 </footer>
 
-        </div>
-    </div>
 </div>
 
 </div>
@@ -214,7 +172,7 @@
 
         
         <!-- Yandex.Metrika counter -->
-        <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(+"31771726", "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/31771726" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+        <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(+"31771726", "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/31771726" style="position:absolute; left:-9999px;" alt=""></div></noscript>
         <!-- /Yandex.Metrika counter -->
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
