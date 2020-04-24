@@ -19,14 +19,6 @@ $(document).ready(function () {
     $('.navbar, .smooth').localScroll({
         hash: true,
     });
-
-    setInterval(function () {
-        var logo = $('.navbar-brand .logo');
-        logo.attr('class', 'logo logo--wink');
-        setTimeout(function () {
-            logo.attr('class', 'logo');
-        }, 100);
-    }, 15_000)
 });
 /*-----------------------------------------------------------------------------------*/
 /*	PRELOADER
@@ -35,6 +27,20 @@ $(window).load(function () {
     $('.preloader__spinner').fadeOut();
     $('#preloader').delay(350).fadeOut('slow');
     $('body').delay(350).css({'overflow': 'visible'}).addClass('loaded');
+
+    var logo = $('.navbar-brand .logo');
+    var blink = function (timeout) {
+        logo.attr('class', 'logo logo--blink');
+        setTimeout(function () {
+            logo.attr('class', 'logo');
+        }, 100);
+
+        timeout = timeout || (Math.floor(Math.random() * 10000) + 10000);
+        setTimeout(blink, timeout);
+    }
+
+
+    blink(3000);
 });
 /*-----------------------------------------------------------------------------------*/
 /*	STICKY HEADER
