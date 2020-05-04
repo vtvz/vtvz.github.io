@@ -1,5 +1,88 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en_GB"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://vtvz.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vtvz.me/" rel="alternate" type="text/html" hreflang="en_GB" /><updated>2020-04-29T20:19:58+03:00</updated><id>https://vtvz.me/feed.xml</id><title type="html">Vitaly Zaslavsky – DevOps Engineer, who loves his job</title><subtitle>DevOps engineer's personal blog about everything. Notes on successes and failures in professional activities, about finding solutions to practical problems, and just about life.
-</subtitle><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><entry xml:lang="ru"><title type="html">Покойся с миром, мой дорогой друг…</title><link href="https://vtvz.me/blog/rest-in-peace-my-friend/" rel="alternate" type="text/html" title="Покойся с миром, мой дорогой друг…" /><published>2020-04-24T00:00:00+03:00</published><updated>2020-04-24T00:00:00+03:00</updated><id>https://vtvz.me/blog/rest-in-peace-my-friend</id><content type="html" xml:base="https://vtvz.me/blog/rest-in-peace-my-friend/">&lt;p&gt;В конце сентября 2017 года наша семья стала чуточку больше.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en_GB"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://vtvz.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vtvz.me/" rel="alternate" type="text/html" hreflang="en_GB" /><updated>2020-05-04T16:18:57+03:00</updated><id>https://vtvz.me/feed.xml</id><title type="html">Vitaly Zaslavsky – DevOps Engineer, who loves his job</title><subtitle>DevOps engineer's personal blog about everything. Notes on successes and failures in professional activities, about finding solutions to practical problems, and just about life.
+</subtitle><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><entry xml:lang="ru"><title type="html">Генератор постов в социальные сети</title><link href="https://vtvz.me/blog/social-post-generator/" rel="alternate" type="text/html" title="Генератор постов в социальные сети" /><published>2020-05-04T00:00:00+03:00</published><updated>2020-05-04T00:00:00+03:00</updated><id>https://vtvz.me/blog/social-post-generator</id><content type="html" xml:base="https://vtvz.me/blog/social-post-generator/">&lt;p&gt;Порой написание статьи отнимает меньше времени, чем генерация постов в социальные сети.
+И в каждой из них нужно что-то учесть:
+в twitter’е жесткие ограничения по количеству символов,
+где-то не нужно указывать ссылку на телеграмм канал,
+а вот на личной странице в ВК еще нужно указать линку на группу.
+Мне это поднадоело. Поэтому я решил это дело автоматизировать! Хватит это терпеть!&lt;/p&gt;
+
+&lt;!--cut--&gt;
+
+&lt;p&gt;Это второй по счету интерактивный пост, призванный упростить мне жизнь.
+Но в этом случае этот инструмент не будет полезен никому, кроме как мне.
+И здесь сделано все так, чтобы создание постов для социальных сетей было тривиальным действием.
+Если вдруг кто-то хочет себе что-то подобное – обращайтесь :blush:&lt;/p&gt;
+
+&lt;p&gt;Фичи этого генератора:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Все поля предзаполняются автоматически из данных последнего поста блога;&lt;/li&gt;
+  &lt;li&gt;Если нужно создать пост для какой-то другой коллекции, то для этого есть выпадающий список “Применить”;&lt;/li&gt;
+  &lt;li&gt;Текст для twitter’a и других соц. сетей заполняется отдельно;&lt;/li&gt;
+  &lt;li&gt;Имеется подсчет доступных символов для twitter’а и LinkedIn;&lt;/li&gt;
+  &lt;li&gt;Для twitter’а подсчет символов выполнен с учетом всей магии с укорачиванием ссылок –
+длинна урла не влияет на количество свободных буков;&lt;/li&gt;
+  &lt;li&gt;Для каждой социальной сети используется свой шаблон поста;&lt;/li&gt;
+  &lt;li&gt;В ссылку к каждой соц. медиа вставляются все необходимые utm метки для аналитики.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;В целом, получилось достаточно мощно. Это значительно упростит мне жизнь.&lt;/p&gt;
+
+&lt;p&gt;Если интересно, то вот, можно потыкать:&lt;/p&gt;
+
+&lt;div id=&quot;social-post-generator-container&quot;&gt;&lt;/div&gt;
+
+&lt;script&gt;
+window.callOnReady.push(
+    function() {
+        var data = {
+            
+              &quot;achievements&quot;: {
+                
+
+                link: &quot;https://vtvz.me/achievements/achievements-introduction&quot;,
+                title: &quot;Создать раздел достижений&quot;,
+                excerpt: &quot;&lt;p&gt;Моё первое достижение – создать раздел достижений.\nСюда я буду писать о своих победах в рабочей и повседневной жизни.\nЭто будут коротенькие заметки, в которых будут содержаться мои мысли и ссылки на использованные материалы.\nСодержание будет частично пересекаться с (возможным) будущим разделом закладок и постами в блоге.&lt;/p&gt;\n&quot;,
+                description: &quot;&lt;p&gt;Моё первое достижение – создать раздел достижений.\nСюда я буду писать о своих победах в рабочей и повседневной жизни.\nЭто будут коротенькие заметки, в которых будут содержаться мои мысли и ссылки на использованные материалы.\nСодержание будет частично пересекаться с (возможным) будущим разделом закладок и постами в блоге.&lt;/p&gt;\n&quot;,
+                tags: [&quot;Блог&quot;,&quot;Веб-разработка&quot;,&quot;Jekyll&quot;]
+              },      
+            
+              &quot;bookmarks&quot;: {
+                
+
+                link: &quot;https://vtvz.me/bookmarks/kubernetes-administrator-certification&quot;,
+                title: &quot;Сертификация Kubernetes Администратора&quot;,
+                excerpt: &quot;&lt;p&gt;Я нашел замечательный ресурс, который позволяет пройти сертификацию Kubernetes администратора.&lt;/p&gt;\n&quot;,
+                description: &quot;&lt;p&gt;Я нашел замечательный ресурс, который позволяет пройти сертификацию Kubernetes администратора.&lt;/p&gt;\n&quot;,
+                tags: [&quot;Kubernetes&quot;,&quot;DevOps&quot;,&quot;Certification&quot;]
+              },      
+            
+              &quot;notes&quot;: {
+                
+
+                link: &quot;https://vtvz.me/notes/useless-masks&quot;,
+                title: &quot;Бесполезные маски&quot;,
+                excerpt: &quot;&lt;p&gt;У некоторых людей, в том числе уважаемых вирусологов и врачей, есть мнение,\nчто медицинские маски бесполезны для самозащиты от вирусов.\nДаже &lt;a href=\&quot;https://www.who.int/ru/emergencies/diseases/novel-coronavirus-2019/advice-for-public\&quot;&gt;ВОЗ не рекомендует&lt;/a&gt; носить маску всегда, только в некоторых случаях.\nНапример, когда у вас самих есть подозрение на коронавирус, и вы не хотите заразить других.&lt;/p&gt;\n\n&quot;,
+                description: &quot;&lt;p&gt;У некоторых людей, в том числе уважаемых вирусологов и врачей, есть мнение,\nчто медицинские маски бесполезны для самозащиты от вирусов.\nДаже &lt;a href=\&quot;https://www.who.int/ru/emergencies/diseases/novel-coronavirus-2019/advice-for-public\&quot;&gt;ВОЗ не рекомендует&lt;/a&gt; носить маску всегда, только в некоторых случаях.\nНапример, когда у вас самих есть подозрение на коронавирус, и вы не хотите заразить других.&lt;/p&gt;\n\n&quot;,
+                tags: [&quot;Коронавирус&quot;,&quot;Здоровье&quot;,&quot;Ярость&quot;]
+              },      
+            
+              &quot;posts&quot;: {
+                
+
+                link: &quot;https://vtvz.me/blog/social-post-generator/&quot;,
+                title: &quot;Генератор постов в социальные сети&quot;,
+                excerpt: &quot;&lt;p&gt;Порой написание статьи отнимает меньше времени, чем генерация постов в социальные сети.\nИ в каждой из них нужно что-то учесть:\nв twitter’е жесткие ограничения по количеству символов,\nгде-то не нужно указывать ссылку на телеграмм канал,\nа вот на личной странице в ВК еще нужно указать линку на группу.\nМне это поднадоело. Поэтому я решил это дело автоматизировать! Хватит это терпеть!&lt;/p&gt;\n\n&quot;,
+                description: &quot;Генератор постов в социальные сети с учетом максимальной длины и применением всех необходимых utm меток  \n&quot;,
+                tags: [&quot;Веб-разработка&quot;,&quot;Инструменты&quot;]
+              },      
+            
+        };
+
+        main.postGenerator(document.getElementById('social-post-generator-container'), data);
+    }
+);
+&lt;/script&gt;</content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Веб-разработка" /><category term="Инструменты" /><summary type="html">Порой написание статьи отнимает меньше времени, чем генерация постов в социальные сети. И в каждой из них нужно что-то учесть: в twitter’е жесткие ограничения по количеству символов, где-то не нужно указывать ссылку на телеграмм канал, а вот на личной странице в ВК еще нужно указать линку на группу. Мне это поднадоело. Поэтому я решил это дело автоматизировать! Хватит это терпеть!</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/social-post-generator/cover.jpg" /><media:content medium="image" url="https://vtvz.me/blog/social-post-generator/cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Покойся с миром, мой дорогой друг…</title><link href="https://vtvz.me/blog/rest-in-peace-my-friend/" rel="alternate" type="text/html" title="Покойся с миром, мой дорогой друг…" /><published>2020-04-24T00:00:00+03:00</published><updated>2020-04-24T00:00:00+03:00</updated><id>https://vtvz.me/blog/rest-in-peace-my-friend</id><content type="html" xml:base="https://vtvz.me/blog/rest-in-peace-my-friend/">&lt;p&gt;В конце сентября 2017 года наша семья стала чуточку больше.
 Мы пришли к выводу, что в нашем доме недостаточно уютно, и было принято решение взять хомячка.
 Еще до того, как он у нас появился, ему было дано имя – Джонатан Хамстер.
 Ведь какое еще можно дать имя хомяку?
@@ -1043,213 +1126,4 @@ Root доступ дает не только большие возможност
 
 &lt;!-- TODO Вернуть, когда появятся комментарии --&gt;
 &lt;p&gt;&lt;del&gt;Если что-то не получается или есть какие-то вопросы – ниже есть секция с комментариями.
-Буду рад любому фитбеку :blush:&lt;/del&gt;&lt;/p&gt;</content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Android" /><category term="Оптимизация" /><summary type="html">До недавнего времени я свято верил, что предустановленные программы в Android устройствах могут быть либо выключены, либо удалены только с перепрошивкой телефона. Root доступ дает не только большие возможности, но и большие риски. Поэтому я не стал перепрошивать свой телефон и оставил родную прошивку. Но не так давно я обнаружил, что есть вполне рабочий способ удалить намертво установленные программы со своего устройства.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/android-debloating/cover.jpg" /><media:content medium="image" url="https://vtvz.me/blog/android-debloating/cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Первый успех. Больше ста визитов за неделю</title><link href="https://vtvz.me/blog/first-success/" rel="alternate" type="text/html" title="Первый успех. Больше ста визитов за неделю" /><published>2019-11-30T00:00:00+03:00</published><updated>2019-11-30T00:00:00+03:00</updated><id>https://vtvz.me/blog/first-success</id><content type="html" xml:base="https://vtvz.me/blog/first-success/">&lt;p&gt;Мой блог, как мой питомец. Я его люблю, вкладываю туда свои время и силы.
-Для создания чего-то нового приходится тратить свой творческий ресурс.
-Да, даже чисто техническая статья должна быть интересной, неоднотонной, без повторяющихся слов, грамотной, корректной
-и другие страшные слова.&lt;/p&gt;
-
-&lt;p&gt;Потратив этот ресурс, так или иначе хочется, чтобы это творение не осталось незамеченным.
-Художники делают выставки, музыканты записывают треки, танцоры выступают на концертах и т.д.
-А авторы статей и блогеры хотят, чтобы их читали. Хоть мой блог и был создал в первую очередь для меня,
-мне все равно не хочется писать впустую, а каждое посещение странички греет мне сердце.
-Тут коротко о моих первых успехах в продвижении сайта.&lt;/p&gt;
-
-&lt;!--cut--&gt;
-
-&lt;figure class=&quot;frame &quot;&gt;&lt;a href=&quot;./intro-report.png&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;./intro-report.png&quot; alt=&quot;Отчет по источникам за год&quot; title=&quot;Отчет по источникам за год&quot; /&gt;&lt;/a&gt;&lt;/figure&gt;
-
-&lt;p&gt;Есть много способов продвинуть свой сайт в люди без сильных расходов. Да, это будет гораздо медленнее и не так эффективно,
-чем грамотно сделанная реклама. Но и за бесплатно можно достичь некоторых результатов.&lt;/p&gt;
-
-&lt;h2 id=&quot;никнейм&quot;&gt;Никнейм&lt;/h2&gt;
-
-&lt;p&gt;Однажды, незадолго после окончания школы (~2013г.), мне представилась замечательная возможность приобрести свой личный домен.
-Соглашусь, делается это несложно. Но тогда я не умел ничего связанного с реальной разработкой веб-сайтов.
-Я хотел что-то короткое, лаконичное, созвучное с моим ФИО. Все трехбуквенные варианты уже были заняты.
-На придумывание не ушло много времени, я выбрал &lt;code class=&quot;highlighter-rouge&quot;&gt;vtvz&lt;/code&gt;. Вскоре, это стало моим логином/URL’ом/ником везде:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://vk.com/vtvz_ru&quot;&gt;https://vk.com/vtvz_ru&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.facebook.com/vtvz.ru&quot;&gt;https://www.facebook.com/vtvz.ru&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.linkedin.com/in/vtvz/&quot;&gt;https://www.linkedin.com/in/vtvz/&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;mailto:vtvz.ru@gmail.com&quot;&gt;vtvz.ru@gmail.com&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;mailto:vtvz@pm.me&quot;&gt;vtvz@pm.me&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://steamcommunity.com/id/vtvz_ru&quot;&gt;https://steamcommunity.com/id/vtvz_ru&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Minecraft username: vtvz&lt;/li&gt;
-  &lt;li&gt;Моя подпись (да, все зашло слишком далеко :grin:)&lt;/li&gt;
-  &lt;li&gt;и т.д.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;em&gt;Update: Некоторые из этих ссылок могут не работать&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Даже WiFi сеть и Bluetooth у меня обозваны ссылкой на сайт:&lt;/p&gt;
-
-&lt;figure class=&quot;frame &quot;&gt;&lt;a href=&quot;./wifi.png&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;./wifi.png&quot; alt=&quot;Название wifi сети: vtvz.ru&quot; title=&quot;Название wifi сети: vtvz.ru&quot; /&gt;&lt;/a&gt;&lt;/figure&gt;
-
-&lt;p&gt;До появления блога, когда существовала только визитка, на сайт приходили люди из разных городов и даже стран.
-Сложно сказать, сколько именно пришло из-за никнейма, но однозначно такие люди есть.
-Наверняка из всех 497 посетителей по “прямому заходу” (вбил руками в бразуезе) есть те, кому было любопытно,
-что скрывается под ником-ссылкой.&lt;/p&gt;
-
-&lt;h2 id=&quot;поисковики&quot;&gt;Поисковики&lt;/h2&gt;
-
-&lt;p&gt;На текущий момент, мой сайт не часто попадает в поисковые выдачи, и кликов приходит не так много.
-Это вполне себе логично, так как:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Сайт сравнительно молодой. (6 лет это мало?)&lt;/li&gt;
-  &lt;li&gt;На нем не так много контента.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;С точки зрения SEO у меня почти всё сделано по последним канонам продвижения, но некоторые прорехи есть,
-которые устранить сложнее. Но, как мне сказали, это и может ускорить поднятие в списке выдачи, но самое главное – это контент.
-Тут есть проблемы… За этот год вышло всего шесть статей (эта седьмая), что не есть айс.&lt;/p&gt;
-
-&lt;p&gt;Но есть определенная закономерность: узконаправленные статьи, решающие конкретную проблему,
-гораздо чаще попадают в результаты поиска.&lt;/p&gt;
-
-&lt;figure class=&quot;frame &quot;&gt;&lt;a href=&quot;./google-console.png&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;./google-console.png&quot; alt=&quot;Google Search Console&quot; title=&quot;Google Search Console&quot; /&gt;&lt;/a&gt;&lt;/figure&gt;
-
-&lt;p&gt;Гуглу, кстати говоря, я понравился больше. За этот год он показал меня аж 611 раз! Вот страницы-рекордсмены:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/html-to-mysql/&quot;&gt;“HTML to MySQL. Или Веб-скрапинг на практике”&lt;/a&gt; – 426 показов / 3 клика;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/jekyll-spoiler-plugin/&quot;&gt;“Jekyll Spoiler Plugin. Куда и как прятать код”&lt;/a&gt; – 75 показов / 3 клика;&lt;/li&gt;
-  &lt;li&gt;И (внезапно) &lt;a href=&quot;/&quot;&gt;главная страница&lt;/a&gt; и &lt;a href=&quot;/blog/openning/&quot;&gt;“Свершилось! Часть первая. Зачем мне блог”&lt;/a&gt; – 129 показов / 1 + 1 клик;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Самые популярные запросы [в скобочках количество показов]:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;скрапинг [65] / веб скрапинг [32] / скрапинг это [16] / веб-скрапинг [8] / скрапинг публичных сайтов [2]&lt;/li&gt;
-  &lt;li&gt;vtvz [32] (Как так?)&lt;/li&gt;
-  &lt;li&gt;markdown spoiler [11] / код спойлера [8]&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;details class=&quot;spoiler&quot;&gt;&lt;summary class=&quot;spoiler-title&quot;&gt;Небольшое замечание&lt;/summary&gt;&lt;div class=&quot;spoiler-body&quot;&gt;
-&lt;p&gt;У Гугла статистика по запросам и по страницам очень сильно расходится.
-Тогда как он показал мне суммарно 8 кликов из поисковика на вкладке “Страницы”, 
-на вкладке “Запросы” нет &lt;strong&gt;ни одного клика (!)&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Может я что-то упускаю, но очень бы хотелось знать, по каким запросам пришли люди на сайт.&lt;/p&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-sm-6&quot;&gt;
-        &lt;figure class=&quot;frame &quot;&gt;&lt;a href=&quot;./google-console-queues.png&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;./google-console-queues.png&quot; alt=&quot;Статистика по запросам&quot; title=&quot;Статистика по запросам&quot; /&gt;&lt;/a&gt;&lt;/figure&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;col-sm-6&quot;&gt;
-        &lt;figure class=&quot;frame &quot;&gt;&lt;a href=&quot;./google-console-pages.png&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;./google-console-pages.png&quot; alt=&quot;Статистика по страницам&quot; title=&quot;Статистика по страницам&quot; /&gt;&lt;/a&gt;&lt;/figure&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;/details&gt;
-
-&lt;p&gt;По поводу третьего пункта все ясно – решенная мной задача скорее уникальная, чем распространенная.&lt;/p&gt;
-
-&lt;p&gt;Но почему скрапинг? Тема вроде как достаточно известная. Может быть материала на эту тему действительно мало?
-Возможно это моя золотая жила? Надо исследовать в эту сторону :grin:&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Касательно Яндекса… Может быть в нем контенгент немного другой.
-Как правило, программисты пользуются Гуглом для поиска решений своих проблем.
-Возможно именно поэтому за год я появлялся в выборке всего 63 раза. Это примерно в 10 раз меньше, чем Гугл.&lt;/p&gt;
-
-&lt;p&gt;Яндекс тоже не особо многословен:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;виталий заславский – 6 показов;&lt;/li&gt;
-  &lt;li&gt;заславский виталий – 4 показа;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Стоит отметить, что 6+4≠63. Куда делись остальные 53 показа?&lt;/p&gt;
-
-&lt;details class=&quot;spoiler&quot;&gt;&lt;summary class=&quot;spoiler-title&quot;&gt;Кстати об этом...&lt;/summary&gt;&lt;div class=&quot;spoiler-body&quot;&gt;
-&lt;p&gt;Статистика у него тоже неплохо так расходится. Опять же, возможно я что-то упускаю?&lt;/p&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-sm-4&quot;&gt;
-        &lt;figure class=&quot;frame &quot;&gt;&lt;a href=&quot;./yandex-groups.png&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;./yandex-groups.png&quot; alt=&quot;Статистика по группам&quot; title=&quot;Статистика по группам&quot; /&gt;&lt;/a&gt;&lt;/figure&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;col-sm-4&quot;&gt;
-        &lt;figure class=&quot;frame &quot;&gt;&lt;a href=&quot;./yandex-pages.png&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;./yandex-pages.png&quot; alt=&quot;Статистика страниц&quot; title=&quot;Статистика страниц&quot; /&gt;&lt;/a&gt;&lt;/figure&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;col-sm-4&quot;&gt;
-        &lt;figure class=&quot;frame &quot;&gt;&lt;a href=&quot;./yandex-popular.png&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;./yandex-popular.png&quot; alt=&quot;Статистика по популярным запросам&quot; title=&quot;Статистика по популярным запросам&quot; /&gt;&lt;/a&gt;&lt;/figure&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;/details&gt;
-
-&lt;p&gt;Мне еще много чего нужно сделать, чтобы поисковики и люди полюбили мой сайт:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Дублировать статьи в &lt;a href=&quot;https://zen.yandex.ru/&quot;&gt;Yandex.Zen&lt;/a&gt;;&lt;/li&gt;
-  &lt;li&gt;Подключить &lt;a href=&quot;https://yandex.ru/dev/turbo/&quot;&gt;Турбо-страницы&lt;/a&gt;;&lt;/li&gt;
-  &lt;li&gt;Сделать &lt;a href=&quot;https://developers.google.com/amp/?hl=ru&quot;&gt;AMP версии страниц&lt;/a&gt;;&lt;/li&gt;
-  &lt;li&gt;На главную страницу расположить список последних постов;&lt;/li&gt;
-  &lt;li&gt;И еще много всякого разного…&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Но мой &lt;a href=&quot;https://www.facebook.com/ifrolov2&quot;&gt;коллега&lt;/a&gt;, который на продвижении уже собоку съел,
-ясно дал понять, что ключ не в поисковых оптимизациях и прочей магии, а в контенте.
-Так что самая важная для меня задача – писать больше статей.&lt;/p&gt;
-
-&lt;h2 id=&quot;социальные-сети&quot;&gt;Социальные сети&lt;/h2&gt;
-
-&lt;p&gt;В какой-то степени, социальные сети являются основным стабильным источником трафика.
-За последний год из соц. сетей было 155 посещений, 122 которых пришлось на ВК (&lt;a href=&quot;https://vk.com/blog_vtvz&quot;&gt;кстати об этом&lt;/a&gt;).&lt;/p&gt;
-
-&lt;p&gt;Откровенно говоря, мой блог хоть и обо всем, но целевая аудитория – IT-инженеры.
-И тут получается некоторый конфликт: я хочу писать технические статьи, но их особо никто читать не будет,
-потому основной поток читателей приходится из социальных сетей, где в друзьях у меня люди другой направленности.&lt;/p&gt;
-
-&lt;p&gt;Тем не менее, большое спасибо тем, кто приходит, и особенно тем, кто дочитывает до конца. Для меня это важно :blush:&lt;/p&gt;
-
-&lt;h2 id=&quot;дайджесты&quot;&gt;Дайджесты&lt;/h2&gt;
-
-&lt;p&gt;Дайджест – это некоторый агрегатор интересных материалов по определенной тематике за какой-то период.&lt;/p&gt;
-
-&lt;p&gt;Есть 2 основных дайджеста, в которые я потенциально мог попасть:
-&lt;a href=&quot;https://habr.com/ru/users/pronskiy/posts/&quot;&gt;PHP-Дайджест&lt;/a&gt;
-и &lt;a href=&quot;https://habr.com/ru/users/alexzfort/posts/&quot;&gt;Фронтенд дайджест&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Первая статья, которая попала в массы – &lt;a href=&quot;/blog/html-to-mysql/&quot;&gt;“HTML to MySQL. Или Веб-скрапинг на практике”&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;И она не попала ни в один из перечисленных выше дайджестов. Когда я отправил ссылку одному из авторов этих подборок,
-мне дали ясно понять, что эта статья не уровня Хабра. Но, как оказалось позднее, у этих ребят есть еще свой &lt;a href=&quot;https://zfort.com.ua/&quot;&gt;сайт&lt;/a&gt;,
-куда они тоже публикуют дайджесты, куда мне &lt;a href=&quot;https://zfort.com.ua/blog/category/digest/frontend-daidzhest-353-18-24-fevralya-2019&quot;&gt;удалось попасть&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;В итоге, за все это время мне удалось собрать 16 переходов. Не очень много, но это уже приятно :blush:&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Самой успешной оказалась статья &lt;a href=&quot;/blog/custom-doctrine-annotation-fixer/&quot;&gt;“Пишем свой Doctrine Annotation Fixer для PHP-CS-Fixer”&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Это было именно то, что по всем критериям попадало в PHP-Дайджест:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Она напрямую связана с PHP;&lt;/li&gt;
-  &lt;li&gt;Она уникальна в своем роде, так как существующие статьи уже устарели, подобная проблема не решалась, а материалов на русском найти невозможно;&lt;/li&gt;
-  &lt;li&gt;Статья достаточно подробная, чтобы было понятно новичку, но без лишней воды, чтобы уже опытным было интересно.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Откровенно говоря, она и была написана с целью попасть в &lt;a href=&quot;https://habr.com/ru/post/477318/&quot;&gt;этот дайджест&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Более ста визитов за одну неделю и 171 за все время. И целых 2 комментария!
-Цифры пока еще достаточно скромные, но, определенно, это прорыв! Для меня это настоящий успех! :tada:&lt;/p&gt;
-
-&lt;figure&gt;&lt;a href=&quot;./success.png&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;./success.png&quot; alt=&quot;Статистика визитов за неделю&quot; /&gt;&lt;/a&gt;&lt;/figure&gt;
-
-&lt;p&gt;Самое приятное в этой ситуации то, что на сайт приходили не просто люди, а целевая аудитория – те, для кого была написана эта статья.&lt;/p&gt;
-
-&lt;p&gt;Вероятно, это моя первая и последняя статья, которая попала в подобную подборку.
-Просто потому, что я не нашел подходящих дайджестов по моим текущим направлениям (DevOps и немного Go).&lt;/p&gt;
-
-&lt;h2 id=&quot;итого&quot;&gt;Итого&lt;/h2&gt;
-
-&lt;p&gt;Сложно делать какие-то выводы. Цель этой статьи не в том, чтобы кого-то чему-то научить.
-У меня произошло радостное событие, и я хотел с вами им поделиться :blush:&lt;/p&gt;
-
-&lt;p&gt;Писать статьи – очень трудоемкий процесс, который я, возможно, опишу в отдельной статье. 
-Поэтому спасибо всем, кто дочитал до конца; статья вышла достаточно большой.
-Для меня ценно каждое посещение, каждый просмотр.&lt;/p&gt;
-
-&lt;p&gt;Гляди, может быть наберется аудитория преданных читателей :grin:&lt;/p&gt;</content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Веб-разработка" /><category term="Блог" /><summary type="html">Мой блог, как мой питомец. Я его люблю, вкладываю туда свои время и силы. Для создания чего-то нового приходится тратить свой творческий ресурс. Да, даже чисто техническая статья должна быть интересной, неоднотонной, без повторяющихся слов, грамотной, корректной и другие страшные слова. Потратив этот ресурс, так или иначе хочется, чтобы это творение не осталось незамеченным. Художники делают выставки, музыканты записывают треки, танцоры выступают на концертах и т.д. А авторы статей и блогеры хотят, чтобы их читали. Хоть мой блог и был создал в первую очередь для меня, мне все равно не хочется писать впустую, а каждое посещение странички греет мне сердце. Тут коротко о моих первых успехах в продвижении сайта.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/assets/images/logo-cover.png" /><media:content medium="image" url="https://vtvz.me/assets/images/logo-cover.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+Буду рад любому фитбеку :blush:&lt;/del&gt;&lt;/p&gt;</content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Android" /><category term="Оптимизация" /><summary type="html">До недавнего времени я свято верил, что предустановленные программы в Android устройствах могут быть либо выключены, либо удалены только с перепрошивкой телефона. Root доступ дает не только большие возможности, но и большие риски. Поэтому я не стал перепрошивать свой телефон и оставил родную прошивку. Но не так давно я обнаружил, что есть вполне рабочий способ удалить намертво установленные программы со своего устройства.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/android-debloating/cover.jpg" /><media:content medium="image" url="https://vtvz.me/blog/android-debloating/cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
