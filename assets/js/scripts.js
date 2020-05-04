@@ -33,7 +33,7 @@ $(window).load(function () {
         logo.attr('class', 'logo logo--blink');
         setTimeout(function () {
             logo.attr('class', 'logo');
-        }, 100);
+        }, (Math.floor(Math.random() * 150) + 50));
 
         timeout = timeout || (Math.floor(Math.random() * 10000) + 10000);
         setTimeout(blink, timeout);
