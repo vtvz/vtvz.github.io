@@ -15,6 +15,247 @@
         
         
         <item turbo="true">
+            <title>Покорение UTM меток</title>
+            <link>https://vtvz.me/blog/conquering-the-utm-parameters/</link>
+            <pubDate>Wed, 13 May 2020 00:00:00 +0300</pubDate>
+            <author>Vitaly Zaslavsky</author>
+            <turbo:content>
+                <![CDATA[
+                <header>
+                    <h1>Покорение UTM меток</h1>
+                    <figure>
+                        <img src="/blog/conquering-the-utm-parameters/cover.jpg">
+                    </figure>
+                </header>
+                <p>Решил я тут собрать побольше статистики по посетителям.
+Хотя Яндекс.Метрика очень даже неплохо с этим справляется,
+но хотелось бы иметь более управляемый механизм,
+в котором можно было разделить не только соц. сеть,
+из которой пришел посетитель, но и какую из ссылок он нажал.</p>
+
+<p>Или например, сколько человек посмотрело статью из секции “Latest Article” на главной странице,
+сколько перелистнуло на следующий пост, и так далее. Выбор очевиден – нужно использовать UTM метки.
+Они очень распространены в рекламной части бизнеса, но их можно использовать и для простой аналитики.
+Но тут есть одна проблемка…</p>
+
+<!--cut-->
+
+<h2 id="постановка-задачи">Постановка задачи</h2>
+
+<p>Проблема в том, что эти метки <strong>очень</strong> массивные.
+Вот к примеру, одна из возможных ссылок на пост в социальной сети выглядит следующим образом:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://vtvz.me/blog/social-post-generator/
+    ?utm_source=_telegram
+    &amp;utm_medium=social-post
+    &amp;utm_campaign=blog
+    &amp;utm_content=social-post-generator
+</code></pre></div></div>
+
+<p>Это 96 дополнительных символов!
+Хотя многие соц. сети хорошо с этим справляются. Например, в VK такие ссылки ограничены одной строкой.
+А в Twitter и LinkedIn есть свой укорачиватель. Но вот Телеграм так не умеет.</p>
+
+<figure class="frame "><a href="./telegram.png" target="_blank"><img src="./telegram.png" alt="Жирная ссылка в Телеграмм" title="Жирная ссылка в Телеграмм" /></a></figure>
+
+<p>Тем не менее, помимо постов есть еще и ссылки на сайт в профилях соц. сетей.
+В ВК, например, у меня целых 3 места, ведущих на главную страницу. 
+И эти длиннющие ссылки немного пугают и уродливо выглядят.
+Короче, задача в следующем: сделать эти ссылки простыми и эстетичными.</p>
+
+<h2 id="решения">Решения</h2>
+<h3 id="укорачиватель-ссылок">Укорачиватель ссылок</h3>
+
+<p>Я уже давно пользуюсь сервисами, которые делают из монстров конфетку.
+Вот например <a href="https://bitly.com/">Bitly</a> неплохо с этим справляется. 
+Вот что он сделал со ссылкой, которую я указал ранее:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://bit.ly/vtvz-tg-post-generator
+</code></pre></div></div>
+
+<p>Уже гораздо лучше.</p>
+
+<p>НО! Теперь эта ссылка не ведет на мой сайт. Она ведет на bit.ly, который уже кидает куда надо.
+Проблема ли это? Для меня да. Мой сайт – моя визитная карточка, которая должна явно указывать, кому она принадлежит.
+Так что, это отметается сразу.</p>
+
+<h3 id="свой-укорачиватель-ссылок">Свой укорачиватель ссылок</h3>
+
+<p>А почему бы самому не укорачивать ссылки и публиковать уже их? Это решает проблему выше, но создает еще несколько.</p>
+
+<ol>
+  <li>Его нужно сделать. Это дополнительное время на реализацию целого компонента системы.
+Сложность создает тот факт, что этот сайт статический, собран из обычных html страничек,
+сгенерированных с помощью Jekyll, который написан на Ruby, который я не знаю… Ну вы поняли :grin:</li>
+  <li>Обычные укорачиватели перекидывают тебя на другой сайт используя HTTP 301 код.
+Но мы не можем отдавать этот статус клиенту, потому что статические сайты дают либо 200, либо 404.
+А вот ВК не умеет обрабатывать такие страницы.</li>
+  <li>Придется генерировать целую пачку укороченных сслылок для каждой записи в блоге.
+Это значительно повышает ошибку человеческого фактора, значительно усложняет систему и захламляет проект.
+<span class="text-muted">(Эта проблема справедлива и для предыдущего метода)</span></li>
+  <li>Это сложно автоматизировать имеющимися инструментами.</li>
+</ol>
+
+<p>Вывод: тоже отбрасываем.</p>
+
+<h3 id="упаковка-меток">Упаковка меток</h3>
+
+<p>Я уверен, что этот метод использовался ранее, и что я изобрел велосипед.
+Но результат, по-моему, получился просто невероятным. Принцип работы в следующем:</p>
+
+<p>Вместе со ссылкой передается один единственный query параметр,
+на основании его в url страницы применяются все необходимые utm метки.
+Все это должно произойти <strong>ДО</strong> инициализации инструментов аналитики.</p>
+
+<p>Выглядит это следующим образом:</p>
+
+<ul>
+  <li>Человек открывает ссылку <code class="highlighter-rouge">https://vtvz.me/blog/social-post-generator/?utm=tg</code></li>
+  <li>Она распаковывается в
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://vtvz.me/blog/social-post-generator/
+    ?utm_source=_telegram
+    &amp;utm_medium=social-post
+    &amp;utm_campaign=blog
+    &amp;utm_content=social-post-generator
+</code></pre></div>    </div>
+  </li>
+  <li>Запускаются Яндекс.Метрика и Google Analytics</li>
+</ul>
+
+<p>В итоге удалось упаковать 96 символов в 7! Вот как это работает…</p>
+
+<h2 id="реализация">Реализация</h2>
+
+<div class="alert alert-info">
+    <p><b>Предупреждение!</b></p>
+    <p>
+        Весь дальнейший код написан на версии JavaScript, который поддерживается не всеми браузерами.
+        Для совместимости со старыми версиями я использую webpack + babel.
+        Но примеры достаточно просты, чтобы транспилировать их в классический JS.
+    </p>
+</div>
+
+<p>Наш код должен работать следующим образом:</p>
+
+<ol>
+  <li>Вытянуть <code class="highlighter-rouge">utm</code> параметр из query адреса;</li>
+  <li>Сгенерировать source, medium, campaign…</li>
+  <li>Удалить параметр <code class="highlighter-rouge">utm</code>;</li>
+  <li>Применить метки из пункта 2;</li>
+  <li>Заменить текущий url на новый.</li>
+</ol>
+
+<p>Выглядит это так:</p>
+
+<p>У нас есть карта стратегий обработки. Это объект, в ключах которого возможные utm сокращения,
+а в значении – функция, которая генерирует все необходимые метки.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">strategies</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="dl">'</span><span class="s1">tg</span><span class="dl">'</span><span class="p">:</span> <span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="p">[</span><span class="nx">collection</span><span class="p">,</span> <span class="nx">slug</span><span class="p">]</span> <span class="o">=</span> <span class="nx">url</span><span class="p">.</span><span class="nx">pathname</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">).</span><span class="nx">filter</span><span class="p">(</span><span class="nx">_</span> <span class="o">=&gt;</span> <span class="nx">_</span><span class="p">);</span>
+
+        <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="na">source</span><span class="p">:</span> <span class="dl">'</span><span class="s1">_telegram</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">medium</span><span class="p">:</span> <span class="dl">'</span><span class="s1">social-post</span><span class="dl">'</span>
+        <span class="p">}</span>
+
+        <span class="nx">collection</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">campaign</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">);</span>
+        <span class="nx">slug</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">content</span> <span class="o">=</span> <span class="nx">slug</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nx">data</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>В этом случае функция получает текущий адрес, на основании которого строит кампанию и контент.
+Эта магия применима в моем случае. В вашем может быть что-то другое.</p>
+
+<figure class="frame "><a href="./strategies.png" target="_blank"><img src="./strategies.png" alt="Карта стратегий" title="Карта стратегий" /></a><figcaption><p>У меня карта стратегий выглядит вот так</p></figcaption></figure>
+
+<p>Теперь нужна функция, которая сделает всю остальную работу:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * @param {Window} w
+ * @param {Document} d
+ */</span>
+<span class="kd">const</span> <span class="nx">utmResolver</span> <span class="o">=</span> <span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="nx">d</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="c1">// В качестве параметров передаются window и document</span>
+    <span class="c1">// 1. Парсим ссылку и вытягиваем utm параметр </span>
+    <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">URL</span><span class="p">(</span><span class="nx">w</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+    <span class="kd">const</span> <span class="nx">utm</span> <span class="o">=</span> <span class="nx">url</span><span class="p">.</span><span class="nx">searchParams</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">utm</span><span class="dl">'</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="kc">null</span> <span class="o">===</span> <span class="nx">utm</span> <span class="o">||</span> <span class="dl">''</span> <span class="o">===</span> <span class="nx">utm</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="c1">// В случае отсутствия стратегии просто ничего не делаем</span>
+    <span class="kd">let</span> <span class="nx">strategy</span> <span class="o">=</span> <span class="nx">strategies</span><span class="p">[</span><span class="nx">utm</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="kc">undefined</span> <span class="o">===</span> <span class="nx">strategy</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 2. Генерируем значения меток </span>
+    <span class="kd">const</span> <span class="p">{</span>
+        <span class="nx">source</span><span class="p">,</span>
+        <span class="nx">medium</span><span class="p">,</span>
+        <span class="nx">campaign</span><span class="p">,</span>
+        <span class="nx">content</span><span class="p">,</span>
+    <span class="p">}</span> <span class="o">=</span> <span class="nx">strategy</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
+    
+    <span class="c1">// 3. Удаляем utm </span>
+    <span class="nx">url</span><span class="p">.</span><span class="nx">searchParams</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="dl">'</span><span class="s1">utm</span><span class="dl">'</span><span class="p">);</span>
+    <span class="c1">// 4. Применяем параметры </span>
+    <span class="nx">url</span><span class="p">.</span><span class="nx">searchParams</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="dl">'</span><span class="s1">utm_source</span><span class="dl">'</span><span class="p">,</span> <span class="nx">source</span><span class="p">);</span>
+    <span class="nx">url</span><span class="p">.</span><span class="nx">searchParams</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="dl">'</span><span class="s1">utm_medium</span><span class="dl">'</span><span class="p">,</span> <span class="nx">medium</span><span class="p">);</span>
+    <span class="nx">url</span><span class="p">.</span><span class="nx">searchParams</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="dl">'</span><span class="s1">utm_campaign</span><span class="dl">'</span><span class="p">,</span> <span class="nx">campaign</span><span class="p">);</span>
+    <span class="nx">content</span> <span class="o">&amp;&amp;</span> <span class="nx">url</span><span class="p">.</span><span class="nx">searchParams</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="dl">'</span><span class="s1">utm_content</span><span class="dl">'</span><span class="p">,</span> <span class="nx">content</span><span class="p">);</span>
+    
+    <span class="c1">// 5. Обновляем URL</span>
+    <span class="nx">w</span><span class="p">.</span><span class="nx">history</span>
+        <span class="p">?</span> <span class="nx">w</span><span class="p">.</span><span class="nx">history</span><span class="p">.</span><span class="nx">replaceState</span><span class="p">({},</span> <span class="nx">d</span><span class="p">.</span><span class="nx">title</span><span class="p">,</span> <span class="nx">url</span><span class="p">.</span><span class="nx">toString</span><span class="p">())</span>
+        <span class="p">:</span> <span class="nx">w</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="nx">url</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Нам остается только вызвать эту функцию:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">utmResolver</span><span class="p">(</span><span class="nb">window</span><span class="p">,</span> <span class="nb">document</span><span class="p">);</span>
+</code></pre></div></div>
+
+<div class="alert alert-info">
+    <p><b>Напоминание!</b></p>
+    <p>
+        Напомню, что это должно произойти ДО инициализации сборщиков статистики в синхронном потоке!
+        Нарушение этих правил может привести и приведет к искажению результатов.
+    </p>
+</div>
+
+<p>Благодаря этому ссылки стали куда лаконичнее, чем изначально.
+Выбранный мною способ не является единственно верным.
+Есть несколько альтернатив, как передать стратегию:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">vtvz.me/.../?u=tg</code></li>
+  <li><code class="highlighter-rouge">vtvz.me/.../?_=tg</code></li>
+  <li><code class="highlighter-rouge">vtvz.me/.../?=tg</code></li>
+  <li><code class="highlighter-rouge">vtvz.me/.../?tg</code></li>
+  <li><code class="highlighter-rouge">vtvz.me/.../#tg</code></li>
+</ul>
+
+<p>Ничто не мешает вам модифицировать приведенный выше скрипт под свои нужды.</p>
+
+<p>Мне не удалось протестировать это дело в больших масштабах,
+но текущие данные показывают правдивые результаты.
+Так или иначе, если что-то пойдет не так – я сообщу.</p>
+
+<p>А пока, спасибо за внимание :grin:
+Если возникают вопросы, не стесняйтесь задавать их мне по любому доступному каналу,
+пока комментарии не появились :fox:</p>
+
+                ]]>
+            </turbo:content>
+        </item>
+        
+        <item turbo="true">
             <title>Генератор постов в социальные сети</title>
             <link>https://vtvz.me/blog/social-post-generator/</link>
             <pubDate>Mon, 04 May 2020 00:00:00 +0300</pubDate>
@@ -58,59 +299,11 @@
 
 <p>Если интересно, то вот, можно потыкать:</p>
 
-<div id="social-post-generator-container"></div>
-
-<script>
-window.callOnReady.push(
-    function() {
-        var data = {
-            
-              "achievements": {
-                
-
-                link: "https://vtvz.me/achievements/achievements-introduction",
-                title: "Создать раздел достижений",
-                excerpt: "<p>Моё первое достижение – создать раздел достижений.\nСюда я буду писать о своих победах в рабочей и повседневной жизни.\nЭто будут коротенькие заметки, в которых будут содержаться мои мысли и ссылки на использованные материалы.\nСодержание будет частично пересекаться с (возможным) будущим разделом закладок и постами в блоге.</p>\n",
-                description: "<p>Моё первое достижение – создать раздел достижений.\nСюда я буду писать о своих победах в рабочей и повседневной жизни.\nЭто будут коротенькие заметки, в которых будут содержаться мои мысли и ссылки на использованные материалы.\nСодержание будет частично пересекаться с (возможным) будущим разделом закладок и постами в блоге.</p>\n",
-                tags: ["Блог","Веб-разработка","Jekyll"]
-              },      
-            
-              "bookmarks": {
-                
-
-                link: "https://vtvz.me/bookmarks/kubernetes-security-speech",
-                title: "\"Заделываем дыры в кластере Kubernetes\"",
-                excerpt: "<p>Нашел просто замечательнейший доклад на тему безопасности в Kubernetes.\nОчень рекомендую к просмотру/прочтению.\nПодобные меры применимы в основном для кластеров с мультипользовательским доступом, но для общего развития очень полезно.\nСам хочу покопать в сторону вопросов безопасности, так что ждите больше ссылок и закладок :fox:</p>\n",
-                description: "<p>Нашел просто замечательнейший доклад на тему безопасности в Kubernetes.\nОчень рекомендую к просмотру/прочтению.\nПодобные меры применимы в основном для кластеров с мультипользовательским доступом, но для общего развития очень полезно.\nСам хочу покопать в сторону вопросов безопасности, так что ждите больше ссылок и закладок :fox:</p>\n",
-                tags: ["Kubernetes","DevOps"]
-              },      
-            
-              "notes": {
-                
-
-                link: "https://vtvz.me/notes/useless-masks",
-                title: "Бесполезные маски",
-                excerpt: "<p>У некоторых людей, в том числе уважаемых вирусологов и врачей, есть мнение,\nчто медицинские маски бесполезны для самозащиты от вирусов.\nДаже <a href=\"https://www.who.int/ru/emergencies/diseases/novel-coronavirus-2019/advice-for-public\">ВОЗ не рекомендует</a> носить маску всегда, только в некоторых случаях.\nНапример, когда у вас самих есть подозрение на коронавирус, и вы не хотите заразить других.</p>\n\n",
-                description: "<p>У некоторых людей, в том числе уважаемых вирусологов и врачей, есть мнение,\nчто медицинские маски бесполезны для самозащиты от вирусов.\nДаже <a href=\"https://www.who.int/ru/emergencies/diseases/novel-coronavirus-2019/advice-for-public\">ВОЗ не рекомендует</a> носить маску всегда, только в некоторых случаях.\nНапример, когда у вас самих есть подозрение на коронавирус, и вы не хотите заразить других.</p>\n\n",
-                tags: ["Коронавирус","Здоровье","Ярость"]
-              },      
-            
-              "posts": {
-                
-
-                link: "https://vtvz.me/blog/social-post-generator/",
-                title: "Генератор постов в социальные сети",
-                excerpt: "<p>Порой написание статьи отнимает меньше времени, чем генерация постов в социальные сети.\nИ в каждой из них нужно что-то учесть:\nв twitter’е жесткие ограничения по количеству символов,\nгде-то не нужно указывать ссылку на телеграмм канал,\nа вот на личной странице в ВК еще нужно указать линку на группу.\nМне это поднадоело. Поэтому я решил это дело автоматизировать! Хватит это терпеть!</p>\n\n",
-                description: "Генератор постов в социальные сети с учетом максимальной длины и применением всех необходимых utm меток  \n",
-                tags: ["Веб-разработка","Инструменты"]
-              },      
-            
-        };
-
-        main.postGenerator(document.getElementById('social-post-generator-container'), data);
-    }
-);
-</script>
+<div id="social-post-generator-container">
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped active" style="width: 100%"></div>
+    </div>
+</div>
 
 
                 ]]>
@@ -1206,15 +1399,11 @@ K8S со своей стороны закрывает трафик на этот
 
 <h2 id="калькулятор">Калькулятор</h2>
 
-<div id="calculator-container"></div>
-
-<script>
-window.callOnReady.push(
-    function() {
-        main.calculator(document.getElementById('calculator-container'));
-    }
-);
-</script>
+<div id="calculator-container">
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped active" style="width: 100%"></div>
+    </div>
+</div>
 
 <h2 id="послесловие">Послесловие</h2>
 

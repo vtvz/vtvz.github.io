@@ -1,5 +1,227 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en_GB"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://vtvz.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vtvz.me/" rel="alternate" type="text/html" hreflang="en_GB" /><updated>2020-05-08T21:42:52+03:00</updated><id>https://vtvz.me/feed.xml</id><title type="html">Vitaly Zaslavsky – DevOps Engineer, who loves his job</title><subtitle>DevOps engineer's personal blog about everything. Notes on successes and failures in professional activities, about finding solutions to practical problems, and just about life.
-</subtitle><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><entry xml:lang="ru"><title type="html">Генератор постов в социальные сети</title><link href="https://vtvz.me/blog/social-post-generator/" rel="alternate" type="text/html" title="Генератор постов в социальные сети" /><published>2020-05-04T00:00:00+03:00</published><updated>2020-05-04T00:00:00+03:00</updated><id>https://vtvz.me/blog/social-post-generator</id><content type="html" xml:base="https://vtvz.me/blog/social-post-generator/">&lt;p&gt;Порой написание статьи отнимает меньше времени, чем генерация постов в социальные сети.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en_GB"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://vtvz.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vtvz.me/" rel="alternate" type="text/html" hreflang="en_GB" /><updated>2020-05-13T16:30:07+03:00</updated><id>https://vtvz.me/feed.xml</id><title type="html">Vitaly Zaslavsky – DevOps Engineer, who loves his job</title><subtitle>DevOps engineer's personal blog about everything. Notes on successes and failures in professional activities, about finding solutions to practical problems, and just about life.
+</subtitle><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><entry xml:lang="ru"><title type="html">Покорение UTM меток</title><link href="https://vtvz.me/blog/conquering-the-utm-parameters/" rel="alternate" type="text/html" title="Покорение UTM меток" /><published>2020-05-13T00:00:00+03:00</published><updated>2020-05-13T00:00:00+03:00</updated><id>https://vtvz.me/blog/conquering-the-utm-parameters</id><content type="html" xml:base="https://vtvz.me/blog/conquering-the-utm-parameters/">&lt;p&gt;Решил я тут собрать побольше статистики по посетителям.
+Хотя Яндекс.Метрика очень даже неплохо с этим справляется,
+но хотелось бы иметь более управляемый механизм,
+в котором можно было разделить не только соц. сеть,
+из которой пришел посетитель, но и какую из ссылок он нажал.&lt;/p&gt;
+
+&lt;p&gt;Или например, сколько человек посмотрело статью из секции “Latest Article” на главной странице,
+сколько перелистнуло на следующий пост, и так далее. Выбор очевиден – нужно использовать UTM метки.
+Они очень распространены в рекламной части бизнеса, но их можно использовать и для простой аналитики.
+Но тут есть одна проблемка…&lt;/p&gt;
+
+&lt;!--cut--&gt;
+
+&lt;h2 id=&quot;постановка-задачи&quot;&gt;Постановка задачи&lt;/h2&gt;
+
+&lt;p&gt;Проблема в том, что эти метки &lt;strong&gt;очень&lt;/strong&gt; массивные.
+Вот к примеру, одна из возможных ссылок на пост в социальной сети выглядит следующим образом:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://vtvz.me/blog/social-post-generator/
+    ?utm_source=_telegram
+    &amp;amp;utm_medium=social-post
+    &amp;amp;utm_campaign=blog
+    &amp;amp;utm_content=social-post-generator
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Это 96 дополнительных символов!
+Хотя многие соц. сети хорошо с этим справляются. Например, в VK такие ссылки ограничены одной строкой.
+А в Twitter и LinkedIn есть свой укорачиватель. Но вот Телеграм так не умеет.&lt;/p&gt;
+
+&lt;figure class=&quot;frame &quot;&gt;&lt;a href=&quot;./telegram.png&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;./telegram.png&quot; alt=&quot;Жирная ссылка в Телеграмм&quot; title=&quot;Жирная ссылка в Телеграмм&quot; /&gt;&lt;/a&gt;&lt;/figure&gt;
+
+&lt;p&gt;Тем не менее, помимо постов есть еще и ссылки на сайт в профилях соц. сетей.
+В ВК, например, у меня целых 3 места, ведущих на главную страницу. 
+И эти длиннющие ссылки немного пугают и уродливо выглядят.
+Короче, задача в следующем: сделать эти ссылки простыми и эстетичными.&lt;/p&gt;
+
+&lt;h2 id=&quot;решения&quot;&gt;Решения&lt;/h2&gt;
+&lt;h3 id=&quot;укорачиватель-ссылок&quot;&gt;Укорачиватель ссылок&lt;/h3&gt;
+
+&lt;p&gt;Я уже давно пользуюсь сервисами, которые делают из монстров конфетку.
+Вот например &lt;a href=&quot;https://bitly.com/&quot;&gt;Bitly&lt;/a&gt; неплохо с этим справляется. 
+Вот что он сделал со ссылкой, которую я указал ранее:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://bit.ly/vtvz-tg-post-generator
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Уже гораздо лучше.&lt;/p&gt;
+
+&lt;p&gt;НО! Теперь эта ссылка не ведет на мой сайт. Она ведет на bit.ly, который уже кидает куда надо.
+Проблема ли это? Для меня да. Мой сайт – моя визитная карточка, которая должна явно указывать, кому она принадлежит.
+Так что, это отметается сразу.&lt;/p&gt;
+
+&lt;h3 id=&quot;свой-укорачиватель-ссылок&quot;&gt;Свой укорачиватель ссылок&lt;/h3&gt;
+
+&lt;p&gt;А почему бы самому не укорачивать ссылки и публиковать уже их? Это решает проблему выше, но создает еще несколько.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Его нужно сделать. Это дополнительное время на реализацию целого компонента системы.
+Сложность создает тот факт, что этот сайт статический, собран из обычных html страничек,
+сгенерированных с помощью Jekyll, который написан на Ruby, который я не знаю… Ну вы поняли :grin:&lt;/li&gt;
+  &lt;li&gt;Обычные укорачиватели перекидывают тебя на другой сайт используя HTTP 301 код.
+Но мы не можем отдавать этот статус клиенту, потому что статические сайты дают либо 200, либо 404.
+А вот ВК не умеет обрабатывать такие страницы.&lt;/li&gt;
+  &lt;li&gt;Придется генерировать целую пачку укороченных сслылок для каждой записи в блоге.
+Это значительно повышает ошибку человеческого фактора, значительно усложняет систему и захламляет проект.
+&lt;span class=&quot;text-muted&quot;&gt;(Эта проблема справедлива и для предыдущего метода)&lt;/span&gt;&lt;/li&gt;
+  &lt;li&gt;Это сложно автоматизировать имеющимися инструментами.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Вывод: тоже отбрасываем.&lt;/p&gt;
+
+&lt;h3 id=&quot;упаковка-меток&quot;&gt;Упаковка меток&lt;/h3&gt;
+
+&lt;p&gt;Я уверен, что этот метод использовался ранее, и что я изобрел велосипед.
+Но результат, по-моему, получился просто невероятным. Принцип работы в следующем:&lt;/p&gt;
+
+&lt;p&gt;Вместе со ссылкой передается один единственный query параметр,
+на основании его в url страницы применяются все необходимые utm метки.
+Все это должно произойти &lt;strong&gt;ДО&lt;/strong&gt; инициализации инструментов аналитики.&lt;/p&gt;
+
+&lt;p&gt;Выглядит это следующим образом:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Человек открывает ссылку &lt;code class=&quot;highlighter-rouge&quot;&gt;https://vtvz.me/blog/social-post-generator/?utm=tg&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Она распаковывается в
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://vtvz.me/blog/social-post-generator/
+    ?utm_source=_telegram
+    &amp;amp;utm_medium=social-post
+    &amp;amp;utm_campaign=blog
+    &amp;amp;utm_content=social-post-generator
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Запускаются Яндекс.Метрика и Google Analytics&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;В итоге удалось упаковать 96 символов в 7! Вот как это работает…&lt;/p&gt;
+
+&lt;h2 id=&quot;реализация&quot;&gt;Реализация&lt;/h2&gt;
+
+&lt;div class=&quot;alert alert-info&quot;&gt;
+    &lt;p&gt;&lt;b&gt;Предупреждение!&lt;/b&gt;&lt;/p&gt;
+    &lt;p&gt;
+        Весь дальнейший код написан на версии JavaScript, который поддерживается не всеми браузерами.
+        Для совместимости со старыми версиями я использую webpack + babel.
+        Но примеры достаточно просты, чтобы транспилировать их в классический JS.
+    &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Наш код должен работать следующим образом:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Вытянуть &lt;code class=&quot;highlighter-rouge&quot;&gt;utm&lt;/code&gt; параметр из query адреса;&lt;/li&gt;
+  &lt;li&gt;Сгенерировать source, medium, campaign…&lt;/li&gt;
+  &lt;li&gt;Удалить параметр &lt;code class=&quot;highlighter-rouge&quot;&gt;utm&lt;/code&gt;;&lt;/li&gt;
+  &lt;li&gt;Применить метки из пункта 2;&lt;/li&gt;
+  &lt;li&gt;Заменить текущий url на новый.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Выглядит это так:&lt;/p&gt;
+
+&lt;p&gt;У нас есть карта стратегий обработки. Это объект, в ключах которого возможные utm сокращения,
+а в значении – функция, которая генерирует все необходимые метки.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;strategies&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;tg&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;collection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;slug&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pathname&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+        &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;_telegram&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;medium&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;social-post&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;nx&quot;&gt;collection&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;campaign&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;collection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;slug&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;content&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;slug&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;В этом случае функция получает текущий адрес, на основании которого строит кампанию и контент.
+Эта магия применима в моем случае. В вашем может быть что-то другое.&lt;/p&gt;
+
+&lt;figure class=&quot;frame &quot;&gt;&lt;a href=&quot;./strategies.png&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;./strategies.png&quot; alt=&quot;Карта стратегий&quot; title=&quot;Карта стратегий&quot; /&gt;&lt;/a&gt;&lt;figcaption&gt;&lt;p&gt;У меня карта стратегий выглядит вот так&lt;/p&gt;&lt;/figcaption&gt;&lt;/figure&gt;
+
+&lt;p&gt;Теперь нужна функция, которая сделает всю остальную работу:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cm&quot;&gt;/**
+ * @param {Window} w
+ * @param {Document} d
+ */&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;utmResolver&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// В качестве параметров передаются window и document&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// 1. Парсим ссылку и вытягиваем utm параметр &lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;utm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;searchParams&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;utm&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;utm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;''&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;utm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;// В случае отсутствия стратегии просто ничего не делаем&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;strategy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;strategies&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;utm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;undefined&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;strategy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// 2. Генерируем значения меток &lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;medium&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;campaign&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;strategy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;// 3. Удаляем utm &lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;searchParams&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;delete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;utm&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// 4. Применяем параметры &lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;searchParams&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;utm_source&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;searchParams&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;utm_medium&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;medium&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;searchParams&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;utm_campaign&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;campaign&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;content&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;searchParams&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;utm_content&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;// 5. Обновляем URL&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;history&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;history&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;replaceState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({},&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;replace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Нам остается только вызвать эту функцию:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;utmResolver&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;alert alert-info&quot;&gt;
+    &lt;p&gt;&lt;b&gt;Напоминание!&lt;/b&gt;&lt;/p&gt;
+    &lt;p&gt;
+        Напомню, что это должно произойти ДО инициализации сборщиков статистики в синхронном потоке!
+        Нарушение этих правил может привести и приведет к искажению результатов.
+    &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Благодаря этому ссылки стали куда лаконичнее, чем изначально.
+Выбранный мною способ не является единственно верным.
+Есть несколько альтернатив, как передать стратегию:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;vtvz.me/.../?u=tg&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;vtvz.me/.../?_=tg&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;vtvz.me/.../?=tg&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;vtvz.me/.../?tg&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;vtvz.me/.../#tg&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ничто не мешает вам модифицировать приведенный выше скрипт под свои нужды.&lt;/p&gt;
+
+&lt;p&gt;Мне не удалось протестировать это дело в больших масштабах,
+но текущие данные показывают правдивые результаты.
+Так или иначе, если что-то пойдет не так – я сообщу.&lt;/p&gt;
+
+&lt;p&gt;А пока, спасибо за внимание :grin:
+Если возникают вопросы, не стесняйтесь задавать их мне по любому доступному каналу,
+пока комментарии не появились :fox:&lt;/p&gt;</content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Веб-разработка" /><category term="Аналитика" /><category term="Frontend" /><summary type="html">Решил я тут собрать побольше статистики по посетителям. Хотя Яндекс.Метрика очень даже неплохо с этим справляется, но хотелось бы иметь более управляемый механизм, в котором можно было разделить не только соц. сеть, из которой пришел посетитель, но и какую из ссылок он нажал. Или например, сколько человек посмотрело статью из секции “Latest Article” на главной странице, сколько перелистнуло на следующий пост, и так далее. Выбор очевиден – нужно использовать UTM метки. Они очень распространены в рекламной части бизнеса, но их можно использовать и для простой аналитики. Но тут есть одна проблемка…</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/conquering-the-utm-parameters/cover.jpg" /><media:content medium="image" url="https://vtvz.me/blog/conquering-the-utm-parameters/cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Генератор постов в социальные сети</title><link href="https://vtvz.me/blog/social-post-generator/" rel="alternate" type="text/html" title="Генератор постов в социальные сети" /><published>2020-05-04T00:00:00+03:00</published><updated>2020-05-04T00:00:00+03:00</updated><id>https://vtvz.me/blog/social-post-generator</id><content type="html" xml:base="https://vtvz.me/blog/social-post-generator/">&lt;p&gt;Порой написание статьи отнимает меньше времени, чем генерация постов в социальные сети.
 И в каждой из них нужно что-то учесть:
 в twitter’е жесткие ограничения по количеству символов,
 где-то не нужно указывать ссылку на телеграмм канал,
@@ -30,59 +252,11 @@
 
 &lt;p&gt;Если интересно, то вот, можно потыкать:&lt;/p&gt;
 
-&lt;div id=&quot;social-post-generator-container&quot;&gt;&lt;/div&gt;
-
-&lt;script&gt;
-window.callOnReady.push(
-    function() {
-        var data = {
-            
-              &quot;achievements&quot;: {
-                
-
-                link: &quot;https://vtvz.me/achievements/achievements-introduction&quot;,
-                title: &quot;Создать раздел достижений&quot;,
-                excerpt: &quot;&lt;p&gt;Моё первое достижение – создать раздел достижений.\nСюда я буду писать о своих победах в рабочей и повседневной жизни.\nЭто будут коротенькие заметки, в которых будут содержаться мои мысли и ссылки на использованные материалы.\nСодержание будет частично пересекаться с (возможным) будущим разделом закладок и постами в блоге.&lt;/p&gt;\n&quot;,
-                description: &quot;&lt;p&gt;Моё первое достижение – создать раздел достижений.\nСюда я буду писать о своих победах в рабочей и повседневной жизни.\nЭто будут коротенькие заметки, в которых будут содержаться мои мысли и ссылки на использованные материалы.\nСодержание будет частично пересекаться с (возможным) будущим разделом закладок и постами в блоге.&lt;/p&gt;\n&quot;,
-                tags: [&quot;Блог&quot;,&quot;Веб-разработка&quot;,&quot;Jekyll&quot;]
-              },      
-            
-              &quot;bookmarks&quot;: {
-                
-
-                link: &quot;https://vtvz.me/bookmarks/kubernetes-security-speech&quot;,
-                title: &quot;\&quot;Заделываем дыры в кластере Kubernetes\&quot;&quot;,
-                excerpt: &quot;&lt;p&gt;Нашел просто замечательнейший доклад на тему безопасности в Kubernetes.\nОчень рекомендую к просмотру/прочтению.\nПодобные меры применимы в основном для кластеров с мультипользовательским доступом, но для общего развития очень полезно.\nСам хочу покопать в сторону вопросов безопасности, так что ждите больше ссылок и закладок :fox:&lt;/p&gt;\n&quot;,
-                description: &quot;&lt;p&gt;Нашел просто замечательнейший доклад на тему безопасности в Kubernetes.\nОчень рекомендую к просмотру/прочтению.\nПодобные меры применимы в основном для кластеров с мультипользовательским доступом, но для общего развития очень полезно.\nСам хочу покопать в сторону вопросов безопасности, так что ждите больше ссылок и закладок :fox:&lt;/p&gt;\n&quot;,
-                tags: [&quot;Kubernetes&quot;,&quot;DevOps&quot;]
-              },      
-            
-              &quot;notes&quot;: {
-                
-
-                link: &quot;https://vtvz.me/notes/useless-masks&quot;,
-                title: &quot;Бесполезные маски&quot;,
-                excerpt: &quot;&lt;p&gt;У некоторых людей, в том числе уважаемых вирусологов и врачей, есть мнение,\nчто медицинские маски бесполезны для самозащиты от вирусов.\nДаже &lt;a href=\&quot;https://www.who.int/ru/emergencies/diseases/novel-coronavirus-2019/advice-for-public\&quot;&gt;ВОЗ не рекомендует&lt;/a&gt; носить маску всегда, только в некоторых случаях.\nНапример, когда у вас самих есть подозрение на коронавирус, и вы не хотите заразить других.&lt;/p&gt;\n\n&quot;,
-                description: &quot;&lt;p&gt;У некоторых людей, в том числе уважаемых вирусологов и врачей, есть мнение,\nчто медицинские маски бесполезны для самозащиты от вирусов.\nДаже &lt;a href=\&quot;https://www.who.int/ru/emergencies/diseases/novel-coronavirus-2019/advice-for-public\&quot;&gt;ВОЗ не рекомендует&lt;/a&gt; носить маску всегда, только в некоторых случаях.\nНапример, когда у вас самих есть подозрение на коронавирус, и вы не хотите заразить других.&lt;/p&gt;\n\n&quot;,
-                tags: [&quot;Коронавирус&quot;,&quot;Здоровье&quot;,&quot;Ярость&quot;]
-              },      
-            
-              &quot;posts&quot;: {
-                
-
-                link: &quot;https://vtvz.me/blog/social-post-generator/&quot;,
-                title: &quot;Генератор постов в социальные сети&quot;,
-                excerpt: &quot;&lt;p&gt;Порой написание статьи отнимает меньше времени, чем генерация постов в социальные сети.\nИ в каждой из них нужно что-то учесть:\nв twitter’е жесткие ограничения по количеству символов,\nгде-то не нужно указывать ссылку на телеграмм канал,\nа вот на личной странице в ВК еще нужно указать линку на группу.\nМне это поднадоело. Поэтому я решил это дело автоматизировать! Хватит это терпеть!&lt;/p&gt;\n\n&quot;,
-                description: &quot;Генератор постов в социальные сети с учетом максимальной длины и применением всех необходимых utm меток  \n&quot;,
-                tags: [&quot;Веб-разработка&quot;,&quot;Инструменты&quot;]
-              },      
-            
-        };
-
-        main.postGenerator(document.getElementById('social-post-generator-container'), data);
-    }
-);
-&lt;/script&gt;</content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Веб-разработка" /><category term="Инструменты" /><summary type="html">Порой написание статьи отнимает меньше времени, чем генерация постов в социальные сети. И в каждой из них нужно что-то учесть: в twitter’е жесткие ограничения по количеству символов, где-то не нужно указывать ссылку на телеграмм канал, а вот на личной странице в ВК еще нужно указать линку на группу. Мне это поднадоело. Поэтому я решил это дело автоматизировать! Хватит это терпеть!</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/social-post-generator/cover.jpg" /><media:content medium="image" url="https://vtvz.me/blog/social-post-generator/cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Покойся с миром, мой дорогой друг…</title><link href="https://vtvz.me/blog/rest-in-peace-my-friend/" rel="alternate" type="text/html" title="Покойся с миром, мой дорогой друг…" /><published>2020-04-24T00:00:00+03:00</published><updated>2020-04-24T00:00:00+03:00</updated><id>https://vtvz.me/blog/rest-in-peace-my-friend</id><content type="html" xml:base="https://vtvz.me/blog/rest-in-peace-my-friend/">&lt;p&gt;В конце сентября 2017 года наша семья стала чуточку больше.
+&lt;div id=&quot;social-post-generator-container&quot;&gt;
+    &lt;div class=&quot;progress&quot;&gt;
+      &lt;div class=&quot;progress-bar progress-bar-striped active&quot; style=&quot;width: 100%&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Веб-разработка" /><category term="Инструменты" /><summary type="html">Порой написание статьи отнимает меньше времени, чем генерация постов в социальные сети. И в каждой из них нужно что-то учесть: в twitter’е жесткие ограничения по количеству символов, где-то не нужно указывать ссылку на телеграмм канал, а вот на личной странице в ВК еще нужно указать линку на группу. Мне это поднадоело. Поэтому я решил это дело автоматизировать! Хватит это терпеть!</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/social-post-generator/cover.jpg" /><media:content medium="image" url="https://vtvz.me/blog/social-post-generator/cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Покойся с миром, мой дорогой друг…</title><link href="https://vtvz.me/blog/rest-in-peace-my-friend/" rel="alternate" type="text/html" title="Покойся с миром, мой дорогой друг…" /><published>2020-04-24T00:00:00+03:00</published><updated>2020-04-24T00:00:00+03:00</updated><id>https://vtvz.me/blog/rest-in-peace-my-friend</id><content type="html" xml:base="https://vtvz.me/blog/rest-in-peace-my-friend/">&lt;p&gt;В конце сентября 2017 года наша семья стала чуточку больше.
 Мы пришли к выводу, что в нашем доме недостаточно уютно, и было принято решение взять хомячка.
 Еще до того, как он у нас появился, ему было дано имя – Джонатан Хамстер.
 Ведь какое еще можно дать имя хомяку?
@@ -1023,15 +1197,11 @@ K8S со своей стороны закрывает трафик на этот
 
 &lt;h2 id=&quot;калькулятор&quot;&gt;Калькулятор&lt;/h2&gt;
 
-&lt;div id=&quot;calculator-container&quot;&gt;&lt;/div&gt;
-
-&lt;script&gt;
-window.callOnReady.push(
-    function() {
-        main.calculator(document.getElementById('calculator-container'));
-    }
-);
-&lt;/script&gt;
+&lt;div id=&quot;calculator-container&quot;&gt;
+    &lt;div class=&quot;progress&quot;&gt;
+      &lt;div class=&quot;progress-bar progress-bar-striped active&quot; style=&quot;width: 100%&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
 
 &lt;h2 id=&quot;послесловие&quot;&gt;Послесловие&lt;/h2&gt;
 
@@ -1041,89 +1211,4 @@ window.callOnReady.push(
 &lt;!-- TODO Вернуть, когда появятся комментарии --&gt;
 &lt;del&gt;Внизу есть блок с комментариями – пишите ваши замечания и пожелания.&lt;/del&gt;&lt;/p&gt;
 
-&lt;p&gt;Спасибо за внимание :blush:&lt;/p&gt;</content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="ИП" /><category term="Бизнес" /><category term="Налоги" /><category term="УСН" /><summary type="html">Многие знают, что я индивидуальный предприниматель. И все знают, что я программист. А это значит, что любая работа поддающаяся автоматизации должна быть автоматизирована. Поэтому я решил создать этот калькулятор. Как для своего удобства, так и во благо других.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/entrepreneur-calculator/cover.jpg" /><media:content medium="image" url="https://vtvz.me/blog/entrepreneur-calculator/cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Очистка Android от предустановленных программ без Root’а и перепрошивки</title><link href="https://vtvz.me/blog/android-debloating/" rel="alternate" type="text/html" title="Очистка Android от предустановленных программ без Root'а и перепрошивки" /><published>2020-01-06T00:00:00+03:00</published><updated>2020-01-06T00:00:00+03:00</updated><id>https://vtvz.me/blog/android-debloating</id><content type="html" xml:base="https://vtvz.me/blog/android-debloating/">&lt;p&gt;До недавнего времени я свято верил, что предустановленные программы в Android устройствах
-могут быть либо выключены, либо удалены только с перепрошивкой телефона.
-Root доступ дает не только большие возможности, но и большие риски.
-Поэтому я не стал перепрошивать свой телефон и оставил родную прошивку.
-Но не так давно я &lt;a href=&quot;https://habr.com/ru/post/482344/&quot;&gt;обнаружил&lt;/a&gt;, что есть вполне рабочий способ удалить намертво установленные программы со своего устройства.&lt;/p&gt;
-
-&lt;!--cut--&gt;
-
-&lt;h2 id=&quot;зачем&quot;&gt;Зачем?&lt;/h2&gt;
-
-&lt;p&gt;При покупке устройства, вместе с телефоном/планшетом идет просто гора различных программ – бесполезных и даже вредных.
-В первую очередь, это все то, что начинается с “Google” (Music, Photo, Video, Maps, Hangouts…).
-А с китайскими телефонами типа Xiaomi тянется еще ворох различного мусора.
-Думаю, проблема еще больше усугубится, когда будет в полной мере заработает &lt;a href=&quot;https://www.kommersant.ru/doc/4179598&quot;&gt;закон&lt;/a&gt; об предустановке российского ПО на новые девайсы.&lt;/p&gt;
-
-&lt;p&gt;Это барахло не только занимает место на телефоне, но и съедает ресурсы, сажает батарею и вечно обновляется через Play Market.
-Последней каплей было то, когда Google Maps спросил меня “Ну и как вам было в Burger King?”.
-Большинство программ, особенно встроенных, отслеживают всё, что вы делаете.
-Даже если вам нечего скрывать, это все равно как-то не этично и немного жутковато.&lt;/p&gt;
-
-&lt;p&gt;Перепрошивать телефон сложно и не безопасно. Всегда есть шанс превратить устройство в кирпич.
-Но есть один замечательный способ удалить весь этот мусор без подобных рисков.&lt;/p&gt;
-
-&lt;div class=&quot;alert alert-danger&quot; role=&quot;alert&quot;&gt;
-    &lt;p&gt;&lt;b&gt;Будьте очень аккуратны!&lt;/b&gt;&lt;/p&gt;
-    &lt;p&gt;
-        Хоть этот способ очистки устройства намного проще всех остальных мне знакомых,
-        он все равно требует определенных технических знаний и навыков.
-        Будьте очень аккуратны, чтобы не повредить устройство и не удалить ПО, необходимое для работы системы. 
-    &lt;/p&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Весь этот процесс называется “Debloating”, что переводится как “&lt;strong&gt;раз&lt;/strong&gt;раздувать”,
-то есть обратное значение слову “раздувать”.&lt;/p&gt;
-
-&lt;h2 id=&quot;инструкция&quot;&gt;Инструкция&lt;/h2&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;https://4idroid.com/kak-vklyuchit-rezhim-dlya-razrabotchika-v-android/&quot;&gt;Включите&lt;/a&gt; “режим разработчика”;&lt;/li&gt;
-  &lt;li&gt;Включите “Отладка по USB” в разделе “Для разработчиков”;&lt;/li&gt;
-  &lt;li&gt;Установите &lt;a href=&quot;https://play.google.com/store/apps/details?id=bg.projectoria.appinspector&quot;&gt;App Inspector&lt;/a&gt;; &lt;br /&gt;
- &lt;em&gt;Это не обязательный пункт&lt;/em&gt;. В некоторых системах (как у меня в MIUI 9.6.2) ID приложения можно узнать так:
-    &lt;ul&gt;
-      &lt;li&gt;Настройки&lt;/li&gt;
-      &lt;li&gt;Все приложения&lt;/li&gt;
-      &lt;li&gt;Нужное приложение&lt;/li&gt;
-      &lt;li&gt;Значок ⓘ в верхнем правом углу&lt;/li&gt;
-      &lt;li&gt;Имя пакета&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Установите &lt;a href=&quot;https://www.xda-developers.com/install-adb-windows-macos-linux/&quot;&gt;Adb&lt;/a&gt; на компьютер;&lt;/li&gt;
-  &lt;li&gt;В App Inspector найдите приложение, которое хотите удалить.
- Из всех данных необходимо только поле “Package name”;&lt;/li&gt;
-  &lt;li&gt;Подключите устройство по USB к компьютеру;&lt;/li&gt;
-  &lt;li&gt;Введите команду &lt;code class=&quot;highlighter-rouge&quot;&gt;adb devices&lt;/code&gt;. Должен быть примерно следующий вывод:
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;adb devices
- List of devices attached
- 6c3eaa477cf3    device
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;То есть, после строчки &lt;code class=&quot;highlighter-rouge&quot;&gt;List of devices attached&lt;/code&gt; должна быть еще одна с ID подключенного устройства.
- Идти дальше нет смысла, если компьютер не видит ваш девайс.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Введите &lt;code class=&quot;highlighter-rouge&quot;&gt;adb uninstall &amp;lt;package-name&amp;gt;&lt;/code&gt;, где &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;package-name&amp;gt;&lt;/code&gt; – поле из пункта 5.
- В моем случае – &lt;code class=&quot;highlighter-rouge&quot;&gt;com.google.android.tts&lt;/code&gt;. Результат:
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;adb uninstall com.google.android.tts
- Success
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;После удаления всех ненужных приложений выключите “режим разработчика” или хотя бы “отладку по USB”.
- Это важно, потому что в режиме отладки устройство очень уязвимо.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;В случае, если у вас Xiaomi, возможно, лучше воспользоваться инструментом “&lt;a href=&quot;https://www.reddit.com/r/Xiaomi/wiki/debloat&quot;&gt;Xiaomi ADB/Fastboot Tools&lt;/a&gt;”.
-Во-первых, он имеет графический интерфейс. А во-вторых, что самое главное,
-в списке программ доступных для удаления нет того, что является критичным для работоспособности системы.
-Но, хоть и говорят, что из этого списка можно удалять все, я бы не рекомендовал вслепую сносить все подряд.&lt;/p&gt;
-
-&lt;h2 id=&quot;итого&quot;&gt;Итого&lt;/h2&gt;
-
-&lt;p&gt;Пока сложно сказать об объективных результатах очистки телефона,
-но места на устройстве стало значительно больше, анимация стала плавнее,
-а занятой оперативной памяти – меньше.&lt;/p&gt;
-
-&lt;!-- TODO Вернуть, когда появятся комментарии --&gt;
-&lt;p&gt;&lt;del&gt;Если что-то не получается или есть какие-то вопросы – ниже есть секция с комментариями.
-Буду рад любому фитбеку :blush:&lt;/del&gt;&lt;/p&gt;</content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Android" /><category term="Оптимизация" /><summary type="html">До недавнего времени я свято верил, что предустановленные программы в Android устройствах могут быть либо выключены, либо удалены только с перепрошивкой телефона. Root доступ дает не только большие возможности, но и большие риски. Поэтому я не стал перепрошивать свой телефон и оставил родную прошивку. Но не так давно я обнаружил, что есть вполне рабочий способ удалить намертво установленные программы со своего устройства.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/android-debloating/cover.jpg" /><media:content medium="image" url="https://vtvz.me/blog/android-debloating/cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+&lt;p&gt;Спасибо за внимание :blush:&lt;/p&gt;</content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="ИП" /><category term="Бизнес" /><category term="Налоги" /><category term="УСН" /><category term="Инструменты" /><summary type="html">Многие знают, что я индивидуальный предприниматель. И все знают, что я программист. А это значит, что любая работа поддающаяся автоматизации должна быть автоматизирована. Поэтому я решил создать этот калькулятор. Как для своего удобства, так и во благо других.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/entrepreneur-calculator/cover.jpg" /><media:content medium="image" url="https://vtvz.me/blog/entrepreneur-calculator/cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

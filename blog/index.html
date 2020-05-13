@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-    <!--Built at : 2020-05-08 21:42:54-->
+    <!--Built at : 2020-05-13 16:30:09-->
     <head>
         
         <meta charset="utf-8">
@@ -47,11 +47,10 @@
 <meta name="google-site-verification" content="40uemu1o4UDeTOeeLKqJVoaPU4CVUjlGI5D9AI1EkNE" />
 <meta name="yandex-verification" content="fa3eb4fcd2ebc4ad" />
 <script type="application/ld+json">
-{"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://vtvz.me/assets/images/logo-black.png"},"name":"Vitaly Zaslavsky"},"author":{"@type":"Person","name":"Vitaly Zaslavsky"},"description":"DevOps engineer’s personal blog about everything. Notes on successes and failures in professional activities, about finding solutions to practical problems, and just about life.","@type":"WebPage","url":"https://vtvz.me/blog/","headline":"Vitaly Zaslavsky’s Blog","image":"https://vtvz.me/assets/images/logo-cover.png","@context":"https://schema.org"}</script>
+{"headline":"Vitaly Zaslavsky’s Blog","image":"https://vtvz.me/assets/images/logo-cover.png","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://vtvz.me/assets/images/logo-black.png"},"name":"Vitaly Zaslavsky"},"author":{"@type":"Person","name":"Vitaly Zaslavsky"},"url":"https://vtvz.me/blog/","description":"DevOps engineer’s personal blog about everything. Notes on successes and failures in professional activities, about finding solutions to practical problems, and just about life.","@type":"WebPage","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
         <script>
-            window.callOnReady = [];
             window.onerror = function () {
                 alert(JSON.stringify(arguments));
             }
@@ -69,28 +68,18 @@
         <a class="btn responsive-menu" data-toggle="collapse" data-target=".navbar-collapse"><i></i></a>
         <div class="navbar-brand text-center">
             <a href="/">
-                <svg width="64px" height="64px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="logo">
+                <svg width="64px" height="64px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="logo" id="main-logo">
     <metadata id="metadata7">image/svg+xml</metadata>
     <g>
         <path id="left-eye"
               fill="#000"
-              class="logo__piece logo__eye logo__eye--open"
-              d="m 292.185,573.771 95.41272,54.75857 6.22259,69.27794 -50.61023,-22.40125 z"
-        />
-        <path id="left-eye-closed"
-              fill="#000"
-              class="logo__piece logo__eye logo__eye--closed"
-              d="m 292.185,573.771 57.98899,94.89416 43.64632,29.14235 -50.61023,-22.40125 z"
+              class="logo__piece logo__eye"
+              d="M 292.185,573.771 L 387.59772,628.52957 393.82031,697.80751 343.21008,675.40626 Z"
         />
         <path id="right-eye"
               fill="#000"
-              class="logo__piece logo__eye logo__eye--open"
-              d="m 638.57461,625.62571 -6.22254,72.59661 51.43989,-22.40125 50.61022,-102.87979 z"
-        />
-        <path id="right-eye-closed"
-              fill="#000"
-              class="logo__piece logo__eye logo__eye--closed"
-              d="m 675.99834,669.55791 -43.64627,28.66441 51.43989,-22.40125 50.61022,-102.87979 z"
+              class="logo__piece logo__eye"
+              d="M 638.57461,625.62571 L 632.35207,698.22232 683.79196,675.82107 734.40218,572.94128 Z"
         />
         <path id="face"
               fill="#000"
@@ -105,7 +94,6 @@
     </div>
     <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-            <!-- <li class="current"> -->
             <li class="">
                 <a href="/#main" class="hint--right" data-hint="Main" data-section-id="main">
                     <i class="fas fa-home fa-fw"></i><span>Main</span>
@@ -142,8 +130,57 @@
 
 
     <div class="box post ">
+    <div class="post-main-image" style="background-image: url(/blog/conquering-the-utm-parameters/cover.jpg)">
+    <a href="/blog/conquering-the-utm-parameters/?utm=_open">
+        <img src="/blog/conquering-the-utm-parameters/cover.jpg" alt="Покорение UTM меток" />
+    </a>
+    
+    <a class="post-main-image__src" href="https://www.accelerate-agency.com/4-clicks-2-measurement-analytics-automation-superweek">Image source</a>
+    
+</div>
+
+
+    <div class="post-meta">
+    <span class="post-meta__item category"><a href="/blog/category/разработка/">Разработка</a></span>
+    <time class="post-meta__item date" itemprop="datePublished" datetime="2020-05-13T00:00:00+03:00">13 May 2020</time>
+    
+    <span class="post-meta__item reading-time" title="Estimated Read Time">
+        
+
+        <!--717-->
+
+        
+            ~2&nbsp;min.
+        
+    </span>
+
+    <meta itemprop="identifier" content="/blog/conquering-the-utm-parameters" />
+</div>
+
+    <h2 class="post-title"><a href="/blog/conquering-the-utm-parameters/?utm=_open">Покорение UTM меток</a></h2>
+    <div class="post-excerpt js-emojify"><p>Решил я тут собрать побольше статистики по посетителям.
+Хотя Яндекс.Метрика очень даже неплохо с этим справляется,
+но хотелось бы иметь более управляемый механизм,
+в котором можно было разделить не только соц. сеть,
+из которой пришел посетитель, но и какую из ссылок он нажал.</p>
+
+<p>Или например, сколько человек посмотрело статью из секции “Latest Article” на главной странице,
+сколько перелистнуло на следующий пост, и так далее. Выбор очевиден – нужно использовать UTM метки.
+Они очень распространены в рекламной части бизнеса, но их можно использовать и для простой аналитики.
+Но тут есть одна проблемка…</p>
+
+</div>
+    <a href="/blog/conquering-the-utm-parameters/?utm=_more#cut" class="btn btn-block">
+        
+        Читать далее &rarr;
+        
+    </a>
+</div>
+
+
+    <div class="box post ">
     <div class="post-main-image" style="background-image: url(/blog/social-post-generator/cover.jpg)">
-    <a href="/blog/social-post-generator/">
+    <a href="/blog/social-post-generator/?utm=_open">
         <img src="/blog/social-post-generator/cover.jpg" alt="Генератор постов в социальные сети" />
     </a>
     
@@ -169,7 +206,7 @@
     <meta itemprop="identifier" content="/blog/social-post-generator" />
 </div>
 
-    <h2 class="post-title"><a href="/blog/social-post-generator/">Генератор постов в социальные сети</a></h2>
+    <h2 class="post-title"><a href="/blog/social-post-generator/?utm=_open">Генератор постов в социальные сети</a></h2>
     <div class="post-excerpt js-emojify"><p>Порой написание статьи отнимает меньше времени, чем генерация постов в социальные сети.
 И в каждой из них нужно что-то учесть:
 в twitter’е жесткие ограничения по количеству символов,
@@ -178,7 +215,7 @@
 Мне это поднадоело. Поэтому я решил это дело автоматизировать! Хватит это терпеть!</p>
 
 </div>
-    <a href="/blog/social-post-generator/#cut" class="btn btn-block">
+    <a href="/blog/social-post-generator/?utm=_more#cut" class="btn btn-block">
         
         Читать далее &rarr;
         
@@ -188,7 +225,7 @@
 
     <div class="box post ">
     <div class="post-main-image" style="background-image: url(/blog/rest-in-peace-my-friend/cover.jpg)">
-    <a href="/blog/rest-in-peace-my-friend/">
+    <a href="/blog/rest-in-peace-my-friend/?utm=_open">
         <img src="/blog/rest-in-peace-my-friend/cover.jpg" alt="Покойся с миром, мой дорогой друг…" />
     </a>
     
@@ -212,7 +249,7 @@
     <meta itemprop="identifier" content="/blog/rest-in-peace-my-friend" />
 </div>
 
-    <h2 class="post-title"><a href="/blog/rest-in-peace-my-friend/">Покойся с миром, мой дорогой друг…</a></h2>
+    <h2 class="post-title"><a href="/blog/rest-in-peace-my-friend/?utm=_open">Покойся с миром, мой дорогой друг…</a></h2>
     <div class="post-excerpt js-emojify"><p>В конце сентября 2017 года наша семья стала чуточку больше.
 Мы пришли к выводу, что в нашем доме недостаточно уютно, и было принято решение взять хомячка.
 Еще до того, как он у нас появился, ему было дано имя – Джонатан Хамстер.
@@ -220,7 +257,7 @@
 Он быстро стал частью нашей семьи и поселился в нашем доме и наших сердцах.</p>
 
 </div>
-    <a href="/blog/rest-in-peace-my-friend/#cut" class="btn btn-block">
+    <a href="/blog/rest-in-peace-my-friend/?utm=_more#cut" class="btn btn-block">
         
         Читать далее &rarr;
         
@@ -230,7 +267,7 @@
 
     <div class="box post ">
     <div class="post-main-image" style="background-image: url(/blog/under-the-hood-2nd/cover.jpg)">
-    <a href="/blog/under-the-hood-2nd/">
+    <a href="/blog/under-the-hood-2nd/?utm=_open">
         <img src="/blog/under-the-hood-2nd/cover.jpg" alt="Ковыряясь под капотом #2" />
     </a>
     
@@ -254,7 +291,7 @@
     <meta itemprop="identifier" content="/blog/under-the-hood-2nd" />
 </div>
 
-    <h2 class="post-title"><a href="/blog/under-the-hood-2nd/">Ковыряясь под капотом #2</a></h2>
+    <h2 class="post-title"><a href="/blog/under-the-hood-2nd/?utm=_open">Ковыряясь под капотом #2</a></h2>
     <div class="post-excerpt js-emojify"><p>В голове у меня много мыслей, которые хотелось бы выразить в виде статьи.
 У меня даже есть небольшая заметка в Google Keep с темами потенциальных постов.
 Но это сложно. Русский язык – сложный язык.
@@ -267,7 +304,7 @@
 Именно об этом будет этот пост.</p>
 
 </div>
-    <a href="/blog/under-the-hood-2nd/#cut" class="btn btn-block">
+    <a href="/blog/under-the-hood-2nd/?utm=_more#cut" class="btn btn-block">
         
         Читать далее &rarr;
         
@@ -277,7 +314,7 @@
 
     <div class="box post ">
     <div class="post-main-image" style="background-image: url(/blog/robots-txt-in-kubernetes/cover.png)">
-    <a href="/blog/robots-txt-in-kubernetes/">
+    <a href="/blog/robots-txt-in-kubernetes/?utm=_open">
         <img src="/blog/robots-txt-in-kubernetes/cover.png" alt="Настройка robots.txt в Kubernetes" />
     </a>
     
@@ -303,7 +340,7 @@
     <meta itemprop="identifier" content="/blog/robots-txt-in-kubernetes" />
 </div>
 
-    <h2 class="post-title"><a href="/blog/robots-txt-in-kubernetes/">Настройка robots.txt в Kubernetes</a></h2>
+    <h2 class="post-title"><a href="/blog/robots-txt-in-kubernetes/?utm=_open">Настройка robots.txt в Kubernetes</a></h2>
     <div class="post-excerpt js-emojify"><p>Представьте себе, что на ваших плечах лежит инфраструктура около дюжины проектов,
 которые написаны на разных языках программирования и имеют свой стек технологий.
 Некоторые из них совсем свежие и используют самые современные веяния веб-индустрии,
@@ -317,48 +354,7 @@
 <p>Есть несколько способов, как это сделать, но я нашел самый простой и оптимальный.</p>
 
 </div>
-    <a href="/blog/robots-txt-in-kubernetes/#cut" class="btn btn-block">
-        
-        Читать далее &rarr;
-        
-    </a>
-</div>
-
-
-    <div class="box post ">
-    <div class="post-main-image" style="background-image: url(/blog/under-the-hood-1st/cover.jpg)">
-    <a href="/blog/under-the-hood-1st/">
-        <img src="/blog/under-the-hood-1st/cover.jpg" alt="Ковыряясь под капотом #1" />
-    </a>
-    
-</div>
-
-
-    <div class="post-meta">
-    <span class="post-meta__item category"><a href="/blog/category/разработка/">Разработка</a></span>
-    <time class="post-meta__item date" itemprop="datePublished" datetime="2020-03-15T00:00:00+03:00">15 Mar 2020</time>
-    
-    <span class="post-meta__item reading-time" title="Estimated Read Time">
-        
-
-        <!--659-->
-
-        
-            ~2&nbsp;min.
-        
-    </span>
-
-    <meta itemprop="identifier" content="/blog/under-the-hood-1st" />
-</div>
-
-    <h2 class="post-title"><a href="/blog/under-the-hood-1st/">Ковыряясь под капотом #1</a></h2>
-    <div class="post-excerpt js-emojify"><p>Мне кажется, что не само “блоговедение” доставляет мне удовольствие, сколько его разработка и улучшение.
-За последний месяц не было написано ни одной статьи.
-А последняя техническая статья была опубликована более <strong>двух</strong> месяцев назад.
-Но зато за это время мой сайт, а особенно главная страница, претерпел несколько мелких (и не мелких) улучшений.</p>
-
-</div>
-    <a href="/blog/under-the-hood-1st/#cut" class="btn btn-block">
+    <a href="/blog/robots-txt-in-kubernetes/?utm=_more#cut" class="btn btn-block">
         
         Читать далее &rarr;
         
@@ -422,41 +418,41 @@
                     
                     <li data-sort="0010">
                         <a href="/blog/category/разработка/">
-                            Разработка <span class="badge">7</span>
+                            Разработка <span class="badge">8</span>
                         </a>
                     </li>
                     
-                    <li data-sort="0014">
+                    <li data-sort="0015">
                         <a href="/blog/category/livelog/">
                             LiveLog <span class="badge">3</span>
                         </a>
                     </li>
                     
-                    <li data-sort="0015">
+                    <li data-sort="0016">
                         <a href="/blog/category/devops/">
                             DevOps <span class="badge">2</span>
                         </a>
                     </li>
                     
-                    <li data-sort="0015">
+                    <li data-sort="0016">
                         <a href="/blog/category/сервисы/">
                             Сервисы <span class="badge">2</span>
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
                         <a href="/blog/category/android/">
                             Android <span class="badge">1</span>
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
                         <a href="/blog/category/ип/">
                             ИП <span class="badge">1</span>
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
                         <a href="/blog/category/опыт/">
                             Опыт <span class="badge">1</span>
                         </a>
@@ -474,162 +470,174 @@
                     
                     <li data-sort="0008">
                         <a class="btn" href="/blog/tag/веб-разработка/">
-                            Веб-разработка [9]
+                            Веб-разработка [10]
                         </a>
                     </li>
                     
-                    <li data-sort="0011">
+                    <li data-sort="0012">
                         <a class="btn" href="/blog/tag/блог/">
                             Блог [6]
                         </a>
                     </li>
                     
-                    <li data-sort="0014">
+                    <li data-sort="0015">
                         <a class="btn" href="/blog/tag/jekyll/">
                             Jekyll [3]
                         </a>
                     </li>
                     
-                    <li data-sort="0014">
+                    <li data-sort="0015">
                         <a class="btn" href="/blog/tag/обновления/">
                             Обновления [3]
                         </a>
                     </li>
                     
-                    <li data-sort="0015">
+                    <li data-sort="0016">
                         <a class="btn" href="/blog/tag/docker/">
                             Docker [2]
                         </a>
                     </li>
                     
-                    <li data-sort="0015">
+                    <li data-sort="0016">
                         <a class="btn" href="/blog/tag/kubernetes/">
                             Kubernetes [2]
                         </a>
                     </li>
                     
-                    <li data-sort="0015">
+                    <li data-sort="0016">
+                        <a class="btn" href="/blog/tag/инструменты/">
+                            Инструменты [2]
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0016">
                         <a class="btn" href="/blog/tag/сервисы/">
                             Сервисы [2]
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
                         <a class="btn" href="/blog/tag/android/">
                             Android [1]
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
                         <a class="btn" href="/blog/tag/code-style/">
                             Code-style [1]
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
+                        <a class="btn" href="/blog/tag/frontend/">
+                            Frontend [1]
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0017">
                         <a class="btn" href="/blog/tag/helm/">
                             Helm [1]
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
                         <a class="btn" href="/blog/tag/nginx/">
                             Nginx [1]
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
                         <a class="btn" href="/blog/tag/php/">
                             PHP [1]
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
                         <a class="btn" href="/blog/tag/rip/">
                             RIP [1]
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
+                        <a class="btn" href="/blog/tag/аналитика/">
+                            Аналитика [1]
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0017">
                         <a class="btn" href="/blog/tag/базы-данных/">
                             Базы данных [1]
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
                         <a class="btn" href="/blog/tag/безопасность/">
                             Безопасность [1]
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
                         <a class="btn" href="/blog/tag/бизнес/">
                             Бизнес [1]
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
                         <a class="btn" href="/blog/tag/еда/">
                             Еда [1]
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
                         <a class="btn" href="/blog/tag/животные/">
                             Животные [1]
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
-                        <a class="btn" href="/blog/tag/инструменты/">
-                            Инструменты [1]
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0016">
+                    <li data-sort="0017">
                         <a class="btn" href="/blog/tag/ип/">
                             ИП [1]
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
                         <a class="btn" href="/blog/tag/магазины/">
                             Магазины [1]
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
                         <a class="btn" href="/blog/tag/музыка/">
                             Музыка [1]
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
                         <a class="btn" href="/blog/tag/налоги/">
                             Налоги [1]
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
                         <a class="btn" href="/blog/tag/оптимизация/">
                             Оптимизация [1]
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
                         <a class="btn" href="/blog/tag/программы/">
                             Программы [1]
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
                         <a class="btn" href="/blog/tag/усн/">
                             УСН [1]
                         </a>
                     
                 </ul>
                 <div class="tag-list__more-wrapper">
-                    <button class="btn btn-block tag-list__more">Show 20 more...</button>
+                    <button class="btn btn-block tag-list__more">Show 22 more...</button>
                 </div>
             </div>
         </aside>
@@ -652,16 +660,11 @@
         <script src="/assets/js/jquery.min.js?cb=0571615"></script>
         <script src="/assets/js/bootstrap.min.js?cb=1dad3b3"></script>
         <script src="/assets/js/plugins.js?cb=932ef83"></script>
-        <script src="/assets/js/scripts.js?cb=0c5ec59"></script>
-        <script src="/assets/javascript/bundle.js?cb=05d9b20"></script>
-        <script src="/assets/js/emoji.min.js?cb=b33f814"></script>
+        <script src="/assets/js/scripts.js?cb=afee093"></script>
+        <script src="/assets/javascript/bundle.js?cb=64fb7d2"></script>
 
         <script>
-            $(function() {
-                window.callOnReady.forEach(function(item) {
-                    item();
-                });
-            });
+            
 
             main.resolveUtm(window, document);
         </script>

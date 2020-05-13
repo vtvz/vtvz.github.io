@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-    <!--Built at : 2020-05-08 21:42:54-->
+    <!--Built at : 2020-05-13 16:30:09-->
     <head>
         
         <meta charset="utf-8">
@@ -47,11 +47,10 @@
 <meta name="google-site-verification" content="40uemu1o4UDeTOeeLKqJVoaPU4CVUjlGI5D9AI1EkNE" />
 <meta name="yandex-verification" content="fa3eb4fcd2ebc4ad" />
 <script type="application/ld+json">
-{"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://vtvz.me/assets/images/logo-black.png"},"name":"Vitaly Zaslavsky"},"author":{"@type":"Person","name":"Vitaly Zaslavsky"},"description":"DevOps engineer’s personal blog about everything. Notes on successes and failures in professional activities, about finding solutions to practical problems, and just about life.","@type":"WebPage","url":"https://vtvz.me/blog/page-4/","headline":"Vitaly Zaslavsky’s Blog — page 4 of 4","image":"https://vtvz.me/assets/images/logo-cover.png","@context":"https://schema.org"}</script>
+{"headline":"Vitaly Zaslavsky’s Blog — page 4 of 4","image":"https://vtvz.me/assets/images/logo-cover.png","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://vtvz.me/assets/images/logo-black.png"},"name":"Vitaly Zaslavsky"},"author":{"@type":"Person","name":"Vitaly Zaslavsky"},"url":"https://vtvz.me/blog/page-4/","description":"DevOps engineer’s personal blog about everything. Notes on successes and failures in professional activities, about finding solutions to practical problems, and just about life.","@type":"WebPage","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
         <script>
-            window.callOnReady = [];
             window.onerror = function () {
                 alert(JSON.stringify(arguments));
             }
@@ -69,28 +68,18 @@
         <a class="btn responsive-menu" data-toggle="collapse" data-target=".navbar-collapse"><i></i></a>
         <div class="navbar-brand text-center">
             <a href="/">
-                <svg width="64px" height="64px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="logo">
+                <svg width="64px" height="64px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="logo" id="main-logo">
     <metadata id="metadata7">image/svg+xml</metadata>
     <g>
         <path id="left-eye"
               fill="#000"
-              class="logo__piece logo__eye logo__eye--open"
-              d="m 292.185,573.771 95.41272,54.75857 6.22259,69.27794 -50.61023,-22.40125 z"
-        />
-        <path id="left-eye-closed"
-              fill="#000"
-              class="logo__piece logo__eye logo__eye--closed"
-              d="m 292.185,573.771 57.98899,94.89416 43.64632,29.14235 -50.61023,-22.40125 z"
+              class="logo__piece logo__eye"
+              d="M 292.185,573.771 L 387.59772,628.52957 393.82031,697.80751 343.21008,675.40626 Z"
         />
         <path id="right-eye"
               fill="#000"
-              class="logo__piece logo__eye logo__eye--open"
-              d="m 638.57461,625.62571 -6.22254,72.59661 51.43989,-22.40125 50.61022,-102.87979 z"
-        />
-        <path id="right-eye-closed"
-              fill="#000"
-              class="logo__piece logo__eye logo__eye--closed"
-              d="m 675.99834,669.55791 -43.64627,28.66441 51.43989,-22.40125 50.61022,-102.87979 z"
+              class="logo__piece logo__eye"
+              d="M 638.57461,625.62571 L 632.35207,698.22232 683.79196,675.82107 734.40218,572.94128 Z"
         />
         <path id="face"
               fill="#000"
@@ -105,7 +94,6 @@
     </div>
     <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-            <!-- <li class="current"> -->
             <li class="">
                 <a href="/#main" class="hint--right" data-hint="Main" data-section-id="main">
                     <i class="fas fa-home fa-fw"></i><span>Main</span>
@@ -143,7 +131,50 @@
 
     <div class="box post ">
     <div class="post-main-image" style="background-image: url(/assets/images/logo-cover.png)">
-    <a href="/blog/html-to-mysql/">
+    <a href="/blog/jekyll-spoiler-plugin/?utm=_open">
+        <img src="/assets/images/logo-cover.png" alt="Jekyll Spoiler Plugin. Куда и как прятать код" />
+    </a>
+    
+</div>
+
+
+    <div class="post-meta">
+    <span class="post-meta__item category"><a href="/blog/category/разработка/">Разработка</a></span>
+    <time class="post-meta__item date" itemprop="datePublished" datetime="2019-03-08T00:00:00+03:00">08 Mar 2019</time>
+    
+    <span class="post-meta__item reading-time" title="Estimated Read Time">
+        
+
+        <!--247-->
+
+        
+            <1&nbsp;min.
+        
+    </span>
+
+    <meta itemprop="identifier" content="/blog/jekyll-spoiler-plugin" />
+</div>
+
+    <h2 class="post-title"><a href="/blog/jekyll-spoiler-plugin/?utm=_open">Jekyll Spoiler Plugin. Куда и как прятать код</a></h2>
+    <div class="post-excerpt js-emojify"><p>Когда писал <a href="/blog/html-to-mysql/">предыдущую статью</a>, столкнулся с одной простой проблемой: большие куски кода занимали больше места, чем сам текст.</p>
+
+<p>Поиск готового решения для спойлеров привел меня на вот <a href="https://burrowl.com/blog/2015/05/23/spoiler-block/">эту страничку</a>.
+Решение простое и гениальное, но имело один большой недостаток: текст внутри спойлера не форматировался.</p>
+
+<p>Свое решение я опишу в этой статье.</p>
+
+</div>
+    <a href="/blog/jekyll-spoiler-plugin/?utm=_more#cut" class="btn btn-block">
+        
+        Читать далее &rarr;
+        
+    </a>
+</div>
+
+
+    <div class="box post ">
+    <div class="post-main-image" style="background-image: url(/assets/images/logo-cover.png)">
+    <a href="/blog/html-to-mysql/?utm=_open">
         <img src="/assets/images/logo-cover.png" alt="HTML to MySQL. Или Веб-скрапинг на практике" />
     </a>
     
@@ -167,7 +198,7 @@
     <meta itemprop="identifier" content="/blog/html-to-mysql" />
 </div>
 
-    <h2 class="post-title"><a href="/blog/html-to-mysql/">HTML to MySQL. Или Веб-скрапинг на практике</a></h2>
+    <h2 class="post-title"><a href="/blog/html-to-mysql/?utm=_open">HTML to MySQL. Или Веб-скрапинг на практике</a></h2>
     <div class="post-excerpt js-emojify"><p>Один мой хороший знакомый и коллега обратился ко мне за помощью. Он делал для одной компании новый сайт взамен старому.
 Данные со старого, естественно, должны были переместиться на новый.
 В этом и заключалась моя задача. Было только одно простое условие – доступа к БД старого сайта ни у меня, ни у него не было.</p>
@@ -175,7 +206,7 @@
 <p>В этой статье я хочу на практике показать, что можно сделать в этой ситуации, несмотря на отсутствие адекватной разметки в коде страницы.</p>
 
 </div>
-    <a href="/blog/html-to-mysql/#cut" class="btn btn-block">
+    <a href="/blog/html-to-mysql/?utm=_more#cut" class="btn btn-block">
         
         Читать далее &rarr;
         
@@ -185,7 +216,7 @@
 
     <div class="box post ">
     <div class="post-main-image" style="background-image: url(/assets/images/logo-cover.png)">
-    <a href="/blog/openning/">
+    <a href="/blog/openning/?utm=_open">
         <img src="/assets/images/logo-cover.png" alt="Свершилось! Часть первая. Зачем мне блог" />
     </a>
     
@@ -209,7 +240,7 @@
     <meta itemprop="identifier" content="/blog/openning" />
 </div>
 
-    <h2 class="post-title"><a href="/blog/openning/">Свершилось! Часть первая. Зачем мне блог</a></h2>
+    <h2 class="post-title"><a href="/blog/openning/?utm=_open">Свершилось! Часть первая. Зачем мне блог</a></h2>
     <div class="post-excerpt js-emojify"><p>Я долго к этому шел. Серьезно, на это ушел не один год (4 года приблизительно, точно не знаю).
 Мысль была давно. Непосредственно разработка заняла у меня немного. Но созревал я на самом деле долго.</p>
 
@@ -217,7 +248,7 @@
 А также постараюсь ответить на вопросы, которые мне еще никто не задавал, но, возможно, задаст :blush:</p>
 
 </div>
-    <a href="/blog/openning/#cut" class="btn btn-block">
+    <a href="/blog/openning/?utm=_more#cut" class="btn btn-block">
         
         Читать далее &rarr;
         
@@ -281,41 +312,41 @@
                     
                     <li data-sort="0010">
                         <a href="/blog/category/разработка/">
-                            Разработка <span class="badge">7</span>
+                            Разработка <span class="badge">8</span>
                         </a>
                     </li>
                     
-                    <li data-sort="0014">
+                    <li data-sort="0015">
                         <a href="/blog/category/livelog/">
                             LiveLog <span class="badge">3</span>
                         </a>
                     </li>
                     
-                    <li data-sort="0015">
+                    <li data-sort="0016">
                         <a href="/blog/category/devops/">
                             DevOps <span class="badge">2</span>
                         </a>
                     </li>
                     
-                    <li data-sort="0015">
+                    <li data-sort="0016">
                         <a href="/blog/category/сервисы/">
                             Сервисы <span class="badge">2</span>
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
                         <a href="/blog/category/android/">
                             Android <span class="badge">1</span>
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
                         <a href="/blog/category/ип/">
                             ИП <span class="badge">1</span>
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
                         <a href="/blog/category/опыт/">
                             Опыт <span class="badge">1</span>
                         </a>
@@ -333,162 +364,174 @@
                     
                     <li data-sort="0008">
                         <a class="btn" href="/blog/tag/веб-разработка/">
-                            Веб-разработка [9]
+                            Веб-разработка [10]
                         </a>
                     </li>
                     
-                    <li data-sort="0011">
+                    <li data-sort="0012">
                         <a class="btn" href="/blog/tag/блог/">
                             Блог [6]
                         </a>
                     </li>
                     
-                    <li data-sort="0014">
+                    <li data-sort="0015">
                         <a class="btn" href="/blog/tag/jekyll/">
                             Jekyll [3]
                         </a>
                     </li>
                     
-                    <li data-sort="0014">
+                    <li data-sort="0015">
                         <a class="btn" href="/blog/tag/обновления/">
                             Обновления [3]
                         </a>
                     </li>
                     
-                    <li data-sort="0015">
+                    <li data-sort="0016">
                         <a class="btn" href="/blog/tag/docker/">
                             Docker [2]
                         </a>
                     </li>
                     
-                    <li data-sort="0015">
+                    <li data-sort="0016">
                         <a class="btn" href="/blog/tag/kubernetes/">
                             Kubernetes [2]
                         </a>
                     </li>
                     
-                    <li data-sort="0015">
+                    <li data-sort="0016">
+                        <a class="btn" href="/blog/tag/инструменты/">
+                            Инструменты [2]
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0016">
                         <a class="btn" href="/blog/tag/сервисы/">
                             Сервисы [2]
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
                         <a class="btn" href="/blog/tag/android/">
                             Android [1]
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
                         <a class="btn" href="/blog/tag/code-style/">
                             Code-style [1]
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
+                        <a class="btn" href="/blog/tag/frontend/">
+                            Frontend [1]
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0017">
                         <a class="btn" href="/blog/tag/helm/">
                             Helm [1]
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
                         <a class="btn" href="/blog/tag/nginx/">
                             Nginx [1]
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
                         <a class="btn" href="/blog/tag/php/">
                             PHP [1]
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
                         <a class="btn" href="/blog/tag/rip/">
                             RIP [1]
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
+                        <a class="btn" href="/blog/tag/аналитика/">
+                            Аналитика [1]
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0017">
                         <a class="btn" href="/blog/tag/базы-данных/">
                             Базы данных [1]
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
                         <a class="btn" href="/blog/tag/безопасность/">
                             Безопасность [1]
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
                         <a class="btn" href="/blog/tag/бизнес/">
                             Бизнес [1]
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
                         <a class="btn" href="/blog/tag/еда/">
                             Еда [1]
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
                         <a class="btn" href="/blog/tag/животные/">
                             Животные [1]
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
-                        <a class="btn" href="/blog/tag/инструменты/">
-                            Инструменты [1]
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0016">
+                    <li data-sort="0017">
                         <a class="btn" href="/blog/tag/ип/">
                             ИП [1]
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
                         <a class="btn" href="/blog/tag/магазины/">
                             Магазины [1]
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
                         <a class="btn" href="/blog/tag/музыка/">
                             Музыка [1]
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
                         <a class="btn" href="/blog/tag/налоги/">
                             Налоги [1]
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
                         <a class="btn" href="/blog/tag/оптимизация/">
                             Оптимизация [1]
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
                         <a class="btn" href="/blog/tag/программы/">
                             Программы [1]
                         </a>
                     </li>
                     
-                    <li data-sort="0016">
+                    <li data-sort="0017">
                         <a class="btn" href="/blog/tag/усн/">
                             УСН [1]
                         </a>
                     
                 </ul>
                 <div class="tag-list__more-wrapper">
-                    <button class="btn btn-block tag-list__more">Show 20 more...</button>
+                    <button class="btn btn-block tag-list__more">Show 22 more...</button>
                 </div>
             </div>
         </aside>
@@ -511,16 +554,11 @@
         <script src="/assets/js/jquery.min.js?cb=0571615"></script>
         <script src="/assets/js/bootstrap.min.js?cb=1dad3b3"></script>
         <script src="/assets/js/plugins.js?cb=932ef83"></script>
-        <script src="/assets/js/scripts.js?cb=0c5ec59"></script>
-        <script src="/assets/javascript/bundle.js?cb=05d9b20"></script>
-        <script src="/assets/js/emoji.min.js?cb=b33f814"></script>
+        <script src="/assets/js/scripts.js?cb=afee093"></script>
+        <script src="/assets/javascript/bundle.js?cb=64fb7d2"></script>
 
         <script>
-            $(function() {
-                window.callOnReady.forEach(function(item) {
-                    item();
-                });
-            });
+            
 
             main.resolveUtm(window, document);
         </script>

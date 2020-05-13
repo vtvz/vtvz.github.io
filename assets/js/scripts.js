@@ -20,28 +20,16 @@ $(document).ready(function () {
         hash: true,
     });
 });
+
 /*-----------------------------------------------------------------------------------*/
 /*	PRELOADER
 /*-----------------------------------------------------------------------------------*/
 $(window).load(function () {
     $('.preloader__spinner').fadeOut();
     $('#preloader').delay(350).fadeOut('slow');
-    $('body').delay(350).css({'overflow': 'visible'}).addClass('loaded');
-
-    var logo = $('.navbar-brand .logo');
-    var blink = function (timeout) {
-        logo.attr('class', 'logo logo--blink');
-        setTimeout(function () {
-            logo.attr('class', 'logo');
-        }, (Math.floor(Math.random() * 150) + 50));
-
-        timeout = timeout || (Math.floor(Math.random() * 10000) + 10000);
-        setTimeout(blink, timeout);
-    }
-
-
-    blink(3000);
+    $('body').delay(350).css({ 'overflow': 'visible' }).addClass('loaded');
 });
+
 /*-----------------------------------------------------------------------------------*/
 /*	STICKY HEADER
 /*-----------------------------------------------------------------------------------*/
