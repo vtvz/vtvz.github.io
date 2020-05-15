@@ -1,0 +1,765 @@
+<!doctype html>
+<html lang="en">
+    <!--Built at : 2020-05-15 18:14:48-->
+    <head>
+        
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Аккуратно внедряем Emoji, не ломая все остальное | Vitaly Zaslavsky</title>
+
+        <link rel="shortcut icon" href="/favicon.png" type="image/png">
+
+        <link rel="stylesheet" href="/assets/css/preloader.css?cb=40a8883" />
+        <link rel="stylesheet" href="/assets/css/bootstrap.css?cb=d2e8e71" />
+
+        
+        <link rel="stylesheet" href="/assets/css/main.css?cb=a477a89" />
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,500,600,700,800|Roboto:300,400,500,600,700,800&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet" crossorigin="anonymous">
+
+        <link rel="alternate" type="application/rss+xml" title="Vitaly Zaslavsky – DevOps Engineer, who loves his job" href="https://vtvz.me/feed.xml">
+        <link rel="alternate" type="application/rss+xml" title="My Achievements | Vitaly Zaslavsky" href="https://vtvz.me/feed/achievements.xml">
+        <link rel="alternate" type="application/rss+xml" title="My Bookmarks | Vitaly Zaslavsky" href="https://vtvz.me/feed/bookmarks.xml">
+        <link rel="alternate" type="application/rss+xml" title="My Notes | Vitaly Zaslavsky" href="https://vtvz.me/feed/notes.xml">
+
+        <meta name="theme-color" content="#232323">
+
+        <!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Аккуратно внедряем Emoji, не ломая все остальное" />
+<meta name="author" content="Vitaly Zaslavsky" />
+<meta property="og:locale" content="ru" />
+<meta name="description" content="Простой и надежный способ внедрения Emoji в текст без влияния на другие компоненты страницы" />
+<meta property="og:description" content="Простой и надежный способ внедрения Emoji в текст без влияния на другие компоненты страницы" />
+<link rel="canonical" href="https://vtvz.me/blog/reliable-emojification/" />
+<meta property="og:url" content="https://vtvz.me/blog/reliable-emojification/" />
+<meta property="og:site_name" content="Vitaly Zaslavsky – DevOps Engineer, who loves his job" />
+<meta property="og:image" content="https://vtvz.me/blog/reliable-emojification/cover.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-05-15T00:00:00+03:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:image" content="https://vtvz.me/blog/reliable-emojification/cover.png" />
+<meta property="twitter:title" content="Аккуратно внедряем Emoji, не ломая все остальное" />
+<meta name="twitter:site" content="@vtvz_me" />
+<meta name="twitter:creator" content="@vtvz_me" />
+<meta name="google-site-verification" content="40uemu1o4UDeTOeeLKqJVoaPU4CVUjlGI5D9AI1EkNE" />
+<meta name="yandex-verification" content="fa3eb4fcd2ebc4ad" />
+<script type="application/ld+json">
+{"headline":"Аккуратно внедряем Emoji, не ломая все остальное","dateModified":"2020-05-15T00:00:00+03:00","datePublished":"2020-05-15T00:00:00+03:00","image":"https://vtvz.me/blog/reliable-emojification/cover.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://vtvz.me/blog/reliable-emojification/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://vtvz.me/assets/images/logo-black.png"},"name":"Vitaly Zaslavsky"},"author":{"@type":"Person","name":"Vitaly Zaslavsky"},"url":"https://vtvz.me/blog/reliable-emojification/","description":"Простой и надежный способ внедрения Emoji в текст без влияния на другие компоненты страницы","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+        <script>
+            window.onerror = function () {
+                alert(JSON.stringify(arguments));
+            }
+        </script>
+    </head>
+
+    <body class="full-layout">
+        <div id="preloader"><div class="preloader__spinner"></div></div>
+
+<div id="bg"></div>
+
+<div class="body-wrapper">
+    <nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+        <a class="btn responsive-menu" data-toggle="collapse" data-target=".navbar-collapse"><i></i></a>
+        <div class="navbar-brand text-center">
+            <a href="/">
+                <svg width="64px" height="64px" viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="logo" id="main-logo">
+    <metadata id="metadata7">image/svg+xml</metadata>
+    <g>
+        <path id="left-eye" fill="#000" class="logo__piece logo__eye" d="M 292.185,573.771 L 387.59772,628.52957 393.82031,697.80751 343.21008,675.40626 Z"></path>
+        <path id="right-eye" fill="#000" class="logo__piece logo__eye" d="M 638.57461,625.62571 L 632.35207,698.22232 683.79196,675.82107 734.40218,572.94128 Z"></path>
+        <path id="face" fill="#000" class="logo__piece" d="m74.013423,308.628134l119.0939,184.214156l-75.09366,163.094047c21.287511,6.059785 47.827858,16.218479 68.574554,25.196346c32.625314,14.118218 58.700392,28.772931 86.892875,46.37732c-46.488875,-12.947705 -100.710811,-26.440733 -132.000626,-21.120109c68.761424,31.900881 145.390462,69.291367 314.038649,239.663892l39.72301,-0.078985l-139.920649,-592.537851l-248.985112,-341.177843l-32.32294,296.369028zm598.989449,41.582319l-143.147377,595.762488l42.148039,0.083631c76.185978,-75.014954 141.727968,-154.245855 310.147052,-238.270502c-31.289861,-5.320623 -85.511797,8.172404 -132.000672,21.120109c28.19253,-17.604389 54.267561,-32.259102 86.892875,-46.37732c20.746696,-8.977867 47.287089,-19.136561 68.574554,-25.196346l-75.09366,-163.094047l119.0939,-184.214156l-29.161677,-295.491224l-247.453033,335.677365zm293.628151,-36.667029l-116.747299,181.280788l80.960443,176.000772c-23.816754,1.721318 -45.965296,6.720007 -66.88037,17.600068c32.696772,-1.504713 59.86756,-0.242066 89.467093,9.093371c-172.472461,59.218813 -314.438871,186.268605 -439.708757,326.481593c-156.142938,-181.558909 -350.942912,-320.860315 -452.028763,-324.650392c29.59958,-9.33553 65.277111,-13.824765 97.973837,-12.320052c-20.915027,-10.880061 -43.063615,-15.87875 -66.88037,-17.600068l80.960443,-176.000772l-116.747299,-181.280788l45.210942,-312.147931l257.803893,254.290031l153.707316,-26.400079l154.306255,24.225247l256.161049,-249.03255l42.441584,310.460762z"></path>
+    </g>
+</svg>
+
+            </a>
+        </div>
+    </div>
+    <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+            <li class="">
+                <a href="/#main" class="hint--right" data-hint="Main" data-section-id="main">
+                    <i class="fas fa-home fa-fw"></i><span>Main</span>
+                </a>
+            </li>
+            <li>
+                <a href="/#cv" class="hint--right" data-hint="CV" data-section-id="cv">
+                    <i class="far fa-address-card fa-fw"></i><span>CV</span>
+                </a>
+            </li>
+            
+            <li>
+            
+                <a href="/collections/" class="hint--right" data-hint="Collections">
+                    <i class="fas fa-star fa-fw"></i><span>Collections</span>
+                </a>
+            </li>
+            <li class="current">
+                <a href="/blog/" class="hint--right" data-hint="Blog">
+                    <i class="fas fa-pencil-alt fa-fw"></i><span>Blog</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</nav>
+
+    <div class="container inner blog">
+    <div class="row">
+        <div class="col-md-8 col-sm-12 content">
+            <div>
+    <div class="post box" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-main-image" style="background-image: url(/blog/reliable-emojification/cover.png)">
+    <a href="/blog/reliable-emojification/?utm=_open">
+        <img src="/blog/reliable-emojification/cover.png" alt="Аккуратно внедряем Emoji, не ломая все остальное">
+    </a>
+    
+    <a class="post-main-image__src" href="https://getemoji.com/" target="_blank" rel="noopener noreferrer">Image source</a>
+    
+</div>
+
+
+        <div class="post-meta">
+    <span class="post-meta__item category"><a href="/blog/category/%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B0/">Разработка</a></span>
+    <time class="post-meta__item date" itemprop="datePublished" datetime="2020-05-15T00:00:00+03:00">15 May 2020</time>
+    
+    <span class="post-meta__item reading-time" title="Estimated Read Time">
+        
+
+        <!--598-->
+
+        
+            ~2 min.
+        
+    </span>
+
+    <meta itemprop="identifier" content="/blog/reliable-emojification">
+</div>
+
+        <h1 class="post-title">
+            <a href="/blog/reliable-emojification/" itemprop="headline">Аккуратно внедряем Emoji, не ломая все остальное</a>
+        </h1>
+        <article itemprop="articleBody" class="js-emojify post__content">
+            <p>Emoji стали неотъемлемой частью нашей культуры.
+И я их активно использую в своих статьях.
+Ранее я использовал плагин для jekyll <a href="https://github.com/jekyll/jemoji" target="_blank" rel="noopener noreferrer">jemoji</a>,
+но набор смайликов был весьма скудный, поэтому я отказался от него в пользу <a href="https://github.com/iamcal/js-emoji" target="_blank" rel="noopener noreferrer">js-emoji</a>.
+Но и тут не было все гладко…</p>
+
+<a id="cut"></a>
+      <h2 id="проблема">
+        
+        
+          Проблема <a href="#%D0%BF%D1%80%D0%BE%D0%B1%D0%BB%D0%B5%D0%BC%D0%B0" class="post__header-anchor" title="Anchor">#</a>
+        
+        
+      </h2>
+
+<p>Сначала эта библиотека загружалась синхронно со всей страницей.
+Это значит то, что индикатор загрузки не исчезнет, пока смайлики не отрисуются.
+Для рендера использовался простейший скрипт, <a href="https://github.com/iamcal/js-emoji/blob/master/lib/jquery.emoji.js" target="_blank" rel="noopener noreferrer">взятый из официального репозитория</a>,
+который выглядел следующим образом:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">emoji</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EmojiConvertor</span><span class="p">();</span>
+    <span class="nx">emoji</span><span class="p">.</span><span class="nx">img_sets</span><span class="p">.</span><span class="nx">apple</span><span class="p">.</span><span class="nx">path</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">/assets/images/emoji/</span><span class="dl">'</span><span class="p">;</span>
+    <span class="nx">emoji</span><span class="p">.</span><span class="nx">include_title</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="nx">emoji</span><span class="p">.</span><span class="nx">include_text</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="nx">emoji</span><span class="p">.</span><span class="nx">replace_mode</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">css</span><span class="dl">'</span><span class="p">;</span>
+    <span class="nx">emoji</span><span class="p">.</span><span class="nx">allow_native</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+    <span class="nx">emoji</span><span class="p">.</span><span class="nx">addAliases</span><span class="p">({</span>
+        <span class="dl">'</span><span class="s1">fox</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">1f98a</span><span class="dl">'</span><span class="p">,</span>
+    <span class="p">});</span>
+
+    <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.js-emojify</span><span class="dl">'</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="dl">'</span><span class="s1">:not(script)</span><span class="dl">'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">oldHtml</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">emoji</span><span class="p">.</span><span class="nx">replace_unified</span><span class="p">(</span><span class="nx">emoji</span><span class="p">.</span><span class="nx">replace_emoticons</span><span class="p">(</span><span class="nx">oldHtml</span><span class="p">));</span>
+        <span class="p">});</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>Все понятно и очевидно: вытягиваем весь html, вставляем туда иконки, заменяем старый html новым.
+И все это работало хорошо… до поры.
+Проблемы начались тогда, когда я решил, что смайлики должны отрисовываться <em>после</em> загрузки страницы, а не во время.
+Это значительно ускоряло отображение страниц, но создавало некоторые проблемы.</p>
+
+<p>Самая основная выглядела следующим образом:</p>
+
+<ol>
+  <li>Загружалась страница;</li>
+  <li>Отрисовывался ReactJS виджет;</li>
+  <li>Происходил стандартный набор действий:
+    <ul>
+      <li>вытягивался весь html;</li>
+      <li>вставлялись смайлы;</li>
+      <li>заменялся старый html новым;</li>
+    </ul>
+  </li>
+</ol>
+
+<p>И после этого всего виджеты переставали работать.
+Почему? Потому что мы заменили старый html совершенно новым,
+после чего все обработчики форм переставали работать совсем.
+Хотя визуально для нас ничего не поменялось,
+с точки зрения браузера это совсем другие эллементы.</p>
+
+<p>Искусственно добиться этого эффекта можно следующим образом:</p>
+
+<ul>
+  <li>Перейти в <a href="/blog/big-changes/">этот пост</a>;</li>
+  <li>Спуститься до формы и проверить, что все работает;</li>
+  <li>Открыть “Инструменты разработчика”;</li>
+  <li>Выполнить:
+    <div class="language-javascript highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#social-post-generator-container</span><span class="dl">'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span>
+      <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#social-post-generator-container</span><span class="dl">'</span><span class="p">).</span><span class="nx">html</span><span class="p">()</span>
+  <span class="p">)</span>
+</code></pre></div>    </div>
+    <p><span class="text-muted">Таким образом мы заменили оригинальный html новым</span></p>
+  </li>
+  <li>Убедиться, что ничего не работает.</li>
+</ul>
+
+<p>Еще одна проблема была в том, что он заменял emoji даже в теге <code class="highlighter-rouge">script</code>.
+Но это уже не так критично и легко решается.</p>
+    
+      <h2 id="решение">
+        
+        
+          Решение <a href="#%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5" class="post__header-anchor" title="Anchor">#</a>
+        
+        
+      </h2>
+
+<p>Предположим, что у нас уже есть функция <code class="highlighter-rouge">emojificator</code>, которая добавляет эмотиконы в текст.
+Работает она ровно также, как в указанном выше куске кода.</p>
+
+<p>Чего нам нужно добиться:</p>
+
+<ol>
+  <li>Обновляться должен только текст. Существующие html объекты должны оставаться прежними.</li>
+  <li>Не трогать <code class="highlighter-rouge">script</code> теги.</li>
+  <li>Не трогать <code class="highlighter-rouge">textarea</code> и прочие “input” элементы.</li>
+</ol>
+
+<p>Мне потребовалось несколько часов на исследование и реализацию этого дела, но результатом я остался доволен.</p>
+    
+      <h3 id="обход-всех-текстовых-нод">
+        
+        
+          Обход всех текстовых нод <a href="#%D0%BE%D0%B1%D1%85%D0%BE%D0%B4-%D0%B2%D1%81%D0%B5%D1%85-%D1%82%D0%B5%D0%BA%D1%81%D1%82%D0%BE%D0%B2%D1%8B%D1%85-%D0%BD%D0%BE%D0%B4" class="post__header-anchor" title="Anchor">#</a>
+        
+        
+      </h3>
+
+<p>DOM состоит не только из обычных элементов, но и из текста, комментариев и п.р.
+Наша задача состоит в том, чтобы рекурсивно пройтись по всем текстовым нодам и внедрить туда смайлы.</p>
+
+<p>Выглядит это так:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">blacklist</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="nx">HTMLScriptElement</span><span class="p">,</span>
+    <span class="nx">HTMLTextAreaElement</span><span class="p">,</span>
+    <span class="nx">HTMLInputElement</span><span class="p">,</span>
+    <span class="nx">HTMLSelectElement</span><span class="p">,</span>
+    <span class="nx">HTMLButtonElement</span><span class="p">,</span>
+<span class="p">];</span>
+
+<span class="kd">const</span> <span class="nx">skip</span> <span class="o">=</span> <span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">cls</span> <span class="k">of</span> <span class="nx">blacklist</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">node</span> <span class="k">instanceof</span> <span class="nx">cls</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">recursiveEmojification</span> <span class="o">=</span> <span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">nodeType</span> <span class="o">!==</span> <span class="nx">Node</span><span class="p">.</span><span class="nx">TEXT_NODE</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">nodeType</span> <span class="o">===</span> <span class="nx">Node</span><span class="p">.</span><span class="nx">ELEMENT_NODE</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">skip</span><span class="p">(</span><span class="nx">node</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nx">node</span><span class="p">.</span><span class="nx">childNodes</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">_</span> <span class="o">=&gt;</span> <span class="nx">recursiveEmojification</span><span class="p">(</span><span class="nx">_</span><span class="p">))</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="c1">// Do something with 'node.nodeValue'</span>
+<span class="p">}</span>
+
+<span class="nb">document</span>
+    <span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">.js-emojify</span><span class="dl">"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">_</span> <span class="o">=&gt;</span> <span class="nx">recursiveEmojification</span><span class="p">(</span><span class="nx">_</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>В общем, ничего сложного. Обратите особое внимание на функцию <code class="highlighter-rouge">skip</code>.
+Именно она гарантирует “невредимость” некоторых элементов страницы.
+А именно теги <code class="highlighter-rouge">script</code>, <code class="highlighter-rouge">textarea</code> и подобные им.</p>
+    
+      <h3 id="внедрение-emoji-в-текст">
+        
+        
+          Внедрение Emoji в текст <a href="#%D0%B2%D0%BD%D0%B5%D0%B4%D1%80%D0%B5%D0%BD%D0%B8%D0%B5-emoji-%D0%B2-%D1%82%D0%B5%D0%BA%D1%81%D1%82" class="post__header-anchor" title="Anchor">#</a>
+        
+        
+      </h3>
+
+<p>Осталось дело за малым. Или нет? :thinking_face:</p>
+
+<p>Теперь у нас есть все куски текстов, в которых потенциально могут быть emoji.
+Если нам нужна совместимость только с девайсами Apple, то мы можем заменить все <code class="highlighter-rouge">:emoji:</code> смайлы
+на обычный unicode и на этом успокоиться. Но у меня Линукс. И многих других тоже нет ничего яблочного.
+Поэтому нужно заменить все текстовые смайлы, на маленькие картинки. Вот тут и начинается самое интересное.</p>
+
+<p>Дело в том, что мы не можем просто взять и, вместо текстовой ноды, вкорячить кусок html кода.
+Если попробовать сделать <code class="highlighter-rouge">node.nodeValue = '&lt;span&gt;Hi&lt;/span&gt;'</code>, то на выходе будет экранированный html код.</p>
+
+<p>Поэтому этот код не будет работать, как этого хочется:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">emojified</span> <span class="o">=</span> <span class="nx">emojificator</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">nodeValue</span><span class="p">);</span>
+<span class="c1">// Пропускаем дальнейшие манипуляции, если ничего не изменилось</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">emojified</span> <span class="o">===</span> <span class="nx">node</span><span class="p">.</span><span class="nx">nodeValue</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">node</span><span class="p">.</span><span class="nx">nodeValue</span> <span class="o">=</span> <span class="nx">emojified</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>А вот результат:</p>
+
+<figure class="frame "><a href="./broken-emoji.png" target="_blank"><img src="./broken-emoji.png" alt="Кривой вывод Emoji" title="Кривой вывод Emoji"></a></figure>
+
+<p>Так себе… Не то, чего я хотел. Поэтому проделываем следующий финт:</p>
+
+<ol>
+  <li>Создаем новый элемент <code class="highlighter-rouge">span</code>;</li>
+  <li>Наполняем его нужным нам html кодом;</li>
+  <li>Вставляем его в документ после нашего исходного текста;</li>
+  <li>Удаляем старый текст.</li>
+</ol>
+
+<p>Вот так это выглядит:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">replacement</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">span</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// (1)</span>
+<span class="nx">replacement</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">js-emojified</span><span class="dl">'</span><span class="p">)</span> <span class="c1">// Для наглядности добавим класс</span>
+<span class="nx">replacement</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">emojified</span><span class="p">;</span> <span class="c1">// (2)</span>
+<span class="nx">node</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">replacement</span><span class="p">,</span> <span class="nx">node</span><span class="p">);</span> <span class="c1">// (3)</span>
+<span class="nx">node</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">node</span><span class="p">);</span> <span class="c1">// (4)</span>
+</code></pre></div></div>
+
+<p>Да, мы создали еще один элемент. Но это не должно быть проблемой, так как чистый <code class="highlighter-rouge">span</code> ни на что не влияет.</p>
+    
+      <h2 id="результат">
+        
+        
+          Результат <a href="#%D1%80%D0%B5%D0%B7%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%82" class="post__header-anchor" title="Anchor">#</a>
+        
+        
+      </h2>
+
+<p>На выходе получилось достаточно аккуратное решение. Хоть и с небольшими хаками.</p>
+
+<details class="spoiler"><summary class="spoiler-title">Соберем все воедино</summary><div class="spoiler-body">
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">blacklist</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="nx">HTMLScriptElement</span><span class="p">,</span>
+    <span class="nx">HTMLTextAreaElement</span><span class="p">,</span>
+    <span class="nx">HTMLInputElement</span><span class="p">,</span>
+    <span class="nx">HTMLSelectElement</span><span class="p">,</span>
+    <span class="nx">HTMLButtonElement</span><span class="p">,</span>
+<span class="p">];</span>
+
+<span class="kd">const</span> <span class="nx">skip</span> <span class="o">=</span> <span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">cls</span> <span class="k">of</span> <span class="nx">blacklist</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">node</span> <span class="k">instanceof</span> <span class="nx">cls</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">recursiveEmojification</span> <span class="o">=</span> <span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">nodeType</span> <span class="o">!==</span> <span class="nx">Node</span><span class="p">.</span><span class="nx">TEXT_NODE</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">nodeType</span> <span class="o">===</span> <span class="nx">Node</span><span class="p">.</span><span class="nx">ELEMENT_NODE</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">skip</span><span class="p">(</span><span class="nx">node</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nx">node</span><span class="p">.</span><span class="nx">childNodes</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">_</span> <span class="o">=&gt;</span> <span class="nx">recursiveEmojification</span><span class="p">(</span><span class="nx">_</span><span class="p">))</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kd">const</span> <span class="nx">emojified</span> <span class="o">=</span> <span class="nx">emojificator</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">nodeValue</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">emojified</span> <span class="o">===</span> <span class="nx">node</span><span class="p">.</span><span class="nx">nodeValue</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">let</span> <span class="nx">replacement</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">span</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">replacement</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">js-emojified</span><span class="dl">'</span><span class="p">)</span>
+    <span class="nx">replacement</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">emojified</span><span class="p">;</span>
+    <span class="nx">node</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">replacement</span><span class="p">,</span> <span class="nx">node</span><span class="p">);</span>
+    <span class="nx">node</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">node</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nb">document</span>
+    <span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">.js-emojify</span><span class="dl">"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">_</span> <span class="o">=&gt;</span> <span class="nx">recursiveEmojification</span><span class="p">(</span><span class="nx">_</span><span class="p">));</span>
+</code></pre></div></div>
+</div></details>
+
+<p>Не могу сказать, что смайлы для меня настолько важны, чтобы я стал так заморачиваться.
+Скорее то, что это был определенный вызов, интересная задача на исследование.
+Я узнал много нового и стал лучше понимать работу html и js в браузере.
+И сделал свой сайт чуточку лучше :blush:</p>
+
+<p>Спасибо за внимание. Надеюсь, было интересно :fox:</p>
+        </article>
+
+        <hr>
+
+        <div class="subscribe">
+            <p>Мне будет очень приятно, если вы подпишитесь на обновления.</p>
+            <div class="subscribe__items">
+                <a class="subscribe__link subscribe__link--rss" href="/feed.xml"><i class="fa-fw fas fa-rss"></i><span class="subscribe__label"> RSS</span></a><a class="subscribe__link subscribe__link--telegram" href="tg://resolve?domain=blog_vtvz"><i class="fa-fw fab fa-telegram-plane"></i><span class="subscribe__label"> Telegram</span></a><a class="subscribe__link subscribe__link--vk" href="https://vk.com/blog_vtvz" target="_blank" rel="noopener noreferrer"><i class="fa-fw fab fa-vk"></i><span class="subscribe__label"> VK</span></a><a class="subscribe__link subscribe__link--linkedin" href="https://www.linkedin.com/in/vtvz/" target="_blank" rel="noopener noreferrer"><i class="fa-fw fab fa-linkedin-in"></i><span class="subscribe__label"> LinkedIn</span></a><a class="subscribe__link subscribe__link--facebook" href="https://www.facebook.com/vtvz.me" target="_blank" rel="noopener noreferrer"><i class="fa-fw fab fa-facebook-f"></i><span class="subscribe__label"> Facebook</span></a><a class="subscribe__link subscribe__link--twitter" href="https://twitter.com/vtvz_me" target="_blank" rel="noopener noreferrer"><i class="fa-fw fab fa-twitter"></i><span class="subscribe__label"> Twitter</span></a>
+            </div>
+        </div>
+
+        <div class="post-tags">
+            
+            <a href="/blog/tag/%D0%B2%D0%B5%D0%B1-%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B0/" itemprop="about">Веб-разработка</a>,
+            
+            <a href="/blog/tag/frontend/" itemprop="about">Frontend</a>,
+            
+            <a href="/blog/tag/emoji/" itemprop="about">Emoji</a>
+            
+        </div>
+    </div>
+    <div class="box">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 text-left">
+                
+                <div>« Previous</div>
+                <a class="prev" href="/blog/conquering-the-utm-parameters/?utm=_prev">Покорение UTM меток</a>
+                
+            </div>
+
+            
+        </div>
+    </div>
+    
+</div>
+
+        </div>
+
+        <aside class="col-md-4 col-sm-12 sidebar">
+            
+            
+            
+            
+            <div class="sidebox box hidden-sm hidden-xs">
+                <h3 class="section-title">In this Article:</h3>
+                <ul class="circled">
+  <li><a href="#%D0%BF%D1%80%D0%BE%D0%B1%D0%BB%D0%B5%D0%BC%D0%B0">Проблема</a></li>
+  <li>
+<a href="#%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5">Решение</a>
+    <ul>
+      <li><a href="#%D0%BE%D0%B1%D1%85%D0%BE%D0%B4-%D0%B2%D1%81%D0%B5%D1%85-%D1%82%D0%B5%D0%BA%D1%81%D1%82%D0%BE%D0%B2%D1%8B%D1%85-%D0%BD%D0%BE%D0%B4">Обход всех текстовых нод</a></li>
+      <li><a href="#%D0%B2%D0%BD%D0%B5%D0%B4%D1%80%D0%B5%D0%BD%D0%B8%D0%B5-emoji-%D0%B2-%D1%82%D0%B5%D0%BA%D1%81%D1%82">Внедрение Emoji в текст</a></li>
+    </ul>
+  </li>
+  <li><a href="#%D1%80%D0%B5%D0%B7%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%82">Результат</a></li>
+</ul>
+            </div>
+            
+            
+
+            <div class="sidebox box">
+                <h3 class="section-title">Categories</h3>
+                <ul class="circled">
+                    
+                    
+                    
+                    
+                    
+                    <li data-sort="0010">
+                        <a href="/blog/category/%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B0/">
+                            Разработка <span class="badge">9</span>
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0016">
+                        <a href="/blog/category/livelog/">
+                            LiveLog <span class="badge">3</span>
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0017">
+                        <a href="/blog/category/devops/">
+                            DevOps <span class="badge">2</span>
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0017">
+                        <a href="/blog/category/%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%8B/">
+                            Сервисы <span class="badge">2</span>
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0018">
+                        <a href="/blog/category/android/">
+                            Android <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0018">
+                        <a href="/blog/category/%D0%B8%D0%BF/">
+                            ИП <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0018">
+                        <a href="/blog/category/%D0%BE%D0%BF%D1%8B%D1%82/">
+                            Опыт <span class="badge">1</span>
+                        </a>
+                    
+                </li>
+</ul>
+            </div>
+
+            <div class="sidebox box">
+                <h3 class="section-title">Tags</h3>
+                <ul class="tag-list">
+                    
+                    
+                    
+                    
+                    
+                    <li data-sort="0008">
+                        <a class="btn" href="/blog/tag/%D0%B2%D0%B5%D0%B1-%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B0/">
+                            Веб-разработка [11]
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0013">
+                        <a class="btn" href="/blog/tag/%D0%B1%D0%BB%D0%BE%D0%B3/">
+                            Блог [6]
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0016">
+                        <a class="btn" href="/blog/tag/jekyll/">
+                            Jekyll [3]
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0016">
+                        <a class="btn" href="/blog/tag/%D0%BE%D0%B1%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F/">
+                            Обновления [3]
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0017">
+                        <a class="btn" href="/blog/tag/docker/">
+                            Docker [2]
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0017">
+                        <a class="btn" href="/blog/tag/frontend/">
+                            Frontend [2]
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0017">
+                        <a class="btn" href="/blog/tag/kubernetes/">
+                            Kubernetes [2]
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0017">
+                        <a class="btn" href="/blog/tag/%D0%B8%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D1%8B/">
+                            Инструменты [2]
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0017">
+                        <a class="btn" href="/blog/tag/%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%8B/">
+                            Сервисы [2]
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0018">
+                        <a class="btn" href="/blog/tag/android/">
+                            Android [1]
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0018">
+                        <a class="btn" href="/blog/tag/code-style/">
+                            Code-style [1]
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0018">
+                        <a class="btn" href="/blog/tag/emoji/">
+                            Emoji [1]
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0018">
+                        <a class="btn" href="/blog/tag/helm/">
+                            Helm [1]
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0018">
+                        <a class="btn" href="/blog/tag/nginx/">
+                            Nginx [1]
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0018">
+                        <a class="btn" href="/blog/tag/php/">
+                            PHP [1]
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0018">
+                        <a class="btn" href="/blog/tag/rip/">
+                            RIP [1]
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0018">
+                        <a class="btn" href="/blog/tag/%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0/">
+                            Аналитика [1]
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0018">
+                        <a class="btn" href="/blog/tag/%D0%B1%D0%B0%D0%B7%D1%8B-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85/">
+                            Базы данных [1]
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0018">
+                        <a class="btn" href="/blog/tag/%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D1%8C/">
+                            Безопасность [1]
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0018">
+                        <a class="btn" href="/blog/tag/%D0%B1%D0%B8%D0%B7%D0%BD%D0%B5%D1%81/">
+                            Бизнес [1]
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0018">
+                        <a class="btn" href="/blog/tag/%D0%B5%D0%B4%D0%B0/">
+                            Еда [1]
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0018">
+                        <a class="btn" href="/blog/tag/%D0%B6%D0%B8%D0%B2%D0%BE%D1%82%D0%BD%D1%8B%D0%B5/">
+                            Животные [1]
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0018">
+                        <a class="btn" href="/blog/tag/%D0%B8%D0%BF/">
+                            ИП [1]
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0018">
+                        <a class="btn" href="/blog/tag/%D0%BC%D0%B0%D0%B3%D0%B0%D0%B7%D0%B8%D0%BD%D1%8B/">
+                            Магазины [1]
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0018">
+                        <a class="btn" href="/blog/tag/%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0/">
+                            Музыка [1]
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0018">
+                        <a class="btn" href="/blog/tag/%D0%BD%D0%B0%D0%BB%D0%BE%D0%B3%D0%B8/">
+                            Налоги [1]
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0018">
+                        <a class="btn" href="/blog/tag/%D0%BE%D0%BF%D1%82%D0%B8%D0%BC%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F/">
+                            Оптимизация [1]
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0018">
+                        <a class="btn" href="/blog/tag/%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B/">
+                            Программы [1]
+                        </a>
+                    </li>
+                    
+                    <li data-sort="0018">
+                        <a class="btn" href="/blog/tag/%D1%83%D1%81%D0%BD/">
+                            УСН [1]
+                        </a>
+                    
+                </li>
+</ul>
+                <div class="tag-list__more-wrapper">
+                    <button class="btn btn-block tag-list__more">Show 23 more...</button>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-8 col-sm-12">
+            <footer class="box text-center">
+    © 2020 Vitaly Zaslavsky. All rights reserved.
+</footer>
+
+        </div>
+    </div>
+</div>
+
+
+</div>
+
+
+        <script src="/assets/js/jquery.min.js?cb=0571615"></script>
+        <script src="/assets/js/bootstrap.min.js?cb=1dad3b3"></script>
+        <script src="/assets/js/plugins.js?cb=932ef83"></script>
+        <script src="/assets/js/scripts.js?cb=afee093"></script>
+        <script src="/assets/javascript/bundle.js?cb=6c6eeb8"></script>
+
+        <script>
+            
+
+            main.resolveUtm(window, document);
+        </script>
+
+        
+        <!-- Yandex.Metrika counter -->
+        <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(+"31771726", "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/31771726" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+        <!-- /Yandex.Metrika counter -->
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131047185-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'UA-131047185-1');
+        </script>
+        
+    </body>
+</html>

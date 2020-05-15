@@ -15,6 +15,265 @@
         
         
         <item turbo="true">
+            <title>Аккуратно внедряем Emoji, не ломая все остальное</title>
+            <link>https://vtvz.me/blog/reliable-emojification/</link>
+            <pubDate>Fri, 15 May 2020 00:00:00 +0300</pubDate>
+            <author>Vitaly Zaslavsky</author>
+            <turbo:content>
+                <![CDATA[
+                <header>
+                    <h1>Аккуратно внедряем Emoji, не ломая все остальное</h1>
+                    <figure>
+                        <img src="/blog/reliable-emojification/cover.png">
+                    </figure>
+                </header>
+                <p>Emoji стали неотъемлемой частью нашей культуры.
+И я их активно использую в своих статьях.
+Ранее я использовал плагин для jekyll <a href="https://github.com/jekyll/jemoji">jemoji</a>,
+но набор смайликов был весьма скудный, поэтому я отказался от него в пользу <a href="https://github.com/iamcal/js-emoji">js-emoji</a>.
+Но и тут не было все гладко…</p>
+
+<!--cut-->
+
+<h2 id="проблема">Проблема</h2>
+
+<p>Сначала эта библиотека загружалась синхронно со всей страницей.
+Это значит то, что индикатор загрузки не исчезнет, пока смайлики не отрисуются.
+Для рендера использовался простейший скрипт, <a href="https://github.com/iamcal/js-emoji/blob/master/lib/jquery.emoji.js">взятый из официального репозитория</a>,
+который выглядел следующим образом:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">emoji</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EmojiConvertor</span><span class="p">();</span>
+    <span class="nx">emoji</span><span class="p">.</span><span class="nx">img_sets</span><span class="p">.</span><span class="nx">apple</span><span class="p">.</span><span class="nx">path</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">/assets/images/emoji/</span><span class="dl">'</span><span class="p">;</span>
+    <span class="nx">emoji</span><span class="p">.</span><span class="nx">include_title</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="nx">emoji</span><span class="p">.</span><span class="nx">include_text</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="nx">emoji</span><span class="p">.</span><span class="nx">replace_mode</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">css</span><span class="dl">'</span><span class="p">;</span>
+    <span class="nx">emoji</span><span class="p">.</span><span class="nx">allow_native</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+    <span class="nx">emoji</span><span class="p">.</span><span class="nx">addAliases</span><span class="p">({</span>
+        <span class="dl">'</span><span class="s1">fox</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">1f98a</span><span class="dl">'</span><span class="p">,</span>
+    <span class="p">});</span>
+
+    <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.js-emojify</span><span class="dl">'</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="dl">'</span><span class="s1">:not(script)</span><span class="dl">'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">oldHtml</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">emoji</span><span class="p">.</span><span class="nx">replace_unified</span><span class="p">(</span><span class="nx">emoji</span><span class="p">.</span><span class="nx">replace_emoticons</span><span class="p">(</span><span class="nx">oldHtml</span><span class="p">));</span>
+        <span class="p">});</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>Все понятно и очевидно: вытягиваем весь html, вставляем туда иконки, заменяем старый html новым.
+И все это работало хорошо… до поры.
+Проблемы начались тогда, когда я решил, что смайлики должны отрисовываться <em>после</em> загрузки страницы, а не во время.
+Это значительно ускоряло отображение страниц, но создавало некоторые проблемы.</p>
+
+<p>Самая основная выглядела следующим образом:</p>
+
+<ol>
+  <li>Загружалась страница;</li>
+  <li>Отрисовывался ReactJS виджет;</li>
+  <li>Происходил стандартный набор действий:
+    <ul>
+      <li>вытягивался весь html;</li>
+      <li>вставлялись смайлы;</li>
+      <li>заменялся старый html новым;</li>
+    </ul>
+  </li>
+</ol>
+
+<p>И после этого всего виджеты переставали работать.
+Почему? Потому что мы заменили старый html совершенно новым,
+после чего все обработчики форм переставали работать совсем.
+Хотя визуально для нас ничего не поменялось,
+с точки зрения браузера это совсем другие эллементы.</p>
+
+<p>Искусственно добиться этого эффекта можно следующим образом:</p>
+
+<ul>
+  <li>Перейти в <a href="/blog/big-changes/">этот пост</a>;</li>
+  <li>Спуститься до формы и проверить, что все работает;</li>
+  <li>Открыть “Инструменты разработчика”;</li>
+  <li>Выполнить:
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#social-post-generator-container</span><span class="dl">'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span>
+      <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#social-post-generator-container</span><span class="dl">'</span><span class="p">).</span><span class="nx">html</span><span class="p">()</span>
+  <span class="p">)</span>
+</code></pre></div>    </div>
+    <p><span class="text-muted">Таким образом мы заменили оригинальный html новым</span></p>
+  </li>
+  <li>Убедиться, что ничего не работает.</li>
+</ul>
+
+<p>Еще одна проблема была в том, что он заменял emoji даже в теге <code class="highlighter-rouge">script</code>.
+Но это уже не так критично и легко решается.</p>
+
+<h2 id="решение">Решение</h2>
+
+<p>Предположим, что у нас уже есть функция <code class="highlighter-rouge">emojificator</code>, которая добавляет эмотиконы в текст.
+Работает она ровно также, как в указанном выше куске кода.</p>
+
+<p>Чего нам нужно добиться:</p>
+
+<ol>
+  <li>Обновляться должен только текст. Существующие html объекты должны оставаться прежними.</li>
+  <li>Не трогать <code class="highlighter-rouge">script</code> теги.</li>
+  <li>Не трогать <code class="highlighter-rouge">textarea</code> и прочие “input” элементы.</li>
+</ol>
+
+<p>Мне потребовалось несколько часов на исследование и реализацию этого дела, но результатом я остался доволен.</p>
+
+<h3 id="обход-всех-текстовых-нод">Обход всех текстовых нод</h3>
+
+<p>DOM состоит не только из обычных элементов, но и из текста, комментариев и п.р.
+Наша задача состоит в том, чтобы рекурсивно пройтись по всем текстовым нодам и внедрить туда смайлы.</p>
+
+<p>Выглядит это так:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">blacklist</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="nx">HTMLScriptElement</span><span class="p">,</span>
+    <span class="nx">HTMLTextAreaElement</span><span class="p">,</span>
+    <span class="nx">HTMLInputElement</span><span class="p">,</span>
+    <span class="nx">HTMLSelectElement</span><span class="p">,</span>
+    <span class="nx">HTMLButtonElement</span><span class="p">,</span>
+<span class="p">];</span>
+
+<span class="kd">const</span> <span class="nx">skip</span> <span class="o">=</span> <span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">cls</span> <span class="k">of</span> <span class="nx">blacklist</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">node</span> <span class="k">instanceof</span> <span class="nx">cls</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">recursiveEmojification</span> <span class="o">=</span> <span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">nodeType</span> <span class="o">!==</span> <span class="nx">Node</span><span class="p">.</span><span class="nx">TEXT_NODE</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">nodeType</span> <span class="o">===</span> <span class="nx">Node</span><span class="p">.</span><span class="nx">ELEMENT_NODE</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">skip</span><span class="p">(</span><span class="nx">node</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nx">node</span><span class="p">.</span><span class="nx">childNodes</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">_</span> <span class="o">=&gt;</span> <span class="nx">recursiveEmojification</span><span class="p">(</span><span class="nx">_</span><span class="p">))</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="c1">// Do something with 'node.nodeValue'</span>
+<span class="p">}</span>
+
+<span class="nb">document</span>
+    <span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">.js-emojify</span><span class="dl">"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">_</span> <span class="o">=&gt;</span> <span class="nx">recursiveEmojification</span><span class="p">(</span><span class="nx">_</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>В общем, ничего сложного. Обратите особое внимание на функцию <code class="highlighter-rouge">skip</code>.
+Именно она гарантирует “невредимость” некоторых элементов страницы.
+А именно теги <code class="highlighter-rouge">script</code>, <code class="highlighter-rouge">textarea</code> и подобные им.</p>
+
+<h3 id="внедрение-emoji-в-текст">Внедрение Emoji в текст</h3>
+
+<p>Осталось дело за малым. Или нет? :thinking_face:</p>
+
+<p>Теперь у нас есть все куски текстов, в которых потенциально могут быть emoji.
+Если нам нужна совместимость только с девайсами Apple, то мы можем заменить все <code class="highlighter-rouge">:emoji:</code> смайлы
+на обычный unicode и на этом успокоиться. Но у меня Линукс. И многих других тоже нет ничего яблочного.
+Поэтому нужно заменить все текстовые смайлы, на маленькие картинки. Вот тут и начинается самое интересное.</p>
+
+<p>Дело в том, что мы не можем просто взять и, вместо текстовой ноды, вкорячить кусок html кода.
+Если попробовать сделать <code class="highlighter-rouge">node.nodeValue = '&lt;span&gt;Hi&lt;/span&gt;'</code>, то на выходе будет экранированный html код.</p>
+
+<p>Поэтому этот код не будет работать, как этого хочется:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">emojified</span> <span class="o">=</span> <span class="nx">emojificator</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">nodeValue</span><span class="p">);</span>
+<span class="c1">// Пропускаем дальнейшие манипуляции, если ничего не изменилось</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">emojified</span> <span class="o">===</span> <span class="nx">node</span><span class="p">.</span><span class="nx">nodeValue</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">node</span><span class="p">.</span><span class="nx">nodeValue</span> <span class="o">=</span> <span class="nx">emojified</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>А вот результат:</p>
+
+<figure class="frame "><a href="./broken-emoji.png" target="_blank"><img src="./broken-emoji.png" alt="Кривой вывод Emoji" title="Кривой вывод Emoji" /></a></figure>
+
+<p>Так себе… Не то, чего я хотел. Поэтому проделываем следующий финт:</p>
+
+<ol>
+  <li>Создаем новый элемент <code class="highlighter-rouge">span</code>;</li>
+  <li>Наполняем его нужным нам html кодом;</li>
+  <li>Вставляем его в документ после нашего исходного текста;</li>
+  <li>Удаляем старый текст.</li>
+</ol>
+
+<p>Вот так это выглядит:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">replacement</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">span</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// (1)</span>
+<span class="nx">replacement</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">js-emojified</span><span class="dl">'</span><span class="p">)</span> <span class="c1">// Для наглядности добавим класс</span>
+<span class="nx">replacement</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">emojified</span><span class="p">;</span> <span class="c1">// (2)</span>
+<span class="nx">node</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">replacement</span><span class="p">,</span> <span class="nx">node</span><span class="p">);</span> <span class="c1">// (3)</span>
+<span class="nx">node</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">node</span><span class="p">);</span> <span class="c1">// (4)</span>
+</code></pre></div></div>
+
+<p>Да, мы создали еще один элемент. Но это не должно быть проблемой, так как чистый <code class="highlighter-rouge">span</code> ни на что не влияет.</p>
+
+<h2 id="результат">Результат</h2>
+
+<p>На выходе получилось достаточно аккуратное решение. Хоть и с небольшими хаками.</p>
+
+<details class="spoiler"><summary class="spoiler-title">Соберем все воедино</summary><div class="spoiler-body">
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">blacklist</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="nx">HTMLScriptElement</span><span class="p">,</span>
+    <span class="nx">HTMLTextAreaElement</span><span class="p">,</span>
+    <span class="nx">HTMLInputElement</span><span class="p">,</span>
+    <span class="nx">HTMLSelectElement</span><span class="p">,</span>
+    <span class="nx">HTMLButtonElement</span><span class="p">,</span>
+<span class="p">];</span>
+
+<span class="kd">const</span> <span class="nx">skip</span> <span class="o">=</span> <span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">cls</span> <span class="k">of</span> <span class="nx">blacklist</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">node</span> <span class="k">instanceof</span> <span class="nx">cls</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">recursiveEmojification</span> <span class="o">=</span> <span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">nodeType</span> <span class="o">!==</span> <span class="nx">Node</span><span class="p">.</span><span class="nx">TEXT_NODE</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">nodeType</span> <span class="o">===</span> <span class="nx">Node</span><span class="p">.</span><span class="nx">ELEMENT_NODE</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">skip</span><span class="p">(</span><span class="nx">node</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nx">node</span><span class="p">.</span><span class="nx">childNodes</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">_</span> <span class="o">=&gt;</span> <span class="nx">recursiveEmojification</span><span class="p">(</span><span class="nx">_</span><span class="p">))</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kd">const</span> <span class="nx">emojified</span> <span class="o">=</span> <span class="nx">emojificator</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">nodeValue</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">emojified</span> <span class="o">===</span> <span class="nx">node</span><span class="p">.</span><span class="nx">nodeValue</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">let</span> <span class="nx">replacement</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">span</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">replacement</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">js-emojified</span><span class="dl">'</span><span class="p">)</span>
+    <span class="nx">replacement</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">emojified</span><span class="p">;</span>
+    <span class="nx">node</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">replacement</span><span class="p">,</span> <span class="nx">node</span><span class="p">);</span>
+    <span class="nx">node</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">node</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nb">document</span>
+    <span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">.js-emojify</span><span class="dl">"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">_</span> <span class="o">=&gt;</span> <span class="nx">recursiveEmojification</span><span class="p">(</span><span class="nx">_</span><span class="p">));</span>
+</code></pre></div></div>
+</div></details>
+
+<p>Не могу сказать, что смайлы для меня настолько важны, чтобы я стал так заморачиваться.
+Скорее то, что это был определенный вызов, интересная задача на исследование.
+Я узнал много нового и стал лучше понимать работу html и js в браузере.
+И сделал свой сайт чуточку лучше :blush:</p>
+
+<p>Спасибо за внимание. Надеюсь, было интересно :fox:</p>
+
+                ]]>
+            </turbo:content>
+        </item>
+        
+        <item turbo="true">
             <title>Покорение UTM меток</title>
             <link>https://vtvz.me/blog/conquering-the-utm-parameters/</link>
             <pubDate>Wed, 13 May 2020 00:00:00 +0300</pubDate>
