@@ -1,5 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en_GB"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://vtvz.me/feed/software.xml" rel="self" type="application/atom+xml" /><link href="https://vtvz.me/" rel="alternate" type="text/html" hreflang="en_GB" /><updated>2020-05-22T21:15:51+03:00</updated><id>https://vtvz.me/feed/software.xml</id><title type="html">Vitaly Zaslavsky – DevOps Engineer, who loves his job | Software</title><subtitle>DevOps engineer's personal blog about everything. Notes on successes and failures in professional activities, about finding solutions to practical problems, and just about life.
-</subtitle><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><entry><title type="html">Менеджер паролей Keepass для Android</title><link href="https://vtvz.me/software/keepass2android/" rel="alternate" type="text/html" title="Менеджер паролей Keepass для Android" /><published>2020-05-22T00:00:00+03:00</published><updated>2020-05-22T00:00:00+03:00</updated><id>https://vtvz.me/software/keepass2android</id><content type="html" xml:base="https://vtvz.me/software/keepass2android/">&lt;p&gt;Очень удобное приложение для менеджмента паролей на Android,
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en_GB"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://vtvz.me/feed/software.xml" rel="self" type="application/atom+xml" /><link href="https://vtvz.me/" rel="alternate" type="text/html" hreflang="en_GB" /><updated>2020-05-26T20:03:53+03:00</updated><id>https://vtvz.me/feed/software.xml</id><title type="html">Vitaly Zaslavsky – DevOps Engineer, who loves his job | Software</title><subtitle>DevOps engineer's personal blog about everything. Notes on successes and failures in professional activities, about finding solutions to practical problems, and just about life.
+</subtitle><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><entry><title type="html">Пополнение словарного запаса с ReWord</title><link href="https://vtvz.me/software/reword/" rel="alternate" type="text/html" title="Пополнение словарного запаса с ReWord" /><published>2020-05-26T00:00:00+03:00</published><updated>2020-05-26T00:00:00+03:00</updated><id>https://vtvz.me/software/reword</id><content type="html" xml:base="https://vtvz.me/software/reword/">&lt;p&gt;Я долго искал приложение для изучения английских слов.
+Многие из них перегружены. Некоторые занимают неприлично много места.
+И я нашел это приложеньице, которое позволило в разы увеличить словарный запас.&lt;/p&gt;
+
+&lt;p&gt;Коротко о преимуществах:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Там применен особый метод изучения слов.
+Чтобы слово было принято как полностью выученное,
+нужно его повторить минимум 6 раз в течение, кажется, двух месяцев с увеличивающимся интервалом между.
+Удивительно, но к концу мозг сам вспоминает и перевод, и написание.&lt;/li&gt;
+  &lt;li&gt;Есть большое количество готовых словарей. Пока что я использую первые три:
+100 самых используемых слов, 1000 и 3000. Бонусом для этих разделов есть хорошая озвучка.&lt;/li&gt;
+  &lt;li&gt;Ежедневную нагрузку выбираешь самостоятельно: от 5 слов в день и более.
+Лучше начать с малого. Иначе можно быстро устать и убить желание что-либо делать.&lt;/li&gt;
+  &lt;li&gt;Можно добавлять свои слова. Причем указывая слово на английском,
+при наличии интернета он сам подставит транскрипцию,
+предложит варианты перевода и примеры употребления.&lt;/li&gt;
+  &lt;li&gt;Подробная статистика.&lt;/li&gt;
+  &lt;li&gt;Полная автономность – интернет не является требованием.&lt;/li&gt;
+  &lt;li&gt;Полный контроль и выбор способа изучения слов.&lt;/li&gt;
+  &lt;li&gt;И так далее, и тому подобное…&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Обязательно попробуйте! Заставьте себя открывать приложение два раза в день в течение двух недель.
+И у вас появится чувство удовлетворения и приятное ощущение того, что вы знаете уже чуточку больше :blush:&lt;/p&gt;</content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Программы" /><category term="Языки" /><category term="Образование" /><summary type="html">Я долго искал приложение для изучения английских слов. Многие из них перегружены. Некоторые занимают неприлично много места. И я нашел это приложеньице, которое позволило в разы увеличить словарный запас.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/assets/images/software/reword.png" /><media:content medium="image" url="https://vtvz.me/assets/images/software/reword.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Менеджер паролей Keepass для Android</title><link href="https://vtvz.me/software/keepass2android/" rel="alternate" type="text/html" title="Менеджер паролей Keepass для Android" /><published>2020-05-22T00:00:00+03:00</published><updated>2020-05-22T00:00:00+03:00</updated><id>https://vtvz.me/software/keepass2android</id><content type="html" xml:base="https://vtvz.me/software/keepass2android/">&lt;p&gt;Очень удобное приложение для менеджмента паролей на Android,
 которым я пользуюсь уже несколько лет, что и вам рекомендую.
 Про правильный способ хранения паролей &lt;a href=&quot;/blog/right-way-to-store-passwords/&quot;&gt;можете прочитать тут&lt;/a&gt;.
 Там есть рецепт пользования этой программой.&lt;/p&gt;
@@ -12,4 +37,4 @@
   &lt;li&gt;Имеется своя клавиатура для быстрого ввода учетных данных;&lt;/li&gt;
   &lt;li&gt;Умеет в &lt;a href=&quot;https://ru.wikipedia.org/wiki/Time-based_One-time_Password_Algorithm&quot;&gt;TOTP&lt;/a&gt;;&lt;/li&gt;
   &lt;li&gt;И прочее…&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Программы" /><category term="Безопасность" /><summary type="html">Очень удобное приложение для менеджмента паролей на Android, которым я пользуюсь уже несколько лет, что и вам рекомендую. Про правильный способ хранения паролей можете прочитать тут. Там есть рецепт пользования этой программой.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/assets/images/software/keepass2android.png" /><media:content medium="image" url="https://vtvz.me/assets/images/software/keepass2android.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+&lt;/ul&gt;</content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Программы" /><category term="Безопасность" /><category term="Инструменты" /><summary type="html">Очень удобное приложение для менеджмента паролей на Android, которым я пользуюсь уже несколько лет, что и вам рекомендую. Про правильный способ хранения паролей можете прочитать тут. Там есть рецепт пользования этой программой.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/assets/images/software/keepass2android.png" /><media:content medium="image" url="https://vtvz.me/assets/images/software/keepass2android.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
