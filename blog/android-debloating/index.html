@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-    <!--Built at : 2022-01-04 23:04:49-->
+    <!--Built at : 2022-01-09 20:30:19-->
     <head>
         
         <meta charset="utf-8">
@@ -13,7 +13,7 @@
 
         <link rel="stylesheet" href="/assets/css/preloader.b30ac722.css" />
         <link rel="stylesheet" href="/assets/css/bootstrap.303188c3.css" />
-        <link rel="stylesheet" href="/assets/css/main.ecc20f56.css" />
+        <link rel="stylesheet" href="/assets/css/main.2afd053e.css" />
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,500,600,700,800|Roboto:300,400,500,600,700,800&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet" crossorigin="anonymous">
@@ -25,8 +25,8 @@
 
         <meta name="theme-color" content="#232323">
 
-        <!-- Begin Jekyll SEO tag v2.6.1 -->
-<meta name="generator" content="Jekyll v4.0.0" />
+        <!-- Begin Jekyll SEO tag v2.7.1 -->
+<meta name="generator" content="Jekyll v4.2.1" />
 <meta property="og:title" content="Очистка Android от предустановленных программ без Root’а и перепрошивки" />
 <meta name="author" content="Vitaly Zaslavsky" />
 <meta property="og:locale" content="ru" />
@@ -46,7 +46,7 @@
 <meta name="google-site-verification" content="40uemu1o4UDeTOeeLKqJVoaPU4CVUjlGI5D9AI1EkNE" />
 <meta name="yandex-verification" content="fa3eb4fcd2ebc4ad" />
 <script type="application/ld+json">
-{"url":"https://vtvz.me/blog/android-debloating/","author":{"@type":"Person","name":"Vitaly Zaslavsky"},"@type":"BlogPosting","description":"Как удалить предустановленный в мобильное устройство мусор без сильной головной боли, не сломав при этом всю систему.","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://vtvz.me/assets/images/logo-black.png"},"name":"Vitaly Zaslavsky"},"headline":"Очистка Android от предустановленных программ без Root’а и перепрошивки","dateModified":"2020-01-06T00:00:00+03:00","datePublished":"2020-01-06T00:00:00+03:00","image":"https://vtvz.me/blog/android-debloating/cover.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://vtvz.me/blog/android-debloating/"},"@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"Vitaly Zaslavsky"},"url":"https://vtvz.me/blog/android-debloating/","image":"https://vtvz.me/blog/android-debloating/cover.jpg","@type":"BlogPosting","headline":"Очистка Android от предустановленных программ без Root’а и перепрошивки","dateModified":"2020-01-06T00:00:00+03:00","description":"Как удалить предустановленный в мобильное устройство мусор без сильной головной боли, не сломав при этом всю систему.","datePublished":"2020-01-06T00:00:00+03:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://vtvz.me/blog/android-debloating/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://vtvz.me/assets/images/logo-black.png"},"name":"Vitaly Zaslavsky"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -212,17 +212,17 @@ Root доступ дает не только большие возможност
   <li>В App Inspector найдите приложение, которое хотите удалить.
  Из всех данных необходимо только поле “Package name”;</li>
   <li>Подключите устройство по USB к компьютеру;</li>
-  <li>Введите команду <code class="highlighter-rouge">adb devices</code>. Должен быть примерно следующий вывод:
+  <li>Введите команду <code class="language-plaintext highlighter-rouge">adb devices</code>. Должен быть примерно следующий вывод:
     <div class="language-bash highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>adb devices
  List of devices attached
  6c3eaa477cf3    device
 </code></pre></div>    </div>
-    <p>То есть, после строчки <code class="highlighter-rouge">List of devices attached</code> должна быть еще одна с ID подключенного устройства.
+    <p>То есть, после строчки <code class="language-plaintext highlighter-rouge">List of devices attached</code> должна быть еще одна с ID подключенного устройства.
  Идти дальше нет смысла, если компьютер не видит ваш девайс.</p>
   </li>
-  <li>Введите <code class="highlighter-rouge">adb uninstall &lt;package-name&gt;</code>, где <code class="highlighter-rouge">&lt;package-name&gt;</code> – поле из пункта 5.
- В моем случае – <code class="highlighter-rouge">com.google.android.tts</code>. Результат:
+  <li>Введите <code class="language-plaintext highlighter-rouge">adb uninstall &lt;package-name&gt;</code>, где <code class="language-plaintext highlighter-rouge">&lt;package-name&gt;</code> – поле из пункта 5.
+ В моем случае – <code class="language-plaintext highlighter-rouge">com.google.android.tts</code>. Результат:
     <div class="language-bash highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>adb uninstall com.google.android.tts
  Success

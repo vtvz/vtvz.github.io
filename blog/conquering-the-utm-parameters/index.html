@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-    <!--Built at : 2022-01-04 23:04:50-->
+    <!--Built at : 2022-01-09 20:30:20-->
     <head>
         
         <meta charset="utf-8">
@@ -13,7 +13,7 @@
 
         <link rel="stylesheet" href="/assets/css/preloader.b30ac722.css" />
         <link rel="stylesheet" href="/assets/css/bootstrap.303188c3.css" />
-        <link rel="stylesheet" href="/assets/css/main.ecc20f56.css" />
+        <link rel="stylesheet" href="/assets/css/main.2afd053e.css" />
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,500,600,700,800|Roboto:300,400,500,600,700,800&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet" crossorigin="anonymous">
@@ -25,8 +25,8 @@
 
         <meta name="theme-color" content="#232323">
 
-        <!-- Begin Jekyll SEO tag v2.6.1 -->
-<meta name="generator" content="Jekyll v4.0.0" />
+        <!-- Begin Jekyll SEO tag v2.7.1 -->
+<meta name="generator" content="Jekyll v4.2.1" />
 <meta property="og:title" content="Покорение UTM меток" />
 <meta name="author" content="Vitaly Zaslavsky" />
 <meta property="og:locale" content="ru" />
@@ -46,7 +46,7 @@
 <meta name="google-site-verification" content="40uemu1o4UDeTOeeLKqJVoaPU4CVUjlGI5D9AI1EkNE" />
 <meta name="yandex-verification" content="fa3eb4fcd2ebc4ad" />
 <script type="application/ld+json">
-{"url":"https://vtvz.me/blog/conquering-the-utm-parameters/","author":{"@type":"Person","name":"Vitaly Zaslavsky"},"@type":"BlogPosting","description":"Элегантный способ укоротить UTM метки","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://vtvz.me/assets/images/logo-black.png"},"name":"Vitaly Zaslavsky"},"headline":"Покорение UTM меток","dateModified":"2020-05-13T00:00:00+03:00","datePublished":"2020-05-13T00:00:00+03:00","image":"https://vtvz.me/blog/conquering-the-utm-parameters/cover.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://vtvz.me/blog/conquering-the-utm-parameters/"},"@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"Vitaly Zaslavsky"},"url":"https://vtvz.me/blog/conquering-the-utm-parameters/","image":"https://vtvz.me/blog/conquering-the-utm-parameters/cover.jpg","@type":"BlogPosting","headline":"Покорение UTM меток","dateModified":"2020-05-13T00:00:00+03:00","description":"Элегантный способ укоротить UTM метки","datePublished":"2020-05-13T00:00:00+03:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://vtvz.me/blog/conquering-the-utm-parameters/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://vtvz.me/assets/images/logo-black.png"},"name":"Vitaly Zaslavsky"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -171,7 +171,7 @@
 <p>Проблема в том, что эти метки <strong>очень</strong> массивные.
 Вот к примеру, одна из возможных ссылок на пост в социальной сети выглядит следующим образом:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://vtvz.me/blog/social-post-generator/
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://vtvz.me/blog/social-post-generator/
     ?utm_source=_telegram
     &amp;utm_medium=social-post
     &amp;utm_campaign=blog
@@ -209,7 +209,7 @@
 Вот например <a href="https://bitly.com/" target="_blank" rel="noopener noreferrer">Bitly</a> неплохо с этим справляется. 
 Вот что он сделал со ссылкой, которую я указал ранее:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://bit.ly/vtvz-tg-post-generator
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://bit.ly/vtvz-tg-post-generator
 </code></pre></div></div>
 
 <p>Уже гораздо лучше.</p>
@@ -262,10 +262,10 @@
 <p>Выглядит это следующим образом:</p>
 
 <ul>
-  <li>Человек открывает ссылку <code class="highlighter-rouge">https://vtvz.me/blog/social-post-generator/?utm=tg</code>
+  <li>Человек открывает ссылку <code class="language-plaintext highlighter-rouge">https://vtvz.me/blog/social-post-generator/?utm=tg</code>
 </li>
   <li>Она распаковывается в
-    <div class="highlighter-rouge">
+    <div class="language-plaintext highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code>https://vtvz.me/blog/social-post-generator/
     ?utm_source=_telegram
     &amp;utm_medium=social-post
@@ -298,9 +298,9 @@
 <p>Наш код должен работать следующим образом:</p>
 
 <ol>
-  <li>Вытянуть <code class="highlighter-rouge">utm</code> параметр из query адреса;</li>
+  <li>Вытянуть <code class="language-plaintext highlighter-rouge">utm</code> параметр из query адреса;</li>
   <li>Сгенерировать source, medium, campaign…</li>
-  <li>Удалить параметр <code class="highlighter-rouge">utm</code>;</li>
+  <li>Удалить параметр <code class="language-plaintext highlighter-rouge">utm</code>;</li>
   <li>Применить метки из пункта 2;</li>
   <li>Заменить текущий url на новый.</li>
 </ol>
@@ -394,11 +394,11 @@
 Есть несколько альтернатив, как передать стратегию:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">vtvz.me/.../?u=tg</code></li>
-  <li><code class="highlighter-rouge">vtvz.me/.../?_=tg</code></li>
-  <li><code class="highlighter-rouge">vtvz.me/.../?=tg</code></li>
-  <li><code class="highlighter-rouge">vtvz.me/.../?tg</code></li>
-  <li><code class="highlighter-rouge">vtvz.me/.../#tg</code></li>
+  <li><code class="language-plaintext highlighter-rouge">vtvz.me/.../?u=tg</code></li>
+  <li><code class="language-plaintext highlighter-rouge">vtvz.me/.../?_=tg</code></li>
+  <li><code class="language-plaintext highlighter-rouge">vtvz.me/.../?=tg</code></li>
+  <li><code class="language-plaintext highlighter-rouge">vtvz.me/.../?tg</code></li>
+  <li><code class="language-plaintext highlighter-rouge">vtvz.me/.../#tg</code></li>
 </ul>
 
 <p>Ничто не мешает вам модифицировать приведенный выше скрипт под свои нужды.</p>

@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-    <!--Built at : 2022-01-04 23:04:50-->
+    <!--Built at : 2022-01-09 20:30:20-->
     <head>
         
         <meta charset="utf-8">
@@ -13,7 +13,7 @@
 
         <link rel="stylesheet" href="/assets/css/preloader.b30ac722.css" />
         <link rel="stylesheet" href="/assets/css/bootstrap.303188c3.css" />
-        <link rel="stylesheet" href="/assets/css/main.ecc20f56.css" />
+        <link rel="stylesheet" href="/assets/css/main.2afd053e.css" />
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,500,600,700,800|Roboto:300,400,500,600,700,800&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet" crossorigin="anonymous">
@@ -25,8 +25,8 @@
 
         <meta name="theme-color" content="#232323">
 
-        <!-- Begin Jekyll SEO tag v2.6.1 -->
-<meta name="generator" content="Jekyll v4.0.0" />
+        <!-- Begin Jekyll SEO tag v2.7.1 -->
+<meta name="generator" content="Jekyll v4.2.1" />
 <meta property="og:title" content="Аккуратно внедряем Emoji, не ломая все остальное" />
 <meta name="author" content="Vitaly Zaslavsky" />
 <meta property="og:locale" content="ru" />
@@ -46,7 +46,7 @@
 <meta name="google-site-verification" content="40uemu1o4UDeTOeeLKqJVoaPU4CVUjlGI5D9AI1EkNE" />
 <meta name="yandex-verification" content="fa3eb4fcd2ebc4ad" />
 <script type="application/ld+json">
-{"url":"https://vtvz.me/blog/reliable-emojification/","author":{"@type":"Person","name":"Vitaly Zaslavsky"},"@type":"BlogPosting","description":"Простой и надежный способ внедрения Emoji в текст без влияния на другие компоненты страницы","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://vtvz.me/assets/images/logo-black.png"},"name":"Vitaly Zaslavsky"},"headline":"Аккуратно внедряем Emoji, не ломая все остальное","dateModified":"2020-05-15T00:00:00+03:00","datePublished":"2020-05-15T00:00:00+03:00","image":"https://vtvz.me/blog/reliable-emojification/cover.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://vtvz.me/blog/reliable-emojification/"},"@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"Vitaly Zaslavsky"},"url":"https://vtvz.me/blog/reliable-emojification/","image":"https://vtvz.me/blog/reliable-emojification/cover.png","@type":"BlogPosting","headline":"Аккуратно внедряем Emoji, не ломая все остальное","dateModified":"2020-05-15T00:00:00+03:00","description":"Простой и надежный способ внедрения Emoji в текст без влияния на другие компоненты страницы","datePublished":"2020-05-15T00:00:00+03:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://vtvz.me/blog/reliable-emojification/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://vtvz.me/assets/images/logo-black.png"},"name":"Vitaly Zaslavsky"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -230,7 +230,7 @@
   <li>Убедиться, что ничего не работает.</li>
 </ul>
 
-<p>Еще одна проблема была в том, что он заменял emoji даже в теге <code class="highlighter-rouge">script</code>.
+<p>Еще одна проблема была в том, что он заменял emoji даже в теге <code class="language-plaintext highlighter-rouge">script</code>.
 Но это уже не так критично и легко решается.</p>
     
       <h2 id="решение">
@@ -241,15 +241,15 @@
         
       </h2>
 
-<p>Предположим, что у нас уже есть функция <code class="highlighter-rouge">emojificator</code>, которая добавляет эмотиконы в текст.
+<p>Предположим, что у нас уже есть функция <code class="language-plaintext highlighter-rouge">emojificator</code>, которая добавляет эмотиконы в текст.
 Работает она ровно также, как в указанном выше куске кода.</p>
 
 <p>Чего нам нужно добиться:</p>
 
 <ol>
   <li>Обновляться должен только текст. Существующие html объекты должны оставаться прежними.</li>
-  <li>Не трогать <code class="highlighter-rouge">script</code> теги.</li>
-  <li>Не трогать <code class="highlighter-rouge">textarea</code> и прочие “input” элементы.</li>
+  <li>Не трогать <code class="language-plaintext highlighter-rouge">script</code> теги.</li>
+  <li>Не трогать <code class="language-plaintext highlighter-rouge">textarea</code> и прочие “input” элементы.</li>
 </ol>
 
 <p>Мне потребовалось несколько часов на исследование и реализацию этого дела, но результатом я остался доволен.</p>
@@ -302,9 +302,9 @@
     <span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">_</span> <span class="o">=&gt;</span> <span class="nx">recursiveEmojification</span><span class="p">(</span><span class="nx">_</span><span class="p">));</span>
 </code></pre></div></div>
 
-<p>В общем, ничего сложного. Обратите особое внимание на функцию <code class="highlighter-rouge">skip</code>.
+<p>В общем, ничего сложного. Обратите особое внимание на функцию <code class="language-plaintext highlighter-rouge">skip</code>.
 Именно она гарантирует “невредимость” некоторых элементов страницы.
-А именно теги <code class="highlighter-rouge">script</code>, <code class="highlighter-rouge">textarea</code> и подобные им.</p>
+А именно теги <code class="language-plaintext highlighter-rouge">script</code>, <code class="language-plaintext highlighter-rouge">textarea</code> и подобные им.</p>
     
       <h3 id="внедрение-emoji-в-текст">
         
@@ -317,12 +317,12 @@
 <p>Осталось дело за малым. Или нет? :thinking_face:</p>
 
 <p>Теперь у нас есть все куски текстов, в которых потенциально могут быть emoji.
-Если нам нужна совместимость только с девайсами Apple, то мы можем заменить все <code class="highlighter-rouge">:emoji:</code> смайлы
+Если нам нужна совместимость только с девайсами Apple, то мы можем заменить все <code class="language-plaintext highlighter-rouge">:emoji:</code> смайлы
 на обычный unicode и на этом успокоиться. Но у меня Линукс. И многих других тоже нет ничего яблочного.
 Поэтому нужно заменить все текстовые смайлы, на маленькие картинки. Вот тут и начинается самое интересное.</p>
 
 <p>Дело в том, что мы не можем просто взять и, вместо текстовой ноды, вкорячить кусок html кода.
-Если попробовать сделать <code class="highlighter-rouge">node.nodeValue = '&lt;span&gt;Hi&lt;/span&gt;'</code>, то на выходе будет экранированный html код.</p>
+Если попробовать сделать <code class="language-plaintext highlighter-rouge">node.nodeValue = '&lt;span&gt;Hi&lt;/span&gt;'</code>, то на выходе будет экранированный html код.</p>
 
 <p>Поэтому этот код не будет работать, как этого хочется:</p>
 
@@ -341,7 +341,7 @@
 <p>Так себе… Не то, чего я хотел. Поэтому проделываем следующий финт:</p>
 
 <ol>
-  <li>Создаем новый элемент <code class="highlighter-rouge">span</code>;</li>
+  <li>Создаем новый элемент <code class="language-plaintext highlighter-rouge">span</code>;</li>
   <li>Наполняем его нужным нам html кодом;</li>
   <li>Вставляем его в документ после нашего исходного текста;</li>
   <li>Удаляем старый текст.</li>
@@ -356,7 +356,7 @@
 <span class="nx">node</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">node</span><span class="p">);</span> <span class="c1">// (4)</span>
 </code></pre></div></div>
 
-<p>Да, мы создали еще один элемент. Но это не должно быть проблемой, так как чистый <code class="highlighter-rouge">span</code> ни на что не влияет.</p>
+<p>Да, мы создали еще один элемент. Но это не должно быть проблемой, так как чистый <code class="language-plaintext highlighter-rouge">span</code> ни на что не влияет.</p>
     
       <h2 id="результат">
         

@@ -103,20 +103,20 @@
   <li>Убедиться, что ничего не работает.</li>
 </ul>
 
-<p>Еще одна проблема была в том, что он заменял emoji даже в теге <code class="highlighter-rouge">script</code>.
+<p>Еще одна проблема была в том, что он заменял emoji даже в теге <code class="language-plaintext highlighter-rouge">script</code>.
 Но это уже не так критично и легко решается.</p>
 
 <h2 id="решение">Решение</h2>
 
-<p>Предположим, что у нас уже есть функция <code class="highlighter-rouge">emojificator</code>, которая добавляет эмотиконы в текст.
+<p>Предположим, что у нас уже есть функция <code class="language-plaintext highlighter-rouge">emojificator</code>, которая добавляет эмотиконы в текст.
 Работает она ровно также, как в указанном выше куске кода.</p>
 
 <p>Чего нам нужно добиться:</p>
 
 <ol>
   <li>Обновляться должен только текст. Существующие html объекты должны оставаться прежними.</li>
-  <li>Не трогать <code class="highlighter-rouge">script</code> теги.</li>
-  <li>Не трогать <code class="highlighter-rouge">textarea</code> и прочие “input” элементы.</li>
+  <li>Не трогать <code class="language-plaintext highlighter-rouge">script</code> теги.</li>
+  <li>Не трогать <code class="language-plaintext highlighter-rouge">textarea</code> и прочие “input” элементы.</li>
 </ol>
 
 <p>Мне потребовалось несколько часов на исследование и реализацию этого дела, но результатом я остался доволен.</p>
@@ -163,21 +163,21 @@
     <span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">_</span> <span class="o">=&gt;</span> <span class="nx">recursiveEmojification</span><span class="p">(</span><span class="nx">_</span><span class="p">));</span>
 </code></pre></div></div>
 
-<p>В общем, ничего сложного. Обратите особое внимание на функцию <code class="highlighter-rouge">skip</code>.
+<p>В общем, ничего сложного. Обратите особое внимание на функцию <code class="language-plaintext highlighter-rouge">skip</code>.
 Именно она гарантирует “невредимость” некоторых элементов страницы.
-А именно теги <code class="highlighter-rouge">script</code>, <code class="highlighter-rouge">textarea</code> и подобные им.</p>
+А именно теги <code class="language-plaintext highlighter-rouge">script</code>, <code class="language-plaintext highlighter-rouge">textarea</code> и подобные им.</p>
 
 <h3 id="внедрение-emoji-в-текст">Внедрение Emoji в текст</h3>
 
 <p>Осталось дело за малым. Или нет? :thinking_face:</p>
 
 <p>Теперь у нас есть все куски текстов, в которых потенциально могут быть emoji.
-Если нам нужна совместимость только с девайсами Apple, то мы можем заменить все <code class="highlighter-rouge">:emoji:</code> смайлы
+Если нам нужна совместимость только с девайсами Apple, то мы можем заменить все <code class="language-plaintext highlighter-rouge">:emoji:</code> смайлы
 на обычный unicode и на этом успокоиться. Но у меня Линукс. И многих других тоже нет ничего яблочного.
 Поэтому нужно заменить все текстовые смайлы, на маленькие картинки. Вот тут и начинается самое интересное.</p>
 
 <p>Дело в том, что мы не можем просто взять и, вместо текстовой ноды, вкорячить кусок html кода.
-Если попробовать сделать <code class="highlighter-rouge">node.nodeValue = '&lt;span&gt;Hi&lt;/span&gt;'</code>, то на выходе будет экранированный html код.</p>
+Если попробовать сделать <code class="language-plaintext highlighter-rouge">node.nodeValue = '&lt;span&gt;Hi&lt;/span&gt;'</code>, то на выходе будет экранированный html код.</p>
 
 <p>Поэтому этот код не будет работать, как этого хочется:</p>
 
@@ -196,7 +196,7 @@
 <p>Так себе… Не то, чего я хотел. Поэтому проделываем следующий финт:</p>
 
 <ol>
-  <li>Создаем новый элемент <code class="highlighter-rouge">span</code>;</li>
+  <li>Создаем новый элемент <code class="language-plaintext highlighter-rouge">span</code>;</li>
   <li>Наполняем его нужным нам html кодом;</li>
   <li>Вставляем его в документ после нашего исходного текста;</li>
   <li>Удаляем старый текст.</li>
@@ -211,7 +211,7 @@
 <span class="nx">node</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">node</span><span class="p">);</span> <span class="c1">// (4)</span>
 </code></pre></div></div>
 
-<p>Да, мы создали еще один элемент. Но это не должно быть проблемой, так как чистый <code class="highlighter-rouge">span</code> ни на что не влияет.</p>
+<p>Да, мы создали еще один элемент. Но это не должно быть проблемой, так как чистый <code class="language-plaintext highlighter-rouge">span</code> ни на что не влияет.</p>
 
 <h2 id="результат">Результат</h2>
 
@@ -304,7 +304,7 @@
 <p>Проблема в том, что эти метки <strong>очень</strong> массивные.
 Вот к примеру, одна из возможных ссылок на пост в социальной сети выглядит следующим образом:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://vtvz.me/blog/social-post-generator/
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://vtvz.me/blog/social-post-generator/
     ?utm_source=_telegram
     &amp;utm_medium=social-post
     &amp;utm_campaign=blog
@@ -329,7 +329,7 @@
 Вот например <a href="https://bitly.com/">Bitly</a> неплохо с этим справляется. 
 Вот что он сделал со ссылкой, которую я указал ранее:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://bit.ly/vtvz-tg-post-generator
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://bit.ly/vtvz-tg-post-generator
 </code></pre></div></div>
 
 <p>Уже гораздо лучше.</p>
@@ -369,9 +369,9 @@
 <p>Выглядит это следующим образом:</p>
 
 <ul>
-  <li>Человек открывает ссылку <code class="highlighter-rouge">https://vtvz.me/blog/social-post-generator/?utm=tg</code></li>
+  <li>Человек открывает ссылку <code class="language-plaintext highlighter-rouge">https://vtvz.me/blog/social-post-generator/?utm=tg</code></li>
   <li>Она распаковывается в
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://vtvz.me/blog/social-post-generator/
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://vtvz.me/blog/social-post-generator/
     ?utm_source=_telegram
     &amp;utm_medium=social-post
     &amp;utm_campaign=blog
@@ -397,9 +397,9 @@
 <p>Наш код должен работать следующим образом:</p>
 
 <ol>
-  <li>Вытянуть <code class="highlighter-rouge">utm</code> параметр из query адреса;</li>
+  <li>Вытянуть <code class="language-plaintext highlighter-rouge">utm</code> параметр из query адреса;</li>
   <li>Сгенерировать source, medium, campaign…</li>
-  <li>Удалить параметр <code class="highlighter-rouge">utm</code>;</li>
+  <li>Удалить параметр <code class="language-plaintext highlighter-rouge">utm</code>;</li>
   <li>Применить метки из пункта 2;</li>
   <li>Заменить текущий url на новый.</li>
 </ol>
@@ -493,11 +493,11 @@
 Есть несколько альтернатив, как передать стратегию:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">vtvz.me/.../?u=tg</code></li>
-  <li><code class="highlighter-rouge">vtvz.me/.../?_=tg</code></li>
-  <li><code class="highlighter-rouge">vtvz.me/.../?=tg</code></li>
-  <li><code class="highlighter-rouge">vtvz.me/.../?tg</code></li>
-  <li><code class="highlighter-rouge">vtvz.me/.../#tg</code></li>
+  <li><code class="language-plaintext highlighter-rouge">vtvz.me/.../?u=tg</code></li>
+  <li><code class="language-plaintext highlighter-rouge">vtvz.me/.../?_=tg</code></li>
+  <li><code class="language-plaintext highlighter-rouge">vtvz.me/.../?=tg</code></li>
+  <li><code class="language-plaintext highlighter-rouge">vtvz.me/.../?tg</code></li>
+  <li><code class="language-plaintext highlighter-rouge">vtvz.me/.../#tg</code></li>
 </ul>
 
 <p>Ничто не мешает вам модифицировать приведенный выше скрипт под свои нужды.</p>
@@ -868,8 +868,8 @@
 
 <p>Вы можете взять самый легкий чистый образ с Nginx,
 куда с помощью ConfigMap примонтировать как конфиг сервера,
-так и содержимое файла <code class="highlighter-rouge">robots.txt</code>.
-После этого достаточно только настроить Ingress на то, чтобы он все запросы на <code class="highlighter-rouge">/robots.txt</code> направлял в этот контейнер.</p>
+так и содержимое файла <code class="language-plaintext highlighter-rouge">robots.txt</code>.
+После этого достаточно только настроить Ingress на то, чтобы он все запросы на <code class="language-plaintext highlighter-rouge">/robots.txt</code> направлял в этот контейнер.</p>
 
 <p>Примеры конфигов приводить не буду, так как есть вариант получше.</p>
 
@@ -892,8 +892,8 @@
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">metadata</span><span class="pi">:</span>
   <span class="na">annotations</span><span class="pi">:</span>
-    <span class="s">kubernetes.io/ingress.class</span><span class="pi">:</span> <span class="s">nginx</span>
-    <span class="s">nginx.ingress.kubernetes.io/server-snippet</span><span class="pi">:</span> <span class="pi">|</span>
+    <span class="na">kubernetes.io/ingress.class</span><span class="pi">:</span> <span class="s">nginx</span>
+    <span class="na">nginx.ingress.kubernetes.io/server-snippet</span><span class="pi">:</span> <span class="pi">|</span>
       <span class="s">location = /robots.txt {</span>
         <span class="s">add_header Content-Type text/plain;</span>
         <span class="s">return 200 'User-agent: *\nDisallow: /\n';</span>
@@ -901,7 +901,7 @@
 </code></pre></div></div>
 
 <p>Да, Nginx умеет не только выдавать статику или проксировать запросы. Он может генерировать ответ самостоятельно.
-Строка <code class="highlighter-rouge">return 200 'Content'</code> именно это и делает.</p>
+Строка <code class="language-plaintext highlighter-rouge">return 200 'Content'</code> именно это и делает.</p>
 
 <p>Таким образом, мы решили задачу буквально в <strong>5 строк</strong>.</p>
 
@@ -913,7 +913,7 @@
 <p>Поэтому можно сделать так:</p>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">{{</span><span class="nv">- if ne .Values.env "production"</span> <span class="pi">}}</span>
-<span class="s">nginx.ingress.kubernetes.io/server-snippet</span><span class="pi">:</span> <span class="pi">|</span>
+<span class="na">nginx.ingress.kubernetes.io/server-snippet</span><span class="pi">:</span> <span class="pi">|</span>
   <span class="s">location = /robots.txt {</span>
     <span class="s">add_header Content-Type text/plain;</span>
     <span class="s">return 200 'User-agent: *\nDisallow: /\n';</span>
@@ -926,7 +926,7 @@
 <p>Либо так, если хочется большей власти:</p>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">{{</span><span class="nv">- if .Values.disallowRobots</span> <span class="pi">}}</span>
-<span class="s">nginx.ingress.kubernetes.io/server-snippet</span><span class="pi">:</span> <span class="pi">|</span>
+<span class="na">nginx.ingress.kubernetes.io/server-snippet</span><span class="pi">:</span> <span class="pi">|</span>
   <span class="s">location = /robots.txt {</span>
     <span class="s">add_header Content-Type text/plain;</span>
     <span class="s">return 200 'User-agent: *\nDisallow: /\n';</span>
@@ -1009,9 +1009,9 @@ Bootstrap из коробки предоставляет стили для пе�
  Документ считается “small” только если он шире 270mm.
  Поэтому пришлось уйти от стандартов и указать размер документа 271mm x 383mm. Тем не менее, пропорции 1:√2 я сохранил.</li>
       <li>Bootstrap очень агрессивно накладывает стили для печати,
- из-за чего пришлось натыкать <code class="highlighter-rouge">!important</code> столько, сколько не делал этого за всю свою жизнь.
+ из-за чего пришлось натыкать <code class="language-plaintext highlighter-rouge">!important</code> столько, сколько не делал этого за всю свою жизнь.
  Например, он отключает фон всем элементам страницы, выкрашивает весь текст в черный цвет,
- а ссылкам <code class="highlighter-rouge">a[href]</code> справа добавляет содержимое <code class="highlighter-rouge">href</code> в скобках.
+ а ссылкам <code class="language-plaintext highlighter-rouge">a[href]</code> справа добавляет содержимое <code class="language-plaintext highlighter-rouge">href</code> в скобках.
  Выглядит это примерно так:</li>
     </ol>
   </li>
@@ -1027,17 +1027,17 @@ Firefox в этом плане очень проигрывает.
 
 <p>Вот вам небольшая подсказка. Если вам тоже нужно отдебажить то, как будет выглядеть сайт для печати, сделайте следующее:</p>
 <ul>
-  <li>Откройте панель разработчика <code class="highlighter-rouge">Ctrl+Shift+I</code>;</li>
-  <li>Жмякните 3 точки сверху справа, около крестика <code class="highlighter-rouge">1</code>;</li>
-  <li>“More tools” <code class="highlighter-rouge">2</code>;</li>
-  <li>“Rendering” <code class="highlighter-rouge">3</code>;</li>
+  <li>Откройте панель разработчика <code class="language-plaintext highlighter-rouge">Ctrl+Shift+I</code>;</li>
+  <li>Жмякните 3 точки сверху справа, около крестика <code class="language-plaintext highlighter-rouge">1</code>;</li>
+  <li>“More tools” <code class="language-plaintext highlighter-rouge">2</code>;</li>
+  <li>“Rendering” <code class="language-plaintext highlighter-rouge">3</code>;</li>
   <li>“Emulate CSS media type”;</li>
-  <li>“Print” <code class="highlighter-rouge">4</code>.</li>
+  <li>“Print” <code class="language-plaintext highlighter-rouge">4</code>.</li>
 </ul>
 
 <figure class="frame "><a href="./print-media-type.png" target="_blank"><img src="./print-media-type.png" alt="Инструкция включения режима печати" title="Инструкция включения режима печати" /></a></figure>
 
-<p>В итоге вам все равно придется проверять, как будет выглядеть документ на листе, используя реальный режим печати <code class="highlighter-rouge">Ctrl+P</code>,
+<p>В итоге вам все равно придется проверять, как будет выглядеть документ на листе, используя реальный режим печати <code class="language-plaintext highlighter-rouge">Ctrl+P</code>,
 потому что, как я говорил ранее, верстка при итоговой печати отличается от отображаемого в браузере.
 Но этого должно быть достаточно, чтобы разобраться с цветами, шрифтами и отступами.</p>
 
@@ -1283,7 +1283,7 @@ Firefox в этом плане очень проигрывает.
 
 <h2 id="переезд">Переезд</h2>
 
-<p>Домен <code class="highlighter-rouge">vtvz.ru</code> служил мне верой и правдой более пяти лет.
+<p>Домен <code class="language-plaintext highlighter-rouge">vtvz.ru</code> служил мне верой и правдой более пяти лет.
 Но настало время перемен. 
 Причин сменить доменное имя немного, но одна из них – он не интернациональный.</p>
 
@@ -1292,7 +1292,7 @@ Firefox в этом плане очень проигрывает.
 
 <p>Выбирать долго не пришлось.
 Все национальные домены были отброшены сразу.
-Хоть доступных вариантов интернациональных имен сотни, выбор пал на <code class="highlighter-rouge">.me</code>.</p>
+Хоть доступных вариантов интернациональных имен сотни, выбор пал на <code class="language-plaintext highlighter-rouge">.me</code>.</p>
 
 <p>Потому что:</p>
 
@@ -1370,7 +1370,7 @@ Firefox в этом плане очень проигрывает.
 Еще много осталось, но уже все гораздо лучше.</li>
   <li>В качестве шрифта для кусков кода теперь используется <a href="https://github.com/tonsky/FiraCode">FiraCode</a> с лигатурами.
 Очень рекомендую использовать его в качестве шрифта для вашей IDE (или <a href="https://www.jetbrains.com/lp/mono/">этот</a>).
-Только посмотрите, как с этим шрифтом ‘!=’ превращается в <code class="highlighter-rouge">!=</code>, ‘&gt;=’ – в <code class="highlighter-rouge">&gt;=</code>, а ‘-&gt;’ – в <code class="highlighter-rouge">-&gt;</code>.</li>
+Только посмотрите, как с этим шрифтом ‘!=’ превращается в <code class="language-plaintext highlighter-rouge">!=</code>, ‘&gt;=’ – в <code class="language-plaintext highlighter-rouge">&gt;=</code>, а ‘-&gt;’ – в <code class="language-plaintext highlighter-rouge">-&gt;</code>.</li>
   <li>Также, анимация на главной странице с контактами будет запускаться вместе с исчезновением индикатора загрузки, а не до.</li>
   <li>Появился футер с копирайтом на каждой странице.</li>
   <li>Пропал футер на главной странице с номером телефона и почтой, но зато появилось приглашение листнуть вниз.</li>
@@ -1745,16 +1745,16 @@ Root доступ дает не только большие возможност
   <li>В App Inspector найдите приложение, которое хотите удалить.
  Из всех данных необходимо только поле “Package name”;</li>
   <li>Подключите устройство по USB к компьютеру;</li>
-  <li>Введите команду <code class="highlighter-rouge">adb devices</code>. Должен быть примерно следующий вывод:
+  <li>Введите команду <code class="language-plaintext highlighter-rouge">adb devices</code>. Должен быть примерно следующий вывод:
     <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>adb devices
  List of devices attached
  6c3eaa477cf3    device
 </code></pre></div>    </div>
-    <p>То есть, после строчки <code class="highlighter-rouge">List of devices attached</code> должна быть еще одна с ID подключенного устройства.
+    <p>То есть, после строчки <code class="language-plaintext highlighter-rouge">List of devices attached</code> должна быть еще одна с ID подключенного устройства.
  Идти дальше нет смысла, если компьютер не видит ваш девайс.</p>
   </li>
-  <li>Введите <code class="highlighter-rouge">adb uninstall &lt;package-name&gt;</code>, где <code class="highlighter-rouge">&lt;package-name&gt;</code> – поле из пункта 5.
- В моем случае – <code class="highlighter-rouge">com.google.android.tts</code>. Результат:
+  <li>Введите <code class="language-plaintext highlighter-rouge">adb uninstall &lt;package-name&gt;</code>, где <code class="language-plaintext highlighter-rouge">&lt;package-name&gt;</code> – поле из пункта 5.
+ В моем случае – <code class="language-plaintext highlighter-rouge">com.google.android.tts</code>. Результат:
     <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>adb uninstall com.google.android.tts
  Success
 </code></pre></div>    </div>
@@ -1819,7 +1819,7 @@ Root доступ дает не только большие возможност
 <p>Однажды, незадолго после окончания школы (~2013г.), мне представилась замечательная возможность приобрести свой личный домен.
 Соглашусь, делается это несложно. Но тогда я не умел ничего связанного с реальной разработкой веб-сайтов.
 Я хотел что-то короткое, лаконичное, созвучное с моим ФИО. Все трехбуквенные варианты уже были заняты.
-На придумывание не ушло много времени, я выбрал <code class="highlighter-rouge">vtvz</code>. Вскоре, это стало моим логином/URL’ом/ником везде:</p>
+На придумывание не ушло много времени, я выбрал <code class="language-plaintext highlighter-rouge">vtvz</code>. Вскоре, это стало моим логином/URL’ом/ником везде:</p>
 
 <ul>
   <li><a href="https://vk.com/vtvz_ru">https://vk.com/vtvz_ru</a></li>
@@ -2079,8 +2079,8 @@ Root доступ дает не только большие возможност
 
 <h2 id="исследование">Исследование</h2>
 
-<p>Внутри библиотеки все фиксеры для доктриновских аннотаций унаследованы от класса <code class="highlighter-rouge">\PhpCsFixer\AbstractDoctrineAnnotationFixer</code>
-с одним единственным абстрактным методом <code class="highlighter-rouge">fixAnnotations</code>.</p>
+<p>Внутри библиотеки все фиксеры для доктриновских аннотаций унаследованы от класса <code class="language-plaintext highlighter-rouge">\PhpCsFixer\AbstractDoctrineAnnotationFixer</code>
+с одним единственным абстрактным методом <code class="language-plaintext highlighter-rouge">fixAnnotations</code>.</p>
 
 <p>Исследовав другие фиксеры ближе, можно увидеть, что в этот метод передается только один параметр – коллекция токенов.
 Эта коллекция мутабельная и результат её изменений будет использоваться для формирования итогового кода.</p>
@@ -2088,27 +2088,27 @@ Root доступ дает не только большие возможност
 <p>Минимально возможный фиксер, который пока ничего не делает, выглядит примерно так:</p>
 
 <div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//  Тут есть пара неиспользуемых импортов, но скоро они будут нужны</span>
-<span class="kn">use</span> <span class="nn">Doctrine\Common\Annotations\DocLexer</span><span class="p">;</span>
-<span class="kn">use</span> <span class="nn">PhpCsFixer\AbstractDoctrineAnnotationFixer</span><span class="p">;</span>
-<span class="kn">use</span> <span class="nn">PhpCsFixer\Doctrine\Annotation\Token</span><span class="p">;</span>
-<span class="kn">use</span> <span class="nn">PhpCsFixer\Doctrine\Annotation\Tokens</span><span class="p">;</span>
-<span class="kn">use</span> <span class="nn">PhpCsFixer\FixerDefinition\FixerDefinition</span><span class="p">;</span>
-<span class="kn">use</span> <span class="nn">PhpCsFixer\FixerDefinition\FixerDefinitionInterface</span><span class="p">;</span>
+<span class="kn">use</span> <span class="nc">Doctrine\Common\Annotations\DocLexer</span><span class="p">;</span>
+<span class="kn">use</span> <span class="nc">PhpCsFixer\AbstractDoctrineAnnotationFixer</span><span class="p">;</span>
+<span class="kn">use</span> <span class="nc">PhpCsFixer\Doctrine\Annotation\Token</span><span class="p">;</span>
+<span class="kn">use</span> <span class="nc">PhpCsFixer\Doctrine\Annotation\Tokens</span><span class="p">;</span>
+<span class="kn">use</span> <span class="nc">PhpCsFixer\FixerDefinition\FixerDefinition</span><span class="p">;</span>
+<span class="kn">use</span> <span class="nc">PhpCsFixer\FixerDefinition\FixerDefinitionInterface</span><span class="p">;</span>
 
-<span class="k">final</span> <span class="kd">class</span> <span class="nc">DoctrineAnnotationCommasFixer</span> <span class="k">extends</span> <span class="nx">AbstractDoctrineAnnotationFixer</span>
+<span class="k">final</span> <span class="kd">class</span> <span class="nc">DoctrineAnnotationCommasFixer</span> <span class="kd">extends</span> <span class="nc">AbstractDoctrineAnnotationFixer</span>
 <span class="p">{</span>
     <span class="cd">/**
      * @return string
      */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="n">getName</span><span class="p">():</span> <span class="kt">string</span>
     <span class="p">{</span>
-        <span class="k">return</span> <span class="k">static</span><span class="o">::</span><span class="na">name</span><span class="p">();</span>
+        <span class="k">return</span> <span class="k">static</span><span class="o">::</span><span class="nf">name</span><span class="p">();</span>
     <span class="p">}</span>
 
     <span class="cd">/**
      * @return string
      */</span>
-    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">name</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="n">name</span><span class="p">():</span> <span class="kt">string</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="s1">'Axmit/doctrine_annotation_commas'</span><span class="p">;</span>
     <span class="p">}</span>
@@ -2116,9 +2116,9 @@ Root доступ дает не только большие возможност
     <span class="cd">/**
      * @return FixerDefinitionInterface
      */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">getDefinition</span><span class="p">()</span><span class="o">:</span> <span class="nx">FixerDefinitionInterface</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="n">getDefinition</span><span class="p">():</span> <span class="kt">FixerDefinitionInterface</span>
     <span class="p">{</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="nx">FixerDefinition</span><span class="p">(</span><span class="s1">'Fixes commas in Doctrine annotations'</span><span class="p">,</span> <span class="p">[]);</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nc">FixerDefinition</span><span class="p">(</span><span class="s1">'Fixes commas in Doctrine annotations'</span><span class="p">,</span> <span class="p">[]);</span>
     <span class="p">}</span>
 
     <span class="cd">/**
@@ -2128,18 +2128,18 @@ Root доступ дает не только большие возможност
      *
      * @return void
      */</span>
-    <span class="k">protected</span> <span class="k">function</span> <span class="nf">fixAnnotations</span><span class="p">(</span><span class="nx">Tokens</span> <span class="nv">$tokens</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="n">fixAnnotations</span><span class="p">(</span><span class="kt">Tokens</span> <span class="nv">$tokens</span><span class="p">):</span> <span class="kt">void</span>
     <span class="p">{</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>Обратите особое внимание на методы <code class="highlighter-rouge">name</code> и <code class="highlighter-rouge">getName</code>.
+<p>Обратите особое внимание на методы <code class="language-plaintext highlighter-rouge">name</code> и <code class="language-plaintext highlighter-rouge">getName</code>.
 Имя фиксера должно быть строго в таком формате, иначе будет ошибка
-(регулярки можно посмотреть в <code class="highlighter-rouge">\PhpCsFixer\FixerNameValidator::isValid</code>).
-Статическим методом <code class="highlighter-rouge">name</code> воспользуемся чуть позже.</p>
+(регулярки можно посмотреть в <code class="language-plaintext highlighter-rouge">\PhpCsFixer\FixerNameValidator::isValid</code>).
+Статическим методом <code class="language-plaintext highlighter-rouge">name</code> воспользуемся чуть позже.</p>
 
-<p>Дабы не нагромождать статью простынями кода, все остальные куски исходников будут внутри метода <code class="highlighter-rouge">fixAnnotations</code>.</p>
+<p>Дабы не нагромождать статью простынями кода, все остальные куски исходников будут внутри метода <code class="language-plaintext highlighter-rouge">fixAnnotations</code>.</p>
 
 <h2 id="регистрация">Регистрация</h2>
 
@@ -2147,15 +2147,15 @@ Root доступ дает не только большие возможност
 Для того, чтобы все заработало, нужно сделать 2 вещи:</p>
 
 <ol>
-  <li>Зарегистрировать фиксер в конфиге (файл <code class="highlighter-rouge">.php_cs.dist</code>):
-    <div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$config</span><span class="o">-&gt;</span><span class="na">registerCustomFixers</span><span class="p">([</span><span class="k">new</span> <span class="nx">DoctrineAnnotationCommasFixer</span><span class="p">()])</span>
+  <li>Зарегистрировать фиксер в конфиге (файл <code class="language-plaintext highlighter-rouge">.php_cs.dist</code>):
+    <div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$config</span><span class="o">-&gt;</span><span class="nf">registerCustomFixers</span><span class="p">([</span><span class="k">new</span> <span class="nc">DoctrineAnnotationCommasFixer</span><span class="p">()])</span>
 </code></pre></div>    </div>
     <p>Теперь фиксер знает о существовании этого правила, но пока не использует его.</p>
   </li>
   <li>Включить его в рулзах:
-    <div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$config</span><span class="o">-&gt;</span><span class="na">setRules</span><span class="p">(</span>
+    <div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$config</span><span class="o">-&gt;</span><span class="nf">setRules</span><span class="p">(</span>
     <span class="p">[</span>
-        <span class="nx">DoctrineAnnotationCommasFixer</span><span class="o">::</span><span class="na">name</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// помните статический метод name? :-)</span>
+        <span class="nc">DoctrineAnnotationCommasFixer</span><span class="o">::</span><span class="nf">name</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// помните статический метод name? :-)</span>
     <span class="p">]</span>
 <span class="p">)</span>
 </code></pre></div>    </div>
@@ -2184,9 +2184,9 @@ Root доступ дает не только большие возможност
 Но мы этого делать не будем по причине, которую я объясню позже.</p>
 
 <div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="k">while</span> <span class="p">(</span><span class="nv">$tokens</span><span class="o">-&gt;</span><span class="na">offsetExists</span><span class="p">(</span><span class="nv">$index</span><span class="p">))</span> <span class="p">{</span>
+<span class="k">while</span> <span class="p">(</span><span class="nv">$tokens</span><span class="o">-&gt;</span><span class="nf">offsetExists</span><span class="p">(</span><span class="nv">$index</span><span class="p">))</span> <span class="p">{</span>
     <span class="cd">/** @var Token $token */</span>
-    <span class="nv">$token</span> <span class="o">=</span> <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="na">offsetGet</span><span class="p">(</span><span class="nv">$index</span><span class="p">);</span>
+    <span class="nv">$token</span> <span class="o">=</span> <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="nf">offsetGet</span><span class="p">(</span><span class="nv">$index</span><span class="p">);</span>
 
     <span class="c1">//TODO Add logic here </span>
 
@@ -2194,19 +2194,19 @@ Root доступ дает не только большие возможност
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>Класс <code class="highlighter-rouge">Token</code> имеет 2 важных свойства – это тип и содержимое.
-Тип является числовым значением, все из которых находятся в классе <code class="highlighter-rouge">DocLexer</code> в виде констант.</p>
+<p>Класс <code class="language-plaintext highlighter-rouge">Token</code> имеет 2 важных свойства – это тип и содержимое.
+Тип является числовым значением, все из которых находятся в классе <code class="language-plaintext highlighter-rouge">DocLexer</code> в виде констант.</p>
 
-<p>Проверить тип токена можно методом <code class="highlighter-rouge">isType</code>, куда можно передать либо одно значение, либо массив:</p>
+<p>Проверить тип токена можно методом <code class="language-plaintext highlighter-rouge">isType</code>, куда можно передать либо одно значение, либо массив:</p>
 
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$token</span><span class="o">-&gt;</span><span class="na">isType</span><span class="p">([</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_CLOSE_CURLY_BRACES</span><span class="p">,</span> <span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_CLOSE_PARENTHESIS</span><span class="p">]);</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$token</span><span class="o">-&gt;</span><span class="nf">isType</span><span class="p">([</span><span class="nc">DocLexer</span><span class="o">::</span><span class="no">T_CLOSE_CURLY_BRACES</span><span class="p">,</span> <span class="nc">DocLexer</span><span class="o">::</span><span class="no">T_CLOSE_PARENTHESIS</span><span class="p">]);</span>
 </code></pre></div></div>
 
 <p>С первым пунктом разобрались – мы нашли все закрывающие скобки.
 Далее нужно вытянуть 2 токена перед текущим:</p>
 
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$prevToken</span>     <span class="o">=</span> <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="na">offsetGet</span><span class="p">(</span><span class="nv">$index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
-<span class="nv">$prevPrevToken</span> <span class="o">=</span> <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="na">offsetGet</span><span class="p">(</span><span class="nv">$index</span> <span class="o">-</span> <span class="mi">2</span><span class="p">);</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$prevToken</span>     <span class="o">=</span> <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="nf">offsetGet</span><span class="p">(</span><span class="nv">$index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nv">$prevPrevToken</span> <span class="o">=</span> <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="nf">offsetGet</span><span class="p">(</span><span class="nv">$index</span> <span class="o">-</span> <span class="mi">2</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p>Далее просто: если предыдущий токен – ничего 
@@ -2214,24 +2214,24 @@ Root доступ дает не только большие возможност
 стоит отметить, что в коллекции 2 токена “ничего” подряд не бывает),
 и токен перед ним не является запятой, то нужно добавить запятую:</p>
 
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nv">$prevToken</span><span class="o">-&gt;</span><span class="na">isType</span><span class="p">(</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_NONE</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$prevPrevToken</span><span class="o">-&gt;</span><span class="na">isType</span><span class="p">(</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_COMMA</span><span class="p">))</span> <span class="p">{</span>
-    <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="na">insertAt</span><span class="p">(</span><span class="nv">$index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Token</span><span class="p">(</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_COMMA</span><span class="p">,</span> <span class="s1">','</span><span class="p">));</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nv">$prevToken</span><span class="o">-&gt;</span><span class="nf">isType</span><span class="p">(</span><span class="nc">DocLexer</span><span class="o">::</span><span class="no">T_NONE</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$prevPrevToken</span><span class="o">-&gt;</span><span class="nf">isType</span><span class="p">(</span><span class="nc">DocLexer</span><span class="o">::</span><span class="no">T_COMMA</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="nf">insertAt</span><span class="p">(</span><span class="nv">$index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="k">new</span> <span class="nc">Token</span><span class="p">(</span><span class="nc">DocLexer</span><span class="o">::</span><span class="no">T_COMMA</span><span class="p">,</span> <span class="s1">','</span><span class="p">));</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
 <p>Иначе, если сразу перед скобкой стоит запятая – убрать:</p>
 
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">elseif</span> <span class="p">(</span><span class="nv">$prevToken</span><span class="o">-&gt;</span><span class="na">isType</span><span class="p">(</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_COMMA</span><span class="p">))</span> <span class="p">{</span>
-    <span class="nv">$prevToken</span><span class="o">-&gt;</span><span class="na">clear</span><span class="p">();</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">elseif</span> <span class="p">(</span><span class="nv">$prevToken</span><span class="o">-&gt;</span><span class="nf">isType</span><span class="p">(</span><span class="nc">DocLexer</span><span class="o">::</span><span class="no">T_COMMA</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nv">$prevToken</span><span class="o">-&gt;</span><span class="nf">clear</span><span class="p">();</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
 <p>И вроде бы уже все, но если попробовать запустить фиксер с этим правилом, он никогда не завершит свою работу.
 Проблема кроется там, где мы добавляем запятую – программа уходит в бесконечный цикл.
-Чтобы решить эту проблему, достаточно добавить еще один <code class="highlighter-rouge">$index++</code> после добавления запятой:</p>
+Чтобы решить эту проблему, достаточно добавить еще один <code class="language-plaintext highlighter-rouge">$index++</code> после добавления запятой:</p>
 
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nv">$prevToken</span><span class="o">-&gt;</span><span class="na">isType</span><span class="p">(</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_NONE</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$prevPrevToken</span><span class="o">-&gt;</span><span class="na">isType</span><span class="p">(</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_COMMA</span><span class="p">))</span> <span class="p">{</span>
-    <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="na">insertAt</span><span class="p">(</span><span class="nv">$index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Token</span><span class="p">(</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_COMMA</span><span class="p">,</span> <span class="s1">','</span><span class="p">));</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nv">$prevToken</span><span class="o">-&gt;</span><span class="nf">isType</span><span class="p">(</span><span class="nc">DocLexer</span><span class="o">::</span><span class="no">T_NONE</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$prevPrevToken</span><span class="o">-&gt;</span><span class="nf">isType</span><span class="p">(</span><span class="nc">DocLexer</span><span class="o">::</span><span class="no">T_COMMA</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="nf">insertAt</span><span class="p">(</span><span class="nv">$index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="k">new</span> <span class="nc">Token</span><span class="p">(</span><span class="nc">DocLexer</span><span class="o">::</span><span class="no">T_COMMA</span><span class="p">,</span> <span class="s1">','</span><span class="p">));</span>
     <span class="nv">$index</span><span class="o">++</span><span class="p">;</span> <span class="c1">// причина, по которой нужен был цикл while вместо for</span>
 <span class="p">}</span>
 </code></pre></div></div>
@@ -2241,27 +2241,27 @@ Root доступ дает не только большие возможност
 <details class="spoiler"><summary class="spoiler-title">Собрав все воедино</summary><div class="spoiler-body">
 <div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
 
-<span class="kn">use</span> <span class="nn">Doctrine\Common\Annotations\DocLexer</span><span class="p">;</span>
-<span class="kn">use</span> <span class="nn">PhpCsFixer\AbstractDoctrineAnnotationFixer</span><span class="p">;</span>
-<span class="kn">use</span> <span class="nn">PhpCsFixer\Doctrine\Annotation\Token</span><span class="p">;</span>
-<span class="kn">use</span> <span class="nn">PhpCsFixer\Doctrine\Annotation\Tokens</span><span class="p">;</span>
-<span class="kn">use</span> <span class="nn">PhpCsFixer\FixerDefinition\FixerDefinition</span><span class="p">;</span>
-<span class="kn">use</span> <span class="nn">PhpCsFixer\FixerDefinition\FixerDefinitionInterface</span><span class="p">;</span>
+<span class="kn">use</span> <span class="nc">Doctrine\Common\Annotations\DocLexer</span><span class="p">;</span>
+<span class="kn">use</span> <span class="nc">PhpCsFixer\AbstractDoctrineAnnotationFixer</span><span class="p">;</span>
+<span class="kn">use</span> <span class="nc">PhpCsFixer\Doctrine\Annotation\Token</span><span class="p">;</span>
+<span class="kn">use</span> <span class="nc">PhpCsFixer\Doctrine\Annotation\Tokens</span><span class="p">;</span>
+<span class="kn">use</span> <span class="nc">PhpCsFixer\FixerDefinition\FixerDefinition</span><span class="p">;</span>
+<span class="kn">use</span> <span class="nc">PhpCsFixer\FixerDefinition\FixerDefinitionInterface</span><span class="p">;</span>
 
-<span class="k">final</span> <span class="kd">class</span> <span class="nc">DoctrineAnnotationCommasFixer</span> <span class="k">extends</span> <span class="nx">AbstractDoctrineAnnotationFixer</span>
+<span class="k">final</span> <span class="kd">class</span> <span class="nc">DoctrineAnnotationCommasFixer</span> <span class="kd">extends</span> <span class="nc">AbstractDoctrineAnnotationFixer</span>
 <span class="p">{</span>
     <span class="cd">/**
      * @return string
      */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="n">getName</span><span class="p">():</span> <span class="kt">string</span>
     <span class="p">{</span>
-        <span class="k">return</span> <span class="k">static</span><span class="o">::</span><span class="na">name</span><span class="p">();</span>
+        <span class="k">return</span> <span class="k">static</span><span class="o">::</span><span class="nf">name</span><span class="p">();</span>
     <span class="p">}</span>
 
     <span class="cd">/**
      * @return string
      */</span>
-    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">name</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="n">name</span><span class="p">():</span> <span class="kt">string</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="s1">'Axmit/doctrine_annotation_commas'</span><span class="p">;</span>
     <span class="p">}</span>
@@ -2269,9 +2269,9 @@ Root доступ дает не только большие возможност
     <span class="cd">/**
      * @return FixerDefinitionInterface
      */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">getDefinition</span><span class="p">()</span><span class="o">:</span> <span class="nx">FixerDefinitionInterface</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="n">getDefinition</span><span class="p">():</span> <span class="kt">FixerDefinitionInterface</span>
     <span class="p">{</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="nx">FixerDefinition</span><span class="p">(</span><span class="s1">'Fixes commas in Doctrine annotations'</span><span class="p">,</span> <span class="p">[]);</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nc">FixerDefinition</span><span class="p">(</span><span class="s1">'Fixes commas in Doctrine annotations'</span><span class="p">,</span> <span class="p">[]);</span>
     <span class="p">}</span>
 
     <span class="cd">/**
@@ -2281,21 +2281,21 @@ Root доступ дает не только большие возможност
      *
      * @return void
      */</span>
-    <span class="k">protected</span> <span class="k">function</span> <span class="nf">fixAnnotations</span><span class="p">(</span><span class="nx">Tokens</span> <span class="nv">$tokens</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="n">fixAnnotations</span><span class="p">(</span><span class="kt">Tokens</span> <span class="nv">$tokens</span><span class="p">):</span> <span class="kt">void</span>
     <span class="p">{</span>
         <span class="nv">$index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="k">while</span> <span class="p">(</span><span class="nv">$tokens</span><span class="o">-&gt;</span><span class="na">offsetExists</span><span class="p">(</span><span class="nv">$index</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">while</span> <span class="p">(</span><span class="nv">$tokens</span><span class="o">-&gt;</span><span class="nf">offsetExists</span><span class="p">(</span><span class="nv">$index</span><span class="p">))</span> <span class="p">{</span>
             <span class="cd">/** @var Token $token */</span>
-            <span class="nv">$token</span> <span class="o">=</span> <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="na">offsetGet</span><span class="p">(</span><span class="nv">$index</span><span class="p">);</span>
+            <span class="nv">$token</span> <span class="o">=</span> <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="nf">offsetGet</span><span class="p">(</span><span class="nv">$index</span><span class="p">);</span>
 
-            <span class="k">if</span> <span class="p">(</span><span class="nv">$token</span><span class="o">-&gt;</span><span class="na">isType</span><span class="p">([</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_CLOSE_CURLY_BRACES</span><span class="p">,</span> <span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_CLOSE_PARENTHESIS</span><span class="p">]))</span> <span class="p">{</span>
-                <span class="nv">$prevToken</span>     <span class="o">=</span> <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="na">offsetGet</span><span class="p">(</span><span class="nv">$index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
-                <span class="nv">$prevPrevToken</span> <span class="o">=</span> <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="na">offsetGet</span><span class="p">(</span><span class="nv">$index</span> <span class="o">-</span> <span class="mi">2</span><span class="p">);</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nv">$prevToken</span><span class="o">-&gt;</span><span class="na">isType</span><span class="p">(</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_NONE</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$prevPrevToken</span><span class="o">-&gt;</span><span class="na">isType</span><span class="p">(</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_COMMA</span><span class="p">))</span> <span class="p">{</span>
-                    <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="na">insertAt</span><span class="p">(</span><span class="nv">$index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Token</span><span class="p">(</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_COMMA</span><span class="p">,</span> <span class="s1">','</span><span class="p">));</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$token</span><span class="o">-&gt;</span><span class="nf">isType</span><span class="p">([</span><span class="nc">DocLexer</span><span class="o">::</span><span class="no">T_CLOSE_CURLY_BRACES</span><span class="p">,</span> <span class="nc">DocLexer</span><span class="o">::</span><span class="no">T_CLOSE_PARENTHESIS</span><span class="p">]))</span> <span class="p">{</span>
+                <span class="nv">$prevToken</span>     <span class="o">=</span> <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="nf">offsetGet</span><span class="p">(</span><span class="nv">$index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+                <span class="nv">$prevPrevToken</span> <span class="o">=</span> <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="nf">offsetGet</span><span class="p">(</span><span class="nv">$index</span> <span class="o">-</span> <span class="mi">2</span><span class="p">);</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$prevToken</span><span class="o">-&gt;</span><span class="nf">isType</span><span class="p">(</span><span class="nc">DocLexer</span><span class="o">::</span><span class="no">T_NONE</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$prevPrevToken</span><span class="o">-&gt;</span><span class="nf">isType</span><span class="p">(</span><span class="nc">DocLexer</span><span class="o">::</span><span class="no">T_COMMA</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="nf">insertAt</span><span class="p">(</span><span class="nv">$index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="k">new</span> <span class="nc">Token</span><span class="p">(</span><span class="nc">DocLexer</span><span class="o">::</span><span class="no">T_COMMA</span><span class="p">,</span> <span class="s1">','</span><span class="p">));</span>
                     <span class="nv">$index</span><span class="o">++</span><span class="p">;</span> <span class="c1">// prevent infinite loop</span>
-                <span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$prevToken</span><span class="o">-&gt;</span><span class="na">isType</span><span class="p">(</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_COMMA</span><span class="p">))</span> <span class="p">{</span>
-                    <span class="nv">$prevToken</span><span class="o">-&gt;</span><span class="na">clear</span><span class="p">();</span>
+                <span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$prevToken</span><span class="o">-&gt;</span><span class="nf">isType</span><span class="p">(</span><span class="nc">DocLexer</span><span class="o">::</span><span class="no">T_COMMA</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="nv">$prevToken</span><span class="o">-&gt;</span><span class="nf">clear</span><span class="p">();</span>
                 <span class="p">}</span>
             <span class="p">}</span>
 
@@ -2312,11 +2312,11 @@ Root доступ дает не только большие возможност
 <p>Тут стоит отметить пару моментов:</p>
 
 <ol>
-  <li>Если вы, как и я, пользуетесь PHPStorm, то вы могли увидеть, что классы <code class="highlighter-rouge">AbstractDoctrineAnnotationFixer</code>, <code class="highlighter-rouge">Token</code> и <code class="highlighter-rouge">Tokens</code> зачеркнуты.
-А происходит это по простой причине – они помечены как внутренние тегом <code class="highlighter-rouge">@internal</code>.
+  <li>Если вы, как и я, пользуетесь PHPStorm, то вы могли увидеть, что классы <code class="language-plaintext highlighter-rouge">AbstractDoctrineAnnotationFixer</code>, <code class="language-plaintext highlighter-rouge">Token</code> и <code class="language-plaintext highlighter-rouge">Tokens</code> зачеркнуты.
+А происходит это по простой причине – они помечены как внутренние тегом <code class="language-plaintext highlighter-rouge">@internal</code>.
 Для нас это означает то, что наш фикс может сломаться в любой момент даже между минорными версиями,
 так как никто не обещает стабильного API во внутреннем коде.
-(на момент написания статьи использовался <code class="highlighter-rouge">friendsofphp/php-cs-fixer:v2.15.1</code>)
+(на момент написания статьи использовался <code class="language-plaintext highlighter-rouge">friendsofphp/php-cs-fixer:v2.15.1</code>)
 Так что… все на свой страх и риск.</li>
   <li>Тесты… Я уверен, что для этого можно и нужно писать тесты, в том числе и для проверки совместимости с новой версией фиксера,
 но делать я этого не стал.
@@ -2421,8 +2421,8 @@ Root доступ дает не только большие возможност
   <li><em>Безопасно ли это?</em> Вариант с бумажкой был куда более безопасным. Хранить пароли в открытом виде очень даже плохо по нескольким причинам:
     <ol>
       <li>Есть только один способ, как узнать пароль из блокнота – стащить сам блокнот.
-  Но есть <code class="highlighter-rouge">N</code> способов, как узнать его из подобного рода сервисов – 
-  <code class="highlighter-rouge">X</code> по количеству устройств + <code class="highlighter-rouge">Y</code> по количеству заинтересованных хакеров + <code class="highlighter-rouge">Z</code> по количеству “забыл выйти у друга”.</li>
+  Но есть <code class="language-plaintext highlighter-rouge">N</code> способов, как узнать его из подобного рода сервисов – 
+  <code class="language-plaintext highlighter-rouge">X</code> по количеству устройств + <code class="language-plaintext highlighter-rouge">Y</code> по количеству заинтересованных хакеров + <code class="language-plaintext highlighter-rouge">Z</code> по количеству “забыл выйти у друга”.</li>
       <li>Любая утечка и <strong>все</strong> пароли буду скомпрометированы. Как веб-разработчик могу уверенно сказать: никому нельзя доверять.
   Даже если используются все способы того, как обезопасить свои заметки,
   всегда есть человеческий фактор как с вашей стороны, так и со стороны создателей сервиса.</li>
@@ -2453,7 +2453,7 @@ Root доступ дает не только большие возможност
 
 <ol>
   <li>Мастер-ключ (или мастер-пароль – пароль для доступа ко всем паролям).
-В случае с первой картой он является <code class="highlighter-rouge">e1b18dd6f30ed2f5</code> (написан в самом низу), 
+В случае с первой картой он является <code class="language-plaintext highlighter-rouge">e1b18dd6f30ed2f5</code> (написан в самом низу), 
 который можно записать куда угодно, но в безопасное место.
 Вводя этот ключ в специальное поле, будет выдана одна и та же карта, что необходимо в случае утери онной.</li>
   <li>Нужно запоминать способ, как вытягивается пароль. Это может быть простая ассоциация со значком,
@@ -2508,7 +2508,7 @@ Root доступ дает не только большие возможност
 <p>Это последний и самый лучший способ хранения паролей, который нужно уметь готовить.</p>
 
 <p>Это одновременно программа, формат файла и алгоритм безопасного хранения данных.
-Все ваши пароли хранятся внутри <code class="highlighter-rouge">.kdbx</code> файла, который зашифрован в цикле несколько тысяч (а то и больше) раз
+Все ваши пароли хранятся внутри <code class="language-plaintext highlighter-rouge">.kdbx</code> файла, который зашифрован в цикле несколько тысяч (а то и больше) раз
 кодовым словом, файлом или и тем и другим.</p>
 
 <p>Информация хранится понятным вам способом, в доверенном месте, там, где удобнее всего.
@@ -2849,7 +2849,7 @@ Root доступ дает не только большие возможност
 
 <!--cut-->
 <details class="spoiler"><summary class="spoiler-title">TL;DR. Для тех, кому лень читать целиком</summary><div class="spoiler-body">
-<p>Это нужно положить в папку <code class="highlighter-rouge">_plugins</code>:</p>
+<p>Это нужно положить в папку <code class="language-plaintext highlighter-rouge">_plugins</code>:</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">Jekyll</span>
   <span class="k">class</span> <span class="nc">SpoilerBlock</span> <span class="o">&lt;</span> <span class="no">Liquid</span><span class="o">::</span><span class="no">Block</span>
@@ -2976,7 +2976,7 @@ Root доступ дает не только большие возможност
 
 </div></details>
 
-<p>Положить в папку <code class="highlighter-rouge">_plugins</code>. И далее можно использовать в любом Markdown документе вот так:</p>
+<p>Положить в папку <code class="language-plaintext highlighter-rouge">_plugins</code>. И далее можно использовать в любом Markdown документе вот так:</p>
 
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% spoiler Заголовок спойлера %}
 <span class="p">```</span><span class="nl">yaml
@@ -3070,7 +3070,7 @@ Root доступ дает не только большие возможност
 <h2 id="шаг-первый-сбор-сырой-информации">Шаг первый. Сбор сырой информации</h2>
 
 <p>Был у меня опыт вытягивания данных из новостной ленты одного сайта.
-Это были публичные данные, поэтому собрать их не с труда любым способом. И я использовал <code class="highlighter-rouge">request</code>.</p>
+Это были публичные данные, поэтому собрать их не с труда любым способом. И я использовал <code class="language-plaintext highlighter-rouge">request</code>.</p>
 
 <p>Тут ситуация немного другая – доступ был запаролен, скорее всего с помощью PHP сессий.
 Быстрый эксперимент с подстановкой Cookie из браузера не дал положительного результата.
@@ -3094,7 +3094,7 @@ Root доступ дает не только большие возможност
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>И Вуаля! В массиве <code class="highlighter-rouge">results</code> лежат исходники всех 73 страниц.
+<p>И Вуаля! В массиве <code class="language-plaintext highlighter-rouge">results</code> лежат исходники всех 73 страниц.
 Тут можно пойти двумя путями: работать с данными дальше в браузере
 или сохранить их на комп и обрабатывать средствами NodeJs. Я выбрал второй. Так проще и быстрее.</p>
 
@@ -3171,12 +3171,12 @@ Root доступ дает не только большие возможност
 
 <p>Если кратко прорезюмировать:</p>
 <ul>
-  <li>Все элементы списка располагаются внутри <code class="highlighter-rouge">#centercolumn .list-view</code>.
-На самом деле все <code class="highlighter-rouge">.list-view</code> появляется на странице единожды и нет никакой надобности уточнять его расположение.</li>
-  <li>Каждый элемент списка имеет класс <code class="highlighter-rouge">.item</code>. Это важно, потому что внутри <code class="highlighter-rouge">.list-view</code> еще есть информация о количестве записей (“Показаны записи 1-20 из 1462”) и пагинация.</li>
-  <li>Каждый кусочек данных располагается внутри элемента <code class="highlighter-rouge">p</code>.</li>
+  <li>Все элементы списка располагаются внутри <code class="language-plaintext highlighter-rouge">#centercolumn .list-view</code>.
+На самом деле все <code class="language-plaintext highlighter-rouge">.list-view</code> появляется на странице единожды и нет никакой надобности уточнять его расположение.</li>
+  <li>Каждый элемент списка имеет класс <code class="language-plaintext highlighter-rouge">.item</code>. Это важно, потому что внутри <code class="language-plaintext highlighter-rouge">.list-view</code> еще есть информация о количестве записей (“Показаны записи 1-20 из 1462”) и пагинация.</li>
+  <li>Каждый кусочек данных располагается внутри элемента <code class="language-plaintext highlighter-rouge">p</code>.</li>
   <li>Каждый тип данных никак не отделяется классом. То есть внутри одинаковых элементов с одинаковыми классами лежат разные данные.</li>
-  <li>Внутри почти каждого параграфа есть элемент с классом <code class="highlighter-rouge">.grey</code>, который и определяет тип.</li>
+  <li>Внутри почти каждого параграфа есть элемент с классом <code class="language-plaintext highlighter-rouge">.grey</code>, который и определяет тип.</li>
   <li>Количество данных не консистентно – не во всех записях есть Email и Телефон.</li>
   <li>Сами данные тоже не имеют какого-то стандарта.
 Адрес записан в произвольном формате (есть случаи, где в качестве адреса указаны “F”, “SPb” или “………”).
@@ -3189,8 +3189,8 @@ Root доступ дает не только большие возможност
 <h3 id="получение-типов-данных">Получение типов данных</h3>
 
 <p>Первое, что нужно выяснить, какие типы данных у нас в принципе имеются во всех записях.
-Для этого можно вытянуть все <code class="highlighter-rouge">p .grey</code> и найти уникальные значения.
-В современном JS есть замечательный класс <code class="highlighter-rouge">Set</code>, который хранит в себе набор уникальных значений.
+Для этого можно вытянуть все <code class="language-plaintext highlighter-rouge">p .grey</code> и найти уникальные значения.
+В современном JS есть замечательный класс <code class="language-plaintext highlighter-rouge">Set</code>, который хранит в себе набор уникальных значений.
 Если добавить то, что уже есть, операция будет проигнорирована.</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">cheerio</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">cheerio</span><span class="dl">'</span><span class="p">);</span>
@@ -3231,12 +3231,12 @@ Root доступ дает не только большие возможност
 </code></pre></div></div>
 
 <p>То есть у нас есть 7 явных значений и одно “пустое”.
-Краткий анализ содержания этой строки показал, что кроме <code class="highlighter-rouge">Заходил(а)</code> там ничего нет.
-Пустое значение объясняется тем, что в этом поле нет дочернего элемента <code class="highlighter-rouge">.grey</code>. Но нам это никак не мешает.</p>
+Краткий анализ содержания этой строки показал, что кроме <code class="language-plaintext highlighter-rouge">Заходил(а)</code> там ничего нет.
+Пустое значение объясняется тем, что в этом поле нет дочернего элемента <code class="language-plaintext highlighter-rouge">.grey</code>. Но нам это никак не мешает.</p>
 
 <h3 id="получение-чистых-данных">Получение чистых данных</h3>
 
-<p>Во время анализа мы выяснили, что нужные нам данные лежат в параграфе (<code class="highlighter-rouge">p</code>) без потомков.</p>
+<p>Во время анализа мы выяснили, что нужные нам данные лежат в параграфе (<code class="language-plaintext highlighter-rouge">p</code>) без потомков.</p>
 
 <p>Так и гуглим: <a href="https://www.google.com/search?q=jquery+get+text+without+child+elements">jquery get text without child elements</a></p>
 
@@ -3250,7 +3250,7 @@ Root доступ дает не только большие возможност
     <span class="p">.</span><span class="nx">text</span><span class="p">();</span>
 </code></pre></div></div>
 
-<p>Помимо этого нужно убрать все лишние переносы и повторяющиеся пробелы, поэтому после <code class="highlighter-rouge">.text()</code> добавляем еще 2 вызова:</p>
+<p>Помимо этого нужно убрать все лишние переносы и повторяющиеся пробелы, поэтому после <code class="language-plaintext highlighter-rouge">.text()</code> добавляем еще 2 вызова:</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="p">.</span><span class="nx">trim</span><span class="p">()</span>
     <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">[\s]</span><span class="sr">+/g</span><span class="p">,</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span><span class="p">);</span>
@@ -3328,7 +3328,7 @@ Root доступ дает не только большие возможност
 В одном случае ФИО было разделено 2мя пробелами между частями. Поэтому очистка повторяющихся пробелов была очень кстати.</li>
   <li>Поле “Тип” в большинстве своем имеет одно их 2-х значений: “Обычный покупатель” и “Постоянный покупатель”.
 Но нашлись 3 записи формата “Представитель из Название_города”. Их решено пометить как “Постоянных покупателей”.</li>
-  <li>Поле “До получения/продления скидки осталось” <strong>всегда</strong> имеет формат <code class="highlighter-rouge">[цифры][пробел]руб.</code>, что упростило задачу.</li>
+  <li>Поле “До получения/продления скидки осталось” <strong>всегда</strong> имеет формат <code class="language-plaintext highlighter-rouge">[цифры][пробел]руб.</code>, что упростило задачу.</li>
   <li>В поле с адресом буквально располагался всякий мусор.
 С этим уже ничего нельзя было сделать, поэтому решено все затолкать в одну колонку без какой-либо дополнительной обработки.</li>
 </ul>
@@ -3437,7 +3437,7 @@ Root доступ дает не только большие возможност
 </code></pre></div></div>
 </div></details>
 
-<p>Тут как раз можно увидеть появление массива <code class="highlighter-rouge">people</code> наполненный объектами <code class="highlighter-rouge">person</code>.</p>
+<p>Тут как раз можно увидеть появление массива <code class="language-plaintext highlighter-rouge">people</code> наполненный объектами <code class="language-plaintext highlighter-rouge">person</code>.</p>
 
 <h3 id="приведение-к-единому-формату">Приведение к единому формату</h3>
 
@@ -3450,7 +3450,7 @@ Root доступ дает не только большие возможност
 <p>На выходе мы получили массив с информацией о каждом пользователе. Но эта информация не однородна: у кого-то может не быть адреса, у кого-то – телефона или email-a.</p>
 
 <p>Поэтому нужно сделать некоторые атрибуты со значениями по умолчанию.
-Берем все обязательные поля из таблицы и проставляем их в объект <code class="highlighter-rouge">person</code> с указанными стандартными значениям:</p>
+Берем все обязательные поля из таблицы и проставляем их в объект <code class="language-plaintext highlighter-rouge">person</code> с указанными стандартными значениям:</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
     <span class="na">email</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
@@ -3505,7 +3505,7 @@ Root доступ дает не только большие возможност
 </code></pre></div></div>
 
 <p>Результатом проделанных действий будет выплюнутое в консоль содержание CSV файла. 
-С сохранением этого через <code class="highlighter-rouge">fs</code> модуль я не стал. Вот эта команда сделала все за меня:</p>
+С сохранением этого через <code class="language-plaintext highlighter-rouge">fs</code> модуль я не стал. Вот эта команда сделала все за меня:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>node index.js <span class="o">&gt;</span> result.csv
 </code></pre></div></div>
@@ -3652,7 +3652,7 @@ Root доступ дает не только большие возможност
 
 <p>По поводу последнего шага.
 Несмотря на то, что мы почти скопировали поля из таблицы в указанном порядке, есть случаи, когда данные указываются автоматически самой БД.
-В моем случае это было поле <code class="highlighter-rouge">id</code>. Поэтому при импорте достаточно указать в этом поле все атрибуты из объекта <code class="highlighter-rouge">person</code> через запятую:</p>
+В моем случае это было поле <code class="language-plaintext highlighter-rouge">id</code>. Поэтому при импорте достаточно указать в этом поле все атрибуты из объекта <code class="language-plaintext highlighter-rouge">person</code> через запятую:</p>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>email,password,name,middlename,surname,phone,country,zip,region,city,address,tmp_sum,regular_customer,status
 </code></pre></div></div>
@@ -3720,11 +3720,11 @@ Root доступ дает не только большие возможност
 
 <h3 id="немного-истории">Немного истории</h3>
 
-<p>Где-то в “далеком” 2013м был приобретен домен <code class="highlighter-rouge">vtvz.ru</code></p>
+<p>Где-то в “далеком” 2013м был приобретен домен <code class="language-plaintext highlighter-rouge">vtvz.ru</code></p>
 
 <p><em>- Что означают эти буквы?</em></p>
 
-<p>Это почти аббревиатура моего ФИО. Домен из трех букв застолбить не удалось – все 3 варианта (<code class="highlighter-rouge">zvv</code>, <code class="highlighter-rouge">vzv</code>, <code class="highlighter-rouge">vvz</code>) были уже заняты. 
+<p>Это почти аббревиатура моего ФИО. Домен из трех букв застолбить не удалось – все 3 варианта (<code class="language-plaintext highlighter-rouge">zvv</code>, <code class="language-plaintext highlighter-rouge">vzv</code>, <code class="language-plaintext highlighter-rouge">vvz</code>) были уже заняты. 
 Из всех доступных четырехбуквенных вариантов этот приглянулся мне больше всего.</p>
 
 <p>Долгое время это было просто домен, который делал целое ничего.</p>
@@ -3758,7 +3758,7 @@ Root доступ дает не только большие возможност
 
 <p>Блог – это идеальное место, чтобы выплеснуть все, что не дает спать по ночам.</p>
 
-<h3 id="почему-ты-не-использовал-название_сервиса-для-этого">“Почему ты не использовал <code class="highlighter-rouge">%название_сервиса%</code> для этого?”</h3>
+<h3 id="почему-ты-не-использовал-название_сервиса-для-этого">“Почему ты не использовал <code class="language-plaintext highlighter-rouge">%название_сервиса%</code> для этого?”</h3>
 
 <p>Я прекрасно понимаю, что многое до меня уже было сделано:</p>
 

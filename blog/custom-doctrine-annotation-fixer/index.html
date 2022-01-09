@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-    <!--Built at : 2022-01-04 23:04:49-->
+    <!--Built at : 2022-01-09 20:30:19-->
     <head>
         
         <meta charset="utf-8">
@@ -13,7 +13,7 @@
 
         <link rel="stylesheet" href="/assets/css/preloader.b30ac722.css" />
         <link rel="stylesheet" href="/assets/css/bootstrap.303188c3.css" />
-        <link rel="stylesheet" href="/assets/css/main.ecc20f56.css" />
+        <link rel="stylesheet" href="/assets/css/main.2afd053e.css" />
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,500,600,700,800|Roboto:300,400,500,600,700,800&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet" crossorigin="anonymous">
@@ -25,8 +25,8 @@
 
         <meta name="theme-color" content="#232323">
 
-        <!-- Begin Jekyll SEO tag v2.6.1 -->
-<meta name="generator" content="Jekyll v4.0.0" />
+        <!-- Begin Jekyll SEO tag v2.7.1 -->
+<meta name="generator" content="Jekyll v4.2.1" />
 <meta property="og:title" content="Пишем свой Doctrine Annotation Fixer для PHP-CS-Fixer" />
 <meta name="author" content="Vitaly Zaslavsky" />
 <meta property="og:locale" content="ru" />
@@ -46,7 +46,7 @@
 <meta name="google-site-verification" content="40uemu1o4UDeTOeeLKqJVoaPU4CVUjlGI5D9AI1EkNE" />
 <meta name="yandex-verification" content="fa3eb4fcd2ebc4ad" />
 <script type="application/ld+json">
-{"url":"https://vtvz.me/blog/custom-doctrine-annotation-fixer/","author":{"@type":"Person","name":"Vitaly Zaslavsky"},"@type":"BlogPosting","description":"Как написать свой фиксер для PHP-CS-Fixer, который будет исправлять Doctrine аннотации, расставляя и убирая запятые там, где нужно.","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://vtvz.me/assets/images/logo-black.png"},"name":"Vitaly Zaslavsky"},"headline":"Пишем свой Doctrine Annotation Fixer для PHP-CS-Fixer","dateModified":"2019-11-06T00:00:00+03:00","datePublished":"2019-11-06T00:00:00+03:00","image":"https://vtvz.me/assets/images/logo-cover.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://vtvz.me/blog/custom-doctrine-annotation-fixer/"},"@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"Vitaly Zaslavsky"},"url":"https://vtvz.me/blog/custom-doctrine-annotation-fixer/","image":"https://vtvz.me/assets/images/logo-cover.jpg","@type":"BlogPosting","headline":"Пишем свой Doctrine Annotation Fixer для PHP-CS-Fixer","dateModified":"2019-11-06T00:00:00+03:00","description":"Как написать свой фиксер для PHP-CS-Fixer, который будет исправлять Doctrine аннотации, расставляя и убирая запятые там, где нужно.","datePublished":"2019-11-06T00:00:00+03:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://vtvz.me/blog/custom-doctrine-annotation-fixer/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://vtvz.me/assets/images/logo-black.png"},"name":"Vitaly Zaslavsky"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -206,8 +206,8 @@
         
       </h2>
 
-<p>Внутри библиотеки все фиксеры для доктриновских аннотаций унаследованы от класса <code class="highlighter-rouge">\PhpCsFixer\AbstractDoctrineAnnotationFixer</code>
-с одним единственным абстрактным методом <code class="highlighter-rouge">fixAnnotations</code>.</p>
+<p>Внутри библиотеки все фиксеры для доктриновских аннотаций унаследованы от класса <code class="language-plaintext highlighter-rouge">\PhpCsFixer\AbstractDoctrineAnnotationFixer</code>
+с одним единственным абстрактным методом <code class="language-plaintext highlighter-rouge">fixAnnotations</code>.</p>
 
 <p>Исследовав другие фиксеры ближе, можно увидеть, что в этот метод передается только один параметр – коллекция токенов.
 Эта коллекция мутабельная и результат её изменений будет использоваться для формирования итогового кода.</p>
@@ -215,27 +215,27 @@
 <p>Минимально возможный фиксер, который пока ничего не делает, выглядит примерно так:</p>
 
 <div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//  Тут есть пара неиспользуемых импортов, но скоро они будут нужны</span>
-<span class="kn">use</span> <span class="nn">Doctrine\Common\Annotations\DocLexer</span><span class="p">;</span>
-<span class="kn">use</span> <span class="nn">PhpCsFixer\AbstractDoctrineAnnotationFixer</span><span class="p">;</span>
-<span class="kn">use</span> <span class="nn">PhpCsFixer\Doctrine\Annotation\Token</span><span class="p">;</span>
-<span class="kn">use</span> <span class="nn">PhpCsFixer\Doctrine\Annotation\Tokens</span><span class="p">;</span>
-<span class="kn">use</span> <span class="nn">PhpCsFixer\FixerDefinition\FixerDefinition</span><span class="p">;</span>
-<span class="kn">use</span> <span class="nn">PhpCsFixer\FixerDefinition\FixerDefinitionInterface</span><span class="p">;</span>
+<span class="kn">use</span> <span class="nc">Doctrine\Common\Annotations\DocLexer</span><span class="p">;</span>
+<span class="kn">use</span> <span class="nc">PhpCsFixer\AbstractDoctrineAnnotationFixer</span><span class="p">;</span>
+<span class="kn">use</span> <span class="nc">PhpCsFixer\Doctrine\Annotation\Token</span><span class="p">;</span>
+<span class="kn">use</span> <span class="nc">PhpCsFixer\Doctrine\Annotation\Tokens</span><span class="p">;</span>
+<span class="kn">use</span> <span class="nc">PhpCsFixer\FixerDefinition\FixerDefinition</span><span class="p">;</span>
+<span class="kn">use</span> <span class="nc">PhpCsFixer\FixerDefinition\FixerDefinitionInterface</span><span class="p">;</span>
 
-<span class="k">final</span> <span class="kd">class</span> <span class="nc">DoctrineAnnotationCommasFixer</span> <span class="k">extends</span> <span class="nx">AbstractDoctrineAnnotationFixer</span>
+<span class="k">final</span> <span class="kd">class</span> <span class="nc">DoctrineAnnotationCommasFixer</span> <span class="kd">extends</span> <span class="nc">AbstractDoctrineAnnotationFixer</span>
 <span class="p">{</span>
     <span class="cd">/**
      * @return string
      */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="n">getName</span><span class="p">():</span> <span class="kt">string</span>
     <span class="p">{</span>
-        <span class="k">return</span> <span class="k">static</span><span class="o">::</span><span class="na">name</span><span class="p">();</span>
+        <span class="k">return</span> <span class="k">static</span><span class="o">::</span><span class="nf">name</span><span class="p">();</span>
     <span class="p">}</span>
 
     <span class="cd">/**
      * @return string
      */</span>
-    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">name</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="n">name</span><span class="p">():</span> <span class="kt">string</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="s1">'Axmit/doctrine_annotation_commas'</span><span class="p">;</span>
     <span class="p">}</span>
@@ -243,9 +243,9 @@
     <span class="cd">/**
      * @return FixerDefinitionInterface
      */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">getDefinition</span><span class="p">()</span><span class="o">:</span> <span class="nx">FixerDefinitionInterface</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="n">getDefinition</span><span class="p">():</span> <span class="kt">FixerDefinitionInterface</span>
     <span class="p">{</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="nx">FixerDefinition</span><span class="p">(</span><span class="s1">'Fixes commas in Doctrine annotations'</span><span class="p">,</span> <span class="p">[]);</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nc">FixerDefinition</span><span class="p">(</span><span class="s1">'Fixes commas in Doctrine annotations'</span><span class="p">,</span> <span class="p">[]);</span>
     <span class="p">}</span>
 
     <span class="cd">/**
@@ -255,18 +255,18 @@
      *
      * @return void
      */</span>
-    <span class="k">protected</span> <span class="k">function</span> <span class="nf">fixAnnotations</span><span class="p">(</span><span class="nx">Tokens</span> <span class="nv">$tokens</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="n">fixAnnotations</span><span class="p">(</span><span class="kt">Tokens</span> <span class="nv">$tokens</span><span class="p">):</span> <span class="kt">void</span>
     <span class="p">{</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>Обратите особое внимание на методы <code class="highlighter-rouge">name</code> и <code class="highlighter-rouge">getName</code>.
+<p>Обратите особое внимание на методы <code class="language-plaintext highlighter-rouge">name</code> и <code class="language-plaintext highlighter-rouge">getName</code>.
 Имя фиксера должно быть строго в таком формате, иначе будет ошибка
-(регулярки можно посмотреть в <code class="highlighter-rouge">\PhpCsFixer\FixerNameValidator::isValid</code>).
-Статическим методом <code class="highlighter-rouge">name</code> воспользуемся чуть позже.</p>
+(регулярки можно посмотреть в <code class="language-plaintext highlighter-rouge">\PhpCsFixer\FixerNameValidator::isValid</code>).
+Статическим методом <code class="language-plaintext highlighter-rouge">name</code> воспользуемся чуть позже.</p>
 
-<p>Дабы не нагромождать статью простынями кода, все остальные куски исходников будут внутри метода <code class="highlighter-rouge">fixAnnotations</code>.</p>
+<p>Дабы не нагромождать статью простынями кода, все остальные куски исходников будут внутри метода <code class="language-plaintext highlighter-rouge">fixAnnotations</code>.</p>
     
       <h2 id="регистрация">
         
@@ -280,17 +280,17 @@
 Для того, чтобы все заработало, нужно сделать 2 вещи:</p>
 
 <ol>
-  <li>Зарегистрировать фиксер в конфиге (файл <code class="highlighter-rouge">.php_cs.dist</code>):
+  <li>Зарегистрировать фиксер в конфиге (файл <code class="language-plaintext highlighter-rouge">.php_cs.dist</code>):
     <div class="language-php highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code><span class="nv">$config</span><span class="o">-&gt;</span><span class="na">registerCustomFixers</span><span class="p">([</span><span class="k">new</span> <span class="nx">DoctrineAnnotationCommasFixer</span><span class="p">()])</span>
+<div class="highlight"><pre class="highlight"><code><span class="nv">$config</span><span class="o">-&gt;</span><span class="nf">registerCustomFixers</span><span class="p">([</span><span class="k">new</span> <span class="nc">DoctrineAnnotationCommasFixer</span><span class="p">()])</span>
 </code></pre></div>    </div>
     <p>Теперь фиксер знает о существовании этого правила, но пока не использует его.</p>
   </li>
   <li>Включить его в рулзах:
     <div class="language-php highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code><span class="nv">$config</span><span class="o">-&gt;</span><span class="na">setRules</span><span class="p">(</span>
+<div class="highlight"><pre class="highlight"><code><span class="nv">$config</span><span class="o">-&gt;</span><span class="nf">setRules</span><span class="p">(</span>
     <span class="p">[</span>
-        <span class="nx">DoctrineAnnotationCommasFixer</span><span class="o">::</span><span class="na">name</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// помните статический метод name? :-)</span>
+        <span class="nc">DoctrineAnnotationCommasFixer</span><span class="o">::</span><span class="nf">name</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// помните статический метод name? :-)</span>
     <span class="p">]</span>
 <span class="p">)</span>
 </code></pre></div>    </div>
@@ -325,9 +325,9 @@
 Но мы этого делать не будем по причине, которую я объясню позже.</p>
 
 <div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="k">while</span> <span class="p">(</span><span class="nv">$tokens</span><span class="o">-&gt;</span><span class="na">offsetExists</span><span class="p">(</span><span class="nv">$index</span><span class="p">))</span> <span class="p">{</span>
+<span class="k">while</span> <span class="p">(</span><span class="nv">$tokens</span><span class="o">-&gt;</span><span class="nf">offsetExists</span><span class="p">(</span><span class="nv">$index</span><span class="p">))</span> <span class="p">{</span>
     <span class="cd">/** @var Token $token */</span>
-    <span class="nv">$token</span> <span class="o">=</span> <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="na">offsetGet</span><span class="p">(</span><span class="nv">$index</span><span class="p">);</span>
+    <span class="nv">$token</span> <span class="o">=</span> <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="nf">offsetGet</span><span class="p">(</span><span class="nv">$index</span><span class="p">);</span>
 
     <span class="c1">//TODO Add logic here </span>
 
@@ -335,19 +335,19 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>Класс <code class="highlighter-rouge">Token</code> имеет 2 важных свойства – это тип и содержимое.
-Тип является числовым значением, все из которых находятся в классе <code class="highlighter-rouge">DocLexer</code> в виде констант.</p>
+<p>Класс <code class="language-plaintext highlighter-rouge">Token</code> имеет 2 важных свойства – это тип и содержимое.
+Тип является числовым значением, все из которых находятся в классе <code class="language-plaintext highlighter-rouge">DocLexer</code> в виде констант.</p>
 
-<p>Проверить тип токена можно методом <code class="highlighter-rouge">isType</code>, куда можно передать либо одно значение, либо массив:</p>
+<p>Проверить тип токена можно методом <code class="language-plaintext highlighter-rouge">isType</code>, куда можно передать либо одно значение, либо массив:</p>
 
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$token</span><span class="o">-&gt;</span><span class="na">isType</span><span class="p">([</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_CLOSE_CURLY_BRACES</span><span class="p">,</span> <span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_CLOSE_PARENTHESIS</span><span class="p">]);</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$token</span><span class="o">-&gt;</span><span class="nf">isType</span><span class="p">([</span><span class="nc">DocLexer</span><span class="o">::</span><span class="no">T_CLOSE_CURLY_BRACES</span><span class="p">,</span> <span class="nc">DocLexer</span><span class="o">::</span><span class="no">T_CLOSE_PARENTHESIS</span><span class="p">]);</span>
 </code></pre></div></div>
 
 <p>С первым пунктом разобрались – мы нашли все закрывающие скобки.
 Далее нужно вытянуть 2 токена перед текущим:</p>
 
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$prevToken</span>     <span class="o">=</span> <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="na">offsetGet</span><span class="p">(</span><span class="nv">$index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
-<span class="nv">$prevPrevToken</span> <span class="o">=</span> <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="na">offsetGet</span><span class="p">(</span><span class="nv">$index</span> <span class="o">-</span> <span class="mi">2</span><span class="p">);</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$prevToken</span>     <span class="o">=</span> <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="nf">offsetGet</span><span class="p">(</span><span class="nv">$index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nv">$prevPrevToken</span> <span class="o">=</span> <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="nf">offsetGet</span><span class="p">(</span><span class="nv">$index</span> <span class="o">-</span> <span class="mi">2</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p>Далее просто: если предыдущий токен – ничего 
@@ -355,24 +355,24 @@
 стоит отметить, что в коллекции 2 токена “ничего” подряд не бывает),
 и токен перед ним не является запятой, то нужно добавить запятую:</p>
 
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nv">$prevToken</span><span class="o">-&gt;</span><span class="na">isType</span><span class="p">(</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_NONE</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$prevPrevToken</span><span class="o">-&gt;</span><span class="na">isType</span><span class="p">(</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_COMMA</span><span class="p">))</span> <span class="p">{</span>
-    <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="na">insertAt</span><span class="p">(</span><span class="nv">$index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Token</span><span class="p">(</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_COMMA</span><span class="p">,</span> <span class="s1">','</span><span class="p">));</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nv">$prevToken</span><span class="o">-&gt;</span><span class="nf">isType</span><span class="p">(</span><span class="nc">DocLexer</span><span class="o">::</span><span class="no">T_NONE</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$prevPrevToken</span><span class="o">-&gt;</span><span class="nf">isType</span><span class="p">(</span><span class="nc">DocLexer</span><span class="o">::</span><span class="no">T_COMMA</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="nf">insertAt</span><span class="p">(</span><span class="nv">$index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="k">new</span> <span class="nc">Token</span><span class="p">(</span><span class="nc">DocLexer</span><span class="o">::</span><span class="no">T_COMMA</span><span class="p">,</span> <span class="s1">','</span><span class="p">));</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
 <p>Иначе, если сразу перед скобкой стоит запятая – убрать:</p>
 
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">elseif</span> <span class="p">(</span><span class="nv">$prevToken</span><span class="o">-&gt;</span><span class="na">isType</span><span class="p">(</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_COMMA</span><span class="p">))</span> <span class="p">{</span>
-    <span class="nv">$prevToken</span><span class="o">-&gt;</span><span class="na">clear</span><span class="p">();</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">elseif</span> <span class="p">(</span><span class="nv">$prevToken</span><span class="o">-&gt;</span><span class="nf">isType</span><span class="p">(</span><span class="nc">DocLexer</span><span class="o">::</span><span class="no">T_COMMA</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nv">$prevToken</span><span class="o">-&gt;</span><span class="nf">clear</span><span class="p">();</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
 <p>И вроде бы уже все, но если попробовать запустить фиксер с этим правилом, он никогда не завершит свою работу.
 Проблема кроется там, где мы добавляем запятую – программа уходит в бесконечный цикл.
-Чтобы решить эту проблему, достаточно добавить еще один <code class="highlighter-rouge">$index++</code> после добавления запятой:</p>
+Чтобы решить эту проблему, достаточно добавить еще один <code class="language-plaintext highlighter-rouge">$index++</code> после добавления запятой:</p>
 
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nv">$prevToken</span><span class="o">-&gt;</span><span class="na">isType</span><span class="p">(</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_NONE</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$prevPrevToken</span><span class="o">-&gt;</span><span class="na">isType</span><span class="p">(</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_COMMA</span><span class="p">))</span> <span class="p">{</span>
-    <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="na">insertAt</span><span class="p">(</span><span class="nv">$index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Token</span><span class="p">(</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_COMMA</span><span class="p">,</span> <span class="s1">','</span><span class="p">));</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nv">$prevToken</span><span class="o">-&gt;</span><span class="nf">isType</span><span class="p">(</span><span class="nc">DocLexer</span><span class="o">::</span><span class="no">T_NONE</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$prevPrevToken</span><span class="o">-&gt;</span><span class="nf">isType</span><span class="p">(</span><span class="nc">DocLexer</span><span class="o">::</span><span class="no">T_COMMA</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="nf">insertAt</span><span class="p">(</span><span class="nv">$index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="k">new</span> <span class="nc">Token</span><span class="p">(</span><span class="nc">DocLexer</span><span class="o">::</span><span class="no">T_COMMA</span><span class="p">,</span> <span class="s1">','</span><span class="p">));</span>
     <span class="nv">$index</span><span class="o">++</span><span class="p">;</span> <span class="c1">// причина, по которой нужен был цикл while вместо for</span>
 <span class="p">}</span>
 </code></pre></div></div>
@@ -382,27 +382,27 @@
 <details class="spoiler"><summary class="spoiler-title">Собрав все воедино</summary><div class="spoiler-body">
 <div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
 
-<span class="kn">use</span> <span class="nn">Doctrine\Common\Annotations\DocLexer</span><span class="p">;</span>
-<span class="kn">use</span> <span class="nn">PhpCsFixer\AbstractDoctrineAnnotationFixer</span><span class="p">;</span>
-<span class="kn">use</span> <span class="nn">PhpCsFixer\Doctrine\Annotation\Token</span><span class="p">;</span>
-<span class="kn">use</span> <span class="nn">PhpCsFixer\Doctrine\Annotation\Tokens</span><span class="p">;</span>
-<span class="kn">use</span> <span class="nn">PhpCsFixer\FixerDefinition\FixerDefinition</span><span class="p">;</span>
-<span class="kn">use</span> <span class="nn">PhpCsFixer\FixerDefinition\FixerDefinitionInterface</span><span class="p">;</span>
+<span class="kn">use</span> <span class="nc">Doctrine\Common\Annotations\DocLexer</span><span class="p">;</span>
+<span class="kn">use</span> <span class="nc">PhpCsFixer\AbstractDoctrineAnnotationFixer</span><span class="p">;</span>
+<span class="kn">use</span> <span class="nc">PhpCsFixer\Doctrine\Annotation\Token</span><span class="p">;</span>
+<span class="kn">use</span> <span class="nc">PhpCsFixer\Doctrine\Annotation\Tokens</span><span class="p">;</span>
+<span class="kn">use</span> <span class="nc">PhpCsFixer\FixerDefinition\FixerDefinition</span><span class="p">;</span>
+<span class="kn">use</span> <span class="nc">PhpCsFixer\FixerDefinition\FixerDefinitionInterface</span><span class="p">;</span>
 
-<span class="k">final</span> <span class="kd">class</span> <span class="nc">DoctrineAnnotationCommasFixer</span> <span class="k">extends</span> <span class="nx">AbstractDoctrineAnnotationFixer</span>
+<span class="k">final</span> <span class="kd">class</span> <span class="nc">DoctrineAnnotationCommasFixer</span> <span class="kd">extends</span> <span class="nc">AbstractDoctrineAnnotationFixer</span>
 <span class="p">{</span>
     <span class="cd">/**
      * @return string
      */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="n">getName</span><span class="p">():</span> <span class="kt">string</span>
     <span class="p">{</span>
-        <span class="k">return</span> <span class="k">static</span><span class="o">::</span><span class="na">name</span><span class="p">();</span>
+        <span class="k">return</span> <span class="k">static</span><span class="o">::</span><span class="nf">name</span><span class="p">();</span>
     <span class="p">}</span>
 
     <span class="cd">/**
      * @return string
      */</span>
-    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">name</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="n">name</span><span class="p">():</span> <span class="kt">string</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="s1">'Axmit/doctrine_annotation_commas'</span><span class="p">;</span>
     <span class="p">}</span>
@@ -410,9 +410,9 @@
     <span class="cd">/**
      * @return FixerDefinitionInterface
      */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">getDefinition</span><span class="p">()</span><span class="o">:</span> <span class="nx">FixerDefinitionInterface</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="n">getDefinition</span><span class="p">():</span> <span class="kt">FixerDefinitionInterface</span>
     <span class="p">{</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="nx">FixerDefinition</span><span class="p">(</span><span class="s1">'Fixes commas in Doctrine annotations'</span><span class="p">,</span> <span class="p">[]);</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nc">FixerDefinition</span><span class="p">(</span><span class="s1">'Fixes commas in Doctrine annotations'</span><span class="p">,</span> <span class="p">[]);</span>
     <span class="p">}</span>
 
     <span class="cd">/**
@@ -422,21 +422,21 @@
      *
      * @return void
      */</span>
-    <span class="k">protected</span> <span class="k">function</span> <span class="nf">fixAnnotations</span><span class="p">(</span><span class="nx">Tokens</span> <span class="nv">$tokens</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="n">fixAnnotations</span><span class="p">(</span><span class="kt">Tokens</span> <span class="nv">$tokens</span><span class="p">):</span> <span class="kt">void</span>
     <span class="p">{</span>
         <span class="nv">$index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="k">while</span> <span class="p">(</span><span class="nv">$tokens</span><span class="o">-&gt;</span><span class="na">offsetExists</span><span class="p">(</span><span class="nv">$index</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">while</span> <span class="p">(</span><span class="nv">$tokens</span><span class="o">-&gt;</span><span class="nf">offsetExists</span><span class="p">(</span><span class="nv">$index</span><span class="p">))</span> <span class="p">{</span>
             <span class="cd">/** @var Token $token */</span>
-            <span class="nv">$token</span> <span class="o">=</span> <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="na">offsetGet</span><span class="p">(</span><span class="nv">$index</span><span class="p">);</span>
+            <span class="nv">$token</span> <span class="o">=</span> <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="nf">offsetGet</span><span class="p">(</span><span class="nv">$index</span><span class="p">);</span>
 
-            <span class="k">if</span> <span class="p">(</span><span class="nv">$token</span><span class="o">-&gt;</span><span class="na">isType</span><span class="p">([</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_CLOSE_CURLY_BRACES</span><span class="p">,</span> <span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_CLOSE_PARENTHESIS</span><span class="p">]))</span> <span class="p">{</span>
-                <span class="nv">$prevToken</span>     <span class="o">=</span> <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="na">offsetGet</span><span class="p">(</span><span class="nv">$index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
-                <span class="nv">$prevPrevToken</span> <span class="o">=</span> <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="na">offsetGet</span><span class="p">(</span><span class="nv">$index</span> <span class="o">-</span> <span class="mi">2</span><span class="p">);</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nv">$prevToken</span><span class="o">-&gt;</span><span class="na">isType</span><span class="p">(</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_NONE</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$prevPrevToken</span><span class="o">-&gt;</span><span class="na">isType</span><span class="p">(</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_COMMA</span><span class="p">))</span> <span class="p">{</span>
-                    <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="na">insertAt</span><span class="p">(</span><span class="nv">$index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Token</span><span class="p">(</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_COMMA</span><span class="p">,</span> <span class="s1">','</span><span class="p">));</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$token</span><span class="o">-&gt;</span><span class="nf">isType</span><span class="p">([</span><span class="nc">DocLexer</span><span class="o">::</span><span class="no">T_CLOSE_CURLY_BRACES</span><span class="p">,</span> <span class="nc">DocLexer</span><span class="o">::</span><span class="no">T_CLOSE_PARENTHESIS</span><span class="p">]))</span> <span class="p">{</span>
+                <span class="nv">$prevToken</span>     <span class="o">=</span> <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="nf">offsetGet</span><span class="p">(</span><span class="nv">$index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+                <span class="nv">$prevPrevToken</span> <span class="o">=</span> <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="nf">offsetGet</span><span class="p">(</span><span class="nv">$index</span> <span class="o">-</span> <span class="mi">2</span><span class="p">);</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$prevToken</span><span class="o">-&gt;</span><span class="nf">isType</span><span class="p">(</span><span class="nc">DocLexer</span><span class="o">::</span><span class="no">T_NONE</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$prevPrevToken</span><span class="o">-&gt;</span><span class="nf">isType</span><span class="p">(</span><span class="nc">DocLexer</span><span class="o">::</span><span class="no">T_COMMA</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="nv">$tokens</span><span class="o">-&gt;</span><span class="nf">insertAt</span><span class="p">(</span><span class="nv">$index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="k">new</span> <span class="nc">Token</span><span class="p">(</span><span class="nc">DocLexer</span><span class="o">::</span><span class="no">T_COMMA</span><span class="p">,</span> <span class="s1">','</span><span class="p">));</span>
                     <span class="nv">$index</span><span class="o">++</span><span class="p">;</span> <span class="c1">// prevent infinite loop</span>
-                <span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$prevToken</span><span class="o">-&gt;</span><span class="na">isType</span><span class="p">(</span><span class="nx">DocLexer</span><span class="o">::</span><span class="na">T_COMMA</span><span class="p">))</span> <span class="p">{</span>
-                    <span class="nv">$prevToken</span><span class="o">-&gt;</span><span class="na">clear</span><span class="p">();</span>
+                <span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$prevToken</span><span class="o">-&gt;</span><span class="nf">isType</span><span class="p">(</span><span class="nc">DocLexer</span><span class="o">::</span><span class="no">T_COMMA</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="nv">$prevToken</span><span class="o">-&gt;</span><span class="nf">clear</span><span class="p">();</span>
                 <span class="p">}</span>
             <span class="p">}</span>
 
@@ -459,11 +459,11 @@
 <p>Тут стоит отметить пару моментов:</p>
 
 <ol>
-  <li>Если вы, как и я, пользуетесь PHPStorm, то вы могли увидеть, что классы <code class="highlighter-rouge">AbstractDoctrineAnnotationFixer</code>, <code class="highlighter-rouge">Token</code> и <code class="highlighter-rouge">Tokens</code> зачеркнуты.
-А происходит это по простой причине – они помечены как внутренние тегом <code class="highlighter-rouge">@internal</code>.
+  <li>Если вы, как и я, пользуетесь PHPStorm, то вы могли увидеть, что классы <code class="language-plaintext highlighter-rouge">AbstractDoctrineAnnotationFixer</code>, <code class="language-plaintext highlighter-rouge">Token</code> и <code class="language-plaintext highlighter-rouge">Tokens</code> зачеркнуты.
+А происходит это по простой причине – они помечены как внутренние тегом <code class="language-plaintext highlighter-rouge">@internal</code>.
 Для нас это означает то, что наш фикс может сломаться в любой момент даже между минорными версиями,
 так как никто не обещает стабильного API во внутреннем коде.
-(на момент написания статьи использовался <code class="highlighter-rouge">friendsofphp/php-cs-fixer:v2.15.1</code>)
+(на момент написания статьи использовался <code class="language-plaintext highlighter-rouge">friendsofphp/php-cs-fixer:v2.15.1</code>)
 Так что… все на свой страх и риск.</li>
   <li>Тесты… Я уверен, что для этого можно и нужно писать тесты, в том числе и для проверки совместимости с новой версией фиксера,
 но делать я этого не стал.

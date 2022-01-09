@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-    <!--Built at : 2022-01-04 23:04:50-->
+    <!--Built at : 2022-01-09 20:30:20-->
     <head>
         
         <meta charset="utf-8">
@@ -13,7 +13,7 @@
 
         <link rel="stylesheet" href="/assets/css/preloader.b30ac722.css" />
         <link rel="stylesheet" href="/assets/css/bootstrap.303188c3.css" />
-        <link rel="stylesheet" href="/assets/css/main.ecc20f56.css" />
+        <link rel="stylesheet" href="/assets/css/main.2afd053e.css" />
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,500,600,700,800|Roboto:300,400,500,600,700,800&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet" crossorigin="anonymous">
@@ -25,8 +25,8 @@
 
         <meta name="theme-color" content="#232323">
 
-        <!-- Begin Jekyll SEO tag v2.6.1 -->
-<meta name="generator" content="Jekyll v4.0.0" />
+        <!-- Begin Jekyll SEO tag v2.7.1 -->
+<meta name="generator" content="Jekyll v4.2.1" />
 <meta property="og:title" content="Настройка robots.txt в Kubernetes" />
 <meta name="author" content="Vitaly Zaslavsky" />
 <meta property="og:locale" content="ru" />
@@ -46,7 +46,7 @@
 <meta name="google-site-verification" content="40uemu1o4UDeTOeeLKqJVoaPU4CVUjlGI5D9AI1EkNE" />
 <meta name="yandex-verification" content="fa3eb4fcd2ebc4ad" />
 <script type="application/ld+json">
-{"url":"https://vtvz.me/blog/robots-txt-in-kubernetes/","author":{"@type":"Person","name":"Vitaly Zaslavsky"},"@type":"BlogPosting","description":"Универсальный способ указания robots.txt файла с использованием механизмов Kubernetes","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://vtvz.me/assets/images/logo-black.png"},"name":"Vitaly Zaslavsky"},"headline":"Настройка robots.txt в Kubernetes","dateModified":"2020-03-21T00:00:00+03:00","datePublished":"2020-03-21T00:00:00+03:00","image":"https://vtvz.me/blog/robots-txt-in-kubernetes/cover.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://vtvz.me/blog/robots-txt-in-kubernetes/"},"@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"Vitaly Zaslavsky"},"url":"https://vtvz.me/blog/robots-txt-in-kubernetes/","image":"https://vtvz.me/blog/robots-txt-in-kubernetes/cover.png","@type":"BlogPosting","headline":"Настройка robots.txt в Kubernetes","dateModified":"2020-03-21T00:00:00+03:00","description":"Универсальный способ указания robots.txt файла с использованием механизмов Kubernetes","datePublished":"2020-03-21T00:00:00+03:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://vtvz.me/blog/robots-txt-in-kubernetes/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://vtvz.me/assets/images/logo-black.png"},"name":"Vitaly Zaslavsky"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -199,8 +199,8 @@
 
 <p>Вы можете взять самый легкий чистый образ с Nginx,
 куда с помощью ConfigMap примонтировать как конфиг сервера,
-так и содержимое файла <code class="highlighter-rouge">robots.txt</code>.
-После этого достаточно только настроить Ingress на то, чтобы он все запросы на <code class="highlighter-rouge">/robots.txt</code> направлял в этот контейнер.</p>
+так и содержимое файла <code class="language-plaintext highlighter-rouge">robots.txt</code>.
+После этого достаточно только настроить Ingress на то, чтобы он все запросы на <code class="language-plaintext highlighter-rouge">/robots.txt</code> направлял в этот контейнер.</p>
 
 <p>Примеры конфигов приводить не буду, так как есть вариант получше.</p>
     
@@ -235,8 +235,8 @@
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">metadata</span><span class="pi">:</span>
   <span class="na">annotations</span><span class="pi">:</span>
-    <span class="s">kubernetes.io/ingress.class</span><span class="pi">:</span> <span class="s">nginx</span>
-    <span class="s">nginx.ingress.kubernetes.io/server-snippet</span><span class="pi">:</span> <span class="pi">|</span>
+    <span class="na">kubernetes.io/ingress.class</span><span class="pi">:</span> <span class="s">nginx</span>
+    <span class="na">nginx.ingress.kubernetes.io/server-snippet</span><span class="pi">:</span> <span class="pi">|</span>
       <span class="s">location = /robots.txt {</span>
         <span class="s">add_header Content-Type text/plain;</span>
         <span class="s">return 200 'User-agent: *\nDisallow: /\n';</span>
@@ -244,7 +244,7 @@
 </code></pre></div></div>
 
 <p>Да, Nginx умеет не только выдавать статику или проксировать запросы. Он может генерировать ответ самостоятельно.
-Строка <code class="highlighter-rouge">return 200 'Content'</code> именно это и делает.</p>
+Строка <code class="language-plaintext highlighter-rouge">return 200 'Content'</code> именно это и делает.</p>
 
 <p>Таким образом, мы решили задачу буквально в <strong>5 строк</strong>.</p>
     
@@ -262,7 +262,7 @@
 <p>Поэтому можно сделать так:</p>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">{{</span><span class="nv">- if ne .Values.env "production"</span> <span class="pi">}}</span>
-<span class="s">nginx.ingress.kubernetes.io/server-snippet</span><span class="pi">:</span> <span class="pi">|</span>
+<span class="na">nginx.ingress.kubernetes.io/server-snippet</span><span class="pi">:</span> <span class="pi">|</span>
   <span class="s">location = /robots.txt {</span>
     <span class="s">add_header Content-Type text/plain;</span>
     <span class="s">return 200 'User-agent: *\nDisallow: /\n';</span>
@@ -275,7 +275,7 @@
 <p>Либо так, если хочется большей власти:</p>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">{{</span><span class="nv">- if .Values.disallowRobots</span> <span class="pi">}}</span>
-<span class="s">nginx.ingress.kubernetes.io/server-snippet</span><span class="pi">:</span> <span class="pi">|</span>
+<span class="na">nginx.ingress.kubernetes.io/server-snippet</span><span class="pi">:</span> <span class="pi">|</span>
   <span class="s">location = /robots.txt {</span>
     <span class="s">add_header Content-Type text/plain;</span>
     <span class="s">return 200 'User-agent: *\nDisallow: /\n';</span>

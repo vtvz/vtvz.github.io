@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-    <!--Built at : 2022-01-04 23:04:49-->
+    <!--Built at : 2022-01-09 20:30:19-->
     <head>
         
         <meta charset="utf-8">
@@ -13,7 +13,7 @@
 
         <link rel="stylesheet" href="/assets/css/preloader.b30ac722.css" />
         <link rel="stylesheet" href="/assets/css/bootstrap.303188c3.css" />
-        <link rel="stylesheet" href="/assets/css/main.ecc20f56.css" />
+        <link rel="stylesheet" href="/assets/css/main.2afd053e.css" />
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,500,600,700,800|Roboto:300,400,500,600,700,800&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet" crossorigin="anonymous">
@@ -25,8 +25,8 @@
 
         <meta name="theme-color" content="#232323">
 
-        <!-- Begin Jekyll SEO tag v2.6.1 -->
-<meta name="generator" content="Jekyll v4.0.0" />
+        <!-- Begin Jekyll SEO tag v2.7.1 -->
+<meta name="generator" content="Jekyll v4.2.1" />
 <meta property="og:title" content="HTML to MySQL. Или Веб-скрапинг на практике" />
 <meta name="author" content="Vitaly Zaslavsky" />
 <meta property="og:locale" content="ru" />
@@ -46,7 +46,7 @@
 <meta name="google-site-verification" content="40uemu1o4UDeTOeeLKqJVoaPU4CVUjlGI5D9AI1EkNE" />
 <meta name="yandex-verification" content="fa3eb4fcd2ebc4ad" />
 <script type="application/ld+json">
-{"url":"https://vtvz.me/blog/html-to-mysql/","author":{"@type":"Person","name":"Vitaly Zaslavsky"},"@type":"BlogPosting","description":"Как перенести данные из одного сайта в другой, если нет доступа к БД","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://vtvz.me/assets/images/logo-black.png"},"name":"Vitaly Zaslavsky"},"headline":"HTML to MySQL. Или Веб-скрапинг на практике","dateModified":"2019-02-19T00:00:00+03:00","datePublished":"2019-02-19T00:00:00+03:00","image":"https://vtvz.me/assets/images/logo-cover.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://vtvz.me/blog/html-to-mysql/"},"@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"Vitaly Zaslavsky"},"url":"https://vtvz.me/blog/html-to-mysql/","image":"https://vtvz.me/assets/images/logo-cover.jpg","@type":"BlogPosting","headline":"HTML to MySQL. Или Веб-скрапинг на практике","dateModified":"2019-02-19T00:00:00+03:00","description":"Как перенести данные из одного сайта в другой, если нет доступа к БД","datePublished":"2019-02-19T00:00:00+03:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://vtvz.me/blog/html-to-mysql/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://vtvz.me/assets/images/logo-black.png"},"name":"Vitaly Zaslavsky"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -221,7 +221,7 @@
       </h2>
 
 <p>Был у меня опыт вытягивания данных из новостной ленты одного сайта.
-Это были публичные данные, поэтому собрать их не с труда любым способом. И я использовал <code class="highlighter-rouge">request</code>.</p>
+Это были публичные данные, поэтому собрать их не с труда любым способом. И я использовал <code class="language-plaintext highlighter-rouge">request</code>.</p>
 
 <p>Тут ситуация немного другая – доступ был запаролен, скорее всего с помощью PHP сессий.
 Быстрый эксперимент с подстановкой Cookie из браузера не дал положительного результата.
@@ -245,7 +245,7 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>И Вуаля! В массиве <code class="highlighter-rouge">results</code> лежат исходники всех 73 страниц.
+<p>И Вуаля! В массиве <code class="language-plaintext highlighter-rouge">results</code> лежат исходники всех 73 страниц.
 Тут можно пойти двумя путями: работать с данными дальше в браузере
 или сохранить их на комп и обрабатывать средствами NodeJs. Я выбрал второй. Так проще и быстрее.</p>
 
@@ -328,12 +328,12 @@
 
 <p>Если кратко прорезюмировать:</p>
 <ul>
-  <li>Все элементы списка располагаются внутри <code class="highlighter-rouge">#centercolumn .list-view</code>.
-На самом деле все <code class="highlighter-rouge">.list-view</code> появляется на странице единожды и нет никакой надобности уточнять его расположение.</li>
-  <li>Каждый элемент списка имеет класс <code class="highlighter-rouge">.item</code>. Это важно, потому что внутри <code class="highlighter-rouge">.list-view</code> еще есть информация о количестве записей (“Показаны записи 1-20 из 1462”) и пагинация.</li>
-  <li>Каждый кусочек данных располагается внутри элемента <code class="highlighter-rouge">p</code>.</li>
+  <li>Все элементы списка располагаются внутри <code class="language-plaintext highlighter-rouge">#centercolumn .list-view</code>.
+На самом деле все <code class="language-plaintext highlighter-rouge">.list-view</code> появляется на странице единожды и нет никакой надобности уточнять его расположение.</li>
+  <li>Каждый элемент списка имеет класс <code class="language-plaintext highlighter-rouge">.item</code>. Это важно, потому что внутри <code class="language-plaintext highlighter-rouge">.list-view</code> еще есть информация о количестве записей (“Показаны записи 1-20 из 1462”) и пагинация.</li>
+  <li>Каждый кусочек данных располагается внутри элемента <code class="language-plaintext highlighter-rouge">p</code>.</li>
   <li>Каждый тип данных никак не отделяется классом. То есть внутри одинаковых элементов с одинаковыми классами лежат разные данные.</li>
-  <li>Внутри почти каждого параграфа есть элемент с классом <code class="highlighter-rouge">.grey</code>, который и определяет тип.</li>
+  <li>Внутри почти каждого параграфа есть элемент с классом <code class="language-plaintext highlighter-rouge">.grey</code>, который и определяет тип.</li>
   <li>Количество данных не консистентно – не во всех записях есть Email и Телефон.</li>
   <li>Сами данные тоже не имеют какого-то стандарта.
 Адрес записан в произвольном формате (есть случаи, где в качестве адреса указаны “F”, “SPb” или “………”).
@@ -358,8 +358,8 @@
       </h3>
 
 <p>Первое, что нужно выяснить, какие типы данных у нас в принципе имеются во всех записях.
-Для этого можно вытянуть все <code class="highlighter-rouge">p .grey</code> и найти уникальные значения.
-В современном JS есть замечательный класс <code class="highlighter-rouge">Set</code>, который хранит в себе набор уникальных значений.
+Для этого можно вытянуть все <code class="language-plaintext highlighter-rouge">p .grey</code> и найти уникальные значения.
+В современном JS есть замечательный класс <code class="language-plaintext highlighter-rouge">Set</code>, который хранит в себе набор уникальных значений.
 Если добавить то, что уже есть, операция будет проигнорирована.</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">cheerio</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">cheerio</span><span class="dl">'</span><span class="p">);</span>
@@ -400,8 +400,8 @@
 </code></pre></div></div>
 
 <p>То есть у нас есть 7 явных значений и одно “пустое”.
-Краткий анализ содержания этой строки показал, что кроме <code class="highlighter-rouge">Заходил(а)</code> там ничего нет.
-Пустое значение объясняется тем, что в этом поле нет дочернего элемента <code class="highlighter-rouge">.grey</code>. Но нам это никак не мешает.</p>
+Краткий анализ содержания этой строки показал, что кроме <code class="language-plaintext highlighter-rouge">Заходил(а)</code> там ничего нет.
+Пустое значение объясняется тем, что в этом поле нет дочернего элемента <code class="language-plaintext highlighter-rouge">.grey</code>. Но нам это никак не мешает.</p>
     
       <h3 id="получение-чистых-данных">
         
@@ -411,7 +411,7 @@
         
       </h3>
 
-<p>Во время анализа мы выяснили, что нужные нам данные лежат в параграфе (<code class="highlighter-rouge">p</code>) без потомков.</p>
+<p>Во время анализа мы выяснили, что нужные нам данные лежат в параграфе (<code class="language-plaintext highlighter-rouge">p</code>) без потомков.</p>
 
 <p>Так и гуглим: <a href="https://www.google.com/search?q=jquery+get+text+without+child+elements" target="_blank" rel="noopener noreferrer">jquery get text without child elements</a></p>
 
@@ -425,7 +425,7 @@
     <span class="p">.</span><span class="nx">text</span><span class="p">();</span>
 </code></pre></div></div>
 
-<p>Помимо этого нужно убрать все лишние переносы и повторяющиеся пробелы, поэтому после <code class="highlighter-rouge">.text()</code> добавляем еще 2 вызова:</p>
+<p>Помимо этого нужно убрать все лишние переносы и повторяющиеся пробелы, поэтому после <code class="language-plaintext highlighter-rouge">.text()</code> добавляем еще 2 вызова:</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="p">.</span><span class="nx">trim</span><span class="p">()</span>
     <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">[\s]</span><span class="sr">+/g</span><span class="p">,</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span><span class="p">);</span>
@@ -509,7 +509,7 @@
 В одном случае ФИО было разделено 2мя пробелами между частями. Поэтому очистка повторяющихся пробелов была очень кстати.</li>
   <li>Поле “Тип” в большинстве своем имеет одно их 2-х значений: “Обычный покупатель” и “Постоянный покупатель”.
 Но нашлись 3 записи формата “Представитель из Название_города”. Их решено пометить как “Постоянных покупателей”.</li>
-  <li>Поле “До получения/продления скидки осталось” <strong>всегда</strong> имеет формат <code class="highlighter-rouge">[цифры][пробел]руб.</code>, что упростило задачу.</li>
+  <li>Поле “До получения/продления скидки осталось” <strong>всегда</strong> имеет формат <code class="language-plaintext highlighter-rouge">[цифры][пробел]руб.</code>, что упростило задачу.</li>
   <li>В поле с адресом буквально располагался всякий мусор.
 С этим уже ничего нельзя было сделать, поэтому решено все затолкать в одну колонку без какой-либо дополнительной обработки.</li>
 </ul>
@@ -618,7 +618,7 @@
 </code></pre></div></div>
 </div></details>
 
-<p>Тут как раз можно увидеть появление массива <code class="highlighter-rouge">people</code> наполненный объектами <code class="highlighter-rouge">person</code>.</p>
+<p>Тут как раз можно увидеть появление массива <code class="language-plaintext highlighter-rouge">people</code> наполненный объектами <code class="language-plaintext highlighter-rouge">person</code>.</p>
     
       <h3 id="приведение-к-единому-формату">
         
@@ -637,7 +637,7 @@
 <p>На выходе мы получили массив с информацией о каждом пользователе. Но эта информация не однородна: у кого-то может не быть адреса, у кого-то – телефона или email-a.</p>
 
 <p>Поэтому нужно сделать некоторые атрибуты со значениями по умолчанию.
-Берем все обязательные поля из таблицы и проставляем их в объект <code class="highlighter-rouge">person</code> с указанными стандартными значениям:</p>
+Берем все обязательные поля из таблицы и проставляем их в объект <code class="language-plaintext highlighter-rouge">person</code> с указанными стандартными значениям:</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
     <span class="na">email</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
@@ -698,7 +698,7 @@
 </code></pre></div></div>
 
 <p>Результатом проделанных действий будет выплюнутое в консоль содержание CSV файла. 
-С сохранением этого через <code class="highlighter-rouge">fs</code> модуль я не стал. Вот эта команда сделала все за меня:</p>
+С сохранением этого через <code class="language-plaintext highlighter-rouge">fs</code> модуль я не стал. Вот эта команда сделала все за меня:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>node index.js <span class="o">&gt;</span> result.csv
 </code></pre></div></div>
@@ -857,7 +857,7 @@
 
 <p>По поводу последнего шага.
 Несмотря на то, что мы почти скопировали поля из таблицы в указанном порядке, есть случаи, когда данные указываются автоматически самой БД.
-В моем случае это было поле <code class="highlighter-rouge">id</code>. Поэтому при импорте достаточно указать в этом поле все атрибуты из объекта <code class="highlighter-rouge">person</code> через запятую:</p>
+В моем случае это было поле <code class="language-plaintext highlighter-rouge">id</code>. Поэтому при импорте достаточно указать в этом поле все атрибуты из объекта <code class="language-plaintext highlighter-rouge">person</code> через запятую:</p>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>email,password,name,middlename,surname,phone,country,zip,region,city,address,tmp_sum,regular_customer,status
 </code></pre></div></div>
