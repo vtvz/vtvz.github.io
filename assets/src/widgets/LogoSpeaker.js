@@ -92,8 +92,8 @@ export default class LogoSpeaker {
 
     async loading(timeout) {
         const dots = 3;
-        const empty = '<i class="far fa-circle" />';
-        const filled = '<i class="fas fa-circle" />';
+        const empty = '<i class="fa-regular fa-circle" />';
+        const filled = '<i class="fa-solid fa-circle" />';
 
         let time = 0;
         let i = 0;

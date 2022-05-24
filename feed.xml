@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en_GB"><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://vtvz.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vtvz.me/" rel="alternate" type="text/html" hreflang="en_GB" /><updated>2022-05-23T12:33:19+03:00</updated><id>https://vtvz.me/feed.xml</id><title type="html">Vitaly Zaslavsky – DevOps Engineer, who loves his job</title><subtitle>DevOps engineer's personal blog about everything. Notes on successes and failures in professional activities, about finding solutions to practical problems, and just about life.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en_GB"><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://vtvz.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vtvz.me/" rel="alternate" type="text/html" hreflang="en_GB" /><updated>2022-05-24T13:04:16+03:00</updated><id>https://vtvz.me/feed.xml</id><title type="html">Vitaly Zaslavsky – DevOps Engineer, who loves his job</title><subtitle>DevOps engineer&apos;s personal blog about everything. Notes on successes and failures in professional activities, about finding solutions to practical problems, and just about life.
 </subtitle><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><entry xml:lang="ru"><title type="html">Аккуратно внедряем Emoji, не ломая все остальное</title><link href="https://vtvz.me/blog/reliable-emojification/" rel="alternate" type="text/html" title="Аккуратно внедряем Emoji, не ломая все остальное" /><published>2020-05-15T00:00:00+03:00</published><updated>2020-05-15T00:00:00+03:00</updated><id>https://vtvz.me/blog/reliable-emojification</id><content type="html" xml:base="https://vtvz.me/blog/reliable-emojification/"><![CDATA[<p>Emoji стали неотъемлемой частью нашей культуры.
 И я их активно использую в своих статьях.
 Ранее я использовал плагин для jekyll <a href="https://github.com/jekyll/jemoji">jemoji</a>,
@@ -600,13 +600,13 @@
 <h2 id="коллекции">Коллекции</h2>
 
 <p>Начну с фундаментальных вещей. На сайте появился полноценный раздел, который я решил назвать “<a href="/collections/">Коллекциями</a>”.
-Сначала были одни <a href="/achievements/"><i class="fas fa-trophy"></i> достижения</a> – мои успехи в личной и профессиональной жизни.
+Сначала были одни <a href="/achievements/"><i class="fa-solid fa-trophy"></i> достижения</a> – мои успехи в личной и профессиональной жизни.
 И выглядел он очень даже неплохо. Каждое достижение – это отдельная карточка,
 в которой собраны ссылки и материалы, использованные мной.</p>
 
 <p>Ко всему этому туда были добавлены 
-<a href="/notes/"><i class="fas fa-sticky-note"></i> заметки</a> 
-и <a href="/bookmarks/"><i class="fas fa-bookmark"></i> закладки</a>.
+<a href="/notes/"><i class="fa-solid fa-sticky-note"></i> заметки</a> 
+и <a href="/bookmarks/"><i class="fa-solid fa-bookmark"></i> закладки</a>.
 Первые – для записи коротких мыслей на свободные темы.
 Вторые – для сохранения ссылок на интересные и полезные материалы.
 Опять же, чтобы не плодить десяток разделов с несколькими записями в каждом,
@@ -632,7 +632,7 @@
 <ol>
   <li>Если у вас есть любимые красивые цветовые градиенты, отправьте их мне любым <a href="/">доступным способом</a>.</li>
   <li>Также, вы можете <a href="https://fontawesome.com/icons?d=gallery&amp;s=solid&amp;m=free">выбрать красивую иконку</a> для раздела коллекций.
- Я пока выбрал звездочку <i class="fas fa-star fa-fw"></i>, но, возможно, у вас будет идея получше :wink:</li>
+ Я пока выбрал звездочку <i class="fa-solid fa-star fa-fw"></i>, но, возможно, у вас будет идея получше :wink:</li>
 </ol>
 
 <h2 id="иконка">Иконка</h2>
@@ -1121,7 +1121,7 @@ Firefox в этом плане очень проигрывает.
 </ol>
 
 <p>Старый домен все еще живой. С него будут осуществляться все перенаправления на новый сайт.
-(vtvz.ru/blog <i class="fas fa-chevron-right"></i> vtvz.me/blog)</p>
+(vtvz.ru/blog <i class="fa-solid fa-chevron-right"></i> vtvz.me/blog)</p>
 
 <p>Переезд затронул не только мой сайт, но еще и некоторые другие сервисы:</p>
 

@@ -1,35 +1,43 @@
+export DOCKER_BUILDKIT := "1"
+
 # Show this help
 help:
   @just --list --unsorted
 
-install:
-	docker-compose run -u 1000:1000 webpack ./node_modules/.bin/webpack --mode=production
+# Start jekyll and assets continues building
+up *args:
+	docker-compose up -d {{ args }}
 
-up: ## Start jekyll and assets continius building
-	docker-compose up -d
 
-webpack: ## Bash of webpack container
-	docker-compose exec webpack sh
-
-jekyll: ## Bash of jekyll container
-	docker-compose exec jekyll bash
-
-down: ## Stop jekyll and assets continius building
+# Stop jekyll and assets continues building
+down:
 	docker-compose down
 
-restart: down up ## Restart jekyll and assets continius building
+# Restart jekyll and assets continues building
+restart: down up
 
-build: ## Build production ready site
+# Bash of webpack container
+webpack:
+	docker-compose exec webpack sh
+
+# Bash of jekyll container
+jekyll:
+	docker-compose exec jekyll bash
+
+# Build production ready site
+build:
 	rm -rf public
 	docker-compose run -u 1000:1000 webpack ./node_modules/.bin/webpack --mode=production
 	docker-compose run -u 1000:1000 webpack ./node_modules/.bin/gulp sass:dist
 	docker-compose run -u 1000:1000 jekyll jekyll build --future -d public --trace
 
-clean: ## Clean cache
+# Clean cache
+clean:
 	docker-compose run -u 1000:1000 jekyll jekyll clean
 	docker-compose run -u 1000:1000 webpack ./node_modules/.bin/gulp clean
 
-image: ## Build jekyll image and push it
+# Build jekyll image and push it
+image:
 	docker build . -t vtvz/improved-jekyll:latest
 	docker-compose build jekyll
 	docker push vtvz/improved-jekyll:latest
