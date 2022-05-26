@@ -13,6 +13,10 @@ up *args:
 down:
 	docker-compose down
 
+browser:
+  until curl -s http://localhost:4001/ -o /dev/null; do echo "Not available yet"; sleep 1; done
+  xdg-open http://localhost:4001/
+
 # Restart jekyll and assets continues building
 restart: down up
 
