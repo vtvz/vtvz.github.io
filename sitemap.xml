@@ -105,6 +105,10 @@
 <lastmod>2020-05-15T00:00:00+03:00</lastmod>
 </url>
 <url>
+<loc>https://vtvz.me/blog/meet-rustify/</loc>
+<lastmod>2022-06-19T00:00:00+03:00</lastmod>
+</url>
+<url>
 <loc>https://vtvz.me/software/keepass2android/</loc>
 <lastmod>2020-05-22T00:00:00+03:00</lastmod>
 </url>
@@ -245,6 +249,18 @@
 <loc>https://vtvz.me/blog/tag/emoji/</loc>
 </url>
 <url>
+<loc>https://vtvz.me/blog/tag/telegram/</loc>
+</url>
+<url>
+<loc>https://vtvz.me/blog/tag/telegrambot/</loc>
+</url>
+<url>
+<loc>https://vtvz.me/blog/tag/rustify/</loc>
+</url>
+<url>
+<loc>https://vtvz.me/blog/tag/petproject/</loc>
+</url>
+<url>
 <loc>https://vtvz.me/blog/tag/devops/</loc>
 </url>
 <url>
@@ -306,6 +322,6 @@
 </url>
 <url>
 <loc>https://vtvz.me/assets/files/Vitaly-Zaslavsky%E2%80%93CV.pdf</loc>
-<lastmod>2022-06-14T23:04:40+03:00</lastmod>
+<lastmod>2022-06-19T16:15:15+03:00</lastmod>
 </url>
 </urlset>
