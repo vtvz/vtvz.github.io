@@ -5,6 +5,10 @@
 <lastmod>2020-04-05T00:00:00+03:00</lastmod>
 </url>
 <url>
+<loc>https://vtvz.me/achievements/manjaro/</loc>
+<lastmod>2022-06-11T00:00:00+03:00</lastmod>
+</url>
+<url>
 <loc>https://vtvz.me/bookmarks/kubernetes-resources-and-limits/</loc>
 <lastmod>2020-04-19T00:00:00+03:00</lastmod>
 </url>
@@ -261,6 +265,15 @@
 <loc>https://vtvz.me/blog/tag/petproject/</loc>
 </url>
 <url>
+<loc>https://vtvz.me/blog/tag/linux/</loc>
+</url>
+<url>
+<loc>https://vtvz.me/blog/tag/arch/</loc>
+</url>
+<url>
+<loc>https://vtvz.me/blog/tag/manjaro/</loc>
+</url>
+<url>
 <loc>https://vtvz.me/blog/tag/devops/</loc>
 </url>
 <url>
@@ -315,6 +328,9 @@
 <loc>https://vtvz.me/blog/category/%D0%B1%D0%BB%D0%BE%D0%B3/</loc>
 </url>
 <url>
+<loc>https://vtvz.me/blog/category/os/</loc>
+</url>
+<url>
 <loc>https://vtvz.me/blog/category/%D0%BC%D1%8B%D1%81%D0%BB%D0%B8/</loc>
 </url>
 <url>
@@ -322,6 +338,6 @@
 </url>
 <url>
 <loc>https://vtvz.me/assets/files/Vitaly-Zaslavsky%E2%80%93CV.pdf</loc>
-<lastmod>2022-06-19T23:10:46+03:00</lastmod>
+<lastmod>2022-06-21T00:10:55+03:00</lastmod>
 </url>
 </urlset>
