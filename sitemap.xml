@@ -113,6 +113,10 @@
 <lastmod>2022-06-19T00:00:00+03:00</lastmod>
 </url>
 <url>
+<loc>https://vtvz.me/blog/ecryptfs-recovery-error/</loc>
+<lastmod>2022-06-26T00:00:00+03:00</lastmod>
+</url>
+<url>
 <loc>https://vtvz.me/software/keepass2android/</loc>
 <lastmod>2020-05-22T00:00:00+03:00</lastmod>
 </url>
@@ -152,6 +156,9 @@
 </url>
 <url>
 <loc>https://vtvz.me/blog/page-4/</loc>
+</url>
+<url>
+<loc>https://vtvz.me/blog/page-5/</loc>
 </url>
 <url>
 <loc>https://vtvz.me/software/</loc>
@@ -265,6 +272,9 @@
 <loc>https://vtvz.me/blog/tag/petproject/</loc>
 </url>
 <url>
+<loc>https://vtvz.me/blog/tag/ecryptfs/</loc>
+</url>
+<url>
 <loc>https://vtvz.me/blog/tag/linux/</loc>
 </url>
 <url>
@@ -325,6 +335,9 @@
 <loc>https://vtvz.me/blog/category/%D0%BE%D0%BF%D1%8B%D1%82/</loc>
 </url>
 <url>
+<loc>https://vtvz.me/blog/category/linux/</loc>
+</url>
+<url>
 <loc>https://vtvz.me/blog/category/%D0%B1%D0%BB%D0%BE%D0%B3/</loc>
 </url>
 <url>
@@ -338,6 +351,6 @@
 </url>
 <url>
 <loc>https://vtvz.me/assets/files/Vitaly-Zaslavsky%E2%80%93CV.pdf</loc>
-<lastmod>2022-06-21T23:04:22+03:00</lastmod>
+<lastmod>2022-06-26T22:16:02+03:00</lastmod>
 </url>
 </urlset>

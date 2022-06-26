@@ -1,5 +1,128 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en_GB"><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://vtvz.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vtvz.me/" rel="alternate" type="text/html" hreflang="en_GB" /><updated>2022-06-21T23:04:51+03:00</updated><id>https://vtvz.me/feed.xml</id><title type="html">Vitaly Zaslavsky – DevOps Engineer, who loves his job</title><subtitle>DevOps engineer&apos;s personal blog about everything. Notes on successes and failures in professional activities, about finding solutions to practical problems, and just about life.
-</subtitle><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><entry xml:lang="ru"><title type="html">Meet Rustify! Приглашение на закрытое тестирование</title><link href="https://vtvz.me/blog/meet-rustify/" rel="alternate" type="text/html" title="Meet Rustify! Приглашение на закрытое тестирование" /><published>2022-06-19T00:00:00+03:00</published><updated>2022-06-19T00:00:00+03:00</updated><id>https://vtvz.me/blog/meet-rustify</id><content type="html" xml:base="https://vtvz.me/blog/meet-rustify/"><![CDATA[<figure class="frame post-image post-image--right"><a href="./rustify-logo.png" target="_blank"><img src="./rustify-logo.png" alt="" title="" /></a></figure>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en_GB"><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://vtvz.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vtvz.me/" rel="alternate" type="text/html" hreflang="en_GB" /><updated>2022-06-26T22:16:27+03:00</updated><id>https://vtvz.me/feed.xml</id><title type="html">Vitaly Zaslavsky – DevOps Engineer, who loves his job</title><subtitle>DevOps engineer&apos;s personal blog about everything. Notes on successes and failures in professional activities, about finding solutions to practical problems, and just about life.
+</subtitle><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><entry xml:lang="en"><title type="html">Solving eCryptfs “Failed to mount private data” error</title><link href="https://vtvz.me/blog/ecryptfs-recovery-error/" rel="alternate" type="text/html" title="Solving eCryptfs “Failed to mount private data” error" /><published>2022-06-26T00:00:00+03:00</published><updated>2022-06-26T00:00:00+03:00</updated><id>https://vtvz.me/blog/ecryptfs-recovery-error</id><content type="html" xml:base="https://vtvz.me/blog/ecryptfs-recovery-error/"><![CDATA[<p>One day I decided to try Manjaro out. My laptop is pretty good-ish, and one of my requirements is an encrypted home directory. On the previous installation on Ubuntu 20.04, I used <code class="language-plaintext highlighter-rouge">ecryptfs</code> and it was good enough for my needs. When I moved to Manjaro I decided to leave <code class="language-plaintext highlighter-rouge">ecryptfs</code> as my primary encryption method but to recreate the passphrase from scratch with a completely fresh and clean home folder. Then I moved all encrypted files to another location… I believe this was the right decision, but I struggled for about a day to restore access to my previous data. This little note is for me and for those who need a bit of help with the recovery process.</p>
+
+<!--cut-->
+
+<blockquote>
+  <p>For those who just came for the <span class="text-muted">possible</span> solution, jump straight to <a href="#tldr">TL;DR</a></p>
+</blockquote>
+
+<h2 id="the-problem-i-faced-with">The problem I faced with</h2>
+
+<p>If you are here you should already know that the encrypted data is located in <span class="text-nowrap"><code class="language-plaintext highlighter-rouge">/home/.ecryptfs/%username%</code></span>. I moved my previous data to <code class="language-plaintext highlighter-rouge">/home/.ecryptfs/prev</code> but it doesn’t really matter. You can replace <code class="language-plaintext highlighter-rouge">%username%</code> or whole path with your value. So let’s replace the whole <code class="language-plaintext highlighter-rouge">/home/.ecryptfs/%username%</code> with short <code class="language-plaintext highlighter-rouge">%path%</code> for the sake of brevity.</p>
+
+<p>I tried to use <code class="language-plaintext highlighter-rouge">ecryptfs-recover-private</code> and got this error:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>ecryptfs-recover-private %path%/.Private
+
+<span class="c">### Output ###</span>
+<span class="c">#  INFO: Found [%path%/.Private].</span>
+<span class="c">#  Try to recover this directory? [Y/n]: </span>
+<span class="c">#  INFO: Found your wrapped-passphrase</span>
+<span class="c">#  Do you know your LOGIN passphrase? [Y/n] </span>
+<span class="c">#  INFO: Enter your LOGIN passphrase...</span>
+<span class="c">#  Passphrase: </span>
+<span class="c">#  Inserted auth tok with sig [3121cedc8cecfb1] into the user session keyring</span>
+<span class="c">#  mount: /tmp/ecryptfs.xxxxxxxx: mount(2) system call failed: No such file or directory.</span>
+<span class="c">#         dmesg(1) may have more information after failed mount system call.</span>
+<span class="c">#  ERROR: Failed to mount private data at [/tmp/ecryptfs.xxxxxxxx].</span>
+</code></pre></div></div>
+
+<p><span class="text-muted">
+  (I use <code class="language-plaintext highlighter-rouge">sudo</code> instead of <code class="language-plaintext highlighter-rouge">#</code> because syntax highlighting messes up with hashtag)
+</span></p>
+
+<p>Wierd…</p>
+
+<h2 id="adventure-on-the-way-to-the-solution">Adventure on the way to the solution</h2>
+
+<p>So it says <code class="language-plaintext highlighter-rouge">dmesg</code> can help. Let’s try. It’s a bit hard to find the necessary information in this constant flow of messages… I tried to run these two commands one right after the other. And there’s a hint:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>dmesg
+
+<span class="c">### Output ###</span>
+<span class="c">#  [128513.402407] Could not find key with description: [2a283744646d8d1]</span>
+<span class="c">#  [128513.402410] process_request_key_err: No key</span>
+<span class="c">#  [128513.402411] Could not find valid key in user session keyring for sig specified in mount option: [2a283744646d8d1]</span>
+</code></pre></div></div>
+
+<p>Yeah, <a href="https://www.google.com/search?q=I+know+some+of+these+words">I know some of these words</a>. I guess the essential part is <code class="language-plaintext highlighter-rouge">user session keyring</code></p>
+
+<p>My craziest thought was “why not try to add some key in some keyring of the current user”. So I did this (after a lot of googling):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ecryptfs-unwrap-passphrase %path%/.ecryptfs/wrapped-passphrase
+
+<span class="c">### Output ###</span>
+<span class="c">#  Passphrase: </span>
+<span class="c">#  %32-long-line-with-random-chars%</span>
+</code></pre></div></div>
+
+<p>Instead of <code class="language-plaintext highlighter-rouge">%32-long-line-with-random-chars%</code>, you will get your own key.</p>
+
+<p>Next I found this line:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="nt">-n</span> <span class="s2">"%32-long-line-with-random-chars%"</span> | ecryptfs-add-passphrase <span class="nt">--fnek</span> -
+
+<span class="c">### Output ###</span>
+<span class="c">#  Inserted auth tok with sig [3121cedc8cecfb1] into the user session keyring</span>
+<span class="c">#  Inserted auth tok with sig [2a283744646d8d1] into the user session keyring</span>
+</code></pre></div></div>
+
+<p>And now tried mount private folder again:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>ecryptfs-recover-private %path%/.Private
+
+<span class="c">### Output ###</span>
+<span class="c">#  [sudo] password for username: </span>
+<span class="c">#  INFO: Found [%path%/.Private].</span>
+<span class="c">#  Try to recover this directory? [Y/n]: </span>
+<span class="c">#  INFO: Found your wrapped-passphrase</span>
+<span class="c">#  Do you know your LOGIN passphrase? [Y/n] </span>
+<span class="c">#  INFO: Enter your LOGIN passphrase...</span>
+<span class="c">#  Passphrase: </span>
+<span class="c">#  Inserted auth tok with sig [3121cedc8cecfb1] into the user session keyring</span>
+<span class="c">#  INFO: Success!  Private data mounted at [/tmp/ecryptfs.yyyyyyyy].</span>
+</code></pre></div></div>
+
+<p>And voilà! I have my data back:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ls</span> <span class="nt">-al</span> /tmp/ecryptfs.yyyyyyyy
+
+<span class="c">### Output ###</span>
+<span class="c">#  drwx------  3 username username 28672 июн 12 15:17 .</span>
+<span class="c">#  drwxrwxrwt 26 root     root      1360 июн 23 23:04 ..</span>
+<span class="c">#  drwxrwxr-x  3 username username  4096 янв  5  2021 .local</span>
+</code></pre></div></div>
+
+<p>Yeah, there were a lot more things in it. But I’ve already moved it away :grin:</p>
+
+<hr />
+
+<p>I think this is not a new problem. But I spent a lot of time solving this puzzle, so I decided to share my knowledge for future me.</p>
+
+<h2 id="tldr">TL;DR</h2>
+
+<p>If you have this error trying <code class="language-plaintext highlighter-rouge">ecryptfs-recover-private</code>:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mount: /tmp/ecryptfs.xxxxxxxx: mount(2) system call failed: No such file or directory.
+       dmesg(1) may have more information after failed mount system call.
+ERROR: Failed to mount private data at [/tmp/ecryptfs.xxxxxxxx].
+</code></pre></div></div>
+
+<p>You can try this:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ecryptfs-unwrap-passphrase %path%/.ecryptfs/wrapped-passphrase
+<span class="c"># Shouldn't be sudo!</span>
+<span class="c"># Replace "%32-long-line-with-random-chars%" with `ecryptfs-unwrap-passphrase` output</span>
+<span class="nb">echo</span> <span class="nt">-n</span> <span class="s2">"%32-long-line-with-random-chars%"</span> | ecryptfs-add-passphrase <span class="nt">--fnek</span> -
+<span class="nb">sudo </span>ecryptfs-recover-private %path%/.Private
+</code></pre></div></div>
+
+<p>If you succeed, please inform me about it somehow. I will be super thankful :blush:</p>
+
+<hr />
+
+<p>P.S. I’m not a native English-speaking person, my knowledge is relatively low. This post is my first in this language and can have a lot, I mean <strong>A LOT</strong> of mistakes. I will be very thankful if you help me to fix my grammar errors or give me an advice(s) :fox:</p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Linux" /><category term="eCryptfs" /><category term="Linux" /><summary type="html"><![CDATA[How to deal with ecryptfs error "mount(2) system call failed: No such file or directory. Failed to mount private data at /tmp/ecryptfs"]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/ecryptfs-recovery-error/cover.png" /><media:content medium="image" url="https://vtvz.me/blog/ecryptfs-recovery-error/cover.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Meet Rustify! Приглашение на закрытое тестирование</title><link href="https://vtvz.me/blog/meet-rustify/" rel="alternate" type="text/html" title="Meet Rustify! Приглашение на закрытое тестирование" /><published>2022-06-19T00:00:00+03:00</published><updated>2022-06-19T00:00:00+03:00</updated><id>https://vtvz.me/blog/meet-rustify</id><content type="html" xml:base="https://vtvz.me/blog/meet-rustify/"><![CDATA[<figure class="frame post-image post-image--right"><a href="./rustify-logo.png" target="_blank"><img src="./rustify-logo.png" alt="" title="" /></a></figure>
 
 <p>Последние несколько месяцев я в качестве хобби-проекта разрабатывал небольшой телеграм-бот. Не столько из необходимости, сколько из желания выучить новый язык программирования (Rust <i class="fa-brands fa-rust"></i> <i class="fa-solid fa-heart"></i>) и немного улучшить себе жизнь.</p>
 
@@ -1148,115 +1271,4 @@ Firefox в этом плане очень проигрывает.
 <p>Я прекрасно понимаю, что орехи – это дорого.
 Но почему бы не провести эксперимент. Один месяц покупать обычные сладости: печеньки, конфеты, и т.п.
 А потом – орехи и сухофрукты. Сначала дайте полезностям фору – позвольте организму пару недель наесться.
-А потом посчитайте, сколько денег уйдет на то и другое. И тогда делайте выводы – стоит ли оно того (стоит) :fox:</p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Опыт" /><category term="Еда" /><category term="Магазины" /><summary type="html"><![CDATA[Делюсь опытом закупки еды на 20 человек, чтобы полезно и недорого.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/cheap-food-for-team/cover.jpg" /><media:content medium="image" url="https://vtvz.me/blog/cheap-food-for-team/cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Большие перемены</title><link href="https://vtvz.me/blog/big-changes/" rel="alternate" type="text/html" title="Большие перемены" /><published>2020-02-05T00:00:00+03:00</published><updated>2020-02-05T00:00:00+03:00</updated><id>https://vtvz.me/blog/big-changes</id><content type="html" xml:base="https://vtvz.me/blog/big-changes/"><![CDATA[<p>За последние несколько месяцев на моем сайте произошли тотальные изменения.
-Он по-прежнему темный и на фоне лис <span class="text-muted">(не енот!)</span>,
-но после последних обновлений он никогда не будет прежним. Это что-то вроде отчетного поста о моих трудах и результатах.</p>
-
-<p>Там совсем немного букв :blush:</p>
-
-<!--cut-->
-
-<h2 id="переезд">Переезд</h2>
-
-<p>Домен <code class="language-plaintext highlighter-rouge">vtvz.ru</code> служил мне верой и правдой более пяти лет.
-Но настало время перемен. 
-Причин сменить доменное имя немного, но одна из них – он не интернациональный.</p>
-
-<p>Проблема ли это? В общем-то нет.
-Но я хотел что-то такое, что обращает внимание не на страну, а на самого автора (то есть меня).</p>
-
-<p>Выбирать долго не пришлось.
-Все национальные домены были отброшены сразу.
-Хоть доступных вариантов интернациональных имен сотни, выбор пал на <code class="language-plaintext highlighter-rouge">.me</code>.</p>
-
-<p>Потому что:</p>
-
-<ol>
-  <li>Он короткий;</li>
-  <li>Явно указывает на принадлежность сайта какому-то конкретному лицу;</li>
-  <li>Он очень пересекается с адресом моей личной электронной почты (а именно <a href="mailto:vtvz@pm.me">vtvz@pm.me</a>)</li>
-</ol>
-
-<p>Старый домен все еще живой. С него будут осуществляться все перенаправления на новый сайт.
-(vtvz.ru/blog <i class="fa-solid fa-chevron-right"></i> vtvz.me/blog)</p>
-
-<p>Переезд затронул не только мой сайт, но еще и некоторые другие сервисы:</p>
-
-<ul>
-  <li><a href="https://vk.com/vtvz_me">https://vk.com/vtvz_me</a></li>
-  <li><a href="https://fb.com/vtvz.me">https://fb.com/vtvz.me</a></li>
-  <li><a href="https://t.me/vtvz_me">https://t.me/vtvz_me</a></li>
-  <li><a href="https://twitter.com/vtvz_me">https://twitter.com/vtvz_me</a></li>
-</ul>
-
-<p>Сменить удалось далеко не все, например <a href="https://habr.com/ru/users/vtvz_ru/">Хабр</a> не получилось,
-но основное обновить все же удалось.</p>
-
-<p>Вероятно, по сети еще долго будут гулять битые ссылки на старые профили.</p>
-
-<h2 id="перевод-на-английский">Перевод на английский</h2>
-
-<p>Если бы я был блогером-бухгалтером или юристом, то не имело бы большого смысла выходить за рамки русского языка.
-Но яжпрограммист! Моя деятельность не заточенá границами одной страны.
-Поэтому, некоторую часть сайта было решено перевести на английский язык, как язык большинства разработчиков.</p>
-
-<p>В скором будущем, если позволят обстоятельства, некоторые статьи будут выходить сразу на двух языках.
-В основном это будут короткие посты, решающие какую-то небольшую задачу,
-с которой я столкнулся в своей профессиональной деятельности – самый сок для поисковиков.</p>
-
-<h2 id="резюме">Резюме</h2>
-
-<p>Вот подумал я, а не составить ли мне резюме. Ну знаете, всякое бывает.
-А какое лучшее место для размещения резюме, как не собственный сайт (яжпрограммист)? Решено – сделано.</p>
-
-<p>Хоть оно и расположено на главной странице, для него в меню появился новый пункт, который так и называется “CV”.</p>
-
-<p>В этом резюме, как мне кажется, есть все необходимое:</p>
-
-<ul>
-  <li>Краткое повествование текущей профессиональной и около-профессиональной деятельности;</li>
-  <li>Немного о личной жизни;</li>
-  <li>Полная история карьеры, включая приобретенные навыки на каждом рабочем месте;</li>
-  <li>И общая таблица навыков с примечаниями.</li>
-</ul>
-
-<p>Пожалуй, это самое глобальное обновление на сайте после запуска блога.
-На вылизывание этой части ушло несколько дней.
-Но результатом я очень доволен.</p>
-
-<p>Как вы думаете, увеличит ли это шансы быть замеченным?
-Не уверен, что это когда-либо сыграет решающую роль.
-Но разве только факт существования этого сайта не подтверждает мои навыки? :grin:</p>
-
-<h2 id="мелочи">Мелочи</h2>
-
-<p>Помимо этих глобальных обновлений, сделана еще пачка мелочей:</p>
-
-<ul>
-  <li>На главной странице среди контактов появился Telegram, как самый приоритетный способ связи.
-Кстати, на узких экранах пропадает ссылка в ВК. Потому 5 кружочков красивее, чем 6.</li>
-  <li>В блоге, рядом с категориями циферки убраны в аккуратные бейджики.</li>
-  <li>Обновился <a href="https://fontawesome.com/">FontAwesome</a> пак иконок до последней версии. И все иконки на сайте были заменены на них.
-Кстати, те кто разбираются, посмотрите, как сделаны звездочки в последнем разделе моего резюме <span class="text-muted">(proud of myself)</span></li>
-  <li>В качестве генератора сайтов я использую <a href="https://jekyllrb.com/">Jekyll</a>. Дак вот, он был обновлен до самой последней версии.
-Зачем? Просто так :blush:</li>
-  <li>Было выпилено огромное количество неиспользуемых стилей и скриптов,
-которые замедляли загрузку страницы и производительность в целом.
-Еще много осталось, но уже все гораздо лучше.</li>
-  <li>В качестве шрифта для кусков кода теперь используется <a href="https://github.com/tonsky/FiraCode">FiraCode</a> с лигатурами.
-Очень рекомендую использовать его в качестве шрифта для вашей IDE (или <a href="https://www.jetbrains.com/lp/mono/">этот</a>).
-Только посмотрите, как с этим шрифтом ‘!=’ превращается в <code class="language-plaintext highlighter-rouge">!=</code>, ‘&gt;=’ – в <code class="language-plaintext highlighter-rouge">&gt;=</code>, а ‘-&gt;’ – в <code class="language-plaintext highlighter-rouge">-&gt;</code>.</li>
-  <li>Также, анимация на главной странице с контактами будет запускаться вместе с исчезновением индикатора загрузки, а не до.</li>
-  <li>Появился футер с копирайтом на каждой странице.</li>
-  <li>Пропал футер на главной странице с номером телефона и почтой, но зато появилось приглашение листнуть вниз.</li>
-  <li>Добавлена ссылка на последнюю статью в блоге на главный экран.</li>
-</ul>
-
-<hr />
-
-<p>Мой уютный бложек с каждым обновлением принимает все более солидные формы
-и превращается не просто в сайт-визитку, но в целую единицу в моем портфолио.</p>
-
-<p>Каковы дальнейшие планы? Я хочу сделать главную страницу красивой не только в браузере, но и в печати.
-Чтобы при необходимости можно было легко отправить резюме PDF-файликом без дополнительного ручного форматирования.
-Возможно, будут еще мелкие улучшения. Но в целом результатом я очень доволен. А что думаете вы? :blush:</p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="LiveLog" /><category term="Блог" /><category term="Веб-разработка" /><category term="Обновления" /><summary type="html"><![CDATA[Дайджест последних крупных изменений в блоге]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/big-changes/cover.jpg" /><media:content medium="image" url="https://vtvz.me/blog/big-changes/cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+А потом посчитайте, сколько денег уйдет на то и другое. И тогда делайте выводы – стоит ли оно того (стоит) :fox:</p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Опыт" /><category term="Еда" /><category term="Магазины" /><summary type="html"><![CDATA[Делюсь опытом закупки еды на 20 человек, чтобы полезно и недорого.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/cheap-food-for-team/cover.jpg" /><media:content medium="image" url="https://vtvz.me/blog/cheap-food-for-team/cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

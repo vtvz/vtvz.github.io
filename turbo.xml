@@ -15,6 +15,149 @@
         
         
         <item turbo="true">
+            <title>Solving eCryptfs &quot;Failed to mount private data&quot; error</title>
+            <link>https://vtvz.me/blog/ecryptfs-recovery-error/</link>
+            <pubDate>Sun, 26 Jun 2022 00:00:00 +0300</pubDate>
+            <author>Vitaly Zaslavsky</author>
+            <turbo:content>
+                <![CDATA[
+                <header>
+                    <h1>Solving eCryptfs "Failed to mount private data" error</h1>
+                    <figure>
+                        <img src="/blog/ecryptfs-recovery-error/cover.png">
+                    </figure>
+                </header>
+                <p>One day I decided to try Manjaro out. My laptop is pretty good-ish, and one of my requirements is an encrypted home directory. On the previous installation on Ubuntu 20.04, I used <code class="language-plaintext highlighter-rouge">ecryptfs</code> and it was good enough for my needs. When I moved to Manjaro I decided to leave <code class="language-plaintext highlighter-rouge">ecryptfs</code> as my primary encryption method but to recreate the passphrase from scratch with a completely fresh and clean home folder. Then I moved all encrypted files to another location… I believe this was the right decision, but I struggled for about a day to restore access to my previous data. This little note is for me and for those who need a bit of help with the recovery process.</p>
+
+<!--cut-->
+
+<blockquote>
+  <p>For those who just came for the <span class="text-muted">possible</span> solution, jump straight to <a href="#tldr">TL;DR</a></p>
+</blockquote>
+
+<h2 id="the-problem-i-faced-with">The problem I faced with</h2>
+
+<p>If you are here you should already know that the encrypted data is located in <span class="text-nowrap"><code class="language-plaintext highlighter-rouge">/home/.ecryptfs/%username%</code></span>. I moved my previous data to <code class="language-plaintext highlighter-rouge">/home/.ecryptfs/prev</code> but it doesn’t really matter. You can replace <code class="language-plaintext highlighter-rouge">%username%</code> or whole path with your value. So let’s replace the whole <code class="language-plaintext highlighter-rouge">/home/.ecryptfs/%username%</code> with short <code class="language-plaintext highlighter-rouge">%path%</code> for the sake of brevity.</p>
+
+<p>I tried to use <code class="language-plaintext highlighter-rouge">ecryptfs-recover-private</code> and got this error:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>ecryptfs-recover-private %path%/.Private
+
+<span class="c">### Output ###</span>
+<span class="c">#  INFO: Found [%path%/.Private].</span>
+<span class="c">#  Try to recover this directory? [Y/n]: </span>
+<span class="c">#  INFO: Found your wrapped-passphrase</span>
+<span class="c">#  Do you know your LOGIN passphrase? [Y/n] </span>
+<span class="c">#  INFO: Enter your LOGIN passphrase...</span>
+<span class="c">#  Passphrase: </span>
+<span class="c">#  Inserted auth tok with sig [3121cedc8cecfb1] into the user session keyring</span>
+<span class="c">#  mount: /tmp/ecryptfs.xxxxxxxx: mount(2) system call failed: No such file or directory.</span>
+<span class="c">#         dmesg(1) may have more information after failed mount system call.</span>
+<span class="c">#  ERROR: Failed to mount private data at [/tmp/ecryptfs.xxxxxxxx].</span>
+</code></pre></div></div>
+
+<p><span class="text-muted">
+  (I use <code class="language-plaintext highlighter-rouge">sudo</code> instead of <code class="language-plaintext highlighter-rouge">#</code> because syntax highlighting messes up with hashtag)
+</span></p>
+
+<p>Wierd…</p>
+
+<h2 id="adventure-on-the-way-to-the-solution">Adventure on the way to the solution</h2>
+
+<p>So it says <code class="language-plaintext highlighter-rouge">dmesg</code> can help. Let’s try. It’s a bit hard to find the necessary information in this constant flow of messages… I tried to run these two commands one right after the other. And there’s a hint:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>dmesg
+
+<span class="c">### Output ###</span>
+<span class="c">#  [128513.402407] Could not find key with description: [2a283744646d8d1]</span>
+<span class="c">#  [128513.402410] process_request_key_err: No key</span>
+<span class="c">#  [128513.402411] Could not find valid key in user session keyring for sig specified in mount option: [2a283744646d8d1]</span>
+</code></pre></div></div>
+
+<p>Yeah, <a href="https://www.google.com/search?q=I+know+some+of+these+words">I know some of these words</a>. I guess the essential part is <code class="language-plaintext highlighter-rouge">user session keyring</code></p>
+
+<p>My craziest thought was “why not try to add some key in some keyring of the current user”. So I did this (after a lot of googling):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ecryptfs-unwrap-passphrase %path%/.ecryptfs/wrapped-passphrase
+
+<span class="c">### Output ###</span>
+<span class="c">#  Passphrase: </span>
+<span class="c">#  %32-long-line-with-random-chars%</span>
+</code></pre></div></div>
+
+<p>Instead of <code class="language-plaintext highlighter-rouge">%32-long-line-with-random-chars%</code>, you will get your own key.</p>
+
+<p>Next I found this line:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="nt">-n</span> <span class="s2">"%32-long-line-with-random-chars%"</span> | ecryptfs-add-passphrase <span class="nt">--fnek</span> -
+
+<span class="c">### Output ###</span>
+<span class="c">#  Inserted auth tok with sig [3121cedc8cecfb1] into the user session keyring</span>
+<span class="c">#  Inserted auth tok with sig [2a283744646d8d1] into the user session keyring</span>
+</code></pre></div></div>
+
+<p>And now tried mount private folder again:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>ecryptfs-recover-private %path%/.Private
+
+<span class="c">### Output ###</span>
+<span class="c">#  [sudo] password for username: </span>
+<span class="c">#  INFO: Found [%path%/.Private].</span>
+<span class="c">#  Try to recover this directory? [Y/n]: </span>
+<span class="c">#  INFO: Found your wrapped-passphrase</span>
+<span class="c">#  Do you know your LOGIN passphrase? [Y/n] </span>
+<span class="c">#  INFO: Enter your LOGIN passphrase...</span>
+<span class="c">#  Passphrase: </span>
+<span class="c">#  Inserted auth tok with sig [3121cedc8cecfb1] into the user session keyring</span>
+<span class="c">#  INFO: Success!  Private data mounted at [/tmp/ecryptfs.yyyyyyyy].</span>
+</code></pre></div></div>
+
+<p>And voilà! I have my data back:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ls</span> <span class="nt">-al</span> /tmp/ecryptfs.yyyyyyyy
+
+<span class="c">### Output ###</span>
+<span class="c">#  drwx------  3 username username 28672 июн 12 15:17 .</span>
+<span class="c">#  drwxrwxrwt 26 root     root      1360 июн 23 23:04 ..</span>
+<span class="c">#  drwxrwxr-x  3 username username  4096 янв  5  2021 .local</span>
+</code></pre></div></div>
+
+<p>Yeah, there were a lot more things in it. But I’ve already moved it away :grin:</p>
+
+<hr />
+
+<p>I think this is not a new problem. But I spent a lot of time solving this puzzle, so I decided to share my knowledge for future me.</p>
+
+<h2 id="tldr">TL;DR</h2>
+
+<p>If you have this error trying <code class="language-plaintext highlighter-rouge">ecryptfs-recover-private</code>:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mount: /tmp/ecryptfs.xxxxxxxx: mount(2) system call failed: No such file or directory.
+       dmesg(1) may have more information after failed mount system call.
+ERROR: Failed to mount private data at [/tmp/ecryptfs.xxxxxxxx].
+</code></pre></div></div>
+
+<p>You can try this:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ecryptfs-unwrap-passphrase %path%/.ecryptfs/wrapped-passphrase
+<span class="c"># Shouldn't be sudo!</span>
+<span class="c"># Replace "%32-long-line-with-random-chars%" with `ecryptfs-unwrap-passphrase` output</span>
+<span class="nb">echo</span> <span class="nt">-n</span> <span class="s2">"%32-long-line-with-random-chars%"</span> | ecryptfs-add-passphrase <span class="nt">--fnek</span> -
+<span class="nb">sudo </span>ecryptfs-recover-private %path%/.Private
+</code></pre></div></div>
+
+<p>If you succeed, please inform me about it somehow. I will be super thankful :blush:</p>
+
+<hr />
+
+<p>P.S. I’m not a native English-speaking person, my knowledge is relatively low. This post is my first in this language and can have a lot, I mean <strong>A LOT</strong> of mistakes. I will be very thankful if you help me to fix my grammar errors or give me an advice(s) :fox:</p>
+
+
+                ]]>
+            </turbo:content>
+        </item>
+        
+        <item turbo="true">
             <title>Meet Rustify! Приглашение на закрытое тестирование</title>
             <link>https://vtvz.me/blog/meet-rustify/</link>
             <pubDate>Sun, 19 Jun 2022 00:00:00 +0300</pubDate>
