@@ -75,6 +75,34 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
+    var hidden = false
+    $(window).scroll(function () {
+        var header = $('.page-index__header')
+
+        var top = header.offset().top
+
+        var bottom = top + header.outerHeight()
+
+        var scrollTop = $(window).scrollTop()
+
+        if (scrollTop > bottom) {
+            if (!hidden) {
+                var name = header.find('.page-index__name')
+
+                var now = name.text()
+                var next = name.data('alternative')
+
+                name.text(next)
+                name.data('alternative', now)
+            }
+            hidden = true
+        } else {
+            hidden = false
+        }
+    });
+});
+
+$(document).ready(function () {
     var tags = $('.tag-list > li');
     tags.slice(6).hide();
 
