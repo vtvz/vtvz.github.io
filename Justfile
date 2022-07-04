@@ -58,3 +58,9 @@ pdf:
 		sleep 5; \
 	done
 	google-chrome --headless --print-to-pdf="assets/files/Vitaly-Zaslavsky–CV.pdf" --run-all-compositor-stages-before-draw --print-to-pdf-no-header --virtual-time-budget=10000 http://localhost:4001/
+
+cypress-base:
+  npx cypress run --env type=base --browser=chrome --config screenshotsFolder=cypress/snapshots/base
+
+cypress-actual:
+  npx cypress run --env type=actual --browser=chrome --config screenshotsFolder=cypress/snapshots/actual

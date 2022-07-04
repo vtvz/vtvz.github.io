@@ -75,9 +75,14 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
+    var header = $('.page-index__header')
+
+    if (!header.length) {
+        return
+    }
+
     var hidden = false
     $(window).scroll(function () {
-        var header = $('.page-index__header')
 
         var top = header.offset().top
 
@@ -87,13 +92,14 @@ $(document).ready(function () {
 
         if (scrollTop > bottom) {
             if (!hidden) {
-                var name = header.find('.page-index__name')
+                var namew = header.find('.page-index__name')
 
-                var now = name.text()
-                var next = name.data('alternative')
+                var now = namew.text()
+                var next = namew.data('alternative').split(',')
 
-                name.text(next)
-                name.data('alternative', now)
+                namew.text(next.shift())
+                next.push(now)
+                namew.data('alternative', next.join(','))
             }
             hidden = true
         } else {

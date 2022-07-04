@@ -225,6 +225,18 @@ ERROR: Failed to mount private data at [/tmp/ecryptfs.xxxxxxxx].
 
 <p>… для получения дальнейших инструкций.</p>
 
+<div class="alert alert-info">
+  <p>
+    <strong>ЛИБО!</strong> Можно добавить бота напрямую без необходимости куда-то писать. Ссылка:
+  </p>
+
+  <p>
+    <a class="social-button social-button--block social-button--telegram" href="https://t.me/RustifyBot">
+      <i class="fa-fw fa-brands fa-telegram-plane"></i><span class="social-button__label"> RustifyBot</span>
+    </a>
+  </p>
+</div>
+
 <p>Добро пожаловать всем желающим! :fox:</p>
 
 <p>P.S. Исходный код проекта доступен на <a href="https://github.com/vtvz/rustify">github.com/vtvz/rustify</a></p>
