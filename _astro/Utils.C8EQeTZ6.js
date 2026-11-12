@@ -1,0 +1,1 @@
+var e=class{static delay(e){return new Promise(t=>setTimeout(t,e))}static random(e,t){return Math.floor(Math.random()*(t-e)+e)}};export{e as t};

@@ -1,8 +1,6 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <!--Built at : 2026-11-10 23:03:20-->
     <head>
-        
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,69 +9,73 @@
 
         <link rel="shortcut icon" href="/favicon.png" type="image/png">
 
-        <link rel="stylesheet" href="/assets/css/preloader.8ed26a51.css" />
-        <link rel="stylesheet" href="/assets/css/bootstrap.06019c8f.css" />
-        <link rel="stylesheet" href="/assets/css/main.8cc238a7.css" />
-
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer">
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,500,600,700,800|Roboto:300,400,500,600,700,800&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.207/distr/fira_code.css" rel="stylesheet">
 
-        <link rel="alternate" type="application/rss+xml" title="Vitaly Zaslavsky – DevOps Engineer, who loves his job" href="https://vtvz.me/feed.xml">
-        <link rel="alternate" type="application/rss+xml" title="My Achievements | Vitaly Zaslavsky" href="https://vtvz.me/feed/achievements.xml">
-        <link rel="alternate" type="application/rss+xml" title="My Bookmarks | Vitaly Zaslavsky" href="https://vtvz.me/feed/bookmarks.xml">
-        <link rel="alternate" type="application/rss+xml" title="My Notes | Vitaly Zaslavsky" href="https://vtvz.me/feed/notes.xml">
+        <link rel="alternate" type="application/rss+xml" title="Vitaly Zaslavsky – DevOps Engineer, who loves his job" href="https://vtvz.me/feed.xml"><link rel="alternate" type="application/rss+xml" title="My Achievements | Vitaly Zaslavsky" href="https://vtvz.me/feed/achievements.xml"><link rel="alternate" type="application/rss+xml" title="My Bookmarks | Vitaly Zaslavsky" href="https://vtvz.me/feed/bookmarks.xml"><link rel="alternate" type="application/rss+xml" title="My Notes | Vitaly Zaslavsky" href="https://vtvz.me/feed/notes.xml"><link rel="alternate" type="application/rss+xml" title="My Software | Vitaly Zaslavsky" href="https://vtvz.me/feed/software.xml">
 
         <meta name="theme-color" content="#232323">
 
-        <!-- Begin Jekyll SEO tag v2.8.0 -->
-<meta name="generator" content="Jekyll v4.2.2" />
-<meta property="og:title" content="Ковыряясь под капотом #2" />
-<meta name="author" content="Vitaly Zaslavsky" />
-<meta property="og:locale" content="ru" />
-<meta name="description" content="Отчет о проделанной над сайтом работе на последние пару недель" />
-<meta property="og:description" content="Отчет о проделанной над сайтом работе на последние пару недель" />
-<link rel="canonical" href="https://vtvz.me/blog/under-the-hood-2nd/" />
-<meta property="og:url" content="https://vtvz.me/blog/under-the-hood-2nd/" />
-<meta property="og:site_name" content="Vitaly Zaslavsky – DevOps Engineer, who loves his job" />
-<meta property="og:image" content="https://vtvz.me/blog/under-the-hood-2nd/cover.jpg" />
-<meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-04-18T00:00:00+03:00" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:image" content="https://vtvz.me/blog/under-the-hood-2nd/cover.jpg" />
-<meta property="twitter:title" content="Ковыряясь под капотом #2" />
-<meta name="twitter:site" content="@vtvz_me" />
-<meta name="twitter:creator" content="@vtvz_me" />
-<meta name="google-site-verification" content="40uemu1o4UDeTOeeLKqJVoaPU4CVUjlGI5D9AI1EkNE" />
-<meta name="yandex-verification" content="fa3eb4fcd2ebc4ad" />
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Vitaly Zaslavsky"},"dateModified":"2020-04-18T00:00:00+03:00","datePublished":"2020-04-18T00:00:00+03:00","description":"Отчет о проделанной над сайтом работе на последние пару недель","headline":"Ковыряясь под капотом #2","image":"https://vtvz.me/blog/under-the-hood-2nd/cover.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://vtvz.me/blog/under-the-hood-2nd/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://vtvz.me/assets/images/logo-black.png"},"name":"Vitaly Zaslavsky"},"url":"https://vtvz.me/blog/under-the-hood-2nd/"}</script>
-<!-- End Jekyll SEO tag -->
+        <meta property="og:title" content="Ковыряясь под капотом #2">
+<meta name="author" content="Vitaly Zaslavsky">
+<meta property="og:locale" content="ru">
+<meta name="description" content="Отчет о проделанной над сайтом работе на последние пару недель
+">
+<meta property="og:description" content="Отчет о проделанной над сайтом работе на последние пару недель
+">
+<link rel="canonical" href="https://vtvz.me/blog/under-the-hood-2nd/">
+<meta property="og:url" content="https://vtvz.me/blog/under-the-hood-2nd/">
+<meta property="og:site_name" content="Vitaly Zaslavsky – DevOps Engineer, who loves his job">
+<meta property="og:image" content="https://vtvz.me/blog/under-the-hood-2nd/cover.jpg">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-04-18T00:00:00+03:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:image" content="https://vtvz.me/blog/under-the-hood-2nd/cover.jpg">
+<meta property="twitter:title" content="Ковыряясь под капотом #2">
+<meta name="twitter:site" content="@vtvz_me">
+<meta name="twitter:creator" content="@vtvz_me">
+<meta name="google-site-verification" content="40uemu1o4UDeTOeeLKqJVoaPU4CVUjlGI5D9AI1EkNE">
+<meta name="yandex-verification" content="fa3eb4fcd2ebc4ad">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Vitaly Zaslavsky"},"dateModified":"2020-04-18T00:00:00+03:00","datePublished":"2020-04-18T00:00:00+03:00","description":"Отчет о проделанной над сайтом работе на последние пару недель\n","headline":"Ковыряясь под капотом #2","image":"https://vtvz.me/blog/under-the-hood-2nd/cover.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://vtvz.me/blog/under-the-hood-2nd/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://vtvz.me/assets/images/logo-black.png"},"name":"Vitaly Zaslavsky"},"url":"https://vtvz.me/blog/under-the-hood-2nd/"}</script>
 
-
-        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/webfonts/fa-regular-400.woff2" as="font" />
-        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/webfonts/fa-brands-400.woff2" as="font" />
-        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/webfonts/fa-solid-900.woff2" as="font" />
-    </head>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/webfonts/fa-regular-400.woff2" as="font">
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/webfonts/fa-brands-400.woff2" as="font">
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/webfonts/fa-solid-900.woff2" as="font">
+    <link rel="stylesheet" href="/_astro/Default.Co6o1F-_.css"></head>
 
     <body class="full-layout">
-        <div id="preloader">
-    <div class="preloader__spinner"></div>
-</div>
+        
+    <div id="preloader">
+        <div class="preloader__spinner"></div>
+    </div>
 
-<div id="bg"></div>
+    <div id="bg"></div>
 
-<div class="body-wrapper">
-    <nav class="navbar navbar-default" role="navigation">
+    <div class="body-wrapper">
+        <nav class="navbar navbar-default" role="navigation">
     <div class="navbar-header">
         <a class="btn responsive-menu" data-toggle="collapse" data-target=".navbar-collapse"><i></i></a>
         <div class="navbar-brand text-center">
             <a href="/">
-                <svg width="64px" height="64px" viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="logo" id="main-logo">
+                <svg width="64px" height="64px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="logo" id="main-logo">
     <metadata id="metadata7">image/svg+xml</metadata>
     <g>
-        <path id="left-eye" fill="#000" class="logo__piece logo__eye" d="M 292.185,573.771 L 387.59772,628.52957 393.82031,697.80751 343.21008,675.40626 Z"></path>
-        <path id="right-eye" fill="#000" class="logo__piece logo__eye" d="M 638.57461,625.62571 L 632.35207,698.22232 683.79196,675.82107 734.40218,572.94128 Z"></path>
-        <path id="face" fill="#000" class="logo__piece" d="m74.013423,308.628134l119.0939,184.214156l-75.09366,163.094047c21.287511,6.059785 47.827858,16.218479 68.574554,25.196346c32.625314,14.118218 58.700392,28.772931 86.892875,46.37732c-46.488875,-12.947705 -100.710811,-26.440733 -132.000626,-21.120109c68.761424,31.900881 145.390462,69.291367 314.038649,239.663892l39.72301,-0.078985l-139.920649,-592.537851l-248.985112,-341.177843l-32.32294,296.369028zm598.989449,41.582319l-143.147377,595.762488l42.148039,0.083631c76.185978,-75.014954 141.727968,-154.245855 310.147052,-238.270502c-31.289861,-5.320623 -85.511797,8.172404 -132.000672,21.120109c28.19253,-17.604389 54.267561,-32.259102 86.892875,-46.37732c20.746696,-8.977867 47.287089,-19.136561 68.574554,-25.196346l-75.09366,-163.094047l119.0939,-184.214156l-29.161677,-295.491224l-247.453033,335.677365zm293.628151,-36.667029l-116.747299,181.280788l80.960443,176.000772c-23.816754,1.721318 -45.965296,6.720007 -66.88037,17.600068c32.696772,-1.504713 59.86756,-0.242066 89.467093,9.093371c-172.472461,59.218813 -314.438871,186.268605 -439.708757,326.481593c-156.142938,-181.558909 -350.942912,-320.860315 -452.028763,-324.650392c29.59958,-9.33553 65.277111,-13.824765 97.973837,-12.320052c-20.915027,-10.880061 -43.063615,-15.87875 -66.88037,-17.600068l80.960443,-176.000772l-116.747299,-181.280788l45.210942,-312.147931l257.803893,254.290031l153.707316,-26.400079l154.306255,24.225247l256.161049,-249.03255l42.441584,310.460762z"></path>
+        <path id="left-eye"
+              fill="#000"
+              class="logo__piece logo__eye"
+              d="M 292.185,573.771 L 387.59772,628.52957 393.82031,697.80751 343.21008,675.40626 Z"
+        />
+        <path id="right-eye"
+              fill="#000"
+              class="logo__piece logo__eye"
+              d="M 638.57461,625.62571 L 632.35207,698.22232 683.79196,675.82107 734.40218,572.94128 Z"
+        />
+        <path id="face"
+              fill="#000"
+              class="logo__piece"
+              d="m74.013423,308.628134l119.0939,184.214156l-75.09366,163.094047c21.287511,6.059785 47.827858,16.218479 68.574554,25.196346c32.625314,14.118218 58.700392,28.772931 86.892875,46.37732c-46.488875,-12.947705 -100.710811,-26.440733 -132.000626,-21.120109c68.761424,31.900881 145.390462,69.291367 314.038649,239.663892l39.72301,-0.078985l-139.920649,-592.537851l-248.985112,-341.177843l-32.32294,296.369028zm598.989449,41.582319l-143.147377,595.762488l42.148039,0.083631c76.185978,-75.014954 141.727968,-154.245855 310.147052,-238.270502c-31.289861,-5.320623 -85.511797,8.172404 -132.000672,21.120109c28.19253,-17.604389 54.267561,-32.259102 86.892875,-46.37732c20.746696,-8.977867 47.287089,-19.136561 68.574554,-25.196346l-75.09366,-163.094047l119.0939,-184.214156l-29.161677,-295.491224l-247.453033,335.677365zm293.628151,-36.667029l-116.747299,181.280788l80.960443,176.000772c-23.816754,1.721318 -45.965296,6.720007 -66.88037,17.600068c32.696772,-1.504713 59.86756,-0.242066 89.467093,9.093371c-172.472461,59.218813 -314.438871,186.268605 -439.708757,326.481593c-156.142938,-181.558909 -350.942912,-320.860315 -452.028763,-324.650392c29.59958,-9.33553 65.277111,-13.824765 97.973837,-12.320052c-20.915027,-10.880061 -43.063615,-15.87875 -66.88037,-17.600068l80.960443,-176.000772l-116.747299,-181.280788l45.210942,-312.147931l257.803893,254.290031l153.707316,-26.400079l154.306255,24.225247l256.161049,-249.03255l42.441584,310.460762z"
+        />
     </g>
 </svg>
 
@@ -88,7 +90,7 @@
     </div>
     <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-            <li class="">
+            <li>
                 <a href="/#main" class="hint--right" data-hint="Main" data-section-id="main">
                     <i class="fa-solid fa-home fa-fw"></i><span>Main</span>
                 </a>
@@ -98,9 +100,7 @@
                     <i class="fa-regular fa-address-card fa-fw"></i><span>CV</span>
                 </a>
             </li>
-            
             <li>
-            
                 <a href="/collections/" class="hint--right" data-hint="Collections">
                     <i class="fa-solid fa-star fa-fw"></i><span>Collections</span>
                 </a>
@@ -113,643 +113,539 @@
         </ul>
     </div>
 </nav>
-
+        
     <div class="container inner blog">
-    <div class="row">
-        <div class="col-md-8 col-sm-12 content">
-            <div>
-    <div class="post box" itemscope itemtype="http://schema.org/BlogPosting">
-        <div class="post-main-image" style="background-image: url(/blog/under-the-hood-2nd/cover.jpg)">
+        <div class="row">
+            <div class="col-md-8 col-sm-12 content">
+                
+    <div>
+        <div class="post box" itemscope itemtype="http://schema.org/BlogPosting">
+            <div class="post-main-image" style="background-image: url(/blog/under-the-hood-2nd/cover.jpg)">
     <a href="/blog/under-the-hood-2nd/">
         <img src="/blog/under-the-hood-2nd/cover.jpg" alt="Ковыряясь под капотом #2">
     </a>
     
 </div>
 
-
-        <div class="post-meta">
-    <span class="post-meta__item category"><a href="/blog/category/%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B0/">Разработка</a></span>
+            <div class="post-meta">
+    <span class="post-meta__item category"><a href="/blog/category/разработка/">Разработка</a></span>
     <time class="post-meta__item date" itemprop="datePublished" datetime="2020-04-18T00:00:00+03:00">18 Apr 2020</time>
-    
     <span class="post-meta__item reading-time" title="Estimated Read Time">
-        
-
-        <!--744-->
-
-        
-            ~2 min.
-        
+        ~2&nbsp;min.
     </span>
 
-    <meta itemprop="identifier" content="/blog/under-the-hood-2nd">
+    <meta itemprop="identifier" content="/blog/under-the-hood-2nd/">
 </div>
-
-        <h1 class="post-title">
-            <a href="/blog/under-the-hood-2nd/" itemprop="headline">Ковыряясь под капотом #2</a>
-        </h1>
-        <article itemprop="articleBody" class="js-emojify post__content">
-            <p>В голове у меня много мыслей, которые хотелось бы выразить в виде статьи.
+            <h1 class="post-title">
+                <a href="/blog/under-the-hood-2nd/" itemprop="headline">Ковыряясь под капотом #2</a>
+            </h1>
+            <article itemprop="articleBody" class="js-emojify post__content"><p>В голове у меня много мыслей, которые хотелось бы выразить в виде статьи.
 У меня даже есть небольшая заметка в Google Keep с темами потенциальных постов.
 Но это сложно. Русский язык – сложный язык.
 На написание одной статьи на 5 минут чтения может уйти несколько часов, а то и дней.
 Стоит учесть еще тот факт, что блог не приносит мне ни копейки.
 Поэтому, время на написание статьи есть только вечером после работы или на выходных.</p>
-
 <p>Поэтому, я делаю то, что не заставляет меня слишком много думать и не требует полной сосредоточенности.
 Я улучшаю творение рук моих. Удивительно то, что, несмотря на простую концепцию, всегда есть куда улучшаться.
 Именно об этом будет этот пост.</p>
-
 <a id="cut"></a>
-      <h2 id="коллекции">
-        
-        
-          Коллекции <a href="#%D0%BA%D0%BE%D0%BB%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8" class="post__header-anchor" title="Anchor">#</a>
-        
-        
-      </h2>
-
+<h2 id="коллекции">Коллекции <a class="post__header-anchor" href="#коллекции" title="Anchor">#</a></h2>
 <p>Начну с фундаментальных вещей. На сайте появился полноценный раздел, который я решил назвать “<a href="/collections/">Коллекциями</a>”.
 Сначала были одни <a href="/achievements/"><i class="fa-solid fa-trophy"></i> достижения</a> – мои успехи в личной и профессиональной жизни.
 И выглядел он очень даже неплохо. Каждое достижение – это отдельная карточка,
 в которой собраны ссылки и материалы, использованные мной.</p>
-
-<p>Ко всему этому туда были добавлены 
-<a href="/notes/"><i class="fa-solid fa-sticky-note"></i> заметки</a> 
+<p>Ко всему этому туда были добавлены
+<a href="/notes/"><i class="fa-solid fa-sticky-note"></i> заметки</a>
 и <a href="/bookmarks/"><i class="fa-solid fa-bookmark"></i> закладки</a>.
 Первые – для записи коротких мыслей на свободные темы.
 Вторые – для сохранения ссылок на интересные и полезные материалы.
 Опять же, чтобы не плодить десяток разделов с несколькими записями в каждом,
 все эти коллекции были упакованы в один с общей лентой,
 посты которых отмечены соответствующей иконкой.</p>
-
 <p>В мыслях есть создать еще два раздела: программы и книги.
 Думаю, названия говорят сами за себя. Мне есть чем поделиться.</p>
-
 <p>Тем не менее, если хочется увидеть что-то одно, например заметки,
 то их можно отфильтровать в столбце справа,
 а на мобильных устройствах – в самом низу (я думаю над тем, как сделать это лучше).
 Фильтр по категориям и тегам тоже скоро будет (наверное).</p>
-
 <p>Особенно мне нравится градиент в самом верху карточек.
 Искать картинку для каждой записи мне не хотелось.
 Но оставлять пост без какого-либо цвета очень скучно и некрасиво.
 На текущий момент доступно 22 градиента(ов),
 которые выбираются псевдослучайно (в зависимости от количества символов в записи)</p>
-
 <p>У вас тоже есть возможность поучаствовать в улучшении моего сайта:</p>
-
 <ol>
-  <li>Если у вас есть любимые красивые цветовые градиенты, отправьте их мне любым <a href="/">доступным способом</a>.</li>
-  <li>Также, вы можете <a href="https://fontawesome.com/icons?d=gallery&amp;s=solid&amp;m=free" target="_blank" rel="noopener noreferrer">выбрать красивую иконку</a> для раздела коллекций.
- Я пока выбрал звездочку <i class="fa-solid fa-star fa-fw"></i>, но, возможно, у вас будет идея получше :wink:</li>
+<li>Если у вас есть любимые красивые цветовые градиенты, отправьте их мне любым <a href="/">доступным способом</a>.</li>
+<li>Также, вы можете <a href="https://fontawesome.com/icons?d=gallery&#x26;s=solid&#x26;m=free" target="_blank" rel="noopener noreferrer">выбрать красивую иконку</a> для раздела коллекций.
+Я пока выбрал звездочку <i class="fa-solid fa-star fa-fw"></i>, но, возможно, у вас будет идея получше :wink:</li>
 </ol>
-    
-      <h2 id="иконка">
-        
-        
-          Иконка <a href="#%D0%B8%D0%BA%D0%BE%D0%BD%D0%BA%D0%B0" class="post__header-anchor" title="Anchor">#</a>
-        
-        
-      </h2>
-
+<h2 id="иконка">Иконка <a class="post__header-anchor" href="#иконка" title="Anchor">#</a></h2>
 <p>Очередное глобальное изменение.
 Это, конечно, не так впечатляет, как новый раздел с коллекциями.
 Но этот маленький аттрибут очень много значит для любого сайта. По иконке встречают, как говорится.
 Старый значок служил мне верой и правдой долгих 5 лет, если не больше,
 и он останется в моём сердце и истории git навсегда :heart:</p>
-
 <p>Конечно, я выбрал лису – у меня фон с лисой и логотип с лисой. Люблю я лис :fox:
 Пока что я взял Emoji от Apple, сделал ее черно-белой и немного добавил яркости.
 Надеюсь меня не засудят за нарушение авторских прав :no_mouth:
 Возможно, я нарисую что-то более уникальное. Но я не художник и не дизайнер.
 Если хочется помочь мне в это деле – пожалуйста. Мне будет очень приятно :blush:</p>
-    
-      <h2 id="мелочи">
-        
-        
-          Мелочи <a href="#%D0%BC%D0%B5%D0%BB%D0%BE%D1%87%D0%B8" class="post__header-anchor" title="Anchor">#</a>
-        
-        
-      </h2>
-    
-      <h3 id="теги-и-категории">
-        
-        
-          Теги и Категории <a href="#%D1%82%D0%B5%D0%B3%D0%B8-%D0%B8-%D0%BA%D0%B0%D1%82%D0%B5%D0%B3%D0%BE%D1%80%D0%B8%D0%B8" class="post__header-anchor" title="Anchor">#</a>
-        
-        
-      </h3>
-
+<h2 id="мелочи">Мелочи <a class="post__header-anchor" href="#мелочи" title="Anchor">#</a></h2>
+<h3 id="теги-и-категории">Теги и Категории <a class="post__header-anchor" href="#теги-и-категории" title="Anchor">#</a></h3>
 <p>На страницах блога в правой колонке есть два блока: комментарии и теги.</p>
-
 <p>Некоторые считают, что это лишнее и создаёт информационный шум.
 Частично я с этим согласен. Но люди достаточно часто переходят по этим ссылкам.</p>
-
 <p>Чтобы это выглядело более презентабельно, я внес пару косметических улучшений:</p>
-
 <ol>
-  <li>Теперь пункты отсортированы по количеству записей. В прошлом они были разбросаны хаотично.</li>
-  <li>Блок тегов теперь отображает только 6 самых популярных. Остальные скрыты за кнопочной “Show N more…”</li>
-  <li>Благодаря <a href="https://www.w3schools.com/css/css3_flexbox.asp" target="_blank" rel="noopener noreferrer">flex-box</a> удалось сделать кнопочки тегов на всю ширину.
- Теперь это выглядит как солидный блок, а не небрежно напиханные элементы.</li>
+<li>Теперь пункты отсортированы по количеству записей. В прошлом они были разбросаны хаотично.</li>
+<li>Блок тегов теперь отображает только 6 самых популярных. Остальные скрыты за кнопочной “Show N more…”</li>
+<li>Благодаря <a href="https://www.w3schools.com/css/css3_flexbox.asp" target="_blank" rel="noopener noreferrer">flex-box</a> удалось сделать кнопочки тегов на всю ширину.
+Теперь это выглядит как солидный блок, а не небрежно напиханные элементы.</li>
 </ol>
-
-<table class="table table-borderless">
-    <capture>Результат (до / после)</capture>
-    <tr>
-        <td><figure class="frame "><a href="tags-before.png" target="_blank"><img src="tags-before.png" alt="До" title="До"></a></figure></td>
-        <td><figure class="frame "><a href="tags-after.png" target="_blank"><img src="tags-after.png" alt="После" title="После"></a></figure></td>
-    </tr>
-</table>
+<capture>Результат (до / после)</capture><table class="table table-borderless">
     
-      <h3 id="звездочки">
-        
-        
-          Звездочки <a href="#%D0%B7%D0%B2%D0%B5%D0%B7%D0%B4%D0%BE%D1%87%D0%BA%D0%B8" class="post__header-anchor" title="Anchor">#</a>
-        
-        
-      </h3>
-
+    <tbody><tr>
+        <td><figure class="frame"><a href="tags-before.png" target="_blank"><img src="tags-before.png" alt="До" title="До"></a></figure></td>
+        <td><figure class="frame"><a href="tags-after.png" target="_blank"><img src="tags-after.png" alt="После" title="После"></a></figure></td>
+    </tr>
+</tbody></table>
+<h3 id="звездочки">Звездочки <a class="post__header-anchor" href="#звездочки" title="Anchor">#</a></h3>
 <p>Это очень незначительное изменение, но в разы улучшает моё резюме, особенно при печати.
 Я прижал звездочки в скиллах вправо, что сделало табличку в разы лучше.</p>
-
-<table class="table table-borderless">
-    <capture>Скриншоты "до" и "после" скажут все за меня:</capture>
-    <tr>
-        <td><figure class="frame "><a href="stars-before.png" target="_blank"><img src="stars-before.png" alt="До" title="До"></a></figure></td>
-        <td><figure class="frame "><a href="stars-after.png" target="_blank"><img src="stars-after.png" alt="После" title="После"></a></figure></td>
-    </tr>
-</table>
+<capture>Скриншоты "до" и "после" скажут все за меня:</capture><table class="table table-borderless">
     
-      <h3 id="прочее">
-        
-        
-          Прочее <a href="#%D0%BF%D1%80%D0%BE%D1%87%D0%B5%D0%B5" class="post__header-anchor" title="Anchor">#</a>
-        
-        
-      </h3>
-
+    <tbody><tr>
+        <td><figure class="frame"><a href="stars-before.png" target="_blank"><img src="stars-before.png" alt="До" title="До"></a></figure></td>
+        <td><figure class="frame"><a href="stars-after.png" target="_blank"><img src="stars-after.png" alt="После" title="После"></a></figure></td>
+    </tr>
+</tbody></table>
+<h3 id="прочее">Прочее <a class="post__header-anchor" href="#прочее" title="Anchor">#</a></h3>
 <p>Несколько других мелочей:</p>
-
 <ol>
-  <li>Теперь у подзаголовков в статьях есть значок #, нажав на который можно получить ссылку на этот раздел статьи.
- Это будет удобно, когда нужно сослаться на какую-то часть публикации в других статьях или при отправке людям.
- Откровенно говоря, я сделал это просто потому что хочу, а не потому что надо :blush:</li>
-  <li>Подсчет времени на прочтение статьи стал еще более правдоподобным благодаря плагину, который учитывает только текст,
- а не весь код. Ранее, большие куски кода могли добавлять больше минут на прочтение, тогда как самого текста не так и много.</li>
-  <li>Теперь все картинки кликабельны и открывают изображение в новой вкладке.
- Следующим шагом будет прикрутить плагин, который открывает картинку в текущем окне. Но это потом.</li>
+<li>Теперь у подзаголовков в статьях есть значок #, нажав на который можно получить ссылку на этот раздел статьи.
+Это будет удобно, когда нужно сослаться на какую-то часть публикации в других статьях или при отправке людям.
+Откровенно говоря, я сделал это просто потому что хочу, а не потому что надо :blush:</li>
+<li>Подсчет времени на прочтение статьи стал еще более правдоподобным благодаря плагину, который учитывает только текст,
+а не весь код. Ранее, большие куски кода могли добавлять больше минут на прочтение, тогда как самого текста не так и много.</li>
+<li>Теперь все картинки кликабельны и открывают изображение в новой вкладке.
+Следующим шагом будет прикрутить плагин, который открывает картинку в текущем окне. Но это потом.</li>
 </ol>
-    <hr>
-
+<hr>
 <p>Если у вас есть какие-то идеи, напишите мне. Мне важна любая обратная связь.
 Также можете предложить темы статей, которые хотите, чтобы я осветил.</p>
-
-<p>Спасибо за внимание :fox:</p>
-        </article>
-
-        <hr>
-
-        <div class="subscribe-post">
-            <p>
-                
-                Мне будет очень приятно, если вы подпишитесь на обновления.
-                
-            </p>
-            <div class="subscribe-post__items">
-                <a class="subscribe-post__link subscribe-post__link--telegram" href="tg://resolve?domain=blog_vtvz"><i class="fa-fw fa-brands fa-telegram-plane"></i><span class="subscribe-post__label"> Telegram</span></a><a class="subscribe-post__link subscribe-post__link--vk" href="https://vk.com/blog_vtvz" target="_blank" rel="noopener noreferrer"><i class="fa-fw fa-brands fa-vk"></i><span class="subscribe-post__label"> VK</span></a><a class="subscribe-post__link subscribe-post__link--linkedin" href="https://www.linkedin.com/in/vtvz/" target="_blank" rel="noopener noreferrer"><i class="fa-fw fa-brands fa-linkedin-in"></i><span class="subscribe-post__label"> LinkedIn</span></a><a class="subscribe-post__link subscribe-post__link--github" href="https://github.com/vtvz/" target="_blank" rel="noopener noreferrer"><i class="fa-fw fa-brands fa-github-alt"></i><span class="subscribe-post__label"> GitHub</span></a><a class="subscribe-post__link subscribe-post__link--twitter" href="https://twitter.com/vtvz_me" target="_blank" rel="noopener noreferrer"><i class="fa-fw fa-brands fa-twitter"></i><span class="subscribe-post__label"> Twitter</span></a><a class="subscribe-post__link subscribe-post__link--rss" href="/feed.xml"><i class="fa-fw fa-solid fa-rss"></i><span class="subscribe-post__label"> RSS</span></a>
-            </div>
-        </div>
-
-        <div class="post-tags">
-            
-            <a href="/blog/tag/%D0%B1%D0%BB%D0%BE%D0%B3/" itemprop="about">Блог</a>,
-            
-            <a href="/blog/tag/%D0%B2%D0%B5%D0%B1-%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B0/" itemprop="about">Веб-разработка</a>,
-            
-            <a href="/blog/tag/jekyll/" itemprop="about">Jekyll</a>,
-            
-            <a href="/blog/tag/%D0%BE%D0%B1%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F/" itemprop="about">Обновления</a>
-            
-        </div>
-    </div>
-    <div class="box">
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 text-left">
-                
-                <div>« Previous</div>
-                <a class="prev" href="/blog/robots-txt-in-kubernetes/?utm=_prev">Настройка robots.txt в Kubernetes</a>
-                
-            </div>
-
-            
-            <div class="col-xs-12 col-sm-6 text-right">
-                <div>Next »</div>
-                <a class="next" href="/blog/rest-in-peace-my-friend/?utm=_next">Покойся с миром, мой дорогой друг…</a>
-            </div>
-            
-        </div>
-    </div>
-    <div class="box comments" id="comments">
-    <script async src="https://telegram.org/js/telegram-widget.js?19" data-telegram-discussion="channel_for_old_posts_comments" data-comments-limit="5" data-color="1380EC" data-dark="1"></script>
-</div>
-
-</div>
-
-        </div>
-
-        <aside class="col-md-4 col-sm-12 sidebar">
-            
-            
-            
-            
-            <div class="sidebox box hidden-sm hidden-xs">
-                <h3 class="section-title">In this Article:</h3>
-                <ul class="circled">
-  <li><a href="#%D0%BA%D0%BE%D0%BB%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8">Коллекции</a></li>
-  <li><a href="#%D0%B8%D0%BA%D0%BE%D0%BD%D0%BA%D0%B0">Иконка</a></li>
-  <li>
-<a href="#%D0%BC%D0%B5%D0%BB%D0%BE%D1%87%D0%B8">Мелочи</a>
-    <ul>
-      <li><a href="#%D1%82%D0%B5%D0%B3%D0%B8-%D0%B8-%D0%BA%D0%B0%D1%82%D0%B5%D0%B3%D0%BE%D1%80%D0%B8%D0%B8">Теги и Категории</a></li>
-      <li><a href="#%D0%B7%D0%B2%D0%B5%D0%B7%D0%B4%D0%BE%D1%87%D0%BA%D0%B8">Звездочки</a></li>
-      <li><a href="#%D0%BF%D1%80%D0%BE%D1%87%D0%B5%D0%B5">Прочее</a></li>
-    </ul>
-  </li>
-</ul>
-            </div>
-            
+<p>Спасибо за внимание :fox:</p></article>
             
 
-            <div class="sidebox box">
-                <h3 class="section-title">Categories</h3>
-                <ul class="circled">
-                    
-                    
-                    
-                    
-                    
-                    <li data-sort="0011">
-                        <a href="/blog/category/%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B0/">
-                            Разработка <span class="badge">10</span>
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0018">
-                        <a href="/blog/category/livelog/">
-                            LiveLog <span class="badge">3</span>
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0019">
-                        <a href="/blog/category/devops/">
-                            DevOps <span class="badge">2</span>
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0019">
-                        <a href="/blog/category/%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%8B/">
-                            Сервисы <span class="badge">2</span>
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0020">
-                        <a href="/blog/category/android/">
-                            Android <span class="badge">1</span>
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0020">
-                        <a href="/blog/category/linux/">
-                            Linux <span class="badge">1</span>
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0020">
-                        <a href="/blog/category/%D0%B8%D0%BF/">
-                            ИП <span class="badge">1</span>
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0020">
-                        <a href="/blog/category/%D0%BE%D0%BF%D1%8B%D1%82/">
-                            Опыт <span class="badge">1</span>
-                        </a>
-                    
-                </li>
-</ul>
-            </div>
+            <hr>
 
-            <div class="sidebox box">
-                <h3 class="section-title">Tags</h3>
-                <ul class="tag-list">
-                    
-                    
-                    
-                    
-                    
-                    <li data-sort="0010">
-                        <a class="btn" href="/blog/tag/%D0%B2%D0%B5%D0%B1-%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B0/">
-                            Веб-разработка [11]
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0015">
-                        <a class="btn" href="/blog/tag/%D0%B1%D0%BB%D0%BE%D0%B3/">
-                            Блог [6]
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0018">
-                        <a class="btn" href="/blog/tag/jekyll/">
-                            Jekyll [3]
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0018">
-                        <a class="btn" href="/blog/tag/%D0%BE%D0%B1%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F/">
-                            Обновления [3]
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0019">
-                        <a class="btn" href="/blog/tag/docker/">
-                            Docker [2]
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0019">
-                        <a class="btn" href="/blog/tag/frontend/">
-                            Frontend [2]
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0019">
-                        <a class="btn" href="/blog/tag/kubernetes/">
-                            Kubernetes [2]
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0019">
-                        <a class="btn" href="/blog/tag/%D0%B8%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D1%8B/">
-                            Инструменты [2]
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0019">
-                        <a class="btn" href="/blog/tag/%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%8B/">
-                            Сервисы [2]
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0020">
-                        <a class="btn" href="/blog/tag/android/">
-                            Android [1]
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0020">
-                        <a class="btn" href="/blog/tag/code-style/">
-                            Code-style [1]
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0020">
-                        <a class="btn" href="/blog/tag/ecryptfs/">
-                            eCryptfs [1]
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0020">
-                        <a class="btn" href="/blog/tag/emoji/">
-                            Emoji [1]
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0020">
-                        <a class="btn" href="/blog/tag/helm/">
-                            Helm [1]
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0020">
-                        <a class="btn" href="/blog/tag/linux/">
-                            Linux [1]
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0020">
-                        <a class="btn" href="/blog/tag/nginx/">
-                            Nginx [1]
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0020">
-                        <a class="btn" href="/blog/tag/petproject/">
-                            PetProject [1]
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0020">
-                        <a class="btn" href="/blog/tag/php/">
-                            PHP [1]
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0020">
-                        <a class="btn" href="/blog/tag/rip/">
-                            RIP [1]
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0020">
-                        <a class="btn" href="/blog/tag/rustify/">
-                            Rustify [1]
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0020">
-                        <a class="btn" href="/blog/tag/telegram/">
-                            Telegram [1]
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0020">
-                        <a class="btn" href="/blog/tag/telegrambot/">
-                            TelegramBot [1]
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0020">
-                        <a class="btn" href="/blog/tag/%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0/">
-                            Аналитика [1]
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0020">
-                        <a class="btn" href="/blog/tag/%D0%B1%D0%B0%D0%B7%D1%8B-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85/">
-                            Базы данных [1]
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0020">
-                        <a class="btn" href="/blog/tag/%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D1%8C/">
-                            Безопасность [1]
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0020">
-                        <a class="btn" href="/blog/tag/%D0%B1%D0%B8%D0%B7%D0%BD%D0%B5%D1%81/">
-                            Бизнес [1]
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0020">
-                        <a class="btn" href="/blog/tag/%D0%B5%D0%B4%D0%B0/">
-                            Еда [1]
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0020">
-                        <a class="btn" href="/blog/tag/%D0%B6%D0%B8%D0%B2%D0%BE%D1%82%D0%BD%D1%8B%D0%B5/">
-                            Животные [1]
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0020">
-                        <a class="btn" href="/blog/tag/%D0%B8%D0%BF/">
-                            ИП [1]
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0020">
-                        <a class="btn" href="/blog/tag/%D0%BC%D0%B0%D0%B3%D0%B0%D0%B7%D0%B8%D0%BD%D1%8B/">
-                            Магазины [1]
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0020">
-                        <a class="btn" href="/blog/tag/%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0/">
-                            Музыка [1]
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0020">
-                        <a class="btn" href="/blog/tag/%D0%BD%D0%B0%D0%BB%D0%BE%D0%B3%D0%B8/">
-                            Налоги [1]
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0020">
-                        <a class="btn" href="/blog/tag/%D0%BE%D0%BF%D1%82%D0%B8%D0%BC%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F/">
-                            Оптимизация [1]
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0020">
-                        <a class="btn" href="/blog/tag/%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B/">
-                            Программы [1]
-                        </a>
-                    </li>
-                    
-                    <li data-sort="0020">
-                        <a class="btn" href="/blog/tag/%D1%83%D1%81%D0%BD/">
-                            УСН [1]
-                        </a>
-                    
-                </li>
-</ul>
-                <div class="tag-list__more-wrapper">
-                    <button class="btn btn-block tag-list__more">Show 29 more...</button>
+            <div class="subscribe-post">
+                <p>
+                    Мне будет очень приятно, если вы подпишитесь на обновления.
+                </p>
+                <div class="subscribe-post__items">
+                    <a class="subscribe-post__link subscribe-post__link--telegram" href="tg://resolve?domain=vtvz_dev"><i class="fa-fw fa-brands fa-telegram-plane"></i><span class="subscribe-post__label"> Telegram</span></a><a class="subscribe-post__link subscribe-post__link--vk" href="https://vk.com/blog_vtvz" target="_blank" rel="noopener noreferrer"><i class="fa-fw fa-brands fa-vk"></i><span class="subscribe-post__label"> VK</span></a><a class="subscribe-post__link subscribe-post__link--linkedin" href="https://www.linkedin.com/in/vtvz/" target="_blank" rel="noopener noreferrer"><i class="fa-fw fa-brands fa-linkedin-in"></i><span class="subscribe-post__label"> LinkedIn</span></a><a class="subscribe-post__link subscribe-post__link--github" href="https://github.com/vtvz/" target="_blank" rel="noopener noreferrer"><i class="fa-fw fa-brands fa-github-alt"></i><span class="subscribe-post__label"> GitHub</span></a><a class="subscribe-post__link subscribe-post__link--twitter" href="https://twitter.com/vtvz_me" target="_blank" rel="noopener noreferrer"><i class="fa-fw fa-brands fa-twitter"></i><span class="subscribe-post__label"> Twitter</span></a><a class="subscribe-post__link subscribe-post__link--rss" href="/feed.xml"><i class="fa-fw fa-solid fa-rss"></i><span class="subscribe-post__label"> RSS</span></a>
                 </div>
             </div>
-        </aside>
+
+            <div class="post-tags">
+                <a href="/blog/tag/блог/" itemprop="about">Блог</a>, <a href="/blog/tag/веб-разработка/" itemprop="about">Веб-разработка</a>, <a href="/blog/tag/jekyll/" itemprop="about">Jekyll</a>, <a href="/blog/tag/обновления/" itemprop="about">Обновления</a>
+            </div>
+        </div>
+        <div class="box">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 text-left">
+                    
+                            <div>&laquo; Previous</div>
+                            <a class="prev" href="/blog/robots-txt-in-kubernetes/?utm=_prev">Настройка robots.txt в Kubernetes</a>
+                        
+                </div>
+
+                <div class="col-xs-12 col-sm-6 text-right">
+                        <div>Next &raquo;</div>
+                        <a class="next" href="/blog/rest-in-peace-my-friend/?utm=_next">Покойся с миром, мой дорогой друг…</a>
+                    </div>
+            </div>
+        </div>
+        <div class="box comments" id="comments">
+    <script async src="https://telegram.org/js/telegram-widget.js?19" data-telegram-discussion="channel_for_old_posts_comments" data-comments-limit="5" data-color="1380EC" data-dark="1"></script>
+</div>
     </div>
-    <div class="clearfix"></div>
-    <div class="row">
-        <div class="col-md-8 col-sm-12">
-            <footer class="box text-center">
-    © 2026 Vitaly Zaslavsky. All rights reserved.
+
+            </div>
+
+            <aside class="col-md-4 col-sm-12 sidebar">
+                <div class="sidebox box hidden-sm hidden-xs">
+                        <h3 class="section-title">In this Article:</h3>
+                        <ul class="circled"><li><a href="#коллекции">Коллекции</a></li><li><a href="#иконка">Иконка</a></li><li>
+<a href="#мелочи">Мелочи</a>
+<ul><li><a href="#теги-и-категории">Теги и Категории</a></li><li><a href="#звездочки">Звездочки</a></li><li><a href="#прочее">Прочее</a></li></ul></li></ul>
+                    </div>
+
+                <div class="sidebox box">
+                    <h3 class="section-title">Categories</h3>
+                    <ul class="circled">
+                        
+<li>
+                                    <a href="/blog/category/разработка/">
+                                        Разработка <span class="badge">10</span>
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a href="/blog/category/livelog/">
+                                        LiveLog <span class="badge">3</span>
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a href="/blog/category/devops/">
+                                        DevOps <span class="badge">2</span>
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a href="/blog/category/сервисы/">
+                                        Сервисы <span class="badge">2</span>
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a href="/blog/category/android/">
+                                        Android <span class="badge">1</span>
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a href="/blog/category/linux/">
+                                        Linux <span class="badge">1</span>
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a href="/blog/category/ип/">
+                                        ИП <span class="badge">1</span>
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a href="/blog/category/опыт/">
+                                        Опыт <span class="badge">1</span>
+                                    </a>
+                                </li>
+                            
+                    </ul>
+                </div>
+
+                <div class="sidebox box">
+                    <h3 class="section-title">Tags</h3>
+                    <ul class="tag-list">
+                        
+<li>
+                                    <a class="btn" href="/blog/tag/веб-разработка/">
+                                        Веб-разработка [11]
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a class="btn" href="/blog/tag/блог/">
+                                        Блог [6]
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a class="btn" href="/blog/tag/jekyll/">
+                                        Jekyll [3]
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a class="btn" href="/blog/tag/обновления/">
+                                        Обновления [3]
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a class="btn" href="/blog/tag/docker/">
+                                        Docker [2]
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a class="btn" href="/blog/tag/frontend/">
+                                        Frontend [2]
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a class="btn" href="/blog/tag/kubernetes/">
+                                        Kubernetes [2]
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a class="btn" href="/blog/tag/инструменты/">
+                                        Инструменты [2]
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a class="btn" href="/blog/tag/сервисы/">
+                                        Сервисы [2]
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a class="btn" href="/blog/tag/android/">
+                                        Android [1]
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a class="btn" href="/blog/tag/code-style/">
+                                        Code-style [1]
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a class="btn" href="/blog/tag/ecryptfs/">
+                                        eCryptfs [1]
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a class="btn" href="/blog/tag/emoji/">
+                                        Emoji [1]
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a class="btn" href="/blog/tag/helm/">
+                                        Helm [1]
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a class="btn" href="/blog/tag/linux/">
+                                        Linux [1]
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a class="btn" href="/blog/tag/nginx/">
+                                        Nginx [1]
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a class="btn" href="/blog/tag/petproject/">
+                                        PetProject [1]
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a class="btn" href="/blog/tag/php/">
+                                        PHP [1]
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a class="btn" href="/blog/tag/rip/">
+                                        RIP [1]
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a class="btn" href="/blog/tag/rustify/">
+                                        Rustify [1]
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a class="btn" href="/blog/tag/telegram/">
+                                        Telegram [1]
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a class="btn" href="/blog/tag/telegrambot/">
+                                        TelegramBot [1]
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a class="btn" href="/blog/tag/аналитика/">
+                                        Аналитика [1]
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a class="btn" href="/blog/tag/базы-данных/">
+                                        Базы данных [1]
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a class="btn" href="/blog/tag/безопасность/">
+                                        Безопасность [1]
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a class="btn" href="/blog/tag/бизнес/">
+                                        Бизнес [1]
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a class="btn" href="/blog/tag/еда/">
+                                        Еда [1]
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a class="btn" href="/blog/tag/животные/">
+                                        Животные [1]
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a class="btn" href="/blog/tag/ип/">
+                                        ИП [1]
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a class="btn" href="/blog/tag/магазины/">
+                                        Магазины [1]
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a class="btn" href="/blog/tag/музыка/">
+                                        Музыка [1]
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a class="btn" href="/blog/tag/налоги/">
+                                        Налоги [1]
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a class="btn" href="/blog/tag/оптимизация/">
+                                        Оптимизация [1]
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a class="btn" href="/blog/tag/программы/">
+                                        Программы [1]
+                                    </a>
+                                </li>
+                            
+<li>
+                                    <a class="btn" href="/blog/tag/усн/">
+                                        УСН [1]
+                                    </a>
+                                </li>
+                            
+                    </ul>
+                    <div class="tag-list__more-wrapper">
+                        <button class="btn btn-block tag-list__more">Show 29 more...</button>
+                    </div>
+                </div>
+            </aside>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-8 col-sm-12">
+                <footer class="box text-center">
+    &copy;&nbsp;2026 Vitaly Zaslavsky. All rights reserved.
 </footer>
-
+            </div>
         </div>
     </div>
-</div>
 
+    </div>
 
-</div>
-
-<div class="subscription-block" id="subscribe">
-    <a href="#" class="subscription-block__close"></a>
-    <div class="subscription-block__list">
-        <div class="subscription-block__list-title">
-            Подписаться
-        </div>
-        <div class="subscription-block__list-item">
-            <a class="subscription-block__link subscription-block__link--telegram" href="tg://resolve?domain=blog_vtvz">
-                <i class="fa-fw fa-brands fa-telegram-plane subscription-block__icon"></i><span class="subscription-block__label"> Telegram</span>
-            </a>
-        </div>
-<div class="subscription-block__list-item">
-            <a class="subscription-block__link subscription-block__link--vk" href="https://vk.com/blog_vtvz" target="_blank" rel="noopener noreferrer">
-                <i class="fa-fw fa-brands fa-vk subscription-block__icon"></i><span class="subscription-block__label"> VK</span>
-            </a>
-        </div>
-<div class="subscription-block__list-item">
-            <a class="subscription-block__link subscription-block__link--linkedin" href="https://www.linkedin.com/in/vtvz/" target="_blank" rel="noopener noreferrer">
-                <i class="fa-fw fa-brands fa-linkedin-in subscription-block__icon"></i><span class="subscription-block__label"> LinkedIn</span>
-            </a>
-        </div>
-<div class="subscription-block__list-item">
-            <a class="subscription-block__link subscription-block__link--github" href="https://github.com/vtvz/" target="_blank" rel="noopener noreferrer">
-                <i class="fa-fw fa-brands fa-github-alt subscription-block__icon"></i><span class="subscription-block__label"> GitHub</span>
-            </a>
-        </div>
-<div class="subscription-block__list-item">
-            <a class="subscription-block__link subscription-block__link--twitter" href="https://twitter.com/vtvz_me" target="_blank" rel="noopener noreferrer">
-                <i class="fa-fw fa-brands fa-twitter subscription-block__icon"></i><span class="subscription-block__label"> Twitter</span>
-            </a>
-        </div>
-<div class="subscription-block__list-item">
-            <a class="subscription-block__link subscription-block__link--rss" href="/feed.xml">
-                <i class="fa-fw fa-solid fa-rss subscription-block__icon"></i><span class="subscription-block__label"> RSS</span>
-            </a>
+    <div class="subscription-block" id="subscribe">
+        <a href="#" class="subscription-block__close"></a>
+        <div class="subscription-block__list">
+            <div class="subscription-block__list-title">
+                Подписаться
+            </div>
+            <div class="subscription-block__list-item">
+                    <a class="subscription-block__link subscription-block__link--telegram" href="tg://resolve?domain=vtvz_dev">
+                        <i class="fa-fw fa-brands fa-telegram-plane subscription-block__icon"></i><span class="subscription-block__label"> Telegram</span>
+                    </a>
+                </div><div class="subscription-block__list-item">
+                    <a class="subscription-block__link subscription-block__link--vk" href="https://vk.com/blog_vtvz" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-fw fa-brands fa-vk subscription-block__icon"></i><span class="subscription-block__label"> VK</span>
+                    </a>
+                </div><div class="subscription-block__list-item">
+                    <a class="subscription-block__link subscription-block__link--linkedin" href="https://www.linkedin.com/in/vtvz/" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-fw fa-brands fa-linkedin-in subscription-block__icon"></i><span class="subscription-block__label"> LinkedIn</span>
+                    </a>
+                </div><div class="subscription-block__list-item">
+                    <a class="subscription-block__link subscription-block__link--github" href="https://github.com/vtvz/" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-fw fa-brands fa-github-alt subscription-block__icon"></i><span class="subscription-block__label"> GitHub</span>
+                    </a>
+                </div><div class="subscription-block__list-item">
+                    <a class="subscription-block__link subscription-block__link--twitter" href="https://twitter.com/vtvz_me" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-fw fa-brands fa-twitter subscription-block__icon"></i><span class="subscription-block__label"> Twitter</span>
+                    </a>
+                </div><div class="subscription-block__list-item">
+                    <a class="subscription-block__link subscription-block__link--rss" href="/feed.xml">
+                        <i class="fa-fw fa-solid fa-rss subscription-block__icon"></i><span class="subscription-block__label"> RSS</span>
+                    </a>
+                </div>
         </div>
     </div>
-</div>
 
 
         
-        <script src="https://browser.sentry-cdn.com/6.19.7/bundle.min.js" integrity="sha384-KXjn4K+AYjp1cparCXazrB+5HKdi69IUYz8glD3ySH3fnDgMX3Wg6VTMvXUGr4KB" crossorigin="anonymous"></script>
-        <script>Sentry.init({ dsn: 'https://9969aeb380dc4927b6ed1e20f6fa772c@o396821.ingest.sentry.io/5250691' });</script>
-        
+                <script src="https://browser.sentry-cdn.com/6.19.7/bundle.min.js" integrity="sha384-KXjn4K+AYjp1cparCXazrB+5HKdi69IUYz8glD3ySH3fnDgMX3Wg6VTMvXUGr4KB" crossorigin="anonymous"></script>
+                <script>(function(){const sentryDsn = "https://9969aeb380dc4927b6ed1e20f6fa772c@o396821.ingest.sentry.io/5250691";
+
+                    Sentry.init({ dsn: sentryDsn });
+                })();</script>
+            
 
         <script src="/assets/js/jquery.min.js?cb=0571615"></script>
         <script src="/assets/js/bootstrap.min.js?cb=1dad3b3"></script>
         <script src="/assets/js/plugins.js?cb=932ef83"></script>
         <script src="/assets/js/scripts.js?cb=78bb624"></script>
-        <script src="/assets/javascript/bundle.eefa.js"></script>
-
-        <script>
-            
-
-            main.resolveUtm(window, document);
-        </script>
+        <script type="module" src="/_astro/Html.astro_astro_type_script_index_0_lang.DiF5hbdS.js"></script>
 
         
-        <!-- Yandex.Metrika counter -->
-        <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(+"31771726", "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/31771726" style="position:absolute; left:-9999px;" alt=""></div></noscript>
-        <!-- /Yandex.Metrika counter -->
+<script>(function(){const yandexId = 31771726;
 
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131047185-1"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
+    document.addEventListener('DOMContentLoaded', function () {
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments); };
+            m[i].l = 1 * new Date();
+            k = e.createElement(t);
+            a = e.getElementsByTagName(t)[0];
+            k.async = 1;
+            k.src = r;
+            a.parentNode.insertBefore(k, a);
+        })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
 
-          gtag('config', 'UA-131047185-1');
-        </script>
-        
+        ym(yandexId, 'init', { clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true });
+    });
+})();</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/31771726" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131047185-1"></script>
+<script>(function(){const googleId = "UA-131047185-1";
+
+    document.addEventListener('DOMContentLoaded', function () {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', googleId);
+    });
+})();</script>
     </body>
 </html>

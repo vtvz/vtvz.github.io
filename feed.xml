@@ -1,535 +1,423 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en_GB"><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://vtvz.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vtvz.me/" rel="alternate" type="text/html" hreflang="en_GB" /><updated>2026-11-10T23:03:14+03:00</updated><id>https://vtvz.me/feed.xml</id><title type="html">Vitaly Zaslavsky – DevOps Engineer, who loves his job</title><subtitle>DevOps engineer&apos;s personal blog about everything. Notes on successes and failures in professional activities, about finding solutions to practical problems, and just about life.
-</subtitle><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><entry xml:lang="en"><title type="html">Solving eCryptfs “Failed to mount private data” error</title><link href="https://vtvz.me/blog/ecryptfs-recovery-error/" rel="alternate" type="text/html" title="Solving eCryptfs “Failed to mount private data” error" /><published>2022-06-26T00:00:00+03:00</published><updated>2022-06-26T00:00:00+03:00</updated><id>https://vtvz.me/blog/ecryptfs-recovery-error</id><content type="html" xml:base="https://vtvz.me/blog/ecryptfs-recovery-error/"><![CDATA[<p>One day I decided to try Manjaro out. My laptop is pretty good-ish, and one of my requirements is an encrypted home directory. On the previous installation on Ubuntu 20.04, I used <code class="language-plaintext highlighter-rouge">ecryptfs</code> and it was good enough for my needs. When I moved to Manjaro I decided to leave <code class="language-plaintext highlighter-rouge">ecryptfs</code> as my primary encryption method but to recreate the passphrase from scratch with a completely fresh and clean home folder. Then I moved all encrypted files to another location… I believe this was the right decision, but I struggled for about a day to restore access to my previous data. This little note is for me and for those who need a bit of help with the recovery process.</p>
-
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en_GB"><link href="https://vtvz.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vtvz.me/" rel="alternate" type="text/html" hreflang="en_GB" /><updated>2026-11-12T16:15:23+03:00</updated><id>https://vtvz.me/feed.xml</id><title type="html">Vitaly Zaslavsky – DevOps Engineer, who loves his job</title><subtitle>DevOps engineer&apos;s personal blog about everything. Notes on successes and failures in professional activities, about finding solutions to practical problems, and just about life.</subtitle><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><entry xml:lang="en"><title type="html">Solving eCryptfs “Failed to mount private data” error</title><link href="https://vtvz.me/blog/ecryptfs-recovery-error/" rel="alternate" type="text/html" title="Solving eCryptfs “Failed to mount private data” error" /><published>2022-06-26T00:00:00+03:00</published><updated>2022-06-26T00:00:00+03:00</updated><id>https://vtvz.me/blog/ecryptfs-recovery-error</id><content type="html" xml:base="https://vtvz.me/blog/ecryptfs-recovery-error/"><![CDATA[<p>One day I decided to try Manjaro out. My laptop is pretty good-ish, and one of my requirements is an encrypted home directory. On the previous installation on Ubuntu 20.04, I used <code>ecryptfs</code> and it was good enough for my needs. When I moved to Manjaro I decided to leave <code>ecryptfs</code> as my primary encryption method but to recreate the passphrase from scratch with a completely fresh and clean home folder. Then I moved all encrypted files to another location… I believe this was the right decision, but I struggled for about a day to restore access to my previous data. This little note is for me and for those who need a bit of help with the recovery process.</p>
 <!--cut-->
-
 <blockquote>
-  <p>For those who just came for the <span class="text-muted">possible</span> solution, jump straight to <a href="#tldr">TL;DR</a></p>
+<p>For those who just came for the <span class="text-muted">possible</span> solution, jump straight to <a href="#tldr">TL;DR</a></p>
 </blockquote>
-
 <h2 id="the-problem-i-faced-with">The problem I faced with</h2>
-
-<p>If you are here you should already know that the encrypted data is located in <span class="text-nowrap"><code class="language-plaintext highlighter-rouge">/home/.ecryptfs/%username%</code></span>. I moved my previous data to <code class="language-plaintext highlighter-rouge">/home/.ecryptfs/prev</code> but it doesn’t really matter. You can replace <code class="language-plaintext highlighter-rouge">%username%</code> or whole path with your value. So let’s replace the whole <code class="language-plaintext highlighter-rouge">/home/.ecryptfs/%username%</code> with short <code class="language-plaintext highlighter-rouge">%path%</code> for the sake of brevity.</p>
-
-<p>I tried to use <code class="language-plaintext highlighter-rouge">ecryptfs-recover-private</code> and got this error:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>ecryptfs-recover-private %path%/.Private
-
-<span class="c">### Output ###</span>
-<span class="c">#  INFO: Found [%path%/.Private].</span>
-<span class="c">#  Try to recover this directory? [Y/n]: </span>
-<span class="c">#  INFO: Found your wrapped-passphrase</span>
-<span class="c">#  Do you know your LOGIN passphrase? [Y/n] </span>
-<span class="c">#  INFO: Enter your LOGIN passphrase...</span>
-<span class="c">#  Passphrase: </span>
-<span class="c">#  Inserted auth tok with sig [3121cedc8cecfb1] into the user session keyring</span>
-<span class="c">#  mount: /tmp/ecryptfs.xxxxxxxx: mount(2) system call failed: No such file or directory.</span>
-<span class="c">#         dmesg(1) may have more information after failed mount system call.</span>
-<span class="c">#  ERROR: Failed to mount private data at [/tmp/ecryptfs.xxxxxxxx].</span>
-</code></pre></div></div>
-
-<p><span class="text-muted">
-  (I use <code class="language-plaintext highlighter-rouge">sudo</code> instead of <code class="language-plaintext highlighter-rouge">#</code> because syntax highlighting messes up with hashtag)
+<p>If you are here you should already know that the encrypted data is located in <span class="text-nowrap"><code>/home/.ecryptfs/%username%</code></span>. I moved my previous data to <code>/home/.ecryptfs/prev</code> but it doesn’t really matter. You can replace <code>%username%</code> or whole path with your value. So let’s replace the whole <code>/home/.ecryptfs/%username%</code> with short <code>%path%</code> for the sake of brevity.</p>
+<p>I tried to use <code>ecryptfs-recover-private</code> and got this error:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="line"><span style="color:#A6E22E">sudo</span><span style="color:#E6DB74"> ecryptfs-recover-private</span><span style="color:#E6DB74"> %path%/.Private</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#88846F">### Output ###</span></span>
+<span class="line"><span style="color:#88846F">#  INFO: Found [%path%/.Private].</span></span>
+<span class="line"><span style="color:#88846F">#  Try to recover this directory? [Y/n]: </span></span>
+<span class="line"><span style="color:#88846F">#  INFO: Found your wrapped-passphrase</span></span>
+<span class="line"><span style="color:#88846F">#  Do you know your LOGIN passphrase? [Y/n] </span></span>
+<span class="line"><span style="color:#88846F">#  INFO: Enter your LOGIN passphrase...</span></span>
+<span class="line"><span style="color:#88846F">#  Passphrase: </span></span>
+<span class="line"><span style="color:#88846F">#  Inserted auth tok with sig [3121cedc8cecfb1] into the user session keyring</span></span>
+<span class="line"><span style="color:#88846F">#  mount: /tmp/ecryptfs.xxxxxxxx: mount(2) system call failed: No such file or directory.</span></span>
+<span class="line"><span style="color:#88846F">#         dmesg(1) may have more information after failed mount system call.</span></span>
+<span class="line"><span style="color:#88846F">#  ERROR: Failed to mount private data at [/tmp/ecryptfs.xxxxxxxx].</span></span>
+<span class="line"></span></code></pre></div></div>
+<p><span class="text-muted">(I use <code>sudo</code> instead of <code>#</code> because syntax highlighting messes up with hashtag)
 </span></p>
-
 <p>Wierd…</p>
-
 <h2 id="adventure-on-the-way-to-the-solution">Adventure on the way to the solution</h2>
-
-<p>So it says <code class="language-plaintext highlighter-rouge">dmesg</code> can help. Let’s try. It’s a bit hard to find the necessary information in this constant flow of messages… I tried to run these two commands one right after the other. And there’s a hint:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>dmesg
-
-<span class="c">### Output ###</span>
-<span class="c">#  [128513.402407] Could not find key with description: [2a283744646d8d1]</span>
-<span class="c">#  [128513.402410] process_request_key_err: No key</span>
-<span class="c">#  [128513.402411] Could not find valid key in user session keyring for sig specified in mount option: [2a283744646d8d1]</span>
-</code></pre></div></div>
-
-<p>Yeah, <a href="https://www.google.com/search?q=I+know+some+of+these+words">I know some of these words</a>. I guess the essential part is <code class="language-plaintext highlighter-rouge">user session keyring</code></p>
-
+<p>So it says <code>dmesg</code> can help. Let’s try. It’s a bit hard to find the necessary information in this constant flow of messages… I tried to run these two commands one right after the other. And there’s a hint:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="line"><span style="color:#A6E22E">sudo</span><span style="color:#E6DB74"> dmesg</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#88846F">### Output ###</span></span>
+<span class="line"><span style="color:#88846F">#  [128513.402407] Could not find key with description: [2a283744646d8d1]</span></span>
+<span class="line"><span style="color:#88846F">#  [128513.402410] process_request_key_err: No key</span></span>
+<span class="line"><span style="color:#88846F">#  [128513.402411] Could not find valid key in user session keyring for sig specified in mount option: [2a283744646d8d1]</span></span>
+<span class="line"></span></code></pre></div></div>
+<p>Yeah, <a href="https://www.google.com/search?q=I+know+some+of+these+words">I know some of these words</a>. I guess the essential part is <code>user session keyring</code></p>
 <p>My craziest thought was “why not try to add some key in some keyring of the current user”. So I did this (after a lot of googling):</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ecryptfs-unwrap-passphrase %path%/.ecryptfs/wrapped-passphrase
-
-<span class="c">### Output ###</span>
-<span class="c">#  Passphrase: </span>
-<span class="c">#  %32-long-line-with-random-chars%</span>
-</code></pre></div></div>
-
-<p>Instead of <code class="language-plaintext highlighter-rouge">%32-long-line-with-random-chars%</code>, you will get your own key.</p>
-
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="line"><span style="color:#A6E22E">ecryptfs-unwrap-passphrase</span><span style="color:#E6DB74"> %path%/.ecryptfs/wrapped-passphrase</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#88846F">### Output ###</span></span>
+<span class="line"><span style="color:#88846F">#  Passphrase: </span></span>
+<span class="line"><span style="color:#88846F">#  %32-long-line-with-random-chars%</span></span>
+<span class="line"></span></code></pre></div></div>
+<p>Instead of <code>%32-long-line-with-random-chars%</code>, you will get your own key.</p>
 <p>Next I found this line:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="nt">-n</span> <span class="s2">"%32-long-line-with-random-chars%"</span> | ecryptfs-add-passphrase <span class="nt">--fnek</span> -
-
-<span class="c">### Output ###</span>
-<span class="c">#  Inserted auth tok with sig [3121cedc8cecfb1] into the user session keyring</span>
-<span class="c">#  Inserted auth tok with sig [2a283744646d8d1] into the user session keyring</span>
-</code></pre></div></div>
-
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="line"><span style="color:#66D9EF">echo</span><span style="color:#AE81FF"> -n</span><span style="color:#E6DB74"> "%32-long-line-with-random-chars%"</span><span style="color:#F92672"> |</span><span style="color:#A6E22E"> ecryptfs-add-passphrase</span><span style="color:#AE81FF"> --fnek</span><span style="color:#E6DB74"> -</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#88846F">### Output ###</span></span>
+<span class="line"><span style="color:#88846F">#  Inserted auth tok with sig [3121cedc8cecfb1] into the user session keyring</span></span>
+<span class="line"><span style="color:#88846F">#  Inserted auth tok with sig [2a283744646d8d1] into the user session keyring</span></span>
+<span class="line"></span></code></pre></div></div>
 <p>And now tried mount private folder again:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>ecryptfs-recover-private %path%/.Private
-
-<span class="c">### Output ###</span>
-<span class="c">#  [sudo] password for username: </span>
-<span class="c">#  INFO: Found [%path%/.Private].</span>
-<span class="c">#  Try to recover this directory? [Y/n]: </span>
-<span class="c">#  INFO: Found your wrapped-passphrase</span>
-<span class="c">#  Do you know your LOGIN passphrase? [Y/n] </span>
-<span class="c">#  INFO: Enter your LOGIN passphrase...</span>
-<span class="c">#  Passphrase: </span>
-<span class="c">#  Inserted auth tok with sig [3121cedc8cecfb1] into the user session keyring</span>
-<span class="c">#  INFO: Success!  Private data mounted at [/tmp/ecryptfs.yyyyyyyy].</span>
-</code></pre></div></div>
-
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="line"><span style="color:#A6E22E">sudo</span><span style="color:#E6DB74"> ecryptfs-recover-private</span><span style="color:#E6DB74"> %path%/.Private</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#88846F">### Output ###</span></span>
+<span class="line"><span style="color:#88846F">#  [sudo] password for username: </span></span>
+<span class="line"><span style="color:#88846F">#  INFO: Found [%path%/.Private].</span></span>
+<span class="line"><span style="color:#88846F">#  Try to recover this directory? [Y/n]: </span></span>
+<span class="line"><span style="color:#88846F">#  INFO: Found your wrapped-passphrase</span></span>
+<span class="line"><span style="color:#88846F">#  Do you know your LOGIN passphrase? [Y/n] </span></span>
+<span class="line"><span style="color:#88846F">#  INFO: Enter your LOGIN passphrase...</span></span>
+<span class="line"><span style="color:#88846F">#  Passphrase: </span></span>
+<span class="line"><span style="color:#88846F">#  Inserted auth tok with sig [3121cedc8cecfb1] into the user session keyring</span></span>
+<span class="line"><span style="color:#88846F">#  INFO: Success!  Private data mounted at [/tmp/ecryptfs.yyyyyyyy].</span></span>
+<span class="line"></span></code></pre></div></div>
 <p>And voilà! I have my data back:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ls</span> <span class="nt">-al</span> /tmp/ecryptfs.yyyyyyyy
-
-<span class="c">### Output ###</span>
-<span class="c">#  drwx------  3 username username 28672 июн 12 15:17 .</span>
-<span class="c">#  drwxrwxrwt 26 root     root      1360 июн 23 23:04 ..</span>
-<span class="c">#  drwxrwxr-x  3 username username  4096 янв  5  2021 .local</span>
-</code></pre></div></div>
-
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="line"><span style="color:#A6E22E">ls</span><span style="color:#AE81FF"> -al</span><span style="color:#E6DB74"> /tmp/ecryptfs.yyyyyyyy</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#88846F">### Output ###</span></span>
+<span class="line"><span style="color:#88846F">#  drwx------  3 username username 28672 июн 12 15:17 .</span></span>
+<span class="line"><span style="color:#88846F">#  drwxrwxrwt 26 root     root      1360 июн 23 23:04 ..</span></span>
+<span class="line"><span style="color:#88846F">#  drwxrwxr-x  3 username username  4096 янв  5  2021 .local</span></span>
+<span class="line"></span></code></pre></div></div>
 <p>Yeah, there were a lot more things in it. But I’ve already moved it away :grin:</p>
-
-<hr />
-
+<hr>
 <p>I think this is not a new problem. But I spent a lot of time solving this puzzle, so I decided to share my knowledge for future me.</p>
-
 <h2 id="tldr">TL;DR</h2>
-
-<p>If you have this error trying <code class="language-plaintext highlighter-rouge">ecryptfs-recover-private</code>:</p>
-
+<p>If you have this error trying <code>ecryptfs-recover-private</code>:</p>
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mount: /tmp/ecryptfs.xxxxxxxx: mount(2) system call failed: No such file or directory.
        dmesg(1) may have more information after failed mount system call.
 ERROR: Failed to mount private data at [/tmp/ecryptfs.xxxxxxxx].
 </code></pre></div></div>
-
 <p>You can try this:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ecryptfs-unwrap-passphrase %path%/.ecryptfs/wrapped-passphrase
-<span class="c"># Shouldn't be sudo!</span>
-<span class="c"># Replace "%32-long-line-with-random-chars%" with `ecryptfs-unwrap-passphrase` output</span>
-<span class="nb">echo</span> <span class="nt">-n</span> <span class="s2">"%32-long-line-with-random-chars%"</span> | ecryptfs-add-passphrase <span class="nt">--fnek</span> -
-<span class="nb">sudo </span>ecryptfs-recover-private %path%/.Private
-</code></pre></div></div>
-
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="line"><span style="color:#A6E22E">ecryptfs-unwrap-passphrase</span><span style="color:#E6DB74"> %path%/.ecryptfs/wrapped-passphrase</span></span>
+<span class="line"><span style="color:#88846F"># Shouldn't be sudo!</span></span>
+<span class="line"><span style="color:#88846F"># Replace "%32-long-line-with-random-chars%" with `ecryptfs-unwrap-passphrase` output</span></span>
+<span class="line"><span style="color:#66D9EF">echo</span><span style="color:#AE81FF"> -n</span><span style="color:#E6DB74"> "%32-long-line-with-random-chars%"</span><span style="color:#F92672"> |</span><span style="color:#A6E22E"> ecryptfs-add-passphrase</span><span style="color:#AE81FF"> --fnek</span><span style="color:#E6DB74"> -</span></span>
+<span class="line"><span style="color:#A6E22E">sudo</span><span style="color:#E6DB74"> ecryptfs-recover-private</span><span style="color:#E6DB74"> %path%/.Private</span></span>
+<span class="line"></span></code></pre></div></div>
 <p>If you succeed, please inform me about it somehow. I will be super thankful :blush:</p>
-
-<hr />
-
-<p>P.S. I’m not a native English-speaking person, my knowledge is relatively low. This post is my first in this language and can have a lot, I mean <strong>A LOT</strong> of issues. I will be very thankful if you help me to fix my grammar errors or give me an advice(s) :fox:</p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Linux" /><category term="eCryptfs" /><category term="Linux" /><summary type="html"><![CDATA[How to deal with ecryptfs error "mount(2) system call failed: No such file or directory. Failed to mount private data at /tmp/ecryptfs"]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/ecryptfs-recovery-error/cover.png" /><media:content medium="image" url="https://vtvz.me/blog/ecryptfs-recovery-error/cover.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Meet Rustify! Приглашение на закрытое тестирование</title><link href="https://vtvz.me/blog/meet-rustify/" rel="alternate" type="text/html" title="Meet Rustify! Приглашение на закрытое тестирование" /><published>2022-06-19T00:00:00+03:00</published><updated>2022-06-19T00:00:00+03:00</updated><id>https://vtvz.me/blog/meet-rustify</id><content type="html" xml:base="https://vtvz.me/blog/meet-rustify/"><![CDATA[<figure class="frame post-image post-image--right"><a href="./rustify-logo.png" target="_blank"><img src="./rustify-logo.png" alt="" title="" /></a></figure>
-
+<hr>
+<p>P.S. I’m not a native English-speaking person, my knowledge is relatively low. This post is my first in this language and can have a lot, I mean <strong>A LOT</strong> of issues. I will be very thankful if you help me to fix my grammar errors or give me an advice(s) :fox:</p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Linux" /><category term="eCryptfs" /><category term="Linux" /><summary type="html"><![CDATA[How to deal with ecryptfs error "mount(2) system call failed: No such file or directory. Failed to mount private data at /tmp/ecryptfs"
+]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/ecryptfs-recovery-error/cover.png" /><media:content medium="image" url="https://vtvz.me/blog/ecryptfs-recovery-error/cover.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Meet Rustify! Приглашение на закрытое тестирование</title><link href="https://vtvz.me/blog/meet-rustify/" rel="alternate" type="text/html" title="Meet Rustify! Приглашение на закрытое тестирование" /><published>2022-06-19T00:00:00+03:00</published><updated>2022-06-19T00:00:00+03:00</updated><id>https://vtvz.me/blog/meet-rustify</id><content type="html" xml:base="https://vtvz.me/blog/meet-rustify/"><![CDATA[<figure class="frame post-image post-image--right"><a href="./rustify-logo.png" target="_blank"><img src="./rustify-logo.png" alt="" title=""></a></figure>
 <p>Последние несколько месяцев я в качестве хобби-проекта разрабатывал небольшой телеграм-бот. Не столько из необходимости, сколько из желания выучить новый язык программирования (Rust <i class="fa-brands fa-rust"></i> <i class="fa-solid fa-heart"></i>) и немного улучшить себе жизнь.</p>
-
 <p>На текущий момент бот тесно интегрируется со Spotify и выполняет несколько <small class="text-muted">не очень</small> простых функций:</p>
-
 <ul>
-  <li>Позволяет дизлайкнуть трек, чтобы никогда его больше не слышать. В случае, если устройство подключено к интернету и аккаунт является премиальным, бот будет просто переключать его на следующий трек. Никаких больше ремиксов Эд Ширана!</li>
-  <li>Получать более подробную информацию по треку:
-    <ul>
-      <li>Различные показали от самого Spotify (всяческие ‘acousticness’, ‘danceability’, ‘energy’, ‘instrumentalness’, а также темп, тональность и прочие, которые я описал, как мог)</li>
-      <li>Жанры исполнителей трека (жанр самого трека может отличаться).</li>
-      <li>Текст и язык песни. Spotify сам предоставляет тексты некоторых песен в приложении, но мой бот ищет их еще и на <a href="https://genius.com/">Genius</a>.</li>
-    </ul>
-  </li>
-  <li>Бот следит за тем, что вы слушаете, и сообщает о наличии ненормативной лексики в текстах <strong>англоязычных</strong> песен. И сразу предлагает поставить дизлайк этому треку, либо проигнорировать предупреждение в случае ложно позитивных срабатываний (такое тоже бывает).</li>
+<li>Позволяет дизлайкнуть трек, чтобы никогда его больше не слышать. В случае, если устройство подключено к интернету и аккаунт является премиальным, бот будет просто переключать его на следующий трек. Никаких больше ремиксов Эд Ширана!</li>
+<li>Получать более подробную информацию по треку:
+<ul>
+<li>Различные показали от самого Spotify (всяческие ‘acousticness’, ‘danceability’, ‘energy’, ‘instrumentalness’, а также темп, тональность и прочие, которые я описал, как мог)</li>
+<li>Жанры исполнителей трека (жанр самого трека может отличаться).</li>
+<li>Текст и язык песни. Spotify сам предоставляет тексты некоторых песен в приложении, но мой бот ищет их еще и на <a href="https://genius.com/">Genius</a>.</li>
 </ul>
-
-<p><span class="text-muted">
-// О том, как это все работает, я планирую написать отдельный пост
+</li>
+<li>Бот следит за тем, что вы слушаете, и сообщает о наличии ненормативной лексики в текстах <strong>англоязычных</strong> песен. И сразу предлагает поставить дизлайк этому треку, либо проигнорировать предупреждение в случае ложно позитивных срабатываний (такое тоже бывает).</li>
+</ul>
+<p><span class="text-muted">// О том, как это все работает, я планирую написать отдельный пост
 </span></p>
-
 <p>На текущий момент бот в состоянии <abbr title="Minimal Viable Product">MVP</abbr>, в нем не хватает некоторых важных функций (например поставить проверку текстов на паузу), он все еще может падать из-за каких-то ошибок, не хватает нормальной документации и раздела помощи, интерфейс полностью на английском и п.р.</p>
-
-<p>Но он уже нашел и проверил тексты &gt;5600 песен для меня, моей семьи и еще пары людей. На текущий момент я дизлайкнул 755 треков, а бот пропустил ~620 раз <span class="text-muted">(на самом деле больше, просто статистику по пропускам я запустил не так давно)</span></p>
-
-<figure class="frame "><a href="./lyrics-stats.png" target="_blank"><img src="./lyrics-stats.png" alt="" title="" /></a><figcaption><p>Немного закулисной статистики</p></figcaption></figure>
-
+<p>Но он уже нашел и проверил тексты >5600 песен для меня, моей семьи и еще пары людей. На текущий момент я дизлайкнул 755 треков, а бот пропустил ~620 раз <span class="text-muted">(на самом деле больше, просто статистику по пропускам я запустил не так давно)</span></p>
+<figure class="frame"><a href="./lyrics-stats.png" target="_blank"><img src="./lyrics-stats.png" alt="" title=""></a><figcaption><p>Немного закулисной статистики</p></figcaption></figure>
 <p>Так вот о чем я. <strong>Мне нужно еще 5-10 человек:</strong></p>
 <ul>
-  <li>У которых есть Telegram и аккаунт Spotify.</li>
-  <li>Которые на базовом уровне знают английский.</li>
-  <li>Которым не все равно, что они слушают, и хотят получать уведомления о плохих словах в текстах играющих песен.</li>
-  <li>Которые хотят кнопку “дизлайк” в Spotify хоть в каком-то виде.</li>
-  <li>И желательно, чтобы был Spotify Premium.
+<li>У которых есть Telegram и аккаунт Spotify.</li>
+<li>Которые на базовом уровне знают английский.</li>
+<li>Которым не все равно, что они слушают, и хотят получать уведомления о плохих словах в текстах играющих песен.</li>
+<li>Которые хотят кнопку “дизлайк” в Spotify хоть в каком-то виде.</li>
+<li>И желательно, чтобы был Spotify Premium.
 <span class="text-muted">// Понимаю, что в России это может быть сложно</span>
-    <ul>
-      <li>Можно пару человек без премиума. Он нужен только для функции дизлайка.</li>
-    </ul>
-  </li>
+<ul>
+<li>Можно пару человек без премиума. Он нужен только для функции дизлайка.</li>
 </ul>
-
+</li>
+</ul>
 <p><strong>Мне нужно больше добровольцев для тестирования!</strong></p>
-
 <p>На текущий момент у бота 5 активных пользователей и многие проблемы были решены на ранних этапах. Пока я не могу сделать его полностью публичным по различным причинам.</p>
-
 <p>Поэтому, если ты подходишь под требования выше и хочешь помочь:</p>
 <ul>
-  <li>напиши в комментариях к этому посту в блоге,</li>
-  <li>в комментариях к публикации в telegram</li>
-  <li>или мне в личные сообщения там же</li>
+<li>напиши в комментариях к этому посту в блоге,</li>
+<li>в комментариях к публикации в telegram</li>
+<li>или мне в личные сообщения там же</li>
 </ul>
-
 <p>… для получения дальнейших инструкций.</p>
-
 <div class="alert alert-info">
   <p>
     <strong>ЛИБО!</strong> Можно добавить бота напрямую без необходимости куда-то писать. Ссылка:
   </p>
-
   <p>
     <a class="social-button social-button--block social-button--telegram" href="https://t.me/RustifyBot">
       <i class="fa-fw fa-brands fa-telegram-plane"></i><span class="social-button__label"> RustifyBot</span>
     </a>
   </p>
 </div>
-
 <p>Добро пожаловать всем желающим! :fox:</p>
-
-<p>P.S. Исходный код проекта доступен на <a href="https://github.com/vtvz/rustify">github.com/vtvz/rustify</a></p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Разработка" /><category term="Telegram" /><category term="TelegramBot" /><category term="Rustify" /><category term="PetProject" /><summary type="html"><![CDATA[Последние несколько месяцев я в качестве хобби-проекта разрабатывал небольшой телеграм-бот. Теперь мне нужны добровольцы для тестирования!]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/meet-rustify/cover.png" /><media:content medium="image" url="https://vtvz.me/blog/meet-rustify/cover.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Аккуратно внедряем Emoji, не ломая все остальное</title><link href="https://vtvz.me/blog/reliable-emojification/" rel="alternate" type="text/html" title="Аккуратно внедряем Emoji, не ломая все остальное" /><published>2020-05-15T00:00:00+03:00</published><updated>2020-05-15T00:00:00+03:00</updated><id>https://vtvz.me/blog/reliable-emojification</id><content type="html" xml:base="https://vtvz.me/blog/reliable-emojification/"><![CDATA[<p>Emoji стали неотъемлемой частью нашей культуры.
+<p>P.S. Исходный код проекта доступен на <a href="https://github.com/vtvz/rustify">github.com/vtvz/rustify</a></p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Разработка" /><category term="Telegram" /><category term="TelegramBot" /><category term="Rustify" /><category term="PetProject" /><summary type="html"><![CDATA[Последние несколько месяцев я в качестве хобби-проекта разрабатывал небольшой телеграм-бот. Теперь мне нужны добровольцы для тестирования!
+]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/meet-rustify/cover.png" /><media:content medium="image" url="https://vtvz.me/blog/meet-rustify/cover.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Аккуратно внедряем Emoji, не ломая все остальное</title><link href="https://vtvz.me/blog/reliable-emojification/" rel="alternate" type="text/html" title="Аккуратно внедряем Emoji, не ломая все остальное" /><published>2020-05-15T00:00:00+03:00</published><updated>2020-05-15T00:00:00+03:00</updated><id>https://vtvz.me/blog/reliable-emojification</id><content type="html" xml:base="https://vtvz.me/blog/reliable-emojification/"><![CDATA[<p>Emoji стали неотъемлемой частью нашей культуры.
 И я их активно использую в своих статьях.
 Ранее я использовал плагин для jekyll <a href="https://github.com/jekyll/jemoji">jemoji</a>,
 но набор смайликов был весьма скудный, поэтому я отказался от него в пользу <a href="https://github.com/iamcal/js-emoji">js-emoji</a>.
 Но и тут не было все гладко…</p>
-
 <!--cut-->
-
 <h2 id="проблема">Проблема</h2>
-
 <p>Сначала эта библиотека загружалась синхронно со всей страницей.
 Это значит то, что индикатор загрузки не исчезнет, пока смайлики не отрисуются.
 Для рендера использовался простейший скрипт, <a href="https://github.com/iamcal/js-emoji/blob/master/lib/jquery.emoji.js">взятый из официального репозитория</a>,
 который выглядел следующим образом:</p>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">emoji</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EmojiConvertor</span><span class="p">();</span>
-    <span class="nx">emoji</span><span class="p">.</span><span class="nx">img_sets</span><span class="p">.</span><span class="nx">apple</span><span class="p">.</span><span class="nx">path</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">/assets/images/emoji/</span><span class="dl">'</span><span class="p">;</span>
-    <span class="nx">emoji</span><span class="p">.</span><span class="nx">include_title</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-    <span class="nx">emoji</span><span class="p">.</span><span class="nx">include_text</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-    <span class="nx">emoji</span><span class="p">.</span><span class="nx">replace_mode</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">css</span><span class="dl">'</span><span class="p">;</span>
-    <span class="nx">emoji</span><span class="p">.</span><span class="nx">allow_native</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-
-    <span class="nx">emoji</span><span class="p">.</span><span class="nx">addAliases</span><span class="p">({</span>
-        <span class="dl">'</span><span class="s1">fox</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">1f98a</span><span class="dl">'</span><span class="p">,</span>
-    <span class="p">});</span>
-
-    <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.js-emojify</span><span class="dl">'</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="dl">'</span><span class="s1">:not(script)</span><span class="dl">'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">oldHtml</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="nx">emoji</span><span class="p">.</span><span class="nx">replace_unified</span><span class="p">(</span><span class="nx">emoji</span><span class="p">.</span><span class="nx">replace_emoticons</span><span class="p">(</span><span class="nx">oldHtml</span><span class="p">));</span>
-        <span class="p">});</span>
-    <span class="p">});</span>
-<span class="p">});</span>
-</code></pre></div></div>
-
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="line"><span style="color:#A6E22E">$</span><span style="color:#F8F8F2">(</span><span style="color:#66D9EF;font-style:italic">function</span><span style="color:#F8F8F2"> () {</span></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">    var</span><span style="color:#F8F8F2"> emoji </span><span style="color:#F92672">=</span><span style="color:#F92672"> new</span><span style="color:#A6E22E"> EmojiConvertor</span><span style="color:#F8F8F2">();</span></span>
+<span class="line"><span style="color:#F8F8F2">    emoji.img_sets.apple.path </span><span style="color:#F92672">=</span><span style="color:#E6DB74"> '/assets/images/emoji/'</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">    emoji.include_title </span><span style="color:#F92672">=</span><span style="color:#AE81FF"> true</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">    emoji.include_text </span><span style="color:#F92672">=</span><span style="color:#AE81FF"> true</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">    emoji.replace_mode </span><span style="color:#F92672">=</span><span style="color:#E6DB74"> 'css'</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">    emoji.allow_native </span><span style="color:#F92672">=</span><span style="color:#AE81FF"> true</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F8F8F2">    emoji.</span><span style="color:#A6E22E">addAliases</span><span style="color:#F8F8F2">({</span></span>
+<span class="line"><span style="color:#E6DB74">        'fox'</span><span style="color:#F8F8F2">: </span><span style="color:#E6DB74">'1f98a'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">    });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A6E22E">    $</span><span style="color:#F8F8F2">(</span><span style="color:#E6DB74">'.js-emojify'</span><span style="color:#F8F8F2">).</span><span style="color:#A6E22E">each</span><span style="color:#F8F8F2">(</span><span style="color:#66D9EF;font-style:italic">function</span><span style="color:#F8F8F2"> () {</span></span>
+<span class="line"><span style="color:#A6E22E">        $</span><span style="color:#F8F8F2">(</span><span style="color:#FD971F">this</span><span style="color:#F8F8F2">).</span><span style="color:#A6E22E">find</span><span style="color:#F8F8F2">(</span><span style="color:#E6DB74">':not(script)'</span><span style="color:#F8F8F2">).</span><span style="color:#A6E22E">html</span><span style="color:#F8F8F2">(</span><span style="color:#66D9EF;font-style:italic">function</span><span style="color:#F8F8F2"> (</span><span style="color:#FD971F;font-style:italic">i</span><span style="color:#F8F8F2">, </span><span style="color:#FD971F;font-style:italic">oldHtml</span><span style="color:#F8F8F2">) {</span></span>
+<span class="line"><span style="color:#F92672">            return</span><span style="color:#F8F8F2"> emoji.</span><span style="color:#A6E22E">replace_unified</span><span style="color:#F8F8F2">(emoji.</span><span style="color:#A6E22E">replace_emoticons</span><span style="color:#F8F8F2">(oldHtml));</span></span>
+<span class="line"><span style="color:#F8F8F2">        });</span></span>
+<span class="line"><span style="color:#F8F8F2">    });</span></span>
+<span class="line"><span style="color:#F8F8F2">});</span></span>
+<span class="line"></span></code></pre></div></div>
 <p>Все понятно и очевидно: вытягиваем весь html, вставляем туда иконки, заменяем старый html новым.
 И все это работало хорошо… до поры.
 Проблемы начались тогда, когда я решил, что смайлики должны отрисовываться <em>после</em> загрузки страницы, а не во время.
 Это значительно ускоряло отображение страниц, но создавало некоторые проблемы.</p>
-
 <p>Самая основная выглядела следующим образом:</p>
-
 <ol>
-  <li>Загружалась страница;</li>
-  <li>Отрисовывался ReactJS виджет;</li>
-  <li>Происходил стандартный набор действий:
-    <ul>
-      <li>вытягивался весь html;</li>
-      <li>вставлялись смайлы;</li>
-      <li>заменялся старый html новым;</li>
-    </ul>
-  </li>
+<li>Загружалась страница;</li>
+<li>Отрисовывался ReactJS виджет;</li>
+<li>Происходил стандартный набор действий:
+<ul>
+<li>вытягивался весь html;</li>
+<li>вставлялись смайлы;</li>
+<li>заменялся старый html новым;</li>
+</ul>
+</li>
 </ol>
-
 <p>И после этого всего виджеты переставали работать.
 Почему? Потому что мы заменили старый html совершенно новым,
 после чего все обработчики форм переставали работать совсем.
 Хотя визуально для нас ничего не поменялось,
 с точки зрения браузера это совсем другие эллементы.</p>
-
 <p>Искусственно добиться этого эффекта можно следующим образом:</p>
-
 <ul>
-  <li>Перейти в <a href="/blog/big-changes/">этот пост</a>;</li>
-  <li>Спуститься до формы и проверить, что все работает;</li>
-  <li>Открыть “Инструменты разработчика”;</li>
-  <li>Выполнить:
-    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#social-post-generator-container</span><span class="dl">'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span>
-      <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#social-post-generator-container</span><span class="dl">'</span><span class="p">).</span><span class="nx">html</span><span class="p">()</span>
-  <span class="p">)</span>
-</code></pre></div>    </div>
-    <p><span class="text-muted">Таким образом мы заменили оригинальный html новым</span></p>
-  </li>
-  <li>Убедиться, что ничего не работает.</li>
+<li>Перейти в <a href="/blog/big-changes/">этот пост</a>;</li>
+<li>Спуститься до формы и проверить, что все работает;</li>
+<li>Открыть “Инструменты разработчика”;</li>
+<li>Выполнить:
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="line"><span style="color:#A6E22E">$</span><span style="color:#F8F8F2">(</span><span style="color:#E6DB74">'#social-post-generator-container'</span><span style="color:#F8F8F2">).</span><span style="color:#A6E22E">html</span><span style="color:#F8F8F2">(</span></span>
+<span class="line"><span style="color:#A6E22E">    $</span><span style="color:#F8F8F2">(</span><span style="color:#E6DB74">'#social-post-generator-container'</span><span style="color:#F8F8F2">).</span><span style="color:#A6E22E">html</span><span style="color:#F8F8F2">()</span></span>
+<span class="line"><span style="color:#F8F8F2">)</span></span>
+<span class="line"></span></code></pre></div></div>
+<span class="text-muted">Таким образом мы заменили оригинальный html новым</span></li>
+<li>Убедиться, что ничего не работает.</li>
 </ul>
-
-<p>Еще одна проблема была в том, что он заменял emoji даже в теге <code class="language-plaintext highlighter-rouge">script</code>.
+<p>Еще одна проблема была в том, что он заменял emoji даже в теге <code>script</code>.
 Но это уже не так критично и легко решается.</p>
-
 <h2 id="решение">Решение</h2>
-
-<p>Предположим, что у нас уже есть функция <code class="language-plaintext highlighter-rouge">emojificator</code>, которая добавляет эмотиконы в текст.
+<p>Предположим, что у нас уже есть функция <code>emojificator</code>, которая добавляет эмотиконы в текст.
 Работает она ровно также, как в указанном выше куске кода.</p>
-
 <p>Чего нам нужно добиться:</p>
-
 <ol>
-  <li>Обновляться должен только текст. Существующие html объекты должны оставаться прежними.</li>
-  <li>Не трогать <code class="language-plaintext highlighter-rouge">script</code> теги.</li>
-  <li>Не трогать <code class="language-plaintext highlighter-rouge">textarea</code> и прочие “input” элементы.</li>
+<li>Обновляться должен только текст. Существующие html объекты должны оставаться прежними.</li>
+<li>Не трогать <code>script</code> теги.</li>
+<li>Не трогать <code>textarea</code> и прочие “input” элементы.</li>
 </ol>
-
 <p>Мне потребовалось несколько часов на исследование и реализацию этого дела, но результатом я остался доволен.</p>
-
 <h3 id="обход-всех-текстовых-нод">Обход всех текстовых нод</h3>
-
 <p>DOM состоит не только из обычных элементов, но и из текста, комментариев и п.р.
 Наша задача состоит в том, чтобы рекурсивно пройтись по всем текстовым нодам и внедрить туда смайлы.</p>
-
 <p>Выглядит это так:</p>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">blacklist</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="nx">HTMLScriptElement</span><span class="p">,</span>
-    <span class="nx">HTMLTextAreaElement</span><span class="p">,</span>
-    <span class="nx">HTMLInputElement</span><span class="p">,</span>
-    <span class="nx">HTMLSelectElement</span><span class="p">,</span>
-    <span class="nx">HTMLButtonElement</span><span class="p">,</span>
-<span class="p">];</span>
-
-<span class="kd">const</span> <span class="nx">skip</span> <span class="o">=</span> <span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">cls</span> <span class="k">of</span> <span class="nx">blacklist</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">node</span> <span class="k">instanceof</span> <span class="nx">cls</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-
-    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kd">const</span> <span class="nx">recursiveEmojification</span> <span class="o">=</span> <span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">nodeType</span> <span class="o">!==</span> <span class="nx">Node</span><span class="p">.</span><span class="nx">TEXT_NODE</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">nodeType</span> <span class="o">===</span> <span class="nx">Node</span><span class="p">.</span><span class="nx">ELEMENT_NODE</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">skip</span><span class="p">(</span><span class="nx">node</span><span class="p">))</span> <span class="p">{</span>
-            <span class="nx">node</span><span class="p">.</span><span class="nx">childNodes</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">_</span> <span class="o">=&gt;</span> <span class="nx">recursiveEmojification</span><span class="p">(</span><span class="nx">_</span><span class="p">))</span>
-        <span class="p">}</span>
-
-        <span class="k">return</span><span class="p">;</span>
-    <span class="p">}</span>
-    
-    <span class="c1">// Do something with 'node.nodeValue'</span>
-<span class="p">}</span>
-
-<span class="nb">document</span>
-    <span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">.js-emojify</span><span class="dl">"</span><span class="p">)</span>
-    <span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">_</span> <span class="o">=&gt;</span> <span class="nx">recursiveEmojification</span><span class="p">(</span><span class="nx">_</span><span class="p">));</span>
-</code></pre></div></div>
-
-<p>В общем, ничего сложного. Обратите особое внимание на функцию <code class="language-plaintext highlighter-rouge">skip</code>.
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="line"><span style="color:#66D9EF;font-style:italic">const</span><span style="color:#F8F8F2"> blacklist </span><span style="color:#F92672">=</span><span style="color:#F8F8F2"> [</span></span>
+<span class="line"><span style="color:#F8F8F2">    HTMLScriptElement,</span></span>
+<span class="line"><span style="color:#F8F8F2">    HTMLTextAreaElement,</span></span>
+<span class="line"><span style="color:#F8F8F2">    HTMLInputElement,</span></span>
+<span class="line"><span style="color:#F8F8F2">    HTMLSelectElement,</span></span>
+<span class="line"><span style="color:#F8F8F2">    HTMLButtonElement,</span></span>
+<span class="line"><span style="color:#F8F8F2">];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">const</span><span style="color:#A6E22E"> skip</span><span style="color:#F92672"> =</span><span style="color:#F8F8F2"> (</span><span style="color:#FD971F;font-style:italic">node</span><span style="color:#F8F8F2">) </span><span style="color:#66D9EF;font-style:italic">=></span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#F92672">    for</span><span style="color:#F8F8F2"> (</span><span style="color:#66D9EF;font-style:italic">let</span><span style="color:#F8F8F2"> cls </span><span style="color:#F92672">of</span><span style="color:#F8F8F2"> blacklist) {</span></span>
+<span class="line"><span style="color:#F92672">        if</span><span style="color:#F8F8F2"> (node </span><span style="color:#F92672">instanceof</span><span> </span><span style="color:#A6E22E;text-decoration:underline">cls</span><span style="color:#F8F8F2">) {</span></span>
+<span class="line"><span style="color:#F92672">            return</span><span style="color:#AE81FF"> true</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">        }</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F92672">    return</span><span style="color:#AE81FF"> false</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">const</span><span style="color:#A6E22E"> recursiveEmojification</span><span style="color:#F92672"> =</span><span style="color:#F8F8F2"> (</span><span style="color:#FD971F;font-style:italic">node</span><span style="color:#F8F8F2">) </span><span style="color:#66D9EF;font-style:italic">=></span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#F92672">    if</span><span style="color:#F8F8F2"> (node.nodeType </span><span style="color:#F92672">!==</span><span style="color:#F8F8F2"> Node.TEXT_NODE) {</span></span>
+<span class="line"><span style="color:#F92672">        if</span><span style="color:#F8F8F2"> (node.nodeType </span><span style="color:#F92672">===</span><span style="color:#F8F8F2"> Node.ELEMENT_NODE </span><span style="color:#F92672">&#x26;&#x26;</span><span style="color:#F92672"> !</span><span style="color:#A6E22E">skip</span><span style="color:#F8F8F2">(node)) {</span></span>
+<span class="line"><span style="color:#F8F8F2">            node.childNodes.</span><span style="color:#A6E22E">forEach</span><span style="color:#F8F8F2">(</span><span style="color:#FD971F;font-style:italic">_</span><span style="color:#66D9EF;font-style:italic"> =></span><span style="color:#A6E22E"> recursiveEmojification</span><span style="color:#F8F8F2">(_))</span></span>
+<span class="line"><span style="color:#F8F8F2">        }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F92672">        return</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"><span style="color:#F8F8F2">    </span></span>
+<span class="line"><span style="color:#88846F">    // Do something with 'node.nodeValue'</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F8F8F2">document</span></span>
+<span class="line"><span style="color:#F8F8F2">    .</span><span style="color:#A6E22E">querySelectorAll</span><span style="color:#F8F8F2">(</span><span style="color:#E6DB74">".js-emojify"</span><span style="color:#F8F8F2">)</span></span>
+<span class="line"><span style="color:#F8F8F2">    .</span><span style="color:#A6E22E">forEach</span><span style="color:#F8F8F2">(</span><span style="color:#FD971F;font-style:italic">_</span><span style="color:#66D9EF;font-style:italic"> =></span><span style="color:#A6E22E"> recursiveEmojification</span><span style="color:#F8F8F2">(_));</span></span>
+<span class="line"></span></code></pre></div></div>
+<p>В общем, ничего сложного. Обратите особое внимание на функцию <code>skip</code>.
 Именно она гарантирует “невредимость” некоторых элементов страницы.
-А именно теги <code class="language-plaintext highlighter-rouge">script</code>, <code class="language-plaintext highlighter-rouge">textarea</code> и подобные им.</p>
-
+А именно теги <code>script</code>, <code>textarea</code> и подобные им.</p>
 <h3 id="внедрение-emoji-в-текст">Внедрение Emoji в текст</h3>
-
 <p>Осталось дело за малым. Или нет? :thinking_face:</p>
-
 <p>Теперь у нас есть все куски текстов, в которых потенциально могут быть emoji.
-Если нам нужна совместимость только с девайсами Apple, то мы можем заменить все <code class="language-plaintext highlighter-rouge">:emoji:</code> смайлы
+Если нам нужна совместимость только с девайсами Apple, то мы можем заменить все <code>:emoji:</code> смайлы
 на обычный unicode и на этом успокоиться. Но у меня Линукс. И многих других тоже нет ничего яблочного.
 Поэтому нужно заменить все текстовые смайлы, на маленькие картинки. Вот тут и начинается самое интересное.</p>
-
 <p>Дело в том, что мы не можем просто взять и, вместо текстовой ноды, вкорячить кусок html кода.
-Если попробовать сделать <code class="language-plaintext highlighter-rouge">node.nodeValue = '&lt;span&gt;Hi&lt;/span&gt;'</code>, то на выходе будет экранированный html код.</p>
-
+Если попробовать сделать <code>node.nodeValue = '&#x3C;span>Hi&#x3C;/span>'</code>, то на выходе будет экранированный html код.</p>
 <p>Поэтому этот код не будет работать, как этого хочется:</p>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">emojified</span> <span class="o">=</span> <span class="nx">emojificator</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">nodeValue</span><span class="p">);</span>
-<span class="c1">// Пропускаем дальнейшие манипуляции, если ничего не изменилось</span>
-<span class="k">if</span> <span class="p">(</span><span class="nx">emojified</span> <span class="o">===</span> <span class="nx">node</span><span class="p">.</span><span class="nx">nodeValue</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nx">node</span><span class="p">.</span><span class="nx">nodeValue</span> <span class="o">=</span> <span class="nx">emojified</span><span class="p">;</span>
-</code></pre></div></div>
-
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="line"><span style="color:#66D9EF;font-style:italic">const</span><span style="color:#F8F8F2"> emojified </span><span style="color:#F92672">=</span><span style="color:#A6E22E"> emojificator</span><span style="color:#F8F8F2">(node.nodeValue);</span></span>
+<span class="line"><span style="color:#88846F">// Пропускаем дальнейшие манипуляции, если ничего не изменилось</span></span>
+<span class="line"><span style="color:#F92672">if</span><span style="color:#F8F8F2"> (emojified </span><span style="color:#F92672">===</span><span style="color:#F8F8F2"> node.nodeValue) {</span></span>
+<span class="line"><span style="color:#F92672">    return</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"><span style="color:#F8F8F2">node.nodeValue </span><span style="color:#F92672">=</span><span style="color:#F8F8F2"> emojified;</span></span>
+<span class="line"></span></code></pre></div></div>
 <p>А вот результат:</p>
-
-<figure class="frame "><a href="./broken-emoji.png" target="_blank"><img src="./broken-emoji.png" alt="Кривой вывод Emoji" title="Кривой вывод Emoji" /></a></figure>
-
+<figure class="frame"><a href="./broken-emoji.png" target="_blank"><img src="./broken-emoji.png" alt="Кривой вывод Emoji" title="Кривой вывод Emoji"></a></figure>
 <p>Так себе… Не то, чего я хотел. Поэтому проделываем следующий финт:</p>
-
 <ol>
-  <li>Создаем новый элемент <code class="language-plaintext highlighter-rouge">span</code>;</li>
-  <li>Наполняем его нужным нам html кодом;</li>
-  <li>Вставляем его в документ после нашего исходного текста;</li>
-  <li>Удаляем старый текст.</li>
+<li>Создаем новый элемент <code>span</code>;</li>
+<li>Наполняем его нужным нам html кодом;</li>
+<li>Вставляем его в документ после нашего исходного текста;</li>
+<li>Удаляем старый текст.</li>
 </ol>
-
 <p>Вот так это выглядит:</p>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">replacement</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">span</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// (1)</span>
-<span class="nx">replacement</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">js-emojified</span><span class="dl">'</span><span class="p">)</span> <span class="c1">// Для наглядности добавим класс</span>
-<span class="nx">replacement</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">emojified</span><span class="p">;</span> <span class="c1">// (2)</span>
-<span class="nx">node</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">replacement</span><span class="p">,</span> <span class="nx">node</span><span class="p">);</span> <span class="c1">// (3)</span>
-<span class="nx">node</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">node</span><span class="p">);</span> <span class="c1">// (4)</span>
-</code></pre></div></div>
-
-<p>Да, мы создали еще один элемент. Но это не должно быть проблемой, так как чистый <code class="language-plaintext highlighter-rouge">span</code> ни на что не влияет.</p>
-
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="line"><span style="color:#66D9EF;font-style:italic">let</span><span style="color:#F8F8F2"> replacement </span><span style="color:#F92672">=</span><span style="color:#F8F8F2"> document.</span><span style="color:#A6E22E">createElement</span><span style="color:#F8F8F2">(</span><span style="color:#E6DB74">'span'</span><span style="color:#F8F8F2">); </span><span style="color:#88846F">// (1)</span></span>
+<span class="line"><span style="color:#F8F8F2">replacement.classList.</span><span style="color:#A6E22E">add</span><span style="color:#F8F8F2">(</span><span style="color:#E6DB74">'js-emojified'</span><span style="color:#F8F8F2">) </span><span style="color:#88846F">// Для наглядности добавим класс</span></span>
+<span class="line"><span style="color:#F8F8F2">replacement.innerHTML </span><span style="color:#F92672">=</span><span style="color:#F8F8F2"> emojified; </span><span style="color:#88846F">// (2)</span></span>
+<span class="line"><span style="color:#F8F8F2">node.parentNode.</span><span style="color:#A6E22E">insertBefore</span><span style="color:#F8F8F2">(replacement, node); </span><span style="color:#88846F">// (3)</span></span>
+<span class="line"><span style="color:#F8F8F2">node.parentNode.</span><span style="color:#A6E22E">removeChild</span><span style="color:#F8F8F2">(node); </span><span style="color:#88846F">// (4)</span></span>
+<span class="line"></span></code></pre></div></div>
+<p>Да, мы создали еще один элемент. Но это не должно быть проблемой, так как чистый <code>span</code> ни на что не влияет.</p>
 <h2 id="результат">Результат</h2>
-
 <p>На выходе получилось достаточно аккуратное решение. Хоть и с небольшими хаками.</p>
-
-<details class="spoiler"><summary class="spoiler-title">Соберем все воедино</summary><div class="spoiler-body">
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">blacklist</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="nx">HTMLScriptElement</span><span class="p">,</span>
-    <span class="nx">HTMLTextAreaElement</span><span class="p">,</span>
-    <span class="nx">HTMLInputElement</span><span class="p">,</span>
-    <span class="nx">HTMLSelectElement</span><span class="p">,</span>
-    <span class="nx">HTMLButtonElement</span><span class="p">,</span>
-<span class="p">];</span>
-
-<span class="kd">const</span> <span class="nx">skip</span> <span class="o">=</span> <span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">cls</span> <span class="k">of</span> <span class="nx">blacklist</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">node</span> <span class="k">instanceof</span> <span class="nx">cls</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-
-    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kd">const</span> <span class="nx">recursiveEmojification</span> <span class="o">=</span> <span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">nodeType</span> <span class="o">!==</span> <span class="nx">Node</span><span class="p">.</span><span class="nx">TEXT_NODE</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">nodeType</span> <span class="o">===</span> <span class="nx">Node</span><span class="p">.</span><span class="nx">ELEMENT_NODE</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">skip</span><span class="p">(</span><span class="nx">node</span><span class="p">))</span> <span class="p">{</span>
-            <span class="nx">node</span><span class="p">.</span><span class="nx">childNodes</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">_</span> <span class="o">=&gt;</span> <span class="nx">recursiveEmojification</span><span class="p">(</span><span class="nx">_</span><span class="p">))</span>
-        <span class="p">}</span>
-
-        <span class="k">return</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="kd">const</span> <span class="nx">emojified</span> <span class="o">=</span> <span class="nx">emojificator</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">nodeValue</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">emojified</span> <span class="o">===</span> <span class="nx">node</span><span class="p">.</span><span class="nx">nodeValue</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="kd">let</span> <span class="nx">replacement</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">span</span><span class="dl">'</span><span class="p">);</span>
-    <span class="nx">replacement</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">js-emojified</span><span class="dl">'</span><span class="p">)</span>
-    <span class="nx">replacement</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">emojified</span><span class="p">;</span>
-    <span class="nx">node</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">replacement</span><span class="p">,</span> <span class="nx">node</span><span class="p">);</span>
-    <span class="nx">node</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">node</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="nb">document</span>
-    <span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">.js-emojify</span><span class="dl">"</span><span class="p">)</span>
-    <span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">_</span> <span class="o">=&gt;</span> <span class="nx">recursiveEmojification</span><span class="p">(</span><span class="nx">_</span><span class="p">));</span>
-</code></pre></div></div>
+<details class="spoiler"><summary class="spoiler-title">Соберем все воедино</summary>
+<div class="spoiler-body">
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="line"><span style="color:#66D9EF;font-style:italic">const</span><span style="color:#F8F8F2"> blacklist </span><span style="color:#F92672">=</span><span style="color:#F8F8F2"> [</span></span>
+<span class="line"><span style="color:#F8F8F2">    HTMLScriptElement,</span></span>
+<span class="line"><span style="color:#F8F8F2">    HTMLTextAreaElement,</span></span>
+<span class="line"><span style="color:#F8F8F2">    HTMLInputElement,</span></span>
+<span class="line"><span style="color:#F8F8F2">    HTMLSelectElement,</span></span>
+<span class="line"><span style="color:#F8F8F2">    HTMLButtonElement,</span></span>
+<span class="line"><span style="color:#F8F8F2">];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">const</span><span style="color:#A6E22E"> skip</span><span style="color:#F92672"> =</span><span style="color:#F8F8F2"> (</span><span style="color:#FD971F;font-style:italic">node</span><span style="color:#F8F8F2">) </span><span style="color:#66D9EF;font-style:italic">=></span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#F92672">    for</span><span style="color:#F8F8F2"> (</span><span style="color:#66D9EF;font-style:italic">let</span><span style="color:#F8F8F2"> cls </span><span style="color:#F92672">of</span><span style="color:#F8F8F2"> blacklist) {</span></span>
+<span class="line"><span style="color:#F92672">        if</span><span style="color:#F8F8F2"> (node </span><span style="color:#F92672">instanceof</span><span> </span><span style="color:#A6E22E;text-decoration:underline">cls</span><span style="color:#F8F8F2">) {</span></span>
+<span class="line"><span style="color:#F92672">            return</span><span style="color:#AE81FF"> true</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">        }</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F92672">    return</span><span style="color:#AE81FF"> false</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">const</span><span style="color:#A6E22E"> recursiveEmojification</span><span style="color:#F92672"> =</span><span style="color:#F8F8F2"> (</span><span style="color:#FD971F;font-style:italic">node</span><span style="color:#F8F8F2">) </span><span style="color:#66D9EF;font-style:italic">=></span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#F92672">    if</span><span style="color:#F8F8F2"> (node.nodeType </span><span style="color:#F92672">!==</span><span style="color:#F8F8F2"> Node.TEXT_NODE) {</span></span>
+<span class="line"><span style="color:#F92672">        if</span><span style="color:#F8F8F2"> (node.nodeType </span><span style="color:#F92672">===</span><span style="color:#F8F8F2"> Node.ELEMENT_NODE </span><span style="color:#F92672">&#x26;&#x26;</span><span style="color:#F92672"> !</span><span style="color:#A6E22E">skip</span><span style="color:#F8F8F2">(node)) {</span></span>
+<span class="line"><span style="color:#F8F8F2">            node.childNodes.</span><span style="color:#A6E22E">forEach</span><span style="color:#F8F8F2">(</span><span style="color:#FD971F;font-style:italic">_</span><span style="color:#66D9EF;font-style:italic"> =></span><span style="color:#A6E22E"> recursiveEmojification</span><span style="color:#F8F8F2">(_))</span></span>
+<span class="line"><span style="color:#F8F8F2">        }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F92672">        return</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">    const</span><span style="color:#F8F8F2"> emojified </span><span style="color:#F92672">=</span><span style="color:#A6E22E"> emojificator</span><span style="color:#F8F8F2">(node.nodeValue);</span></span>
+<span class="line"><span style="color:#F92672">    if</span><span style="color:#F8F8F2"> (emojified </span><span style="color:#F92672">===</span><span style="color:#F8F8F2"> node.nodeValue) {</span></span>
+<span class="line"><span style="color:#F92672">        return</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">    let</span><span style="color:#F8F8F2"> replacement </span><span style="color:#F92672">=</span><span style="color:#F8F8F2"> document.</span><span style="color:#A6E22E">createElement</span><span style="color:#F8F8F2">(</span><span style="color:#E6DB74">'span'</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"><span style="color:#F8F8F2">    replacement.classList.</span><span style="color:#A6E22E">add</span><span style="color:#F8F8F2">(</span><span style="color:#E6DB74">'js-emojified'</span><span style="color:#F8F8F2">)</span></span>
+<span class="line"><span style="color:#F8F8F2">    replacement.innerHTML </span><span style="color:#F92672">=</span><span style="color:#F8F8F2"> emojified;</span></span>
+<span class="line"><span style="color:#F8F8F2">    node.parentNode.</span><span style="color:#A6E22E">insertBefore</span><span style="color:#F8F8F2">(replacement, node);</span></span>
+<span class="line"><span style="color:#F8F8F2">    node.parentNode.</span><span style="color:#A6E22E">removeChild</span><span style="color:#F8F8F2">(node);</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F8F8F2">document</span></span>
+<span class="line"><span style="color:#F8F8F2">    .</span><span style="color:#A6E22E">querySelectorAll</span><span style="color:#F8F8F2">(</span><span style="color:#E6DB74">".js-emojify"</span><span style="color:#F8F8F2">)</span></span>
+<span class="line"><span style="color:#F8F8F2">    .</span><span style="color:#A6E22E">forEach</span><span style="color:#F8F8F2">(</span><span style="color:#FD971F;font-style:italic">_</span><span style="color:#66D9EF;font-style:italic"> =></span><span style="color:#A6E22E"> recursiveEmojification</span><span style="color:#F8F8F2">(_));</span></span>
+<span class="line"></span></code></pre></div></div>
 </div></details>
-
 <p>Не могу сказать, что смайлы для меня настолько важны, чтобы я стал так заморачиваться.
 Скорее то, что это был определенный вызов, интересная задача на исследование.
 Я узнал много нового и стал лучше понимать работу html и js в браузере.
 И сделал свой сайт чуточку лучше :blush:</p>
-
-<p>Спасибо за внимание. Надеюсь, было интересно :fox:</p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Разработка" /><category term="Веб-разработка" /><category term="Frontend" /><category term="Emoji" /><summary type="html"><![CDATA[Простой и надежный способ внедрения Emoji в текст без влияния на другие компоненты страницы]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/reliable-emojification/cover.png" /><media:content medium="image" url="https://vtvz.me/blog/reliable-emojification/cover.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Покорение UTM меток</title><link href="https://vtvz.me/blog/conquering-the-utm-parameters/" rel="alternate" type="text/html" title="Покорение UTM меток" /><published>2020-05-13T00:00:00+03:00</published><updated>2020-05-13T00:00:00+03:00</updated><id>https://vtvz.me/blog/conquering-the-utm-parameters</id><content type="html" xml:base="https://vtvz.me/blog/conquering-the-utm-parameters/"><![CDATA[<p>Решил я тут собрать побольше статистики по посетителям.
+<p>Спасибо за внимание. Надеюсь, было интересно :fox:</p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Разработка" /><category term="Веб-разработка" /><category term="Frontend" /><category term="Emoji" /><summary type="html"><![CDATA[Простой и надежный способ внедрения Emoji в текст без влияния на другие компоненты страницы
+]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/reliable-emojification/cover.png" /><media:content medium="image" url="https://vtvz.me/blog/reliable-emojification/cover.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Покорение UTM меток</title><link href="https://vtvz.me/blog/conquering-the-utm-parameters/" rel="alternate" type="text/html" title="Покорение UTM меток" /><published>2020-05-13T00:00:00+03:00</published><updated>2020-05-13T00:00:00+03:00</updated><id>https://vtvz.me/blog/conquering-the-utm-parameters</id><content type="html" xml:base="https://vtvz.me/blog/conquering-the-utm-parameters/"><![CDATA[<p>Решил я тут собрать побольше статистики по посетителям.
 Хотя Яндекс.Метрика очень даже неплохо с этим справляется,
 но хотелось бы иметь более управляемый механизм,
 в котором можно было разделить не только соц. сеть,
 из которой пришел посетитель, но и какую из ссылок он нажал.</p>
-
 <p>Или например, сколько человек посмотрело статью из секции “Latest Article” на главной странице,
 сколько перелистнуло на следующий пост, и так далее. Выбор очевиден – нужно использовать UTM метки.
 Они очень распространены в рекламной части бизнеса, но их можно использовать и для простой аналитики.
 Но тут есть одна проблемка…</p>
-
 <!--cut-->
-
 <h2 id="постановка-задачи">Постановка задачи</h2>
-
 <p>Проблема в том, что эти метки <strong>очень</strong> массивные.
 Вот к примеру, одна из возможных ссылок на пост в социальной сети выглядит следующим образом:</p>
-
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://vtvz.me/blog/social-post-generator/
     ?utm_source=_telegram
-    &amp;utm_medium=social-post
-    &amp;utm_campaign=blog
-    &amp;utm_content=social-post-generator
+    &#x26;utm_medium=social-post
+    &#x26;utm_campaign=blog
+    &#x26;utm_content=social-post-generator
 </code></pre></div></div>
-
 <p>Это 96 дополнительных символов!
 Хотя многие соц. сети хорошо с этим справляются. Например, в VK такие ссылки ограничены одной строкой.
 А в Twitter и LinkedIn есть свой укорачиватель. Но вот Телеграм так не умеет.</p>
-
-<figure class="frame "><a href="./telegram.png" target="_blank"><img src="./telegram.png" alt="Жирная ссылка в Телеграмм" title="Жирная ссылка в Телеграмм" /></a></figure>
-
+<figure class="frame"><a href="./telegram.png" target="_blank"><img src="./telegram.png" alt="Жирная ссылка в Телеграмм" title="Жирная ссылка в Телеграмм"></a></figure>
 <p>Тем не менее, помимо постов есть еще и ссылки на сайт в профилях соц. сетей.
-В ВК, например, у меня целых 3 места, ведущих на главную страницу. 
+В ВК, например, у меня целых 3 места, ведущих на главную страницу.
 И эти длиннющие ссылки немного пугают и уродливо выглядят.
 Короче, задача в следующем: сделать эти ссылки простыми и эстетичными.</p>
-
 <h2 id="решения">Решения</h2>
 <h3 id="укорачиватель-ссылок">Укорачиватель ссылок</h3>
-
 <p>Я уже давно пользуюсь сервисами, которые делают из монстров конфетку.
-Вот например <a href="https://bitly.com/">Bitly</a> неплохо с этим справляется. 
+Вот например <a href="https://bitly.com/">Bitly</a> неплохо с этим справляется.
 Вот что он сделал со ссылкой, которую я указал ранее:</p>
-
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://bit.ly/vtvz-tg-post-generator
 </code></pre></div></div>
-
 <p>Уже гораздо лучше.</p>
-
 <p>НО! Теперь эта ссылка не ведет на мой сайт. Она ведет на bit.ly, который уже кидает куда надо.
 Проблема ли это? Для меня да. Мой сайт – моя визитная карточка, которая должна явно указывать, кому она принадлежит.
 Так что, это отметается сразу.</p>
-
 <h3 id="свой-укорачиватель-ссылок">Свой укорачиватель ссылок</h3>
-
 <p>А почему бы самому не укорачивать ссылки и публиковать уже их? Это решает проблему выше, но создает еще несколько.</p>
-
 <ol>
-  <li>Его нужно сделать. Это дополнительное время на реализацию целого компонента системы.
+<li>Его нужно сделать. Это дополнительное время на реализацию целого компонента системы.
 Сложность создает тот факт, что этот сайт статический, собран из обычных html страничек,
 сгенерированных с помощью Jekyll, который написан на Ruby, который я не знаю… Ну вы поняли :grin:</li>
-  <li>Обычные укорачиватели перекидывают тебя на другой сайт используя HTTP 301 код.
+<li>Обычные укорачиватели перекидывают тебя на другой сайт используя HTTP 301 код.
 Но мы не можем отдавать этот статус клиенту, потому что статические сайты дают либо 200, либо 404.
 А вот ВК не умеет обрабатывать такие страницы.</li>
-  <li>Придется генерировать целую пачку укороченных сслылок для каждой записи в блоге.
+<li>Придется генерировать целую пачку укороченных сслылок для каждой записи в блоге.
 Это значительно повышает ошибку человеческого фактора, значительно усложняет систему и захламляет проект.
 <span class="text-muted">(Эта проблема справедлива и для предыдущего метода)</span></li>
-  <li>Это сложно автоматизировать имеющимися инструментами.</li>
+<li>Это сложно автоматизировать имеющимися инструментами.</li>
 </ol>
-
 <p>Вывод: тоже отбрасываем.</p>
-
 <h3 id="упаковка-меток">Упаковка меток</h3>
-
 <p>Я уверен, что этот метод использовался ранее, и что я изобрел велосипед.
 Но результат, по-моему, получился просто невероятным. Принцип работы в следующем:</p>
-
 <p>Вместе со ссылкой передается один единственный query параметр,
 на основании его в url страницы применяются все необходимые utm метки.
 Все это должно произойти <strong>ДО</strong> инициализации инструментов аналитики.</p>
-
 <p>Выглядит это следующим образом:</p>
-
 <ul>
-  <li>Человек открывает ссылку <code class="language-plaintext highlighter-rouge">https://vtvz.me/blog/social-post-generator/?utm=tg</code></li>
-  <li>Она распаковывается в
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://vtvz.me/blog/social-post-generator/
+<li>Человек открывает ссылку <code>https://vtvz.me/blog/social-post-generator/?utm=tg</code></li>
+<li>Она распаковывается в
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://vtvz.me/blog/social-post-generator/
     ?utm_source=_telegram
-    &amp;utm_medium=social-post
-    &amp;utm_campaign=blog
-    &amp;utm_content=social-post-generator
-</code></pre></div>    </div>
-  </li>
-  <li>Запускаются Яндекс.Метрика и Google Analytics</li>
+    &#x26;utm_medium=social-post
+    &#x26;utm_campaign=blog
+    &#x26;utm_content=social-post-generator
+</code></pre></div></div>
+</li>
+<li>Запускаются Яндекс.Метрика и Google Analytics</li>
 </ul>
-
 <p>В итоге удалось упаковать 96 символов в 7! Вот как это работает…</p>
-
 <h2 id="реализация">Реализация</h2>
-
 <div class="alert alert-info">
     <p><b>Предупреждение!</b></p>
     <p>
@@ -538,93 +426,81 @@ ERROR: Failed to mount private data at [/tmp/ecryptfs.xxxxxxxx].
         Но примеры достаточно просты, чтобы транспилировать их в классический JS.
     </p>
 </div>
-
 <p>Наш код должен работать следующим образом:</p>
-
 <ol>
-  <li>Вытянуть <code class="language-plaintext highlighter-rouge">utm</code> параметр из query адреса;</li>
-  <li>Сгенерировать source, medium, campaign…</li>
-  <li>Удалить параметр <code class="language-plaintext highlighter-rouge">utm</code>;</li>
-  <li>Применить метки из пункта 2;</li>
-  <li>Заменить текущий url на новый.</li>
+<li>Вытянуть <code>utm</code> параметр из query адреса;</li>
+<li>Сгенерировать source, medium, campaign…</li>
+<li>Удалить параметр <code>utm</code>;</li>
+<li>Применить метки из пункта 2;</li>
+<li>Заменить текущий url на новый.</li>
 </ol>
-
 <p>Выглядит это так:</p>
-
 <p>У нас есть карта стратегий обработки. Это объект, в ключах которого возможные utm сокращения,
 а в значении – функция, которая генерирует все необходимые метки.</p>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">strategies</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="dl">'</span><span class="s1">tg</span><span class="dl">'</span><span class="p">:</span> <span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-        <span class="kd">const</span> <span class="p">[</span><span class="nx">collection</span><span class="p">,</span> <span class="nx">slug</span><span class="p">]</span> <span class="o">=</span> <span class="nx">url</span><span class="p">.</span><span class="nx">pathname</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">).</span><span class="nx">filter</span><span class="p">(</span><span class="nx">_</span> <span class="o">=&gt;</span> <span class="nx">_</span><span class="p">);</span>
-
-        <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="na">source</span><span class="p">:</span> <span class="dl">'</span><span class="s1">_telegram</span><span class="dl">'</span><span class="p">,</span>
-            <span class="na">medium</span><span class="p">:</span> <span class="dl">'</span><span class="s1">social-post</span><span class="dl">'</span>
-        <span class="p">}</span>
-
-        <span class="nx">collection</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">campaign</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">);</span>
-        <span class="nx">slug</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">content</span> <span class="o">=</span> <span class="nx">slug</span><span class="p">);</span>
-
-        <span class="k">return</span> <span class="nx">data</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">};</span>
-</code></pre></div></div>
-
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="line"><span style="color:#66D9EF;font-style:italic">const</span><span style="color:#F8F8F2"> strategies </span><span style="color:#F92672">=</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#E6DB74">    'tg'</span><span style="color:#F8F8F2">: (</span><span style="color:#FD971F;font-style:italic">url</span><span style="color:#F8F8F2">) </span><span style="color:#66D9EF;font-style:italic">=></span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">        const</span><span style="color:#F8F8F2"> [collection, slug] </span><span style="color:#F92672">=</span><span style="color:#F8F8F2"> url.pathname.</span><span style="color:#A6E22E">split</span><span style="color:#F8F8F2">(</span><span style="color:#E6DB74">'/'</span><span style="color:#F8F8F2">).</span><span style="color:#A6E22E">filter</span><span style="color:#F8F8F2">(</span><span style="color:#FD971F;font-style:italic">_</span><span style="color:#66D9EF;font-style:italic"> =></span><span style="color:#F8F8F2"> _);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">        const</span><span style="color:#F8F8F2"> data </span><span style="color:#F92672">=</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#F8F8F2">            source: </span><span style="color:#E6DB74">'_telegram'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">            medium: </span><span style="color:#E6DB74">'social-post'</span></span>
+<span class="line"><span style="color:#F8F8F2">        }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F8F8F2">        collection </span><span style="color:#F92672">&#x26;&#x26;</span><span style="color:#F8F8F2"> (data.campaign </span><span style="color:#F92672">=</span><span style="color:#F8F8F2"> collection);</span></span>
+<span class="line"><span style="color:#F8F8F2">        slug </span><span style="color:#F92672">&#x26;&#x26;</span><span style="color:#F8F8F2"> (data.content </span><span style="color:#F92672">=</span><span style="color:#F8F8F2"> slug);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F92672">        return</span><span style="color:#F8F8F2"> data;</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"><span style="color:#F8F8F2">};</span></span>
+<span class="line"></span></code></pre></div></div>
 <p>В этом случае функция получает текущий адрес, на основании которого строит кампанию и контент.
 Эта магия применима в моем случае. В вашем может быть что-то другое.</p>
-
-<figure class="frame "><a href="./strategies.png" target="_blank"><img src="./strategies.png" alt="Карта стратегий" title="Карта стратегий" /></a><figcaption><p>У меня карта стратегий выглядит вот так</p></figcaption></figure>
-
+<figure class="frame"><a href="./strategies.png" target="_blank"><img src="./strategies.png" alt="Карта стратегий" title="Карта стратегий"></a><figcaption><p>У меня карта стратегий выглядит вот так</p></figcaption></figure>
 <p>Теперь нужна функция, которая сделает всю остальную работу:</p>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
- * @param {Window} w
- * @param {Document} d
- */</span>
-<span class="kd">const</span> <span class="nx">utmResolver</span> <span class="o">=</span> <span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="nx">d</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="c1">// В качестве параметров передаются window и document</span>
-    <span class="c1">// 1. Парсим ссылку и вытягиваем utm параметр </span>
-    <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">URL</span><span class="p">(</span><span class="nx">w</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
-    <span class="kd">const</span> <span class="nx">utm</span> <span class="o">=</span> <span class="nx">url</span><span class="p">.</span><span class="nx">searchParams</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">utm</span><span class="dl">'</span><span class="p">);</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="kc">null</span> <span class="o">===</span> <span class="nx">utm</span> <span class="o">||</span> <span class="dl">''</span> <span class="o">===</span> <span class="nx">utm</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span><span class="p">;</span>
-    <span class="p">}</span>
-    
-    <span class="c1">// В случае отсутствия стратегии просто ничего не делаем</span>
-    <span class="kd">let</span> <span class="nx">strategy</span> <span class="o">=</span> <span class="nx">strategies</span><span class="p">[</span><span class="nx">utm</span><span class="p">];</span>
-    <span class="k">if</span> <span class="p">(</span><span class="kc">undefined</span> <span class="o">===</span> <span class="nx">strategy</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="c1">// 2. Генерируем значения меток </span>
-    <span class="kd">const</span> <span class="p">{</span>
-        <span class="nx">source</span><span class="p">,</span>
-        <span class="nx">medium</span><span class="p">,</span>
-        <span class="nx">campaign</span><span class="p">,</span>
-        <span class="nx">content</span><span class="p">,</span>
-    <span class="p">}</span> <span class="o">=</span> <span class="nx">strategy</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
-    
-    <span class="c1">// 3. Удаляем utm </span>
-    <span class="nx">url</span><span class="p">.</span><span class="nx">searchParams</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="dl">'</span><span class="s1">utm</span><span class="dl">'</span><span class="p">);</span>
-    <span class="c1">// 4. Применяем параметры </span>
-    <span class="nx">url</span><span class="p">.</span><span class="nx">searchParams</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="dl">'</span><span class="s1">utm_source</span><span class="dl">'</span><span class="p">,</span> <span class="nx">source</span><span class="p">);</span>
-    <span class="nx">url</span><span class="p">.</span><span class="nx">searchParams</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="dl">'</span><span class="s1">utm_medium</span><span class="dl">'</span><span class="p">,</span> <span class="nx">medium</span><span class="p">);</span>
-    <span class="nx">url</span><span class="p">.</span><span class="nx">searchParams</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="dl">'</span><span class="s1">utm_campaign</span><span class="dl">'</span><span class="p">,</span> <span class="nx">campaign</span><span class="p">);</span>
-    <span class="nx">content</span> <span class="o">&amp;&amp;</span> <span class="nx">url</span><span class="p">.</span><span class="nx">searchParams</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="dl">'</span><span class="s1">utm_content</span><span class="dl">'</span><span class="p">,</span> <span class="nx">content</span><span class="p">);</span>
-    
-    <span class="c1">// 5. Обновляем URL</span>
-    <span class="nx">w</span><span class="p">.</span><span class="nx">history</span>
-        <span class="p">?</span> <span class="nx">w</span><span class="p">.</span><span class="nx">history</span><span class="p">.</span><span class="nx">replaceState</span><span class="p">({},</span> <span class="nx">d</span><span class="p">.</span><span class="nx">title</span><span class="p">,</span> <span class="nx">url</span><span class="p">.</span><span class="nx">toString</span><span class="p">())</span>
-        <span class="p">:</span> <span class="nx">w</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="nx">url</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="line"><span style="color:#88846F">/**</span></span>
+<span class="line"><span style="color:#88846F"> * </span><span style="color:#66D9EF;font-style:italic">@param</span><span> </span><span style="color:#A6E22E;text-decoration:underline">{Window}</span><span style="color:#F8F8F2"> w</span></span>
+<span class="line"><span style="color:#88846F"> * </span><span style="color:#66D9EF;font-style:italic">@param</span><span> </span><span style="color:#A6E22E;text-decoration:underline">{Document}</span><span style="color:#F8F8F2"> d</span></span>
+<span class="line"><span style="color:#88846F"> */</span></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">const</span><span style="color:#A6E22E"> utmResolver</span><span style="color:#F92672"> =</span><span style="color:#F8F8F2"> (</span><span style="color:#FD971F;font-style:italic">w</span><span style="color:#F8F8F2">, </span><span style="color:#FD971F;font-style:italic">d</span><span style="color:#F8F8F2">) </span><span style="color:#66D9EF;font-style:italic">=></span><span style="color:#F8F8F2"> { </span><span style="color:#88846F">// В качестве параметров передаются window и document</span></span>
+<span class="line"><span style="color:#88846F">    // 1. Парсим ссылку и вытягиваем utm параметр </span></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">    const</span><span style="color:#F8F8F2"> url </span><span style="color:#F92672">=</span><span style="color:#F92672"> new</span><span style="color:#A6E22E"> URL</span><span style="color:#F8F8F2">(w.location.</span><span style="color:#A6E22E">toString</span><span style="color:#F8F8F2">());</span></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">    const</span><span style="color:#F8F8F2"> utm </span><span style="color:#F92672">=</span><span style="color:#F8F8F2"> url.searchParams.</span><span style="color:#A6E22E">get</span><span style="color:#F8F8F2">(</span><span style="color:#E6DB74">'utm'</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F92672">    if</span><span style="color:#F8F8F2"> (</span><span style="color:#AE81FF">null</span><span style="color:#F92672"> ===</span><span style="color:#F8F8F2"> utm </span><span style="color:#F92672">||</span><span style="color:#E6DB74"> ''</span><span style="color:#F92672"> ===</span><span style="color:#F8F8F2"> utm) {</span></span>
+<span class="line"><span style="color:#F92672">        return</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"><span style="color:#F8F8F2">    </span></span>
+<span class="line"><span style="color:#88846F">    // В случае отсутствия стратегии просто ничего не делаем</span></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">    let</span><span style="color:#F8F8F2"> strategy </span><span style="color:#F92672">=</span><span style="color:#F8F8F2"> strategies[utm];</span></span>
+<span class="line"><span style="color:#F92672">    if</span><span style="color:#F8F8F2"> (</span><span style="color:#AE81FF">undefined</span><span style="color:#F92672"> ===</span><span style="color:#F8F8F2"> strategy) {</span></span>
+<span class="line"><span style="color:#F92672">        return</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#88846F">    // 2. Генерируем значения меток </span></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">    const</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#F8F8F2">        source,</span></span>
+<span class="line"><span style="color:#F8F8F2">        medium,</span></span>
+<span class="line"><span style="color:#F8F8F2">        campaign,</span></span>
+<span class="line"><span style="color:#F8F8F2">        content,</span></span>
+<span class="line"><span style="color:#F8F8F2">    } </span><span style="color:#F92672">=</span><span style="color:#A6E22E"> strategy</span><span style="color:#F8F8F2">(url);</span></span>
+<span class="line"><span style="color:#F8F8F2">    </span></span>
+<span class="line"><span style="color:#88846F">    // 3. Удаляем utm </span></span>
+<span class="line"><span style="color:#F8F8F2">    url.searchParams.</span><span style="color:#A6E22E">delete</span><span style="color:#F8F8F2">(</span><span style="color:#E6DB74">'utm'</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"><span style="color:#88846F">    // 4. Применяем параметры </span></span>
+<span class="line"><span style="color:#F8F8F2">    url.searchParams.</span><span style="color:#A6E22E">append</span><span style="color:#F8F8F2">(</span><span style="color:#E6DB74">'utm_source'</span><span style="color:#F8F8F2">, source);</span></span>
+<span class="line"><span style="color:#F8F8F2">    url.searchParams.</span><span style="color:#A6E22E">append</span><span style="color:#F8F8F2">(</span><span style="color:#E6DB74">'utm_medium'</span><span style="color:#F8F8F2">, medium);</span></span>
+<span class="line"><span style="color:#F8F8F2">    url.searchParams.</span><span style="color:#A6E22E">append</span><span style="color:#F8F8F2">(</span><span style="color:#E6DB74">'utm_campaign'</span><span style="color:#F8F8F2">, campaign);</span></span>
+<span class="line"><span style="color:#F8F8F2">    content </span><span style="color:#F92672">&#x26;&#x26;</span><span style="color:#F8F8F2"> url.searchParams.</span><span style="color:#A6E22E">append</span><span style="color:#F8F8F2">(</span><span style="color:#E6DB74">'utm_content'</span><span style="color:#F8F8F2">, content);</span></span>
+<span class="line"><span style="color:#F8F8F2">    </span></span>
+<span class="line"><span style="color:#88846F">    // 5. Обновляем URL</span></span>
+<span class="line"><span style="color:#F8F8F2">    w.history</span></span>
+<span class="line"><span style="color:#F92672">        ?</span><span style="color:#F8F8F2"> w.history.</span><span style="color:#A6E22E">replaceState</span><span style="color:#F8F8F2">({}, d.title, url.</span><span style="color:#A6E22E">toString</span><span style="color:#F8F8F2">())</span></span>
+<span class="line"><span style="color:#F92672">        :</span><span style="color:#F8F8F2"> w.location.</span><span style="color:#A6E22E">replace</span><span style="color:#F8F8F2">(url.</span><span style="color:#A6E22E">toString</span><span style="color:#F8F8F2">());</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre></div></div>
 <p>Нам остается только вызвать эту функцию:</p>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">utmResolver</span><span class="p">(</span><span class="nb">window</span><span class="p">,</span> <span class="nb">document</span><span class="p">);</span>
-</code></pre></div></div>
-
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="line"><span style="color:#A6E22E">utmResolver</span><span style="color:#F8F8F2">(window, document);</span></span>
+<span class="line"></span></code></pre></div></div>
 <div class="alert alert-info">
     <p><b>Напоминание!</b></p>
     <p>
@@ -632,490 +508,385 @@ ERROR: Failed to mount private data at [/tmp/ecryptfs.xxxxxxxx].
         Нарушение этих правил может привести и приведет к искажению результатов.
     </p>
 </div>
-
 <p>Благодаря этому ссылки стали куда лаконичнее, чем изначально.
 Выбранный мною способ не является единственно верным.
 Есть несколько альтернатив, как передать стратегию:</p>
-
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">vtvz.me/.../?u=tg</code></li>
-  <li><code class="language-plaintext highlighter-rouge">vtvz.me/.../?_=tg</code></li>
-  <li><code class="language-plaintext highlighter-rouge">vtvz.me/.../?=tg</code></li>
-  <li><code class="language-plaintext highlighter-rouge">vtvz.me/.../?tg</code></li>
-  <li><code class="language-plaintext highlighter-rouge">vtvz.me/.../#tg</code></li>
+<li><code>vtvz.me/.../?u=tg</code></li>
+<li><code>vtvz.me/.../?_=tg</code></li>
+<li><code>vtvz.me/.../?=tg</code></li>
+<li><code>vtvz.me/.../?tg</code></li>
+<li><code>vtvz.me/.../#tg</code></li>
 </ul>
-
 <p>Ничто не мешает вам модифицировать приведенный выше скрипт под свои нужды.</p>
-
 <p>Мне не удалось протестировать это дело в больших масштабах,
 но текущие данные показывают правдивые результаты.
 Так или иначе, если что-то пойдет не так – я сообщу.</p>
-
 <p>А пока, спасибо за внимание :grin:
 Если возникают вопросы, не стесняйтесь задавать их мне по любому доступному каналу,
-пока комментарии не появились :fox:</p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Разработка" /><category term="Веб-разработка" /><category term="Аналитика" /><category term="Frontend" /><summary type="html"><![CDATA[Элегантный способ укоротить UTM метки]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/conquering-the-utm-parameters/cover.jpg" /><media:content medium="image" url="https://vtvz.me/blog/conquering-the-utm-parameters/cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Генератор постов в социальные сети</title><link href="https://vtvz.me/blog/social-post-generator/" rel="alternate" type="text/html" title="Генератор постов в социальные сети" /><published>2020-05-04T00:00:00+03:00</published><updated>2020-05-04T00:00:00+03:00</updated><id>https://vtvz.me/blog/social-post-generator</id><content type="html" xml:base="https://vtvz.me/blog/social-post-generator/"><![CDATA[<p>Порой написание статьи отнимает меньше времени, чем генерация постов в социальные сети.
+пока комментарии не появились :fox:</p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Разработка" /><category term="Веб-разработка" /><category term="Аналитика" /><category term="Frontend" /><summary type="html"><![CDATA[Элегантный способ укоротить UTM метки
+]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/conquering-the-utm-parameters/cover.jpg" /><media:content medium="image" url="https://vtvz.me/blog/conquering-the-utm-parameters/cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Генератор постов в социальные сети</title><link href="https://vtvz.me/blog/social-post-generator/" rel="alternate" type="text/html" title="Генератор постов в социальные сети" /><published>2020-05-04T00:00:00+03:00</published><updated>2020-05-04T00:00:00+03:00</updated><id>https://vtvz.me/blog/social-post-generator</id><content type="html" xml:base="https://vtvz.me/blog/social-post-generator/"><![CDATA[<p>Порой написание статьи отнимает меньше времени, чем генерация постов в социальные сети.
 И в каждой из них нужно что-то учесть:
 в twitter’е жесткие ограничения по количеству символов,
 где-то не нужно указывать ссылку на телеграмм канал,
 а вот на личной странице в ВК еще нужно указать линку на группу.
 Мне это поднадоело. Поэтому я решил это дело автоматизировать! Хватит это терпеть!</p>
-
 <!--cut-->
-
 <p>Это второй по счету интерактивный пост, призванный упростить мне жизнь.
 Но в этом случае этот инструмент не будет полезен никому, кроме как мне.
 И здесь сделано все так, чтобы создание постов для социальных сетей было тривиальным действием.
 Если вдруг кто-то хочет себе что-то подобное – обращайтесь :blush:</p>
-
 <p>Фичи этого генератора:</p>
-
 <ul>
-  <li>Все поля предзаполняются автоматически из данных последнего поста блога;</li>
-  <li>Если нужно создать пост для какой-то другой коллекции, то для этого есть выпадающий список “Применить”;</li>
-  <li>Текст для twitter’a и других соц. сетей заполняется отдельно;</li>
-  <li>Имеется подсчет доступных символов для twitter’а и LinkedIn;</li>
-  <li>Для twitter’а подсчет символов выполнен с учетом всей магии с укорачиванием ссылок –
+<li>Все поля предзаполняются автоматически из данных последнего поста блога;</li>
+<li>Если нужно создать пост для какой-то другой коллекции, то для этого есть выпадающий список “Применить”;</li>
+<li>Текст для twitter’a и других соц. сетей заполняется отдельно;</li>
+<li>Имеется подсчет доступных символов для twitter’а и LinkedIn;</li>
+<li>Для twitter’а подсчет символов выполнен с учетом всей магии с укорачиванием ссылок –
 длинна урла не влияет на количество свободных буков;</li>
-  <li>Для каждой социальной сети используется свой шаблон поста;</li>
-  <li>В ссылку к каждой соц. медиа вставляются все необходимые utm метки для аналитики.</li>
+<li>Для каждой социальной сети используется свой шаблон поста;</li>
+<li>В ссылку к каждой соц. медиа вставляются все необходимые utm метки для аналитики.</li>
 </ul>
-
 <p>В целом, получилось достаточно мощно. Это значительно упростит мне жизнь.</p>
-
 <p>Если интересно, то вот, можно потыкать:</p>
-
 <div id="social-post-generator-container">
     <div class="progress">
       <div class="progress-bar progress-bar-striped active" style="width: 100%"></div>
     </div>
-</div>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Разработка" /><category term="Веб-разработка" /><category term="Инструменты" /><summary type="html"><![CDATA[Генератор постов в социальные сети с учетом максимальной длины и применением всех необходимых utm меток]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/social-post-generator/cover.jpg" /><media:content medium="image" url="https://vtvz.me/blog/social-post-generator/cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Покойся с миром, мой дорогой друг…</title><link href="https://vtvz.me/blog/rest-in-peace-my-friend/" rel="alternate" type="text/html" title="Покойся с миром, мой дорогой друг…" /><published>2020-04-24T00:00:00+03:00</published><updated>2020-04-24T00:00:00+03:00</updated><id>https://vtvz.me/blog/rest-in-peace-my-friend</id><content type="html" xml:base="https://vtvz.me/blog/rest-in-peace-my-friend/"><![CDATA[<p>В конце сентября 2017 года наша семья стала чуточку больше.
+</div>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Разработка" /><category term="Веб-разработка" /><category term="Инструменты" /><summary type="html"><![CDATA[Генератор постов в социальные сети с учетом максимальной длины и применением всех необходимых utm меток  
+]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/social-post-generator/cover.jpg" /><media:content medium="image" url="https://vtvz.me/blog/social-post-generator/cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Покойся с миром, мой дорогой друг…</title><link href="https://vtvz.me/blog/rest-in-peace-my-friend/" rel="alternate" type="text/html" title="Покойся с миром, мой дорогой друг…" /><published>2020-04-24T00:00:00+03:00</published><updated>2020-04-24T00:00:00+03:00</updated><id>https://vtvz.me/blog/rest-in-peace-my-friend</id><content type="html" xml:base="https://vtvz.me/blog/rest-in-peace-my-friend/"><![CDATA[<p>В конце сентября 2017 года наша семья стала чуточку больше.
 Мы пришли к выводу, что в нашем доме недостаточно уютно, и было принято решение взять хомячка.
 Еще до того, как он у нас появился, ему было дано имя – Джонатан Хамстер.
 Ведь какое еще можно дать имя хомяку?
 Он быстро стал частью нашей семьи и поселился в нашем доме и наших сердцах.</p>
-
 <!--cut-->
-
-<figure class="frame post-image post-image--left"><a href="./sitting.jpg" target="_blank"><img src="./sitting.jpg" alt="" title="" /></a></figure>
-
+<figure class="frame post-image post-image--left"><a href="./sitting.jpg" target="_blank"><img src="./sitting.jpg" alt="" title=""></a></figure>
 <p>С самого начала он был дружелюбен. Было пару раз, что он кусался. Но это было давно и неправда.
 В целом, его можно было взять на руки в любое время. Иногда мы его пугали –
 не всегда он был готов к контакту с нами. Но, несмотря на это, он не кусался и не царапался.</p>
-
 <p>Он был дружелюбен не только к нам.
 Возможно, это общее свойство хомяков – доверять либо никому, либо всем, –
 но не было ни одного случая агрессии по отношению к другим людям и животным.
 Он чувствовал себя спокойно на руках любого.
 Мы пытались подружить его и Джейсона (кота), но он все таки мышь, а кот – охотник. Так что с ними не заладилось.
 Возможно, спустя какое-то время можно было попробовать еще раз, но мы рисковать не стали.</p>
-
-<figure class="frame post-image post-image--right"><a href="./running.jpg" target="_blank"><img src="./running.jpg" alt="" title="" /></a></figure>
-
+<figure class="frame post-image post-image--right"><a href="./running.jpg" target="_blank"><img src="./running.jpg" alt="" title=""></a></figure>
 <p>Он был активным и любопытным. Его невозможно было сфотографировать.
 По ночам он бегал по колесу, чем-то шуршал в своем домике, носился по этажам своей уютной клетки.
 Чтобы было теплее, мы давали ему кусочки мягкой туалетной бумаги,
 которые он с удовольствием брал и упихивал в свое жилище.
 Интересно то, что он всегда знал, что с ней делать.
 Стоило ему дать бумажку, он сразу утолкает ее за щеку и потащит в свою конуру.</p>
-
 <p>Со временем он стал реагировать на наш голос.
 Иногда, когда мы его звали, он высовывал свой носик из будки и выходил к нам, чтобы его взяли на ручки.
 Бывало, он сам просился – забирался на клетку и просовывал свой носик между прутьями,
 крепко держась лапками за них.</p>
-
-<figure class="frame post-image post-image--left"><a href="./pocket.jpg" target="_blank"><img src="./pocket.jpg" alt="" title="" /></a></figure>
-
+<figure class="frame post-image post-image--left"><a href="./pocket.jpg" target="_blank"><img src="./pocket.jpg" alt="" title=""></a></figure>
 <p>Иногда, когда он был в руках, мы давали ему какую-то вкусняшку, типа яблока.
 Чаще всего он ухомячивал её за щеку. Но иногда он кушал прямо на руках, что выглядело очень мило.
 Бывало, что я усаживал его в кармашек на своей футболке. Один раз он там уснул.
 Был случай, когда он сначала набил щеки зернами в клетке, я положил в карман, а он выложил всю свою еду прям там.</p>
-
 <p>Он прожил хорошую, счастливую хомячью жизнь, в тепле, любви и уюте.
 У него всегда была еда, вода и чистота в клетке.
 Мы никогда не давали ему то, что могло навредить,
 но старались всегда делиться с ним фруктами и овощами, которые можно.
 Он никогда не падал – мы были с ним аккуратны.</p>
-
 <p>Но хомяки живут недолго. Чаще всего они умирают в возрасте 1-2 года.
 Наш оказался долгожителем – 2 года и 9 месяцев. Но и его время уже прошло.
 Под старость лет своих он стал немного странно вести себя.
 Он старался ухомячить любую ткань, с которой соприкасался, чего раньше не было.
 Также он перестал спать в домике – там оставалась только голова, а все остальное было снаружи.
 Он и до этого был серым, но поседел еще больше.</p>
-
 <p>22 апреля 2020 года мы обнаружили его в своей клетке, лежащим на боку у выхода из домика мордочкой наружу.
 Мы подумали, что он мертв, но он продолжал дышать.
 У него случались такие-то приступы, когда он начинал сильно дергать передними лапами, вытягивая их вперед.
 Его рот двигался произвольно, иногда открывался, а иногда он как-будто что-то жевал.
 Ему определенно было плохо. Он умирал буквально у нас на руках.
 Мы думали, что он уйдет сам или ему станет лучше.</p>
-
-<figure class="frame post-image post-image--right"><a href="death.jpg" target="_blank"><img src="death.jpg" alt="" title="" /></a></figure>
-
+<figure class="frame post-image post-image--right"><a href="death.jpg" target="_blank"><img src="death.jpg" alt="" title=""></a></figure>
 <p>Но был вечер. А потом настало утро. Но он все был жив, но совершенно нежизнеспособен.
 Ему все еще было плохо. Он ничего не ел и не пил. Поэтому было решено отвезти к ветеринару.
 Возможно, благодаря карантину нам удалось пробиться к Бокаревым, где нас смогли принять буквально сразу.
 Его состояние уже было неисправимо. Если я правильно понял врача, у него было кровоизлияние в мозг.
-Но сердце его было крепким, благодаря чему он и жил так долго. 
+Но сердце его было крепким, благодаря чему он и жил так долго.
 На вопрос, было ли ему плохо, чувствовал ли он боль. Она сказала, что он был в коматозе и ничего не чувствовал.
 Если бы я был ветеринаром, то говорил бы то же самое. Но мне проще верить, что это действительно так.
 В итоге, его пришлось усыпить. Он ушел 11:10 23 апреля 2020 года.</p>
-
-<figure class="frame post-image post-image--left"><a href="./sitting.jpg" target="_blank"><img src="./sitting.jpg" alt="" title="" /></a></figure>
-
+<figure class="frame post-image post-image--left"><a href="./sitting.jpg" target="_blank"><img src="./sitting.jpg" alt="" title=""></a></figure>
 <p>Я хотел, чтобы он умер при нас, чтобы была возможность с ним попрощаться.
 И мы были рядом, когда ему стало плохо, и когда его не стало…</p>
-
 <p>Похоронили мы его в этот же день вечером.
 Мы выкопали ему ямку, насыпали древесный наполнитель,
 поставили его деревянный домик, в котором он жил, сверху и положили его туда.
 Я хотел отдать ему должное за ту радость и счастье, которые он нам подарил,
 и похоронить его достойным образом.</p>
-
 <p>Несмотря на то, что я знал, что он скоро умрет, я все равно не был к этому готов.
 Мне очень сложно принять его смерть и то, что его больше нет.
 Я разбит и расстроен. В доме стало немного пусто, и мне нужно к этому привыкнуть.</p>
-
-<p>Мы любили его. Я любил его. А он любил нас. Покойся с миром, мой дорогой друг…</p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="LiveLog" /><category term="Блог" /><category term="Животные" /><category term="RIP" /><summary type="html"><![CDATA[В конце сентября 2017 года наша семья стала чуточку больше. Мы пришли к выводу, что в нашем доме недостаточно уютно, и было принято решение взять хомячка. Еще до того, как он у нас появился, ему было дано имя – Джонатан Хамстер. Ведь какое еще можно дать имя хомяку? Он быстро стал частью нашей семьи и поселился в нашем доме и наших сердцах.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/rest-in-peace-my-friend/cover.jpg" /><media:content medium="image" url="https://vtvz.me/blog/rest-in-peace-my-friend/cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Ковыряясь под капотом #2</title><link href="https://vtvz.me/blog/under-the-hood-2nd/" rel="alternate" type="text/html" title="Ковыряясь под капотом #2" /><published>2020-04-18T00:00:00+03:00</published><updated>2020-04-18T00:00:00+03:00</updated><id>https://vtvz.me/blog/under-the-hood-2nd</id><content type="html" xml:base="https://vtvz.me/blog/under-the-hood-2nd/"><![CDATA[<p>В голове у меня много мыслей, которые хотелось бы выразить в виде статьи.
+<p>Мы любили его. Я любил его. А он любил нас. Покойся с миром, мой дорогой друг…</p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="LiveLog" /><category term="Блог" /><category term="Животные" /><category term="RIP" /><summary type="html"><![CDATA[В конце сентября 2017 года наша семья стала чуточку больше.
+Мы пришли к выводу, что в нашем доме недостаточно уютно, и было принято решение взять хомячка.
+Еще до того, как он у нас появился, ему было дано имя – Джонатан Хамстер.
+Ведь какое еще можно дать имя хомяку?
+Он быстро стал частью нашей семьи и поселился в нашем доме и наших сердцах.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/rest-in-peace-my-friend/cover.jpg" /><media:content medium="image" url="https://vtvz.me/blog/rest-in-peace-my-friend/cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Ковыряясь под капотом #2</title><link href="https://vtvz.me/blog/under-the-hood-2nd/" rel="alternate" type="text/html" title="Ковыряясь под капотом #2" /><published>2020-04-18T00:00:00+03:00</published><updated>2020-04-18T00:00:00+03:00</updated><id>https://vtvz.me/blog/under-the-hood-2nd</id><content type="html" xml:base="https://vtvz.me/blog/under-the-hood-2nd/"><![CDATA[<p>В голове у меня много мыслей, которые хотелось бы выразить в виде статьи.
 У меня даже есть небольшая заметка в Google Keep с темами потенциальных постов.
 Но это сложно. Русский язык – сложный язык.
 На написание одной статьи на 5 минут чтения может уйти несколько часов, а то и дней.
 Стоит учесть еще тот факт, что блог не приносит мне ни копейки.
 Поэтому, время на написание статьи есть только вечером после работы или на выходных.</p>
-
 <p>Поэтому, я делаю то, что не заставляет меня слишком много думать и не требует полной сосредоточенности.
 Я улучшаю творение рук моих. Удивительно то, что, несмотря на простую концепцию, всегда есть куда улучшаться.
 Именно об этом будет этот пост.</p>
-
 <!--cut-->
-
 <h2 id="коллекции">Коллекции</h2>
-
 <p>Начну с фундаментальных вещей. На сайте появился полноценный раздел, который я решил назвать “<a href="/collections/">Коллекциями</a>”.
 Сначала были одни <a href="/achievements/"><i class="fa-solid fa-trophy"></i> достижения</a> – мои успехи в личной и профессиональной жизни.
 И выглядел он очень даже неплохо. Каждое достижение – это отдельная карточка,
 в которой собраны ссылки и материалы, использованные мной.</p>
-
-<p>Ко всему этому туда были добавлены 
-<a href="/notes/"><i class="fa-solid fa-sticky-note"></i> заметки</a> 
+<p>Ко всему этому туда были добавлены
+<a href="/notes/"><i class="fa-solid fa-sticky-note"></i> заметки</a>
 и <a href="/bookmarks/"><i class="fa-solid fa-bookmark"></i> закладки</a>.
 Первые – для записи коротких мыслей на свободные темы.
 Вторые – для сохранения ссылок на интересные и полезные материалы.
 Опять же, чтобы не плодить десяток разделов с несколькими записями в каждом,
 все эти коллекции были упакованы в один с общей лентой,
 посты которых отмечены соответствующей иконкой.</p>
-
 <p>В мыслях есть создать еще два раздела: программы и книги.
 Думаю, названия говорят сами за себя. Мне есть чем поделиться.</p>
-
 <p>Тем не менее, если хочется увидеть что-то одно, например заметки,
 то их можно отфильтровать в столбце справа,
 а на мобильных устройствах – в самом низу (я думаю над тем, как сделать это лучше).
 Фильтр по категориям и тегам тоже скоро будет (наверное).</p>
-
 <p>Особенно мне нравится градиент в самом верху карточек.
 Искать картинку для каждой записи мне не хотелось.
 Но оставлять пост без какого-либо цвета очень скучно и некрасиво.
 На текущий момент доступно 22 градиента(ов),
 которые выбираются псевдослучайно (в зависимости от количества символов в записи)</p>
-
 <p>У вас тоже есть возможность поучаствовать в улучшении моего сайта:</p>
-
 <ol>
-  <li>Если у вас есть любимые красивые цветовые градиенты, отправьте их мне любым <a href="/">доступным способом</a>.</li>
-  <li>Также, вы можете <a href="https://fontawesome.com/icons?d=gallery&amp;s=solid&amp;m=free">выбрать красивую иконку</a> для раздела коллекций.
- Я пока выбрал звездочку <i class="fa-solid fa-star fa-fw"></i>, но, возможно, у вас будет идея получше :wink:</li>
+<li>Если у вас есть любимые красивые цветовые градиенты, отправьте их мне любым <a href="/">доступным способом</a>.</li>
+<li>Также, вы можете <a href="https://fontawesome.com/icons?d=gallery&#x26;s=solid&#x26;m=free">выбрать красивую иконку</a> для раздела коллекций.
+Я пока выбрал звездочку <i class="fa-solid fa-star fa-fw"></i>, но, возможно, у вас будет идея получше :wink:</li>
 </ol>
-
 <h2 id="иконка">Иконка</h2>
-
 <p>Очередное глобальное изменение.
 Это, конечно, не так впечатляет, как новый раздел с коллекциями.
 Но этот маленький аттрибут очень много значит для любого сайта. По иконке встречают, как говорится.
 Старый значок служил мне верой и правдой долгих 5 лет, если не больше,
 и он останется в моём сердце и истории git навсегда :heart:</p>
-
 <p>Конечно, я выбрал лису – у меня фон с лисой и логотип с лисой. Люблю я лис :fox:
 Пока что я взял Emoji от Apple, сделал ее черно-белой и немного добавил яркости.
 Надеюсь меня не засудят за нарушение авторских прав :no_mouth:
 Возможно, я нарисую что-то более уникальное. Но я не художник и не дизайнер.
 Если хочется помочь мне в это деле – пожалуйста. Мне будет очень приятно :blush:</p>
-
 <h2 id="мелочи">Мелочи</h2>
-
 <h3 id="теги-и-категории">Теги и Категории</h3>
-
 <p>На страницах блога в правой колонке есть два блока: комментарии и теги.</p>
-
 <p>Некоторые считают, что это лишнее и создаёт информационный шум.
 Частично я с этим согласен. Но люди достаточно часто переходят по этим ссылкам.</p>
-
 <p>Чтобы это выглядело более презентабельно, я внес пару косметических улучшений:</p>
-
 <ol>
-  <li>Теперь пункты отсортированы по количеству записей. В прошлом они были разбросаны хаотично.</li>
-  <li>Блок тегов теперь отображает только 6 самых популярных. Остальные скрыты за кнопочной “Show N more…”</li>
-  <li>Благодаря <a href="https://www.w3schools.com/css/css3_flexbox.asp">flex-box</a> удалось сделать кнопочки тегов на всю ширину.
- Теперь это выглядит как солидный блок, а не небрежно напиханные элементы.</li>
+<li>Теперь пункты отсортированы по количеству записей. В прошлом они были разбросаны хаотично.</li>
+<li>Блок тегов теперь отображает только 6 самых популярных. Остальные скрыты за кнопочной “Show N more…”</li>
+<li>Благодаря <a href="https://www.w3schools.com/css/css3_flexbox.asp">flex-box</a> удалось сделать кнопочки тегов на всю ширину.
+Теперь это выглядит как солидный блок, а не небрежно напиханные элементы.</li>
 </ol>
-
-<table class="table table-borderless">
-    <capture>Результат (до / после)</capture>
-    <tr>
-        <td><figure class="frame "><a href="tags-before.png" target="_blank"><img src="tags-before.png" alt="До" title="До" /></a></figure></td>
-        <td><figure class="frame "><a href="tags-after.png" target="_blank"><img src="tags-after.png" alt="После" title="После" /></a></figure></td>
+<capture>Результат (до / после)</capture><table class="table table-borderless">
+    
+    <tbody><tr>
+        <td><figure class="frame"><a href="tags-before.png" target="_blank"><img src="tags-before.png" alt="До" title="До"></a></figure></td>
+        <td><figure class="frame"><a href="tags-after.png" target="_blank"><img src="tags-after.png" alt="После" title="После"></a></figure></td>
     </tr>
-</table>
-
+</tbody></table>
 <h3 id="звездочки">Звездочки</h3>
-
 <p>Это очень незначительное изменение, но в разы улучшает моё резюме, особенно при печати.
 Я прижал звездочки в скиллах вправо, что сделало табличку в разы лучше.</p>
-
-<table class="table table-borderless">
-    <capture>Скриншоты "до" и "после" скажут все за меня:</capture>
-    <tr>
-        <td><figure class="frame "><a href="stars-before.png" target="_blank"><img src="stars-before.png" alt="До" title="До" /></a></figure></td>
-        <td><figure class="frame "><a href="stars-after.png" target="_blank"><img src="stars-after.png" alt="После" title="После" /></a></figure></td>
+<capture>Скриншоты "до" и "после" скажут все за меня:</capture><table class="table table-borderless">
+    
+    <tbody><tr>
+        <td><figure class="frame"><a href="stars-before.png" target="_blank"><img src="stars-before.png" alt="До" title="До"></a></figure></td>
+        <td><figure class="frame"><a href="stars-after.png" target="_blank"><img src="stars-after.png" alt="После" title="После"></a></figure></td>
     </tr>
-</table>
-
+</tbody></table>
 <h3 id="прочее">Прочее</h3>
-
 <p>Несколько других мелочей:</p>
-
 <ol>
-  <li>Теперь у подзаголовков в статьях есть значок #, нажав на который можно получить ссылку на этот раздел статьи.
- Это будет удобно, когда нужно сослаться на какую-то часть публикации в других статьях или при отправке людям.
- Откровенно говоря, я сделал это просто потому что хочу, а не потому что надо :blush:</li>
-  <li>Подсчет времени на прочтение статьи стал еще более правдоподобным благодаря плагину, который учитывает только текст,
- а не весь код. Ранее, большие куски кода могли добавлять больше минут на прочтение, тогда как самого текста не так и много.</li>
-  <li>Теперь все картинки кликабельны и открывают изображение в новой вкладке.
- Следующим шагом будет прикрутить плагин, который открывает картинку в текущем окне. Но это потом.</li>
+<li>Теперь у подзаголовков в статьях есть значок #, нажав на который можно получить ссылку на этот раздел статьи.
+Это будет удобно, когда нужно сослаться на какую-то часть публикации в других статьях или при отправке людям.
+Откровенно говоря, я сделал это просто потому что хочу, а не потому что надо :blush:</li>
+<li>Подсчет времени на прочтение статьи стал еще более правдоподобным благодаря плагину, который учитывает только текст,
+а не весь код. Ранее, большие куски кода могли добавлять больше минут на прочтение, тогда как самого текста не так и много.</li>
+<li>Теперь все картинки кликабельны и открывают изображение в новой вкладке.
+Следующим шагом будет прикрутить плагин, который открывает картинку в текущем окне. Но это потом.</li>
 </ol>
-
-<hr />
-
+<hr>
 <p>Если у вас есть какие-то идеи, напишите мне. Мне важна любая обратная связь.
 Также можете предложить темы статей, которые хотите, чтобы я осветил.</p>
-
-<p>Спасибо за внимание :fox:</p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Разработка" /><category term="Блог" /><category term="Веб-разработка" /><category term="Jekyll" /><category term="Обновления" /><summary type="html"><![CDATA[Отчет о проделанной над сайтом работе на последние пару недель]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/under-the-hood-2nd/cover.jpg" /><media:content medium="image" url="https://vtvz.me/blog/under-the-hood-2nd/cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Настройка robots.txt в Kubernetes</title><link href="https://vtvz.me/blog/robots-txt-in-kubernetes/" rel="alternate" type="text/html" title="Настройка robots.txt в Kubernetes" /><published>2020-03-21T00:00:00+03:00</published><updated>2020-03-21T00:00:00+03:00</updated><id>https://vtvz.me/blog/robots-txt-in-kubernetes</id><content type="html" xml:base="https://vtvz.me/blog/robots-txt-in-kubernetes/"><![CDATA[<p>Представьте себе, что на ваших плечах лежит инфраструктура около дюжины проектов,
+<p>Спасибо за внимание :fox:</p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Разработка" /><category term="Блог" /><category term="Веб-разработка" /><category term="Jekyll" /><category term="Обновления" /><summary type="html"><![CDATA[Отчет о проделанной над сайтом работе на последние пару недель
+]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/under-the-hood-2nd/cover.jpg" /><media:content medium="image" url="https://vtvz.me/blog/under-the-hood-2nd/cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Настройка robots.txt в Kubernetes</title><link href="https://vtvz.me/blog/robots-txt-in-kubernetes/" rel="alternate" type="text/html" title="Настройка robots.txt в Kubernetes" /><published>2020-03-21T00:00:00+03:00</published><updated>2020-03-21T00:00:00+03:00</updated><id>https://vtvz.me/blog/robots-txt-in-kubernetes</id><content type="html" xml:base="https://vtvz.me/blog/robots-txt-in-kubernetes/"><![CDATA[<p>Представьте себе, что на ваших плечах лежит инфраструктура около дюжины проектов,
 которые написаны на разных языках программирования и имеют свой стек технологий.
 Некоторые из них совсем свежие и используют самые современные веяния веб-индустрии,
 а другие – кладезь легаси и устаревшего кода.</p>
-
 <p>У каждого из этих проектов, помимо продового, есть еще 1-3 окружения для тестирования.
 И вот вам, как DevOps инженеру прилетает следующая задача:
 нужно для каждого тестового окружения добавить robots.txt файл,
 который будет запрещать поисковикам индексацию.</p>
-
 <p>Есть несколько способов, как это сделать, но я нашел самый простой и оптимальный.</p>
-
 <!--cut-->
-
 <p>Конечно, можно заставить всех бекендеров добавить этот файл в каждый проект,
 но это сложный подход, который DevOps инженер не контролирует.
 Поэтому мы пойдем по другому пути.</p>
-
 <p>Решение очень зависит от используемых вами технологий.
 У нас используются следущие:</p>
-
 <ul>
-  <li><a href="https://kubernetes.io/">Kubernetes</a> кластер;</li>
-  <li><a href="https://kubernetes.github.io/ingress-nginx/">Ingress Nginx</a>;</li>
-  <li><a href="https://helm.sh/">Helm</a>.</li>
+<li><a href="https://kubernetes.io/">Kubernetes</a> кластер;</li>
+<li><a href="https://kubernetes.github.io/ingress-nginx/">Ingress Nginx</a>;</li>
+<li><a href="https://helm.sh/">Helm</a>.</li>
 </ul>
-
 <p>Каждый из этих инструментов вносит свои улучшения в решение этой задачи.</p>
-
 <h2 id="чистый-kubernetes">Чистый Kubernetes</h2>
-
 <p>Если у вас используется чистый Kubernetes без установленного Nginx Ingress, то у вас есть 2 пути.</p>
-
 <h3 id="nginx">Nginx</h3>
-
 <p>Вы можете взять самый легкий чистый образ с Nginx,
 куда с помощью ConfigMap примонтировать как конфиг сервера,
-так и содержимое файла <code class="language-plaintext highlighter-rouge">robots.txt</code>.
-После этого достаточно только настроить Ingress на то, чтобы он все запросы на <code class="language-plaintext highlighter-rouge">/robots.txt</code> направлял в этот контейнер.</p>
-
+так и содержимое файла <code>robots.txt</code>.
+После этого достаточно только настроить Ingress на то, чтобы он все запросы на <code>/robots.txt</code> направлял в этот контейнер.</p>
 <p>Примеры конфигов приводить не буду, так как есть вариант получше.</p>
-
 <h3 id="robots-disallow">“Robots Disallow”</h3>
-
 <p>Второе, еще более простое решение, это взять <a href="https://hub.docker.com/r/wikiwi/robots-disallow">wikiwi/robots-disallow</a>
 образ в Docker Hub. Принцип работы абсолютно такой же, только теперь не придется ничего настраивать. Только Ingress.</p>
-
 <h2 id="ingress-nginx">Ingress Nginx</h2>
-
 <p>Если вы еще не установили его себе в кластер, то я вам <strong>настоятельно</strong> рекомендую это сделать.
 Это мощный инструмент, который умеет делать все, что умеет Nginx,
 но имеет такой же подход к использованию, как и все сущности в Kubernetes.</p>
-
-<p>Вы только посмотрите на количество параметров, 
+<p>Вы только посмотрите на количество параметров,
 которые можно настроить через <a href="https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/">аннотации</a> или <a href="https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/">конфиг мапы</a>.</p>
-
 <p>В общем, этим мы и воспользуемся, чтобы решить поставленную задачу.
 Достаточно добавить в Ingress приложения следующие строки:</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">metadata</span><span class="pi">:</span>
-  <span class="na">annotations</span><span class="pi">:</span>
-    <span class="na">kubernetes.io/ingress.class</span><span class="pi">:</span> <span class="s">nginx</span>
-    <span class="na">nginx.ingress.kubernetes.io/server-snippet</span><span class="pi">:</span> <span class="pi">|</span>
-      <span class="s">location = /robots.txt {</span>
-        <span class="s">add_header Content-Type text/plain;</span>
-        <span class="s">return 200 'User-agent: *\nDisallow: /\n';</span>
-      <span class="s">}</span>
-</code></pre></div></div>
-
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="line"><span style="color:#F92672">metadata</span><span style="color:#F8F8F2">:</span></span>
+<span class="line"><span style="color:#F92672">  annotations</span><span style="color:#F8F8F2">:</span></span>
+<span class="line"><span style="color:#F92672">    kubernetes.io/ingress.class</span><span style="color:#F8F8F2">: </span><span style="color:#E6DB74">nginx</span></span>
+<span class="line"><span style="color:#F92672">    nginx.ingress.kubernetes.io/server-snippet</span><span style="color:#F8F8F2">: </span><span style="color:#F92672">|</span></span>
+<span class="line"><span style="color:#E6DB74">      location = /robots.txt {</span></span>
+<span class="line"><span style="color:#E6DB74">        add_header Content-Type text/plain;</span></span>
+<span class="line"><span style="color:#E6DB74">        return 200 'User-agent: *\nDisallow: /\n';</span></span>
+<span class="line"><span style="color:#E6DB74">      }</span></span>
+<span class="line"></span></code></pre></div></div>
 <p>Да, Nginx умеет не только выдавать статику или проксировать запросы. Он может генерировать ответ самостоятельно.
-Строка <code class="language-plaintext highlighter-rouge">return 200 'Content'</code> именно это и делает.</p>
-
+Строка <code>return 200 'Content'</code> именно это и делает.</p>
 <p>Таким образом, мы решили задачу буквально в <strong>5 строк</strong>.</p>
-
 <h2 id="helm">Helm</h2>
-
 <p>В этой ситуации Helm не делает ничего особенного, но позволяет переиспользовать один манифест в разных окружениях.
 В простейшем его использовании, Helm по своей сути является шаблонизатором для конфигов Kubernetes.</p>
-
 <p>Поэтому можно сделать так:</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">{{</span><span class="nv">- if ne .Values.env "production"</span> <span class="pi">}}</span>
-<span class="na">nginx.ingress.kubernetes.io/server-snippet</span><span class="pi">:</span> <span class="pi">|</span>
-  <span class="s">location = /robots.txt {</span>
-    <span class="s">add_header Content-Type text/plain;</span>
-    <span class="s">return 200 'User-agent: *\nDisallow: /\n';</span>
-  <span class="s">}</span>
-<span class="pi">{{</span><span class="nv">- end</span> <span class="pi">}}</span>
-</code></pre></div></div>
-
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="line"><span style="color:#F8F8F2">{{- </span><span style="color:#E6DB74">if ne .Values.env "production"</span><span style="color:#F8F8F2"> }}</span></span>
+<span class="line"><span style="color:#F92672">nginx.ingress.kubernetes.io/server-snippet</span><span style="color:#F8F8F2">: </span><span style="color:#F92672">|</span></span>
+<span class="line"><span style="color:#E6DB74">  location = /robots.txt {</span></span>
+<span class="line"><span style="color:#E6DB74">    add_header Content-Type text/plain;</span></span>
+<span class="line"><span style="color:#E6DB74">    return 200 'User-agent: *\nDisallow: /\n';</span></span>
+<span class="line"><span style="color:#E6DB74">  }</span></span>
+<span class="line"><span style="color:#F8F8F2">{{- </span><span style="color:#E6DB74">end</span><span style="color:#F8F8F2"> }}</span></span>
+<span class="line"></span></code></pre></div></div>
 <p>То есть если окружение не продовое, запрещаем поисковикам индексирование.</p>
-
 <p>Либо так, если хочется большей власти:</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">{{</span><span class="nv">- if .Values.disallowRobots</span> <span class="pi">}}</span>
-<span class="na">nginx.ingress.kubernetes.io/server-snippet</span><span class="pi">:</span> <span class="pi">|</span>
-  <span class="s">location = /robots.txt {</span>
-    <span class="s">add_header Content-Type text/plain;</span>
-    <span class="s">return 200 'User-agent: *\nDisallow: /\n';</span>
-  <span class="s">}</span>
-<span class="pi">{{</span><span class="nv">- end</span> <span class="pi">}}</span>
-</code></pre></div></div>
-
-<p>Пользуйтесь на здоровье :fox:</p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="DevOps" /><category term="Kubernetes" /><category term="Docker" /><category term="Helm" /><category term="Nginx" /><summary type="html"><![CDATA[Универсальный способ указания robots.txt файла с использованием механизмов Kubernetes]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/robots-txt-in-kubernetes/cover.png" /><media:content medium="image" url="https://vtvz.me/blog/robots-txt-in-kubernetes/cover.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Ковыряясь под капотом #1</title><link href="https://vtvz.me/blog/under-the-hood-1st/" rel="alternate" type="text/html" title="Ковыряясь под капотом #1" /><published>2020-03-15T00:00:00+03:00</published><updated>2020-03-15T00:00:00+03:00</updated><id>https://vtvz.me/blog/under-the-hood-1st</id><content type="html" xml:base="https://vtvz.me/blog/under-the-hood-1st/"><![CDATA[<p>Мне кажется, что не само “блоговедение” доставляет мне удовольствие, сколько его разработка и улучшение.
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="line"><span style="color:#F8F8F2">{{- </span><span style="color:#E6DB74">if .Values.disallowRobots</span><span style="color:#F8F8F2"> }}</span></span>
+<span class="line"><span style="color:#F92672">nginx.ingress.kubernetes.io/server-snippet</span><span style="color:#F8F8F2">: </span><span style="color:#F92672">|</span></span>
+<span class="line"><span style="color:#E6DB74">  location = /robots.txt {</span></span>
+<span class="line"><span style="color:#E6DB74">    add_header Content-Type text/plain;</span></span>
+<span class="line"><span style="color:#E6DB74">    return 200 'User-agent: *\nDisallow: /\n';</span></span>
+<span class="line"><span style="color:#E6DB74">  }</span></span>
+<span class="line"><span style="color:#F8F8F2">{{- </span><span style="color:#E6DB74">end</span><span style="color:#F8F8F2"> }}</span></span>
+<span class="line"></span></code></pre></div></div>
+<p>Пользуйтесь на здоровье :fox:</p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="DevOps" /><category term="Kubernetes" /><category term="Docker" /><category term="Helm" /><category term="Nginx" /><summary type="html"><![CDATA[Универсальный способ указания robots.txt файла с использованием механизмов Kubernetes
+]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/robots-txt-in-kubernetes/cover.png" /><media:content medium="image" url="https://vtvz.me/blog/robots-txt-in-kubernetes/cover.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Ковыряясь под капотом #1</title><link href="https://vtvz.me/blog/under-the-hood-1st/" rel="alternate" type="text/html" title="Ковыряясь под капотом #1" /><published>2020-03-15T00:00:00+03:00</published><updated>2020-03-15T00:00:00+03:00</updated><id>https://vtvz.me/blog/under-the-hood-1st</id><content type="html" xml:base="https://vtvz.me/blog/under-the-hood-1st/"><![CDATA[<p>Мне кажется, что не само “блоговедение” доставляет мне удовольствие, сколько его разработка и улучшение.
 За последний месяц не было написано ни одной статьи.
 А последняя техническая статья была опубликована более <strong>двух</strong> месяцев назад.
 Но зато за это время мой сайт, а особенно главная страница, претерпел несколько мелких (и не мелких) улучшений.</p>
-
 <!--cut-->
-
 <p>Именно поэтому я решил вынести подобные статьи в отдельную категорию с нумерацией.
 Как настоящий программист я должен был начать отсчет с нуля.
 Но формально, нулевой пост <a href="/blog/big-changes/">уже был</a>.</p>
-
 <p>Думаю, теперь я <strong>всё</strong> буду писать в блог. Я не умею писать маленькие посты.
 Каждый пост в социальных сетях больше похож на сочинение или целую повесть, чем на короткую историю.
 Пусть это будет даже небольшая заметка. Но для меня куда важнее улучшать и продвигать свой блог, чем профили в соц. сетях.
 Пусть это даже не так эффективно.</p>
-
-<hr />
-
-<figure class="frame "><a href="./meeting.png" target="_blank"><img src="./meeting.png" alt="Приглашение на митап" title="Приглашение на митап" /></a></figure>
-
+<hr>
+<figure class="frame"><a href="./meeting.png" target="_blank"><img src="./meeting.png" alt="Приглашение на митап" title="Приглашение на митап"></a></figure>
 <p>Прежде, чем приступить к повествованию, хочу сделать небольшой анонс.
 26 марта в 19:00 я буду выступать с публичным докладом,
 где расскажу про свою работу, мою роль в компании и используемые инструменты.</p>
-
-<p>Для этого нужно зарегистрироваться по этой ссылке: <br />
+<p>Для этого нужно зарегистрироваться по этой ссылке: <br>
 <a href="https://forms.gle/iuTm97u1s1ui82ga8">Регистрация на встречу IT Networking #6</a></p>
-
 <p>Приходите, будет интересно :fox:</p>
-
-<hr />
-
+<hr>
 <p>А теперь к обновлениям. Что было сделано:</p>
-
 <ol>
-  <li>
-    <p>Спасибо <a href="https://vk.com/dimkabeloved">Дмитрию Белову</a> за замечательное фото,
+<li>
+<p>Спасибо <a href="https://vk.com/dimkabeloved">Дмитрию Белову</a> за замечательное фото,
 которое я, конечно же, добавил в свое резюме.
 Ведь любое резюме должно иметь фотографию.
 Самым сложным было заставить картинку хорошо смотреться на всех устройствах.
 До сей поры не уверен, что она хорошо отображается на узкоэкранных девайсах.</p>
-  </li>
-  <li>
-    <p>Пока это не пригодилось, но вполне может наступить такой момент, 
+</li>
+<li>
+<p>Пока это не пригодилось, но вполне может наступить такой момент,
 что потенциальный работодатель захочет не онлайн версию резюме, а PDF файлик на почту.
 Перспектива верстать страницы в каком-нибудь LibreOffice Writer мне вообще не улыбается по одной простой причине:
 придется поддерживать актуальную информацию сразу в двух местах, из-за чего может произойти рассинхрон.
 Но есть один простой и очевидный способ сделать из странички сайта PDF – “распечатать” его.
 Bootstrap из коробки предоставляет стили для печати. Но как уродливо он это делает!
 Пришлось столкнуться с двумя проблемами:</p>
-    <ol>
-      <li>Обычный А4 формат листа указанный при печати имеет ширину меньше 768 пикселей.
- Это значит, что вся колоночная верстка размазывается на всю ширину листа.
- Документ считается “small” только если он шире 270mm.
- Поэтому пришлось уйти от стандартов и указать размер документа 271mm x 383mm. Тем не менее, пропорции 1:√2 я сохранил.</li>
-      <li>Bootstrap очень агрессивно накладывает стили для печати,
- из-за чего пришлось натыкать <code class="language-plaintext highlighter-rouge">!important</code> столько, сколько не делал этого за всю свою жизнь.
- Например, он отключает фон всем элементам страницы, выкрашивает весь текст в черный цвет,
- а ссылкам <code class="language-plaintext highlighter-rouge">a[href]</code> справа добавляет содержимое <code class="language-plaintext highlighter-rouge">href</code> в скобках.
- Выглядит это примерно так:</li>
-    </ol>
-  </li>
+<ol>
+<li>Обычный А4 формат листа указанный при печати имеет ширину меньше 768 пикселей.
+Это значит, что вся колоночная верстка размазывается на всю ширину листа.
+Документ считается “small” только если он шире 270mm.
+Поэтому пришлось уйти от стандартов и указать размер документа 271mm x 383mm. Тем не менее, пропорции 1:√2 я сохранил.</li>
+<li>Bootstrap очень агрессивно накладывает стили для печати,
+из-за чего пришлось натыкать <code>!important</code> столько, сколько не делал этого за всю свою жизнь.
+Например, он отключает фон всем элементам страницы, выкрашивает весь текст в черный цвет,
+а ссылкам <code>a[href]</code> справа добавляет содержимое <code>href</code> в скобках.
+Выглядит это примерно так:</li>
 </ol>
-
-<figure class="frame "><a href="./broken-links.png" target="_blank"><img src="./broken-links.png" alt="Уродливые ссылки" title="Уродливые ссылки" /></a></figure>
-
+</li>
+</ol>
+<figure class="frame"><a href="./broken-links.png" target="_blank"><img src="./broken-links.png" alt="Уродливые ссылки" title="Уродливые ссылки"></a></figure>
 <p>Тем не менее, я его победил и результатом очень даже доволен.
 Единственная проблема, которая осталась, и которую я, вероятно, решать не буду –
 нормально печатать может только Chrome, и то с несколькими донастройками: выключенные колонтитулы и включенный фон.
 Firefox в этом плане очень проигрывает.
 Как минимум потому, что у него нет preview текста перед печатью (или я просто не нашел).</p>
-
 <p>Вот вам небольшая подсказка. Если вам тоже нужно отдебажить то, как будет выглядеть сайт для печати, сделайте следующее:</p>
 <ul>
-  <li>Откройте панель разработчика <code class="language-plaintext highlighter-rouge">Ctrl+Shift+I</code>;</li>
-  <li>Жмякните 3 точки сверху справа, около крестика <code class="language-plaintext highlighter-rouge">1</code>;</li>
-  <li>“More tools” <code class="language-plaintext highlighter-rouge">2</code>;</li>
-  <li>“Rendering” <code class="language-plaintext highlighter-rouge">3</code>;</li>
-  <li>“Emulate CSS media type”;</li>
-  <li>“Print” <code class="language-plaintext highlighter-rouge">4</code>.</li>
+<li>Откройте панель разработчика <code>Ctrl+Shift+I</code>;</li>
+<li>Жмякните 3 точки сверху справа, около крестика <code>1</code>;</li>
+<li>“More tools” <code>2</code>;</li>
+<li>“Rendering” <code>3</code>;</li>
+<li>“Emulate CSS media type”;</li>
+<li>“Print” <code>4</code>.</li>
 </ul>
-
-<figure class="frame "><a href="./print-media-type.png" target="_blank"><img src="./print-media-type.png" alt="Инструкция включения режима печати" title="Инструкция включения режима печати" /></a></figure>
-
-<p>В итоге вам все равно придется проверять, как будет выглядеть документ на листе, используя реальный режим печати <code class="language-plaintext highlighter-rouge">Ctrl+P</code>,
+<figure class="frame"><a href="./print-media-type.png" target="_blank"><img src="./print-media-type.png" alt="Инструкция включения режима печати" title="Инструкция включения режима печати"></a></figure>
+<p>В итоге вам все равно придется проверять, как будет выглядеть документ на листе, используя реальный режим печати <code>Ctrl+P</code>,
 потому что, как я говорил ранее, верстка при итоговой печати отличается от отображаемого в браузере.
 Но этого должно быть достаточно, чтобы разобраться с цветами, шрифтами и отступами.</p>
-
-<hr />
-
+<hr>
 <p>Ну и последняя супер мелочь. Обратите внимание на индикатор загрузки страницы. Теперь он навороченный :grin:.
 Взял я его <a href="https://freefrontend.com/css-loaders/">тут</a>.
 Там есть много впечатляющих примеров, но этот мне понравился своей относительной простотой.</p>
-
 <p>Также он был вынесен в отдельный файл со стилями. Это критично для устройств с медленным интернетом.
 Пока в коде сайта всё еще много мусора, поэтому загружается он немного дольше желаемого.
 Но индикатор должен отобразиться как можно раньше.</p>
-
-<hr />
-
+<hr>
 <p>У меня есть идея, сделать на сайте раздел достижений, прям как в играх – иметь историю моих побед прямо тут.
 Туда я мог бы складывать не только сухую информацию о факте победы над проблемой,
-но и полезные материалы, которые я нарыл во время решения задач :fox:</p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Разработка" /><category term="Блог" /><category term="Веб-разработка" /><category term="Jekyll" /><category term="Обновления" /><summary type="html"><![CDATA[Отчет о проделанной над сайтом работе на последние пару недель и анонс будущего митапа]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/under-the-hood-1st/cover.jpg" /><media:content medium="image" url="https://vtvz.me/blog/under-the-hood-1st/cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Как прокормить целый офис в Петрозаводске</title><link href="https://vtvz.me/blog/cheap-food-for-team/" rel="alternate" type="text/html" title="Как прокормить целый офис в Петрозаводске" /><published>2020-02-12T00:00:00+03:00</published><updated>2020-02-12T00:00:00+03:00</updated><id>https://vtvz.me/blog/cheap-food-for-team</id><content type="html" xml:base="https://vtvz.me/blog/cheap-food-for-team/"><![CDATA[<p>IT компании обычно кормят своих работников всякими печеньками, кофе, чаем и прочими плюшками.
+но и полезные материалы, которые я нарыл во время решения задач :fox:</p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Разработка" /><category term="Блог" /><category term="Веб-разработка" /><category term="Jekyll" /><category term="Обновления" /><summary type="html"><![CDATA[Отчет о проделанной над сайтом работе на последние пару недель и анонс будущего митапа
+]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/under-the-hood-1st/cover.jpg" /><media:content medium="image" url="https://vtvz.me/blog/under-the-hood-1st/cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Как прокормить целый офис в Петрозаводске</title><link href="https://vtvz.me/blog/cheap-food-for-team/" rel="alternate" type="text/html" title="Как прокормить целый офис в Петрозаводске" /><published>2020-02-12T00:00:00+03:00</published><updated>2020-02-12T00:00:00+03:00</updated><id>https://vtvz.me/blog/cheap-food-for-team</id><content type="html" xml:base="https://vtvz.me/blog/cheap-food-for-team/"><![CDATA[<p>IT компании обычно кормят своих работников всякими печеньками, кофе, чаем и прочими плюшками.
 Когда я пришел работать в Axmit, с этим были <del>не</del>большие проблемы.
 Часто случалось так, что из провизии оставалось только абсолютное ничего.
 В лучшем случае был чай. В идеальном – упаковка чокопаек.</p>
-
 <p>Поэтому я выдвинул инициативу взять на себя обязанности “завхоза”,
 менеджера по закупке провизии в офис.
 За полтора года работы в Axmit я успел набраться опыта в этом деле и хочу поделиться с вами.</p>
-
 <p>Эта статья рассказывает о том, где в Петрозаводске можно закупаться провизией для своих ребят.</p>
-
 <!--cut-->
-
 <div class="alert alert-info">
     <p><b>Это не рекламный пост!</b></p>
     <p>
@@ -1124,163 +895,121 @@ Firefox в этом плане очень проигрывает.
         Делюсь с вами тем, что нашел для себя полезным.  
     </p>
 </div>
-
 <h2 id="оффлайн-магазины">Оффлайн-Магазины</h2>
-
 <p>Самое очевидное место, где можно покупать продукты – это магазины.
 Всякие там Пятерочки, Магниты, Ленты, Сигмы и п.р.
 Несмотря на доступные альтернативные варианты, в магазинах порой бывают очень хорошие скидки.
 Например, не так давно я купил коробку (8 упаковок по 12 печенек в каждой) оригинального Orion ChocoPie по ~110 рублей.
 Бывало и дешевле. Но это <strong>оригинальный</strong> ChocoPie, который, следовательно, стоит ощутимо дороже другого.</p>
-
 <p>Один из магазинов, который хочется выделить, это <strong>FixPrice</strong>.
 Там не оригинальный ChocoPie продается по 55 рублей за упаковку 6 шт. в каждой.
 Да, он не такой вкусный, но это хорошая альтернатива с хорошим соотношением цены и качества.</p>
-
 <p>В одно время я покупал по 60 упаковок по 20 каждого вида. Очень рассчитывал, что всем надоест. Но нет, не надоело.</p>
-
 <p>Есть еще “Светофор”. Стоит тоже посмотреть в его сторону, тем у кого есть машина.
 У меня ее нет. Поэтому для меня этот вариант однозначно отпадает.</p>
-
 <h2 id="ozon">Ozon</h2>
-
 <figure class="post-image">
-    <img src="./ozon.png" alt="Логотип Ozon" />
+    <img src="./ozon.png" alt="Логотип Ozon">
 </figure>
-
 <p>Не могу сказать, что <a href="https://www.ozon.ru/">Ozon</a> очень выгодный магазин. Лично я в нем в офис ничего не заказывал.</p>
-
 <p>Но начальство там закупает кофе Lavazza, который по их словам там гораздо выгоднее, чем, скажем, когда-то в Спаре.</p>
-
 <p>Я думаю, что прежде, чем что-то покупать в больших количествах где-либо, стоит посмотреть цены в Озоне.
 Ведь как в других магазинах, там бывают очень неплохие скидки.</p>
-
 <h2 id="kdv">KDV</h2>
-
 <figure class="post-image post-image--left">
-    <img src="./kdv.png" alt="Логотип KDV" />
+    <img src="./kdv.png" alt="Логотип KDV">
 </figure>
-
 <p>Есть такой замечательный интернет-магазин и по совместительству производитель <a href="https://kdvonline.ru/">KDV</a>.
 Они работают в 91 городе и сотрудничают не только с юридическими лицами и крупными магазинами,
 но и обычными физ. лицами, как мы.</p>
-
 <p>Условия доставки очень простые: достаточно набрать товара на 300 рублей,
 и продовольствие будет доставлено прямо в офис или домой.</p>
-
 <p>Из того, что я там заказывал:</p>
-
 <ul>
-  <li>Тараллини;</li>
-  <li>Вафли мягкие и голландские;</li>
-  <li>Шоколадные и злаковые батончики;</li>
-  <li>Гренки;</li>
-  <li>Арахис;</li>
-  <li>Мармелад;</li>
-  <li>Конфеты;</li>
-  <li>Печенья и вафли;</li>
-  <li>И т.д.</li>
+<li>Тараллини;</li>
+<li>Вафли мягкие и голландские;</li>
+<li>Шоколадные и злаковые батончики;</li>
+<li>Гренки;</li>
+<li>Арахис;</li>
+<li>Мармелад;</li>
+<li>Конфеты;</li>
+<li>Печенья и вафли;</li>
+<li>И т.д.</li>
 </ul>
-
 <p>В общем, очень хороший магазин, вкусная продукция и выгодные цены. Советую всем посмотреть.</p>
-
 <h2 id="хрум-хрум">Хрум-Хрум</h2>
-
 <figure class="frame post-image">
-    <img src="./hrum.jpg" alt="Хрум-Хрум" />
+    <img src="./hrum.jpg" alt="Хрум-Хрум">
 </figure>
-
 <p>Со временем я стал задумываться о том, что все это как-то вредно (не полезно, как минимум).
 Поэтому начал смотреть в сторону чуть более правильного питания и полезных сладостей.</p>
-
 <p>Первый интернет магазин, с которым я познакомился – <a href="https://hrumkaem.ru/">Хрум-Хрум</a>.
 О нем мне рассказал мой коллега.</p>
-
 <p>Из недостатков хочется отметить, что стоимость продукции указывается не за какую-то весовую единицу (кг),
 а за упаковку, в которой может быть любое количество грамм.
 Это очень искажает восприятие и анализ реальной стоимости продукта.</p>
-
 <p>В итоге, в этом магазине я заказывал единожды.
 Этого было достаточно, чтобы убедиться в том, что я точно не буду укладываться в выделенный мне месячный бюджет.</p>
-
 <h2 id="без-упаковки">“Без упаковки”</h2>
-
 <figure class="frame post-image post-image--left">
-    <img src="./bez.jpg" alt="Без упаковки" />
+    <img src="./bez.jpg" alt="Без упаковки">
 </figure>
-
 <p><a href="https://vk.com/bez_upakovki_ptz">Этот магазин</a> очень популярен среди эко-активистов, так как они продают продукцию исключительно в свою тару,
 либо в биоразлагаемые бумажные пакеты, многоразовые пластиковые контейнеры или стеклянную тару.</p>
-
 <p>Почти все, что у них есть, продается на развес. С ассортиментом можно ознакомиться в <a href="https://vk.com/bez_upakovki_ptz">группе в ВК</a>.
 Советую посмотреть, хотя бы для расширения кругозора. Там продаются некоторые вещи, которые я никогда до этого не видел.</p>
-
 <p>Мне там нравится покупать гранолу и печеньки. Наташа (моя жена) очень любит тамошний зефир.
 Иногда еще мы берем сливочный сыр и сушеные бананы.</p>
-
 <p>В этом магазине я также заказывал только один раз. Там все гораздо дешевле, а цены прозрачнее.
 Для обычных потребителей это очень удобный магазин, позволяющий купить ровно столько, сколько нужно.</p>
-
 <p>Из недостатков хочется отметить то, что там работает ооочееень мееедлееенныыый персонал.
 Если в обычном магазине покупка вам обойдется в 5 минут, тот тут уйдут все 15.
 И это в том случае, если там нет очереди. Но если перед вами есть хоть один человек…
 Короче, если у вас не много времени, лучше просто развернуться и уйти.</p>
-
 <h2 id="ecogreen">Ecogreen</h2>
-
-<figure class="frame "><a href="./ecogreen.jpg" target="_blank"><img src="./ecogreen.jpg" alt="Ecogreen" title="Ecogreen" /></a></figure>
-
+<figure class="frame"><a href="./ecogreen.jpg" target="_blank"><img src="./ecogreen.jpg" alt="Ecogreen" title="Ecogreen"></a></figure>
 <p>Герой этой статьи – магазин <a href="https://vk.com/suxofrukti_petrozavodsk">Ecogreen</a>.
 Стоит сказать сразу, что почти весь товар продается пакетами минимум пол кило,
 а бесплатная доставка осуществляется от 2т. рублей.
 Это значит, что обычному потребителю не очень-то и удобно закупаться в этом магазине.
 Но для массовых закупок в офис, чтобы прокормить ~20 человек это самый оптимальный вариант.</p>
-
 <p>Также открывается возможность покупать товары для себя вместе с тем, что закупается в офис.</p>
-
 <p>Для ребят в офис я покупаю:</p>
-
 <ul>
-  <li>Орешки (в основном смеси);</li>
-  <li>Банановые чипсы;</li>
-  <li>Цукаты;</li>
-  <li>Сушеные и вяленые фрукты;</li>
-  <li>Банановые чипсы;</li>
-  <li>Имбирь в сахаре;</li>
-  <li>т.д.</li>
+<li>Орешки (в основном смеси);</li>
+<li>Банановые чипсы;</li>
+<li>Цукаты;</li>
+<li>Сушеные и вяленые фрукты;</li>
+<li>Банановые чипсы;</li>
+<li>Имбирь в сахаре;</li>
+<li>т.д.</li>
 </ul>
-
 <p>По началу ребята уничтожали двухнедельный запас менее чем за 1.5 недели,
 а оставшиеся несколько дней пили пустой кофе/чай.
 Но сейчас, вероятно, организм получил все необходимые витамины, и скорость съедания припасов приубавилась.</p>
-
 <p>Для себя домой я иногда беру:</p>
 <ul>
-  <li>Орешки;</li>
-  <li>Финики;</li>
-  <li>Банановые чипсы;</li>
-  <li>Семечки (для птиц в кормушку);</li>
-  <li>Зелень (укроп и петрушка), шпинат, мята;</li>
-  <li>Нут, фасоль, маш.</li>
+<li>Орешки;</li>
+<li>Финики;</li>
+<li>Банановые чипсы;</li>
+<li>Семечки (для птиц в кормушку);</li>
+<li>Зелень (укроп и петрушка), шпинат, мята;</li>
+<li>Нут, фасоль, маш.</li>
 </ul>
-
 <p>Обязательно изучите ассортимент в этом магазине.
 Конечно, не у каждого есть возможность единоразово выложить 2 тысячи рублей сразу.
 Но, во-первых, не обязательно закупаться одному – уговорите друга/соседа/родственника и закажите вместе.
 А во-вторых, продаваемый там товар обычно долгого срока хранения.
 Может быть есть смысл закупаться в начале месяца и потом постепенно уничтожать припасы.</p>
-
 <h2 id="выводы">Выводы</h2>
-
 <p>В итоге, мне удалось уложиться в выделенный мне месячный бюджет и перевести весь наш офис на полезные сладости.
 Опрос показал, что большинство за отказ от сладкого. Но есть и те, кто “готов есть ChocoPie всю оставшуюся жизнь”.
 Но им придется кушать хорошую пищу :grin:</p>
-
 <p>От себя скажу, что переход на орешки и финики помог уйти от непомерного употребления сладостей
 и уменьшить объемы съедаемых каллорий.
 Орехами и финиками быстро наедаешься, тогда как я мог съедать всю упаковку чокопаек в качестве завтрака.</p>
-
 <p>Я прекрасно понимаю, что орехи – это дорого.
 Но почему бы не провести эксперимент. Один месяц покупать обычные сладости: печеньки, конфеты, и т.п.
 А потом – орехи и сухофрукты. Сначала дайте полезностям фору – позвольте организму пару недель наесться.
-А потом посчитайте, сколько денег уйдет на то и другое. И тогда делайте выводы – стоит ли оно того (стоит) :fox:</p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Опыт" /><category term="Еда" /><category term="Магазины" /><summary type="html"><![CDATA[Делюсь опытом закупки еды на 20 человек, чтобы полезно и недорого.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/cheap-food-for-team/cover.jpg" /><media:content medium="image" url="https://vtvz.me/blog/cheap-food-for-team/cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+А потом посчитайте, сколько денег уйдет на то и другое. И тогда делайте выводы – стоит ли оно того (стоит) :fox:</p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Опыт" /><category term="Еда" /><category term="Магазины" /><summary type="html"><![CDATA[Делюсь опытом закупки еды на 20 человек, чтобы полезно и недорого. 
+]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/cheap-food-for-team/cover.jpg" /><media:content medium="image" url="https://vtvz.me/blog/cheap-food-for-team/cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
