@@ -1,0 +1,1 @@
+var e=class{async act(){let e=document.querySelector(`.cv__years-together`);if(!e)return;let t=Number(e.dataset.since),n=()=>{let n=(Date.now()/1e3-t)/31557600;e.textContent=n.toFixed(7)};n(),setInterval(n,1e3)}};export{e as default};
