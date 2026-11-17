@@ -1,4 +1,97 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en_GB"><link href="https://vtvz.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vtvz.me/" rel="alternate" type="text/html" hreflang="en_GB" /><updated>2026-11-17T18:43:21+03:00</updated><id>https://vtvz.me/feed.xml</id><title type="html">Vitaly Zaslavsky – DevOps Engineer, who loves his job</title><subtitle>DevOps engineer&apos;s personal blog about everything. Notes on successes and failures in professional activities, about finding solutions to practical problems, and just about life.</subtitle><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><entry xml:lang="en"><title type="html">Solving eCryptfs “Failed to mount private data” error</title><link href="https://vtvz.me/blog/ecryptfs-recovery-error/" rel="alternate" type="text/html" title="Solving eCryptfs “Failed to mount private data” error" /><published>2022-06-26T00:00:00+03:00</published><updated>2022-06-26T00:00:00+03:00</updated><id>https://vtvz.me/blog/ecryptfs-recovery-error</id><content type="html" xml:base="https://vtvz.me/blog/ecryptfs-recovery-error/"><![CDATA[<p>One day I decided to try Manjaro out. My laptop is pretty good-ish, and one of my requirements is an encrypted home directory. On the previous installation on Ubuntu 20.04, I used <code>ecryptfs</code> and it was good enough for my needs. When I moved to Manjaro I decided to leave <code>ecryptfs</code> as my primary encryption method but to recreate the passphrase from scratch with a completely fresh and clean home folder. Then I moved all encrypted files to another location… I believe this was the right decision, but I struggled for about a day to restore access to my previous data. This little note is for me and for those who need a bit of help with the recovery process.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en_GB"><link href="https://vtvz.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vtvz.me/" rel="alternate" type="text/html" hreflang="en_GB" /><updated>2026-11-17T22:33:41+03:00</updated><id>https://vtvz.me/feed.xml</id><title type="html">Vitaly Zaslavsky – DevOps Engineer, who loves his job</title><subtitle>DevOps engineer&apos;s personal blog about everything. Notes on successes and failures in professional activities, about finding solutions to practical problems, and just about life.</subtitle><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><entry xml:lang="ru"><title type="html">MedPack Project</title><link href="https://vtvz.me/blog/medpack/" rel="alternate" type="text/html" title="MedPack Project" /><published>2024-07-26T00:00:00+03:00</published><updated>2024-07-26T00:00:00+03:00</updated><id>https://vtvz.me/blog/medpack</id><content type="html" xml:base="https://vtvz.me/blog/medpack/"><![CDATA[<blockquote>
+<p>Воды мало, не бойтесь объема😉<br>
+Тут будут ссылки со значком 👩‍💻 на куски кода. Язык — <strong>Rust</strong>🦀, будьте осторожны)</p>
+</blockquote>
+<p>У меня родился один <a href="https://github.com/vtvz/medpack">личный проект под названием medpack</a> 👩‍💻, который приносит нам много пользы. Он с большими перерывами разрабатывался примерно год и прошел множество итераций. Этот инструмент создает что-то вроде электронной мед. карты. Это подшитые в pdf файл результаты анализов, заключения врачей и различные обследования: УЗИ, ЭКГ, рентгены и пр. медицинские документы. Сейчас там только я и жена, но котов тоже хочу добавить😴 Из текста, pdf файлов и изображений собирается один жирненький pdf файлик. Все документы идут в хронологическом порядке от нового к старому. В начале идет содержание в таблице с четырьмя столбцами: порядковый номер, дата, краткая информация и страница. Потом весь остальной материал</p>
+<!--cut-->
+<p>Хранилищем является сам телеграмм: все документы загружаются в группу. Telegram позволяет сделать полный экспорт всех данных из группы в формате <code>json</code>, включая файлы, изображения и текст вместе с разметкой (где жирный текст, где кусок кода и тд). Это дает возможность выцепить много полезной информации из текста и формировать красивые документы</p>
+<p>Вот некоторые технические трудности:</p>
+<p>‣ <strong>Как добиться сортировки по времени</strong></p>
+<p>Выкладывать документы в хронологическом порядке в самом телеграмме сложно. Нередко находим более старые бумаги, которые сканируются и отправляются в чат. Поддерживать порядок крайне сложная задача при таком подходе. Поэтому приходится документы размечать куском <code>yaml</code> кода. Выглядит это так:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="line"><span style="color:#F92672">date</span><span style="color:#F8F8F2">: </span><span style="color:#AE81FF">2023.04.09</span></span>
+<span class="line"><span style="color:#F92672">person</span><span style="color:#F8F8F2">: </span><span style="color:#E6DB74">vitaly</span></span>
+<span class="line"><span style="color:#F92672">tags</span><span style="color:#F8F8F2">:</span></span>
+<span class="line"><span style="color:#F8F8F2">- </span><span style="color:#E6DB74">врачи</span></span>
+<span class="line"><span style="color:#F8F8F2">- </span><span style="color:#E6DB74">терапевт</span></span>
+<span class="line"><span style="color:#F92672">meta</span><span style="color:#F8F8F2">:</span></span>
+<span class="line"><span style="color:#F92672">  doctor</span><span style="color:#F8F8F2">: </span><span style="color:#E6DB74">Иванов Иван Иванович</span></span>
+<span class="line"></span></code></pre></div></div>
+<ul>
+<li><code>date</code>: Дата в формате <code>год.месяц.день</code>, позволяет организовать сортировку в алфавитном порядке без предварительной обработки</li>
+<li><code>person</code>: “ID” человека, для формирования нескольких файлов для каждого человека</li>
+<li><code>tags</code>: Теги для вывода в содержании. В перспективе — создание нескольких файлов для разных врачей: эндокринолог, невролог и пр.</li>
+<li><code>meta</code>: Место, куда я могу написать что угодно. Пока только имя врача. На текущий момент никак не используется</li>
+</ul>
+<p>В чате есть еще много не связанной с медицинскими документами информации, поэтому такая разметка помогает отделить одно от другого. И тут <a href="https://github.com/vtvz/medpack/blob/ceb36a7/src/structs.rs#L111-L125">логика простая</a> 👩‍💻: если начало текста — это кусок кода и это <code>yaml</code> с такой структурой, то это то, что нужно добавить в связку</p>
+<p>‣ <strong>Как сшить файлы в один</strong></p>
+<p>Как я сказал, есть 3 типа данных:</p>
+<ul>
+<li>PDF файлы. Invitro для примера</li>
+<li>Изображения, как в обычном виде, так несжатым файлом. Сканы делаются с помощью приложений <a href="https://www.camscanner.com/">CamScanner</a> / <a href="https://thegrizzlylabs.com/genius-scan/">Genius Scan</a></li>
+<li>Текст, отправленный в чаты после онлайн косультаций с различными специалистами</li>
+</ul>
+<p>С pdf не было никаких трудностей. <a href="https://man.archlinux.org/man/pdfunite.1.en">pdfunite</a> шикарно решает эту задачу. А значит текст и картинки тоже нужно преобразовать в pdf, чтобы внедрить их в этот конвейер</p>
+<p>Следующей задачей было сделать из изображений pdf файлы без потери качества, чтобы вскормить их в pdfunite. По началу была проблема: изображения отличались от ширины A4, из-за чего ширина страниц документа прыгала от маленького до огромного. ImageMagik <a href="https://imagemagick.org/script/convert.php">convert</a> очень сильно снижает качество — что бы я не делал, картинка получалась смазанной. <a href="https://archlinux.org/packages/extra/any/img2pdf/">img2pdf</a> шикарнейше справляется с этой задачей. <a href="https://github.com/vtvz/medpack/blob/c5e5428/src/main.rs#L147-L155">Парой аргументов</a> 👩‍💻 он делает всю работу быстро, качественно, абсолютно без потери качества и в нужном формате</p>
+<p>Текст в pdf же изрядно потрепал мне нервы. Для него надо писать отдельный пост. Это был тернистый путь</p>
+<p>‣ <strong>Как <a href="https://github.com/vtvz/medpack/blob/c5e5428/src/main.rs#L201-L223">составить ToC</a> 👩‍💻 (содержание)</strong>, включая смещение, которое создает само содержимое</p>
+<p>И самое интересное:</p>
+<p>‣ <strong>Как сгруппировать связанные друг с другом изображения в один документ</strong> для отображения мультистраничного скана в одну строку в содержании</p>
+<p>И вот почему эта задача не столь тривиальна. В телеграмм клиенте загруженные вместе изображения группируются друг с другом в один блок. Но в экспорте они совершенно никак не связаны. Просто как идущие друг за другом сообщения. И тут пришлось придумывать <a href="https://github.com/vtvz/medpack/blob/ceb36a7/src/main.rs#L38-L76">способы группировки</a> 👩‍💻 связанных друг с другом изображений. Тут тоже надо рассказать отдельно…</p>
+<p>На текущий момент в моей “карточке” 49 документов на 77 страниц, начиная с конца 2019 года. А у жены — 71 на 111 страниц с середины 2016го. Большинство страниц значительно меньше полноценного листа А4. Например результаты ЭКГ занимают где-то четверть, а некоторые всего 6 строк текста</p>
+<p>Все это позволяет сохранить ценные исторические данные, с которыми можно идти к врачам не с пустыми руками, видеть динамику результатов анализов (особенно гормоны), снимки рентгена проявят некоторые изменения во времени, а заключения предыдущих врачей помогут быстрее сориентироваться в необходимости изменения лечения. Пригождается, правда, нечасто. Многие врачи, особенно в бесплатной поликлинике, слишком гордые и самонадеянные, чтобы заглянуть в снимки и заключения других специалистов. Но некоторые задают вопросы, на которые есть уже ответ в карточке. И как удобно сразу найти нужную информацию🥰</p>
+<p>Интересный челлендж, нетривиальная задача, и я горд результатом. Исходный код <a href="https://github.com/vtvz/medpack">выложен в GitHub</a> 👩‍💻. Без ридми, без инструкций по установке, и как запустить его знаю только я ☺️ И конечно же написан на <strong>Rust</strong>🦀, как же без этого😄 Был на Bash, но в какой-то момент он перестал справляться со своей задачей. По настроению сделаю посты на нераскрытые темы. Поэтому, оставайтесь на связи <img class="fox-emoji" src="/assets/images/fox-emoji.png" alt="🦊"></p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Разработка" /><category term="PetProject" /><category term="Rust" /><category term="Telegram" /><category term="PDF" /><summary type="html"><![CDATA[MedPack — личный проект на Rust, который собирает электронную медицинскую карту в один PDF из документов, хранящихся в Telegram.
+]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/assets/images/logo-cover.jpg" /><media:content medium="image" url="https://vtvz.me/assets/images/logo-cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">В поисках святого Грааля. PHP pt 2</title><link href="https://vtvz.me/blog/holy-grail-php-2/" rel="alternate" type="text/html" title="В поисках святого Грааля. PHP pt 2" /><published>2024-02-16T00:00:00+03:00</published><updated>2024-02-16T00:00:00+03:00</updated><id>https://vtvz.me/blog/holy-grail-php-2</id><content type="html" xml:base="https://vtvz.me/blog/holy-grail-php-2/"><![CDATA[<p>Продолжение <a href="/blog/holy-grail-php-1/">предыдущего</a> поста. Сегодня поговорим только о преимуществах PHP, ибо недостатки уже не влезли 😁</p>
+<p>(Пост крайне технический, не пугайтесь)</p>
+<!--cut-->
+<h2 id="мои-хотелки-преимущества">Мои хотелки. Преимущества</h2>
+<ul>
+<li>Сравнительно <strong>строгая типизация</strong>. Сейчас можно цеплять типы на много что: аргументы и возвращаемое значение функций, свойства классов. Но нельзя на переменные, что очень большой промах…</li>
+<li><strong>Экосистема</strong>. Есть <a href="https://github.com/PHP-CS-Fixer/PHP-CS-Fixer">форматтеры</a>, язык хорошо поддается статическому анализу, описаны некоторые стандарты <a href="https://www.php-fig.org/psr/">PSR</a>, которые покрывают большинство базовых потребностей: <a href="https://www.php-fig.org/psr/psr-3/">логгирование</a>, <a href="https://www.php-fig.org/psr/psr-6/">кэширование</a>, <a href="https://www.php-fig.org/psr/psr-4/">автозагрузка</a> и п.р. — и которых придерживаются все разработчики крупных фреймворков и библиотек. Экосистема языка может потягаться с NodeJS и JVM. <a href="https://www.php-fig.org/psr/psr-1/">Принятый обществом стандарт кода</a> вообще задает единый стиль, что очень помогает при чтении чужой писанины</li>
+<li><strong>IDE <a href="https://www.jetbrains.com/ru-ru/phpstorm/">PHPStorm</a></strong> ни разу не уступает аналогам для других ЯП. Я думаю, что особенности языка, единый стандарт и устоявшиеся подходы дают больше комфорта в написании кода, чем работа с JS/TS. Правда, на моей практике PHPStorm гораздо лучше справляется с PHP, чем WebStorm с JS и PyCharm с Python</li>
+<li><strong>Интерпретатор</strong> невероятно <strong>шустрый</strong>. Его оптимизировали по полной. Запуск целого фреймворка с нуля занимает миллисекунды, чем не могут похвастаться большинство современных популярных языков. Принцип “скрипт запускается на время запроса и умирает после ответа” требует очень эффективной работы интерпретатора, с чем PHP отлично справляется</li>
+<li><strong>Концепция умирающего скрипта</strong> упрощает понимание флоу у приложения и дает некую гарантию от утечек памяти.</li>
+<li><strong>Сильная рефлексия</strong> дает мощные возможности для разработчиков библиотек. Например, <a href="https://www.php.net/manual/ru/language.attributes.overview.php">атрибуты</a> дают возможность <a href="https://symfony.com/doc/current/routing.html">настраивать роутинг</a> прям на методах, а возможность разобрать класс на запчасти породила мощнейшие <a href="https://symfony.com/doc/current/components/dependency_injection.html">DI контейнеры</a> и <a href="https://www.doctrine-project.org/">ORM библиотеки</a>.</li>
+<li><strong>Приятный синтаксис.</strong> Не шумный, легко читается. Особенно очень нравится разделение неймспейсов обратным слешем (<code>\My\Namespace</code>) и объявление переменных долларом (<code>$myVariable</code>). Но это так, вкусовщина</li>
+<li><strong>Дебаггер <a href="http://xdebug.org/">Xdebug</a></strong> прекрасно интегрируется с PHPStorm. Их дуэт дает шикарные возможности для построчного исследования приложения с доступом к содержимому переменных и стеком вызовов</li>
+<li><strong>Синхронность</strong> скриптов значительно упрощает дебаг и устраняет проблему с гонкой данных. Что одновременно является недостатком, но об этом потом</li>
+</ul>
+<hr>
+<p>Преимуществ много. По крайней мере из того, что я вспомнил. Но и недостатков немало — где-то столько же, может больше 🥺 Будет интересно, оставайтесь на связи <img class="fox-emoji" src="/assets/images/fox-emoji.png" alt="🦊"></p>
+<p><a href="/blog/holy-grail-php-1/">« Предыдущий</a> | <a href="/blog/holy-grail/">Оглавление</a></p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Разработка" /><category term="SearchingForHolyGrail" /><category term="ProgrammingLanguages" /><category term="PHP" /><summary type="html"><![CDATA[Продолжение предыдущего поста. Сегодня поговорим только о преимуществах PHP, ибо недостатки уже не влезли 😁
+(Пост крайне технический, не пугайтесь)]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/assets/images/logo-cover.jpg" /><media:content medium="image" url="https://vtvz.me/assets/images/logo-cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">В поисках святого Грааля. PHP pt 1</title><link href="https://vtvz.me/blog/holy-grail-php-1/" rel="alternate" type="text/html" title="В поисках святого Грааля. PHP pt 1" /><published>2024-02-03T00:00:00+03:00</published><updated>2024-02-03T00:00:00+03:00</updated><id>https://vtvz.me/blog/holy-grail-php-1</id><content type="html" xml:base="https://vtvz.me/blog/holy-grail-php-1/"><![CDATA[<p>С этим языком у меня гораздо больше всего опыта в коммерческой разработке, поэтому мне есть, что сказать. Поэтому выйдет не один пост, а целая подсерия из нескольких, потому что в один не умещается 🤷‍♀️</p>
+<!--cut-->
+<h2 id="моя-история-отношений-с-языком">Моя история отношений с языком</h2>
+<p>В классе 8 учитель по информатике предложил мне реализовать один достаточно интересный проект. Перед летними каникулами мы разработали идею, обсудили все и дали проекту гордое название <code>"GameTest"</code>. Учитель дал мне учебник по <code>PHP 5.7</code> (возможно это была <a href="https://book24.ru/product/php-5-v-podlinnike-6269390/">она</a>). Этого было достаточно, чтобы сделать первую альфа версию приложения. Ужаснее кода я никогда не писал. С этого и началась моя карьера веб-разработчика. После школы с этим опытом меня пригласил мой <a href="https://t.me/igor_frolov2">друг</a> (подписывайтесь, кстати), который поднатаскал меня по языку на самописном фреймворке <a href="https://macropod.ru/">Macropod</a>. Затем был Molticlub (который сейчас не работает), на котором я освоил ООП через <a href="https://www.yiiframework.com/doc/guide/2.0/en">Yii2</a>. И в конце был <a href="https://axmit.com/">Axmit</a>, где я уже познакомился с <a href="https://laravel.com/">Laгavel</a>, что подтолкнуло меня к уходу из разработки.</p>
+<p>РНР стал мемом — язык, который незаслуженно все ненавидят и высмеивают. Но, откровенно говоря, с 7й версией он стал языком энтерпрайз уровня. 8я версия вообще огонь. Вы только <a href="https://www.php.net/releases/8.0/ru.php">посмотрите</a>! 5я версия, Wordpress и низкий порог входа создали языку незаслуженно плохую репутацию. Но экосистема развилась знатно. Хотя <a href="http://phpsadness.com/">phpsadness.com</a> вполне объективно обозначает недостатки языка.</p>
+<p>Посмотрите на <a href="https://www.jetbrains.com/lp/php-25/">эти занятные диаграммы</a>. Плохому языку такую красоту не нарисуют🙂</p>
+<hr>
+<p>Это первый из (возможно) четырех постов. Как я говорил, мне есть что сказать☺️ Оставайтесь на связи <img class="fox-emoji" src="/assets/images/fox-emoji.png" alt="🦊"></p>
+<p><a href="/blog/holy-grail-pascal/">« Предыдущий</a> | <a href="/blog/holy-grail/">Оглавление</a> | <a href="/blog/holy-grail-php-2/">Следующий »</a></p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Разработка" /><category term="SearchingForHolyGrail" /><category term="ProgrammingLanguages" /><category term="PHP" /><summary type="html"><![CDATA[С этим языком у меня гораздо больше всего опыта в коммерческой разработке, поэтому мне есть, что сказать. Поэтому выйдет не один пост, а целая подсерия из нескольких, потому что в один не умещается 🤷‍♀️]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/assets/images/logo-cover.jpg" /><media:content medium="image" url="https://vtvz.me/assets/images/logo-cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">В поисках святого Грааля. Pascal</title><link href="https://vtvz.me/blog/holy-grail-pascal/" rel="alternate" type="text/html" title="В поисках святого Грааля. Pascal" /><published>2024-01-03T00:00:00+03:00</published><updated>2024-01-03T00:00:00+03:00</updated><id>https://vtvz.me/blog/holy-grail-pascal</id><content type="html" xml:base="https://vtvz.me/blog/holy-grail-pascal/"><![CDATA[<p>Рубрику откроет <strong>Pascal</strong>. Олдскулы не свело?) Это мой первый настоящий язык программирования со школьных времен, если не считать робота и черепашку, конечно. Дальше выполнения олимпиадных задач я ничего на нем не делал. Моим Паскалем был <a href="https://www.freepascal.org/">FreePascal</a>. Я до сих пор не знаю, чем он отличается от <a href="https://ru.wikipedia.org/wiki/Turbo_Pascal">TurboPascal</a> 😁 Есть <a href="https://www.embarcadero.com/ru/products/delphi">Delphi</a>, который либо является неким подмножеством, либо очень похожим языком на Pascal, который используется в более серьезных кейсах. Можно еще посмотреть на <a href="https://www.lazarus-ide.org/">Lazarus</a>, интересный проект</p>
+<!--cut-->
+<p>Язык был создан для обучения школьников и студентов программированию. И со своей задачей он справляется на все 💯. Он интуитивно понятен и очень читабелен. У него есть все примитивы для выполнения полного спектра задач, но отсутствие элементов ООП, функциональных языков и высокоуровневых абстракций делает его сложным в написании более сложной логики — он сугубо императивный. Что в общем не так важно для учеников, которым нужно написать программу длиною в сотню строк</p>
+<p>Я помню, как мы в школе хотели писать на <a href="https://clang.llvm.org/">Си</a>. Круто, модно, солидно. Но учитель был непреклонен. И со временем я понял почему. Хотя в своей сути эти языки очень похожи — они императивные — в Си весь менеджмент памяти ложится на плечи самого программиста, чем можно выстрелить себе в ногу. А зачем это ученику, который просто хочет сложить <code>a+b</code>?</p>
+<h2 id="мои-хотелки">Мои хотелки</h2>
+<p>Первый важный для меня момент — Паскаль компилируемый. Возможность собрать программу в самостоятельный бинарник очень здорово упрощает менеджмент окружения. Второй — у него строгая типизация, каждая переменная имеет свой изначально и явно обозначенный тип</p>
+<h2 id="моя-позиция">Моя позиция</h2>
+<p>Паскаль является отличной отправной точкой в мир программирования. Отсутствие кучи обёрток и удобностей (классов, итераторов, автоматического приведения типов и пр) помогает развить логику и думать как компьютер. Если есть возможность, рекомендую начать с этого языка. Python и JavaScript просты в изучении и хороши для создания реальных приложений, но скрывают очень важные аспекты программирования. После Паскаля можно пойти в более индустриальные и практичные языки: от Си до Питона</p>
+<p>Скоро расскажу и о других языках. В комментариях можно оставить тот, который особенно интересует. А пока оставайтесь на связи <img class="fox-emoji" src="/assets/images/fox-emoji.png" alt="🦊"></p>
+<p><a href="/blog/holy-grail/">« Предыдущий</a> | <a href="/blog/holy-grail/">Оглавление</a> | <a href="/blog/holy-grail-php-1/">Следующий »</a></p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Разработка" /><category term="SearchingForHolyGrail" /><category term="ProgrammingLanguages" /><category term="Pascal" /><summary type="html"><![CDATA[Рубрику откроет Pascal. Олдскулы не свело?) Это мой первый настоящий язык программирования со школьных времен, если не считать робота и черепашку, конечно. Дальше выполнения олимпиадных задач я ничего на нем не делал. Моим Паскалем был FreePascal. Я до сих пор не знаю, чем он отличается от TurboPascal 😁 Есть Delphi, который либо является неким подмножеством, либо очень похожим языком на Pascal, который используется в более серьезных кейсах. Можно еще посмотреть на Lazarus, интересный проект]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/assets/images/logo-cover.jpg" /><media:content medium="image" url="https://vtvz.me/assets/images/logo-cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">В поисках святого Грааля. Вступление</title><link href="https://vtvz.me/blog/holy-grail/" rel="alternate" type="text/html" title="В поисках святого Грааля. Вступление" /><published>2024-01-02T00:00:00+03:00</published><updated>2024-01-02T00:00:00+03:00</updated><id>https://vtvz.me/blog/holy-grail</id><content type="html" xml:base="https://vtvz.me/blog/holy-grail/"><![CDATA[<p>Из <a href="/blog/beliefs/">указанных выше тем</a> больший интерес был проявлен к последней. Но не столько к <code>Rust</code>, сколько к языкам программирования в целом. У меня есть разного уровня навыки и опыт где-то в десятке ЯП. В один пост не поместится все, что я хочу сказать. Поэтому заметки будут выходить под рубрикой <em>“В поисках святого Грааля”</em> под общим тегом #SearchingForHolyGrail, в которых будет рассказано о поиске того самого желанного языка, любимого языка. Там я буду выражать свое сугубо субъективное, личное и ограниченное мнение об одном-двух ЯП и их экосистемах. Стоит сразу сказать, что многие знания устарели, а некоторых никогда и не было. Если есть какие-то неточности и дополнения, то Welcome в комменты 🧑‍💻</p>
+<!--cut-->
+<p>Каждый пост будет иметь как минимум два подзаголовка: <strong>“Мои хотелки”</strong> и <strong>“Моя позиция”</strong>, в которых я расскажу о том, что мне понравилось в том или ином ЯП, что отталкивает и заключительное мнение. Материал будет составляться исходя из моих знаний без глубокого исследования и гуглежа, вследствие чего могут быть допущены грубейшие ошибки, как в <a href="https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%BE%D0%B1%D0%BB%D0%B5%D0%BC%D0%B0_%D0%BA%D0%BE%D1%81%D0%BC%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B9_%D0%BF%D0%BE%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%BD%D0%BE%D0%B9">вакуумной катастрофе</a>, и пробелы в знаниях, сопоставимые с космическими <a href="https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D1%81%D0%BC%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5_%D0%BF%D1%83%D1%81%D1%82%D0%BE%D1%82%D1%8B">войдами</a>. Не будьте сильно критичны 🤷‍♀️</p>
+<p>Первый пост последует на следующий день после этого. Поэтому оставайтесь на связи <img class="fox-emoji" src="/assets/images/fox-emoji.png" alt="🦊"></p>
+<ol>
+<li><a href="/blog/holy-grail-pascal/">Pascal</a></li>
+<li>PHP: <a href="/blog/holy-grail-php-1/">pt 1</a>, <a href="/blog/holy-grail-php-2/">pt 2</a></li>
+</ol>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Разработка" /><category term="SearchingForHolyGrail" /><category term="ProgrammingLanguages" /><summary type="html"><![CDATA[Из указанных выше тем больший интерес был проявлен к последней. Но не столько к Rust, сколько к языкам программирования в целом. У меня есть разного уровня навыки и опыт где-то в десятке ЯП. В один пост не поместится все, что я хочу сказать. Поэтому заметки будут выходить под рубрикой “В поисках святого Грааля” под общим тегом #SearchingForHolyGrail, в которых будет рассказано о поиске того самого желанного языка, любимого языка. Там я буду выражать свое сугубо субъективное, личное и ограниченное мнение об одном-двух ЯП и их экосистемах. Стоит сразу сказать, что многие знания устарели, а некоторых никогда и не было. Если есть какие-то неточности и дополнения, то Welcome в комменты 🧑‍💻]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/assets/images/logo-cover.jpg" /><media:content medium="image" url="https://vtvz.me/assets/images/logo-cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Мое мировоззрение и «религиозные» убеждения</title><link href="https://vtvz.me/blog/beliefs/" rel="alternate" type="text/html" title="Мое мировоззрение и «религиозные» убеждения" /><published>2023-12-17T00:00:00+03:00</published><updated>2023-12-17T00:00:00+03:00</updated><id>https://vtvz.me/blog/beliefs</id><content type="html" xml:base="https://vtvz.me/blog/beliefs/"><![CDATA[<p>За все годы у меня сформировалось некоторое видение о том, что такое хорошо, а что такое неудобно. Хочу поделиться перечнем элементов моего мировоззрения и “религиозных” убеждений:</p>
+<!--cut-->
+<ul>
+<li>Я Линуксоид. С 2012 года началась моя миграция в мир Линукса. Первым дистрибутивом был Ubuntu, но совсем недавно сменил на <a href="https://manjaro.org/">Manjaro</a>. Он основан на Arch, но значительно проще и со своими приколами. Мне он показался <strong>гораздо</strong> удобнее Ubuntu</li>
+<li>Редактор кода — <a href="https://neovim.io/">NeoVim</a>. Переехал буквально год назад и совсем об этом не жалею. Значительно ускоряет разработку, хотя может быть не таким умным, как IDE от JenBrains. Использовать для конфигурации настоящий язык программирования (Lua) — просто кайф. Мой конфиг <a href="https://github.com/vtvz/astronvim">тут</a>. В качестве основы использую <a href="https://astronvim.com/">AstroNvim</a></li>
+<li>Люблю программируемые компактные split клавиатуры. У меня сейчас в распоряжении <a href="https://github.com/foostan/crkbd">Corne v3</a> и <a href="https://github.com/diepala/cantor">Cantor</a>. Хочу еще беспроводную <a href="https://github.com/yumagulovrn/dao-choc-ble">Dao</a>, если осмелюсь. Имея в наличии всего 42 клавиши создает своеобразный челлендж. Но если учесть, что все они располагаются очень рядом, то удобство использования возрастает экспоненциально со временем. Клавиатуры программируемы, исходники моей прошивки лежат <a href="https://github.com/vtvz/qmk">тут</a> (имеет смысл смотреть, если знаешь Clang и <a href="https://qmk.fm/">QMK</a>)</li>
+<li>Основная раскладка английского — <a href="https://colemakmods.github.io/mod-dh/">Colemak-DH</a>. Может быть для кого-то будет открытием, что кроме qwerty существует еще что-то. Но qwerty — полное дно, откровенно говоря. Переход на Колемак был совсем не быстрым. Особенно если учесть, что это было после того, как я освоил Vim. Но печатать на английском стало <strong>гораздо</strong> проще, и руки не так быстро устают</li>
+<li>Любимый язык программирования — <a href="https://www.rust-lang.org/">Rust</a> 🦀. Несмотря на свою сложность он афигенный. Мне потребовалось около двух месяцев обучения, чтобы написать первое рабочее приложение. Теперь у меня пара проектов в открытом доступе (<a href="https://github.com/vtvz/rustify">rustify</a> и <a href="https://github.com/vtvz/polaroid">polaroid</a>) и немного приватных. Пусть я сейчас не работаю в разработке (я DevOps), но мои глаза и руки всякого повидали, чтобы придти к выводу, что звание “<a href="https://survey.stackoverflow.co/2023/#section-admired-and-desired-programming-scripting-and-markup-languages">самого любимого и желанного языка программирования</a>” дано ему не даром</li>
+</ul>
+<p>Это еще не все. Каждая из этих тем достойна своего поста или даже статьи. Если вас интересует что-то конкретное — Welcome в комментарии. А так, оставайтесь на связи <img class="fox-emoji" src="/assets/images/fox-emoji.png" alt="🦊"></p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Опыт" /><category term="Linux" /><category term="NeoVim" /><category term="Клавиатуры" /><category term="Rust" /><summary type="html"><![CDATA[За все годы у меня сформировалось некоторое видение о том, что такое хорошо, а что такое неудобно. Хочу поделиться перечнем элементов моего мировоззрения и “религиозных” убеждений:]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/assets/images/logo-cover.jpg" /><media:content medium="image" url="https://vtvz.me/assets/images/logo-cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="en"><title type="html">Solving eCryptfs “Failed to mount private data” error</title><link href="https://vtvz.me/blog/ecryptfs-recovery-error/" rel="alternate" type="text/html" title="Solving eCryptfs “Failed to mount private data” error" /><published>2022-06-26T00:00:00+03:00</published><updated>2022-06-26T00:00:00+03:00</updated><id>https://vtvz.me/blog/ecryptfs-recovery-error</id><content type="html" xml:base="https://vtvz.me/blog/ecryptfs-recovery-error/"><![CDATA[<p>One day I decided to try Manjaro out. My laptop is pretty good-ish, and one of my requirements is an encrypted home directory. On the previous installation on Ubuntu 20.04, I used <code>ecryptfs</code> and it was good enough for my needs. When I moved to Manjaro I decided to leave <code>ecryptfs</code> as my primary encryption method but to recreate the passphrase from scratch with a completely fresh and clean home folder. Then I moved all encrypted files to another location… I believe this was the right decision, but I struggled for about a day to restore access to my previous data. This little note is for me and for those who need a bit of help with the recovery process.</p>
 <!--cut-->
 <blockquote>
 <p>For those who just came for the <span class="text-muted">possible</span> solution, jump straight to <a href="#tldr">TL;DR</a></p>
@@ -70,7 +163,7 @@
 <span class="line"><span style="color:#88846F">#  drwxrwxrwt 26 root     root      1360 июн 23 23:04 ..</span></span>
 <span class="line"><span style="color:#88846F">#  drwxrwxr-x  3 username username  4096 янв  5  2021 .local</span></span>
 <span class="line"></span></code></pre></div></div>
-<p>Yeah, there were a lot more things in it. But I’ve already moved it away :grin:</p>
+<p>Yeah, there were a lot more things in it. But I’ve already moved it away 😁</p>
 <hr>
 <p>I think this is not a new problem. But I spent a lot of time solving this puzzle, so I decided to share my knowledge for future me.</p>
 <h2 id="tldr">TL;DR</h2>
@@ -86,9 +179,9 @@ ERROR: Failed to mount private data at [/tmp/ecryptfs.xxxxxxxx].
 <span class="line"><span style="color:#66D9EF">echo</span><span style="color:#AE81FF"> -n</span><span style="color:#E6DB74"> "%32-long-line-with-random-chars%"</span><span style="color:#F92672"> |</span><span style="color:#A6E22E"> ecryptfs-add-passphrase</span><span style="color:#AE81FF"> --fnek</span><span style="color:#E6DB74"> -</span></span>
 <span class="line"><span style="color:#A6E22E">sudo</span><span style="color:#E6DB74"> ecryptfs-recover-private</span><span style="color:#E6DB74"> %path%/.Private</span></span>
 <span class="line"></span></code></pre></div></div>
-<p>If you succeed, please inform me about it somehow. I will be super thankful :blush:</p>
+<p>If you succeed, please inform me about it somehow. I will be super thankful 😊</p>
 <hr>
-<p>P.S. I’m not a native English-speaking person, my knowledge is relatively low. This post is my first in this language and can have a lot, I mean <strong>A LOT</strong> of issues. I will be very thankful if you help me to fix my grammar errors or give me an advice(s) :fox:</p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Linux" /><category term="eCryptfs" /><category term="Linux" /><summary type="html"><![CDATA[How to deal with ecryptfs error "mount(2) system call failed: No such file or directory. Failed to mount private data at /tmp/ecryptfs"
+<p>P.S. I’m not a native English-speaking person, my knowledge is relatively low. This post is my first in this language and can have a lot, I mean <strong>A LOT</strong> of issues. I will be very thankful if you help me to fix my grammar errors or give me an advice(s) <img class="fox-emoji" src="/assets/images/fox-emoji.png" alt="🦊"></p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Linux" /><category term="eCryptfs" /><category term="Linux" /><summary type="html"><![CDATA[How to deal with ecryptfs error "mount(2) system call failed: No such file or directory. Failed to mount private data at /tmp/ecryptfs"
 ]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/ecryptfs-recovery-error/cover.png" /><media:content medium="image" url="https://vtvz.me/blog/ecryptfs-recovery-error/cover.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Meet Rustify! Приглашение на закрытое тестирование</title><link href="https://vtvz.me/blog/meet-rustify/" rel="alternate" type="text/html" title="Meet Rustify! Приглашение на закрытое тестирование" /><published>2022-06-19T00:00:00+03:00</published><updated>2022-06-19T00:00:00+03:00</updated><id>https://vtvz.me/blog/meet-rustify</id><content type="html" xml:base="https://vtvz.me/blog/meet-rustify/"><![CDATA[<figure class="frame post-image post-image--right"><a href="./rustify-logo.png" target="_blank"><img src="./rustify-logo.png" alt="" title=""></a></figure>
 <p>Последние несколько месяцев я в качестве хобби-проекта разрабатывал небольшой телеграм-бот. Не столько из необходимости, сколько из желания выучить новый язык программирования (Rust <i class="fa-brands fa-rust"></i> <i class="fa-solid fa-heart"></i>) и немного улучшить себе жизнь.</p>
 <p>На текущий момент бот тесно интегрируется со Spotify и выполняет несколько <small class="text-muted">не очень</small> простых функций:</p>
@@ -140,7 +233,7 @@ ERROR: Failed to mount private data at [/tmp/ecryptfs.xxxxxxxx].
     </a>
   </p>
 </div>
-<p>Добро пожаловать всем желающим! :fox:</p>
+<p>Добро пожаловать всем желающим! <img class="fox-emoji" src="/assets/images/fox-emoji.png" alt="🦊"></p>
 <p>P.S. Исходный код проекта доступен на <a href="https://github.com/vtvz/rustify">github.com/vtvz/rustify</a></p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Разработка" /><category term="Telegram" /><category term="TelegramBot" /><category term="Rustify" /><category term="PetProject" /><summary type="html"><![CDATA[Последние несколько месяцев я в качестве хобби-проекта разрабатывал небольшой телеграм-бот. Теперь мне нужны добровольцы для тестирования!
 ]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/meet-rustify/cover.png" /><media:content medium="image" url="https://vtvz.me/blog/meet-rustify/cover.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Аккуратно внедряем Emoji, не ломая все остальное</title><link href="https://vtvz.me/blog/reliable-emojification/" rel="alternate" type="text/html" title="Аккуратно внедряем Emoji, не ломая все остальное" /><published>2020-05-15T00:00:00+03:00</published><updated>2020-05-15T00:00:00+03:00</updated><id>https://vtvz.me/blog/reliable-emojification</id><content type="html" xml:base="https://vtvz.me/blog/reliable-emojification/"><![CDATA[<p>Emoji стали неотъемлемой частью нашей культуры.
 И я их активно использую в своих статьях.
@@ -260,7 +353,7 @@ ERROR: Failed to mount private data at [/tmp/ecryptfs.xxxxxxxx].
 Именно она гарантирует “невредимость” некоторых элементов страницы.
 А именно теги <code>script</code>, <code>textarea</code> и подобные им.</p>
 <h3 id="внедрение-emoji-в-текст">Внедрение Emoji в текст</h3>
-<p>Осталось дело за малым. Или нет? :thinking_face:</p>
+<p>Осталось дело за малым. Или нет? 🤔</p>
 <p>Теперь у нас есть все куски текстов, в которых потенциально могут быть emoji.
 Если нам нужна совместимость только с девайсами Apple, то мы можем заменить все <code>:emoji:</code> смайлы
 на обычный unicode и на этом успокоиться. Но у меня Линукс. И многих других тоже нет ничего яблочного.
@@ -342,8 +435,8 @@ ERROR: Failed to mount private data at [/tmp/ecryptfs.xxxxxxxx].
 <p>Не могу сказать, что смайлы для меня настолько важны, чтобы я стал так заморачиваться.
 Скорее то, что это был определенный вызов, интересная задача на исследование.
 Я узнал много нового и стал лучше понимать работу html и js в браузере.
-И сделал свой сайт чуточку лучше :blush:</p>
-<p>Спасибо за внимание. Надеюсь, было интересно :fox:</p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Разработка" /><category term="Веб-разработка" /><category term="Frontend" /><category term="Emoji" /><summary type="html"><![CDATA[Простой и надежный способ внедрения Emoji в текст без влияния на другие компоненты страницы
+И сделал свой сайт чуточку лучше 😊</p>
+<p>Спасибо за внимание. Надеюсь, было интересно <img class="fox-emoji" src="/assets/images/fox-emoji.png" alt="🦊"></p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Разработка" /><category term="Веб-разработка" /><category term="Frontend" /><category term="Emoji" /><summary type="html"><![CDATA[Простой и надежный способ внедрения Emoji в текст без влияния на другие компоненты страницы
 ]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/reliable-emojification/cover.png" /><media:content medium="image" url="https://vtvz.me/blog/reliable-emojification/cover.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Покорение UTM меток</title><link href="https://vtvz.me/blog/conquering-the-utm-parameters/" rel="alternate" type="text/html" title="Покорение UTM меток" /><published>2020-05-13T00:00:00+03:00</published><updated>2020-05-13T00:00:00+03:00</updated><id>https://vtvz.me/blog/conquering-the-utm-parameters</id><content type="html" xml:base="https://vtvz.me/blog/conquering-the-utm-parameters/"><![CDATA[<p>Решил я тут собрать побольше статистики по посетителям.
 Хотя Яндекс.Метрика очень даже неплохо с этим справляется,
 но хотелось бы иметь более управляемый механизм,
@@ -387,7 +480,7 @@ ERROR: Failed to mount private data at [/tmp/ecryptfs.xxxxxxxx].
 <ol>
 <li>Его нужно сделать. Это дополнительное время на реализацию целого компонента системы.
 Сложность создает тот факт, что этот сайт статический, собран из обычных html страничек,
-сгенерированных с помощью Jekyll, который написан на Ruby, который я не знаю… Ну вы поняли :grin:</li>
+сгенерированных с помощью Jekyll, который написан на Ruby, который я не знаю… Ну вы поняли 😁</li>
 <li>Обычные укорачиватели перекидывают тебя на другой сайт используя HTTP 301 код.
 Но мы не можем отдавать этот статус клиенту, потому что статические сайты дают либо 200, либо 404.
 А вот ВК не умеет обрабатывать такие страницы.</li>
@@ -522,494 +615,7 @@ ERROR: Failed to mount private data at [/tmp/ecryptfs.xxxxxxxx].
 <p>Мне не удалось протестировать это дело в больших масштабах,
 но текущие данные показывают правдивые результаты.
 Так или иначе, если что-то пойдет не так – я сообщу.</p>
-<p>А пока, спасибо за внимание :grin:
+<p>А пока, спасибо за внимание 😁
 Если возникают вопросы, не стесняйтесь задавать их мне по любому доступному каналу,
-пока комментарии не появились :fox:</p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Разработка" /><category term="Веб-разработка" /><category term="Аналитика" /><category term="Frontend" /><summary type="html"><![CDATA[Элегантный способ укоротить UTM метки
-]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/conquering-the-utm-parameters/cover.jpg" /><media:content medium="image" url="https://vtvz.me/blog/conquering-the-utm-parameters/cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Генератор постов в социальные сети</title><link href="https://vtvz.me/blog/social-post-generator/" rel="alternate" type="text/html" title="Генератор постов в социальные сети" /><published>2020-05-04T00:00:00+03:00</published><updated>2020-05-04T00:00:00+03:00</updated><id>https://vtvz.me/blog/social-post-generator</id><content type="html" xml:base="https://vtvz.me/blog/social-post-generator/"><![CDATA[<p>Порой написание статьи отнимает меньше времени, чем генерация постов в социальные сети.
-И в каждой из них нужно что-то учесть:
-в twitter’е жесткие ограничения по количеству символов,
-где-то не нужно указывать ссылку на телеграмм канал,
-а вот на личной странице в ВК еще нужно указать линку на группу.
-Мне это поднадоело. Поэтому я решил это дело автоматизировать! Хватит это терпеть!</p>
-<!--cut-->
-<p>Это второй по счету интерактивный пост, призванный упростить мне жизнь.
-Но в этом случае этот инструмент не будет полезен никому, кроме как мне.
-И здесь сделано все так, чтобы создание постов для социальных сетей было тривиальным действием.
-Если вдруг кто-то хочет себе что-то подобное – обращайтесь :blush:</p>
-<p>Фичи этого генератора:</p>
-<ul>
-<li>Все поля предзаполняются автоматически из данных последнего поста блога;</li>
-<li>Если нужно создать пост для какой-то другой коллекции, то для этого есть выпадающий список “Применить”;</li>
-<li>Текст для twitter’a и других соц. сетей заполняется отдельно;</li>
-<li>Имеется подсчет доступных символов для twitter’а и LinkedIn;</li>
-<li>Для twitter’а подсчет символов выполнен с учетом всей магии с укорачиванием ссылок –
-длинна урла не влияет на количество свободных буков;</li>
-<li>Для каждой социальной сети используется свой шаблон поста;</li>
-<li>В ссылку к каждой соц. медиа вставляются все необходимые utm метки для аналитики.</li>
-</ul>
-<p>В целом, получилось достаточно мощно. Это значительно упростит мне жизнь.</p>
-<p>Если интересно, то вот, можно потыкать:</p>
-<div id="social-post-generator-container">
-    <div class="progress">
-      <div class="progress-bar progress-bar-striped active" style="width: 100%"></div>
-    </div>
-</div>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Разработка" /><category term="Веб-разработка" /><category term="Инструменты" /><summary type="html"><![CDATA[Генератор постов в социальные сети с учетом максимальной длины и применением всех необходимых utm меток  
-]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/social-post-generator/cover.jpg" /><media:content medium="image" url="https://vtvz.me/blog/social-post-generator/cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Покойся с миром, мой дорогой друг…</title><link href="https://vtvz.me/blog/rest-in-peace-my-friend/" rel="alternate" type="text/html" title="Покойся с миром, мой дорогой друг…" /><published>2020-04-24T00:00:00+03:00</published><updated>2020-04-24T00:00:00+03:00</updated><id>https://vtvz.me/blog/rest-in-peace-my-friend</id><content type="html" xml:base="https://vtvz.me/blog/rest-in-peace-my-friend/"><![CDATA[<p>В конце сентября 2017 года наша семья стала чуточку больше.
-Мы пришли к выводу, что в нашем доме недостаточно уютно, и было принято решение взять хомячка.
-Еще до того, как он у нас появился, ему было дано имя – Джонатан Хамстер.
-Ведь какое еще можно дать имя хомяку?
-Он быстро стал частью нашей семьи и поселился в нашем доме и наших сердцах.</p>
-<!--cut-->
-<figure class="frame post-image post-image--left"><a href="./sitting.jpg" target="_blank"><img src="./sitting.jpg" alt="" title=""></a></figure>
-<p>С самого начала он был дружелюбен. Было пару раз, что он кусался. Но это было давно и неправда.
-В целом, его можно было взять на руки в любое время. Иногда мы его пугали –
-не всегда он был готов к контакту с нами. Но, несмотря на это, он не кусался и не царапался.</p>
-<p>Он был дружелюбен не только к нам.
-Возможно, это общее свойство хомяков – доверять либо никому, либо всем, –
-но не было ни одного случая агрессии по отношению к другим людям и животным.
-Он чувствовал себя спокойно на руках любого.
-Мы пытались подружить его и Джейсона (кота), но он все таки мышь, а кот – охотник. Так что с ними не заладилось.
-Возможно, спустя какое-то время можно было попробовать еще раз, но мы рисковать не стали.</p>
-<figure class="frame post-image post-image--right"><a href="./running.jpg" target="_blank"><img src="./running.jpg" alt="" title=""></a></figure>
-<p>Он был активным и любопытным. Его невозможно было сфотографировать.
-По ночам он бегал по колесу, чем-то шуршал в своем домике, носился по этажам своей уютной клетки.
-Чтобы было теплее, мы давали ему кусочки мягкой туалетной бумаги,
-которые он с удовольствием брал и упихивал в свое жилище.
-Интересно то, что он всегда знал, что с ней делать.
-Стоило ему дать бумажку, он сразу утолкает ее за щеку и потащит в свою конуру.</p>
-<p>Со временем он стал реагировать на наш голос.
-Иногда, когда мы его звали, он высовывал свой носик из будки и выходил к нам, чтобы его взяли на ручки.
-Бывало, он сам просился – забирался на клетку и просовывал свой носик между прутьями,
-крепко держась лапками за них.</p>
-<figure class="frame post-image post-image--left"><a href="./pocket.jpg" target="_blank"><img src="./pocket.jpg" alt="" title=""></a></figure>
-<p>Иногда, когда он был в руках, мы давали ему какую-то вкусняшку, типа яблока.
-Чаще всего он ухомячивал её за щеку. Но иногда он кушал прямо на руках, что выглядело очень мило.
-Бывало, что я усаживал его в кармашек на своей футболке. Один раз он там уснул.
-Был случай, когда он сначала набил щеки зернами в клетке, я положил в карман, а он выложил всю свою еду прям там.</p>
-<p>Он прожил хорошую, счастливую хомячью жизнь, в тепле, любви и уюте.
-У него всегда была еда, вода и чистота в клетке.
-Мы никогда не давали ему то, что могло навредить,
-но старались всегда делиться с ним фруктами и овощами, которые можно.
-Он никогда не падал – мы были с ним аккуратны.</p>
-<p>Но хомяки живут недолго. Чаще всего они умирают в возрасте 1-2 года.
-Наш оказался долгожителем – 2 года и 9 месяцев. Но и его время уже прошло.
-Под старость лет своих он стал немного странно вести себя.
-Он старался ухомячить любую ткань, с которой соприкасался, чего раньше не было.
-Также он перестал спать в домике – там оставалась только голова, а все остальное было снаружи.
-Он и до этого был серым, но поседел еще больше.</p>
-<p>22 апреля 2020 года мы обнаружили его в своей клетке, лежащим на боку у выхода из домика мордочкой наружу.
-Мы подумали, что он мертв, но он продолжал дышать.
-У него случались такие-то приступы, когда он начинал сильно дергать передними лапами, вытягивая их вперед.
-Его рот двигался произвольно, иногда открывался, а иногда он как-будто что-то жевал.
-Ему определенно было плохо. Он умирал буквально у нас на руках.
-Мы думали, что он уйдет сам или ему станет лучше.</p>
-<figure class="frame post-image post-image--right"><a href="death.jpg" target="_blank"><img src="death.jpg" alt="" title=""></a></figure>
-<p>Но был вечер. А потом настало утро. Но он все был жив, но совершенно нежизнеспособен.
-Ему все еще было плохо. Он ничего не ел и не пил. Поэтому было решено отвезти к ветеринару.
-Возможно, благодаря карантину нам удалось пробиться к Бокаревым, где нас смогли принять буквально сразу.
-Его состояние уже было неисправимо. Если я правильно понял врача, у него было кровоизлияние в мозг.
-Но сердце его было крепким, благодаря чему он и жил так долго.
-На вопрос, было ли ему плохо, чувствовал ли он боль. Она сказала, что он был в коматозе и ничего не чувствовал.
-Если бы я был ветеринаром, то говорил бы то же самое. Но мне проще верить, что это действительно так.
-В итоге, его пришлось усыпить. Он ушел 11:10 23 апреля 2020 года.</p>
-<figure class="frame post-image post-image--left"><a href="./sitting.jpg" target="_blank"><img src="./sitting.jpg" alt="" title=""></a></figure>
-<p>Я хотел, чтобы он умер при нас, чтобы была возможность с ним попрощаться.
-И мы были рядом, когда ему стало плохо, и когда его не стало…</p>
-<p>Похоронили мы его в этот же день вечером.
-Мы выкопали ему ямку, насыпали древесный наполнитель,
-поставили его деревянный домик, в котором он жил, сверху и положили его туда.
-Я хотел отдать ему должное за ту радость и счастье, которые он нам подарил,
-и похоронить его достойным образом.</p>
-<p>Несмотря на то, что я знал, что он скоро умрет, я все равно не был к этому готов.
-Мне очень сложно принять его смерть и то, что его больше нет.
-Я разбит и расстроен. В доме стало немного пусто, и мне нужно к этому привыкнуть.</p>
-<p>Мы любили его. Я любил его. А он любил нас. Покойся с миром, мой дорогой друг…</p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="LiveLog" /><category term="Блог" /><category term="Животные" /><category term="RIP" /><summary type="html"><![CDATA[В конце сентября 2017 года наша семья стала чуточку больше.
-Мы пришли к выводу, что в нашем доме недостаточно уютно, и было принято решение взять хомячка.
-Еще до того, как он у нас появился, ему было дано имя – Джонатан Хамстер.
-Ведь какое еще можно дать имя хомяку?
-Он быстро стал частью нашей семьи и поселился в нашем доме и наших сердцах.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/rest-in-peace-my-friend/cover.jpg" /><media:content medium="image" url="https://vtvz.me/blog/rest-in-peace-my-friend/cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Ковыряясь под капотом #2</title><link href="https://vtvz.me/blog/under-the-hood-2nd/" rel="alternate" type="text/html" title="Ковыряясь под капотом #2" /><published>2020-04-18T00:00:00+03:00</published><updated>2020-04-18T00:00:00+03:00</updated><id>https://vtvz.me/blog/under-the-hood-2nd</id><content type="html" xml:base="https://vtvz.me/blog/under-the-hood-2nd/"><![CDATA[<p>В голове у меня много мыслей, которые хотелось бы выразить в виде статьи.
-У меня даже есть небольшая заметка в Google Keep с темами потенциальных постов.
-Но это сложно. Русский язык – сложный язык.
-На написание одной статьи на 5 минут чтения может уйти несколько часов, а то и дней.
-Стоит учесть еще тот факт, что блог не приносит мне ни копейки.
-Поэтому, время на написание статьи есть только вечером после работы или на выходных.</p>
-<p>Поэтому, я делаю то, что не заставляет меня слишком много думать и не требует полной сосредоточенности.
-Я улучшаю творение рук моих. Удивительно то, что, несмотря на простую концепцию, всегда есть куда улучшаться.
-Именно об этом будет этот пост.</p>
-<!--cut-->
-<h2 id="коллекции">Коллекции</h2>
-<p>Начну с фундаментальных вещей. На сайте появился полноценный раздел, который я решил назвать “<a href="/collections/">Коллекциями</a>”.
-Сначала были одни <a href="/achievements/"><i class="fa-solid fa-trophy"></i> достижения</a> – мои успехи в личной и профессиональной жизни.
-И выглядел он очень даже неплохо. Каждое достижение – это отдельная карточка,
-в которой собраны ссылки и материалы, использованные мной.</p>
-<p>Ко всему этому туда были добавлены
-<a href="/notes/"><i class="fa-solid fa-sticky-note"></i> заметки</a>
-и <a href="/bookmarks/"><i class="fa-solid fa-bookmark"></i> закладки</a>.
-Первые – для записи коротких мыслей на свободные темы.
-Вторые – для сохранения ссылок на интересные и полезные материалы.
-Опять же, чтобы не плодить десяток разделов с несколькими записями в каждом,
-все эти коллекции были упакованы в один с общей лентой,
-посты которых отмечены соответствующей иконкой.</p>
-<p>В мыслях есть создать еще два раздела: программы и книги.
-Думаю, названия говорят сами за себя. Мне есть чем поделиться.</p>
-<p>Тем не менее, если хочется увидеть что-то одно, например заметки,
-то их можно отфильтровать в столбце справа,
-а на мобильных устройствах – в самом низу (я думаю над тем, как сделать это лучше).
-Фильтр по категориям и тегам тоже скоро будет (наверное).</p>
-<p>Особенно мне нравится градиент в самом верху карточек.
-Искать картинку для каждой записи мне не хотелось.
-Но оставлять пост без какого-либо цвета очень скучно и некрасиво.
-На текущий момент доступно 22 градиента(ов),
-которые выбираются псевдослучайно (в зависимости от количества символов в записи)</p>
-<p>У вас тоже есть возможность поучаствовать в улучшении моего сайта:</p>
-<ol>
-<li>Если у вас есть любимые красивые цветовые градиенты, отправьте их мне любым <a href="/">доступным способом</a>.</li>
-<li>Также, вы можете <a href="https://fontawesome.com/icons?d=gallery&#x26;s=solid&#x26;m=free">выбрать красивую иконку</a> для раздела коллекций.
-Я пока выбрал звездочку <i class="fa-solid fa-star fa-fw"></i>, но, возможно, у вас будет идея получше :wink:</li>
-</ol>
-<h2 id="иконка">Иконка</h2>
-<p>Очередное глобальное изменение.
-Это, конечно, не так впечатляет, как новый раздел с коллекциями.
-Но этот маленький аттрибут очень много значит для любого сайта. По иконке встречают, как говорится.
-Старый значок служил мне верой и правдой долгих 5 лет, если не больше,
-и он останется в моём сердце и истории git навсегда :heart:</p>
-<p>Конечно, я выбрал лису – у меня фон с лисой и логотип с лисой. Люблю я лис :fox:
-Пока что я взял Emoji от Apple, сделал ее черно-белой и немного добавил яркости.
-Надеюсь меня не засудят за нарушение авторских прав :no_mouth:
-Возможно, я нарисую что-то более уникальное. Но я не художник и не дизайнер.
-Если хочется помочь мне в это деле – пожалуйста. Мне будет очень приятно :blush:</p>
-<h2 id="мелочи">Мелочи</h2>
-<h3 id="теги-и-категории">Теги и Категории</h3>
-<p>На страницах блога в правой колонке есть два блока: комментарии и теги.</p>
-<p>Некоторые считают, что это лишнее и создаёт информационный шум.
-Частично я с этим согласен. Но люди достаточно часто переходят по этим ссылкам.</p>
-<p>Чтобы это выглядело более презентабельно, я внес пару косметических улучшений:</p>
-<ol>
-<li>Теперь пункты отсортированы по количеству записей. В прошлом они были разбросаны хаотично.</li>
-<li>Блок тегов теперь отображает только 6 самых популярных. Остальные скрыты за кнопочной “Show N more…”</li>
-<li>Благодаря <a href="https://www.w3schools.com/css/css3_flexbox.asp">flex-box</a> удалось сделать кнопочки тегов на всю ширину.
-Теперь это выглядит как солидный блок, а не небрежно напиханные элементы.</li>
-</ol>
-<capture>Результат (до / после)</capture><table class="table table-borderless">
-    
-    <tbody><tr>
-        <td><figure class="frame"><a href="tags-before.png" target="_blank"><img src="tags-before.png" alt="До" title="До"></a></figure></td>
-        <td><figure class="frame"><a href="tags-after.png" target="_blank"><img src="tags-after.png" alt="После" title="После"></a></figure></td>
-    </tr>
-</tbody></table>
-<h3 id="звездочки">Звездочки</h3>
-<p>Это очень незначительное изменение, но в разы улучшает моё резюме, особенно при печати.
-Я прижал звездочки в скиллах вправо, что сделало табличку в разы лучше.</p>
-<capture>Скриншоты "до" и "после" скажут все за меня:</capture><table class="table table-borderless">
-    
-    <tbody><tr>
-        <td><figure class="frame"><a href="stars-before.png" target="_blank"><img src="stars-before.png" alt="До" title="До"></a></figure></td>
-        <td><figure class="frame"><a href="stars-after.png" target="_blank"><img src="stars-after.png" alt="После" title="После"></a></figure></td>
-    </tr>
-</tbody></table>
-<h3 id="прочее">Прочее</h3>
-<p>Несколько других мелочей:</p>
-<ol>
-<li>Теперь у подзаголовков в статьях есть значок #, нажав на который можно получить ссылку на этот раздел статьи.
-Это будет удобно, когда нужно сослаться на какую-то часть публикации в других статьях или при отправке людям.
-Откровенно говоря, я сделал это просто потому что хочу, а не потому что надо :blush:</li>
-<li>Подсчет времени на прочтение статьи стал еще более правдоподобным благодаря плагину, который учитывает только текст,
-а не весь код. Ранее, большие куски кода могли добавлять больше минут на прочтение, тогда как самого текста не так и много.</li>
-<li>Теперь все картинки кликабельны и открывают изображение в новой вкладке.
-Следующим шагом будет прикрутить плагин, который открывает картинку в текущем окне. Но это потом.</li>
-</ol>
-<hr>
-<p>Если у вас есть какие-то идеи, напишите мне. Мне важна любая обратная связь.
-Также можете предложить темы статей, которые хотите, чтобы я осветил.</p>
-<p>Спасибо за внимание :fox:</p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Разработка" /><category term="Блог" /><category term="Веб-разработка" /><category term="Jekyll" /><category term="Обновления" /><summary type="html"><![CDATA[Отчет о проделанной над сайтом работе на последние пару недель
-]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/under-the-hood-2nd/cover.jpg" /><media:content medium="image" url="https://vtvz.me/blog/under-the-hood-2nd/cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Настройка robots.txt в Kubernetes</title><link href="https://vtvz.me/blog/robots-txt-in-kubernetes/" rel="alternate" type="text/html" title="Настройка robots.txt в Kubernetes" /><published>2020-03-21T00:00:00+03:00</published><updated>2020-03-21T00:00:00+03:00</updated><id>https://vtvz.me/blog/robots-txt-in-kubernetes</id><content type="html" xml:base="https://vtvz.me/blog/robots-txt-in-kubernetes/"><![CDATA[<p>Представьте себе, что на ваших плечах лежит инфраструктура около дюжины проектов,
-которые написаны на разных языках программирования и имеют свой стек технологий.
-Некоторые из них совсем свежие и используют самые современные веяния веб-индустрии,
-а другие – кладезь легаси и устаревшего кода.</p>
-<p>У каждого из этих проектов, помимо продового, есть еще 1-3 окружения для тестирования.
-И вот вам, как DevOps инженеру прилетает следующая задача:
-нужно для каждого тестового окружения добавить robots.txt файл,
-который будет запрещать поисковикам индексацию.</p>
-<p>Есть несколько способов, как это сделать, но я нашел самый простой и оптимальный.</p>
-<!--cut-->
-<p>Конечно, можно заставить всех бекендеров добавить этот файл в каждый проект,
-но это сложный подход, который DevOps инженер не контролирует.
-Поэтому мы пойдем по другому пути.</p>
-<p>Решение очень зависит от используемых вами технологий.
-У нас используются следущие:</p>
-<ul>
-<li><a href="https://kubernetes.io/">Kubernetes</a> кластер;</li>
-<li><a href="https://kubernetes.github.io/ingress-nginx/">Ingress Nginx</a>;</li>
-<li><a href="https://helm.sh/">Helm</a>.</li>
-</ul>
-<p>Каждый из этих инструментов вносит свои улучшения в решение этой задачи.</p>
-<h2 id="чистый-kubernetes">Чистый Kubernetes</h2>
-<p>Если у вас используется чистый Kubernetes без установленного Nginx Ingress, то у вас есть 2 пути.</p>
-<h3 id="nginx">Nginx</h3>
-<p>Вы можете взять самый легкий чистый образ с Nginx,
-куда с помощью ConfigMap примонтировать как конфиг сервера,
-так и содержимое файла <code>robots.txt</code>.
-После этого достаточно только настроить Ingress на то, чтобы он все запросы на <code>/robots.txt</code> направлял в этот контейнер.</p>
-<p>Примеры конфигов приводить не буду, так как есть вариант получше.</p>
-<h3 id="robots-disallow">“Robots Disallow”</h3>
-<p>Второе, еще более простое решение, это взять <a href="https://hub.docker.com/r/wikiwi/robots-disallow">wikiwi/robots-disallow</a>
-образ в Docker Hub. Принцип работы абсолютно такой же, только теперь не придется ничего настраивать. Только Ingress.</p>
-<h2 id="ingress-nginx">Ingress Nginx</h2>
-<p>Если вы еще не установили его себе в кластер, то я вам <strong>настоятельно</strong> рекомендую это сделать.
-Это мощный инструмент, который умеет делать все, что умеет Nginx,
-но имеет такой же подход к использованию, как и все сущности в Kubernetes.</p>
-<p>Вы только посмотрите на количество параметров,
-которые можно настроить через <a href="https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/">аннотации</a> или <a href="https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/">конфиг мапы</a>.</p>
-<p>В общем, этим мы и воспользуемся, чтобы решить поставленную задачу.
-Достаточно добавить в Ingress приложения следующие строки:</p>
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="line"><span style="color:#F92672">metadata</span><span style="color:#F8F8F2">:</span></span>
-<span class="line"><span style="color:#F92672">  annotations</span><span style="color:#F8F8F2">:</span></span>
-<span class="line"><span style="color:#F92672">    kubernetes.io/ingress.class</span><span style="color:#F8F8F2">: </span><span style="color:#E6DB74">nginx</span></span>
-<span class="line"><span style="color:#F92672">    nginx.ingress.kubernetes.io/server-snippet</span><span style="color:#F8F8F2">: </span><span style="color:#F92672">|</span></span>
-<span class="line"><span style="color:#E6DB74">      location = /robots.txt {</span></span>
-<span class="line"><span style="color:#E6DB74">        add_header Content-Type text/plain;</span></span>
-<span class="line"><span style="color:#E6DB74">        return 200 'User-agent: *\nDisallow: /\n';</span></span>
-<span class="line"><span style="color:#E6DB74">      }</span></span>
-<span class="line"></span></code></pre></div></div>
-<p>Да, Nginx умеет не только выдавать статику или проксировать запросы. Он может генерировать ответ самостоятельно.
-Строка <code>return 200 'Content'</code> именно это и делает.</p>
-<p>Таким образом, мы решили задачу буквально в <strong>5 строк</strong>.</p>
-<h2 id="helm">Helm</h2>
-<p>В этой ситуации Helm не делает ничего особенного, но позволяет переиспользовать один манифест в разных окружениях.
-В простейшем его использовании, Helm по своей сути является шаблонизатором для конфигов Kubernetes.</p>
-<p>Поэтому можно сделать так:</p>
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="line"><span style="color:#F8F8F2">{{- </span><span style="color:#E6DB74">if ne .Values.env "production"</span><span style="color:#F8F8F2"> }}</span></span>
-<span class="line"><span style="color:#F92672">nginx.ingress.kubernetes.io/server-snippet</span><span style="color:#F8F8F2">: </span><span style="color:#F92672">|</span></span>
-<span class="line"><span style="color:#E6DB74">  location = /robots.txt {</span></span>
-<span class="line"><span style="color:#E6DB74">    add_header Content-Type text/plain;</span></span>
-<span class="line"><span style="color:#E6DB74">    return 200 'User-agent: *\nDisallow: /\n';</span></span>
-<span class="line"><span style="color:#E6DB74">  }</span></span>
-<span class="line"><span style="color:#F8F8F2">{{- </span><span style="color:#E6DB74">end</span><span style="color:#F8F8F2"> }}</span></span>
-<span class="line"></span></code></pre></div></div>
-<p>То есть если окружение не продовое, запрещаем поисковикам индексирование.</p>
-<p>Либо так, если хочется большей власти:</p>
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="line"><span style="color:#F8F8F2">{{- </span><span style="color:#E6DB74">if .Values.disallowRobots</span><span style="color:#F8F8F2"> }}</span></span>
-<span class="line"><span style="color:#F92672">nginx.ingress.kubernetes.io/server-snippet</span><span style="color:#F8F8F2">: </span><span style="color:#F92672">|</span></span>
-<span class="line"><span style="color:#E6DB74">  location = /robots.txt {</span></span>
-<span class="line"><span style="color:#E6DB74">    add_header Content-Type text/plain;</span></span>
-<span class="line"><span style="color:#E6DB74">    return 200 'User-agent: *\nDisallow: /\n';</span></span>
-<span class="line"><span style="color:#E6DB74">  }</span></span>
-<span class="line"><span style="color:#F8F8F2">{{- </span><span style="color:#E6DB74">end</span><span style="color:#F8F8F2"> }}</span></span>
-<span class="line"></span></code></pre></div></div>
-<p>Пользуйтесь на здоровье :fox:</p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="DevOps" /><category term="Kubernetes" /><category term="Docker" /><category term="Helm" /><category term="Nginx" /><summary type="html"><![CDATA[Универсальный способ указания robots.txt файла с использованием механизмов Kubernetes
-]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/robots-txt-in-kubernetes/cover.png" /><media:content medium="image" url="https://vtvz.me/blog/robots-txt-in-kubernetes/cover.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Ковыряясь под капотом #1</title><link href="https://vtvz.me/blog/under-the-hood-1st/" rel="alternate" type="text/html" title="Ковыряясь под капотом #1" /><published>2020-03-15T00:00:00+03:00</published><updated>2020-03-15T00:00:00+03:00</updated><id>https://vtvz.me/blog/under-the-hood-1st</id><content type="html" xml:base="https://vtvz.me/blog/under-the-hood-1st/"><![CDATA[<p>Мне кажется, что не само “блоговедение” доставляет мне удовольствие, сколько его разработка и улучшение.
-За последний месяц не было написано ни одной статьи.
-А последняя техническая статья была опубликована более <strong>двух</strong> месяцев назад.
-Но зато за это время мой сайт, а особенно главная страница, претерпел несколько мелких (и не мелких) улучшений.</p>
-<!--cut-->
-<p>Именно поэтому я решил вынести подобные статьи в отдельную категорию с нумерацией.
-Как настоящий программист я должен был начать отсчет с нуля.
-Но формально, нулевой пост <a href="/blog/big-changes/">уже был</a>.</p>
-<p>Думаю, теперь я <strong>всё</strong> буду писать в блог. Я не умею писать маленькие посты.
-Каждый пост в социальных сетях больше похож на сочинение или целую повесть, чем на короткую историю.
-Пусть это будет даже небольшая заметка. Но для меня куда важнее улучшать и продвигать свой блог, чем профили в соц. сетях.
-Пусть это даже не так эффективно.</p>
-<hr>
-<figure class="frame"><a href="./meeting.png" target="_blank"><img src="./meeting.png" alt="Приглашение на митап" title="Приглашение на митап"></a></figure>
-<p>Прежде, чем приступить к повествованию, хочу сделать небольшой анонс.
-26 марта в 19:00 я буду выступать с публичным докладом,
-где расскажу про свою работу, мою роль в компании и используемые инструменты.</p>
-<p>Для этого нужно зарегистрироваться по этой ссылке: <br>
-<a href="https://forms.gle/iuTm97u1s1ui82ga8">Регистрация на встречу IT Networking #6</a></p>
-<p>Приходите, будет интересно :fox:</p>
-<hr>
-<p>А теперь к обновлениям. Что было сделано:</p>
-<ol>
-<li>
-<p>Спасибо <a href="https://vk.com/dimkabeloved">Дмитрию Белову</a> за замечательное фото,
-которое я, конечно же, добавил в свое резюме.
-Ведь любое резюме должно иметь фотографию.
-Самым сложным было заставить картинку хорошо смотреться на всех устройствах.
-До сей поры не уверен, что она хорошо отображается на узкоэкранных девайсах.</p>
-</li>
-<li>
-<p>Пока это не пригодилось, но вполне может наступить такой момент,
-что потенциальный работодатель захочет не онлайн версию резюме, а PDF файлик на почту.
-Перспектива верстать страницы в каком-нибудь LibreOffice Writer мне вообще не улыбается по одной простой причине:
-придется поддерживать актуальную информацию сразу в двух местах, из-за чего может произойти рассинхрон.
-Но есть один простой и очевидный способ сделать из странички сайта PDF – “распечатать” его.
-Bootstrap из коробки предоставляет стили для печати. Но как уродливо он это делает!
-Пришлось столкнуться с двумя проблемами:</p>
-<ol>
-<li>Обычный А4 формат листа указанный при печати имеет ширину меньше 768 пикселей.
-Это значит, что вся колоночная верстка размазывается на всю ширину листа.
-Документ считается “small” только если он шире 270mm.
-Поэтому пришлось уйти от стандартов и указать размер документа 271mm x 383mm. Тем не менее, пропорции 1:√2 я сохранил.</li>
-<li>Bootstrap очень агрессивно накладывает стили для печати,
-из-за чего пришлось натыкать <code>!important</code> столько, сколько не делал этого за всю свою жизнь.
-Например, он отключает фон всем элементам страницы, выкрашивает весь текст в черный цвет,
-а ссылкам <code>a[href]</code> справа добавляет содержимое <code>href</code> в скобках.
-Выглядит это примерно так:</li>
-</ol>
-</li>
-</ol>
-<figure class="frame"><a href="./broken-links.png" target="_blank"><img src="./broken-links.png" alt="Уродливые ссылки" title="Уродливые ссылки"></a></figure>
-<p>Тем не менее, я его победил и результатом очень даже доволен.
-Единственная проблема, которая осталась, и которую я, вероятно, решать не буду –
-нормально печатать может только Chrome, и то с несколькими донастройками: выключенные колонтитулы и включенный фон.
-Firefox в этом плане очень проигрывает.
-Как минимум потому, что у него нет preview текста перед печатью (или я просто не нашел).</p>
-<p>Вот вам небольшая подсказка. Если вам тоже нужно отдебажить то, как будет выглядеть сайт для печати, сделайте следующее:</p>
-<ul>
-<li>Откройте панель разработчика <code>Ctrl+Shift+I</code>;</li>
-<li>Жмякните 3 точки сверху справа, около крестика <code>1</code>;</li>
-<li>“More tools” <code>2</code>;</li>
-<li>“Rendering” <code>3</code>;</li>
-<li>“Emulate CSS media type”;</li>
-<li>“Print” <code>4</code>.</li>
-</ul>
-<figure class="frame"><a href="./print-media-type.png" target="_blank"><img src="./print-media-type.png" alt="Инструкция включения режима печати" title="Инструкция включения режима печати"></a></figure>
-<p>В итоге вам все равно придется проверять, как будет выглядеть документ на листе, используя реальный режим печати <code>Ctrl+P</code>,
-потому что, как я говорил ранее, верстка при итоговой печати отличается от отображаемого в браузере.
-Но этого должно быть достаточно, чтобы разобраться с цветами, шрифтами и отступами.</p>
-<hr>
-<p>Ну и последняя супер мелочь. Обратите внимание на индикатор загрузки страницы. Теперь он навороченный :grin:.
-Взял я его <a href="https://freefrontend.com/css-loaders/">тут</a>.
-Там есть много впечатляющих примеров, но этот мне понравился своей относительной простотой.</p>
-<p>Также он был вынесен в отдельный файл со стилями. Это критично для устройств с медленным интернетом.
-Пока в коде сайта всё еще много мусора, поэтому загружается он немного дольше желаемого.
-Но индикатор должен отобразиться как можно раньше.</p>
-<hr>
-<p>У меня есть идея, сделать на сайте раздел достижений, прям как в играх – иметь историю моих побед прямо тут.
-Туда я мог бы складывать не только сухую информацию о факте победы над проблемой,
-но и полезные материалы, которые я нарыл во время решения задач :fox:</p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Разработка" /><category term="Блог" /><category term="Веб-разработка" /><category term="Jekyll" /><category term="Обновления" /><summary type="html"><![CDATA[Отчет о проделанной над сайтом работе на последние пару недель и анонс будущего митапа
-]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/under-the-hood-1st/cover.jpg" /><media:content medium="image" url="https://vtvz.me/blog/under-the-hood-1st/cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ru"><title type="html">Как прокормить целый офис в Петрозаводске</title><link href="https://vtvz.me/blog/cheap-food-for-team/" rel="alternate" type="text/html" title="Как прокормить целый офис в Петрозаводске" /><published>2020-02-12T00:00:00+03:00</published><updated>2020-02-12T00:00:00+03:00</updated><id>https://vtvz.me/blog/cheap-food-for-team</id><content type="html" xml:base="https://vtvz.me/blog/cheap-food-for-team/"><![CDATA[<p>IT компании обычно кормят своих работников всякими печеньками, кофе, чаем и прочими плюшками.
-Когда я пришел работать в Axmit, с этим были <del>не</del>большие проблемы.
-Часто случалось так, что из провизии оставалось только абсолютное ничего.
-В лучшем случае был чай. В идеальном – упаковка чокопаек.</p>
-<p>Поэтому я выдвинул инициативу взять на себя обязанности “завхоза”,
-менеджера по закупке провизии в офис.
-За полтора года работы в Axmit я успел набраться опыта в этом деле и хочу поделиться с вами.</p>
-<p>Эта статья рассказывает о том, где в Петрозаводске можно закупаться провизией для своих ребят.</p>
-<!--cut-->
-<div class="alert alert-info">
-    <p><b>Это не рекламный пост!</b></p>
-    <p>
-        Даже если так может показаться. У меня не такая большая аудитория, чтобы ко мне приходили за рекламой.
-        Все описанное здесь – мой опыт и находки.
-        Делюсь с вами тем, что нашел для себя полезным.  
-    </p>
-</div>
-<h2 id="оффлайн-магазины">Оффлайн-Магазины</h2>
-<p>Самое очевидное место, где можно покупать продукты – это магазины.
-Всякие там Пятерочки, Магниты, Ленты, Сигмы и п.р.
-Несмотря на доступные альтернативные варианты, в магазинах порой бывают очень хорошие скидки.
-Например, не так давно я купил коробку (8 упаковок по 12 печенек в каждой) оригинального Orion ChocoPie по ~110 рублей.
-Бывало и дешевле. Но это <strong>оригинальный</strong> ChocoPie, который, следовательно, стоит ощутимо дороже другого.</p>
-<p>Один из магазинов, который хочется выделить, это <strong>FixPrice</strong>.
-Там не оригинальный ChocoPie продается по 55 рублей за упаковку 6 шт. в каждой.
-Да, он не такой вкусный, но это хорошая альтернатива с хорошим соотношением цены и качества.</p>
-<p>В одно время я покупал по 60 упаковок по 20 каждого вида. Очень рассчитывал, что всем надоест. Но нет, не надоело.</p>
-<p>Есть еще “Светофор”. Стоит тоже посмотреть в его сторону, тем у кого есть машина.
-У меня ее нет. Поэтому для меня этот вариант однозначно отпадает.</p>
-<h2 id="ozon">Ozon</h2>
-<figure class="post-image">
-    <img src="./ozon.png" alt="Логотип Ozon">
-</figure>
-<p>Не могу сказать, что <a href="https://www.ozon.ru/">Ozon</a> очень выгодный магазин. Лично я в нем в офис ничего не заказывал.</p>
-<p>Но начальство там закупает кофе Lavazza, который по их словам там гораздо выгоднее, чем, скажем, когда-то в Спаре.</p>
-<p>Я думаю, что прежде, чем что-то покупать в больших количествах где-либо, стоит посмотреть цены в Озоне.
-Ведь как в других магазинах, там бывают очень неплохие скидки.</p>
-<h2 id="kdv">KDV</h2>
-<figure class="post-image post-image--left">
-    <img src="./kdv.png" alt="Логотип KDV">
-</figure>
-<p>Есть такой замечательный интернет-магазин и по совместительству производитель <a href="https://kdvonline.ru/">KDV</a>.
-Они работают в 91 городе и сотрудничают не только с юридическими лицами и крупными магазинами,
-но и обычными физ. лицами, как мы.</p>
-<p>Условия доставки очень простые: достаточно набрать товара на 300 рублей,
-и продовольствие будет доставлено прямо в офис или домой.</p>
-<p>Из того, что я там заказывал:</p>
-<ul>
-<li>Тараллини;</li>
-<li>Вафли мягкие и голландские;</li>
-<li>Шоколадные и злаковые батончики;</li>
-<li>Гренки;</li>
-<li>Арахис;</li>
-<li>Мармелад;</li>
-<li>Конфеты;</li>
-<li>Печенья и вафли;</li>
-<li>И т.д.</li>
-</ul>
-<p>В общем, очень хороший магазин, вкусная продукция и выгодные цены. Советую всем посмотреть.</p>
-<h2 id="хрум-хрум">Хрум-Хрум</h2>
-<figure class="frame post-image">
-    <img src="./hrum.jpg" alt="Хрум-Хрум">
-</figure>
-<p>Со временем я стал задумываться о том, что все это как-то вредно (не полезно, как минимум).
-Поэтому начал смотреть в сторону чуть более правильного питания и полезных сладостей.</p>
-<p>Первый интернет магазин, с которым я познакомился – <a href="https://hrumkaem.ru/">Хрум-Хрум</a>.
-О нем мне рассказал мой коллега.</p>
-<p>Из недостатков хочется отметить, что стоимость продукции указывается не за какую-то весовую единицу (кг),
-а за упаковку, в которой может быть любое количество грамм.
-Это очень искажает восприятие и анализ реальной стоимости продукта.</p>
-<p>В итоге, в этом магазине я заказывал единожды.
-Этого было достаточно, чтобы убедиться в том, что я точно не буду укладываться в выделенный мне месячный бюджет.</p>
-<h2 id="без-упаковки">“Без упаковки”</h2>
-<figure class="frame post-image post-image--left">
-    <img src="./bez.jpg" alt="Без упаковки">
-</figure>
-<p><a href="https://vk.com/bez_upakovki_ptz">Этот магазин</a> очень популярен среди эко-активистов, так как они продают продукцию исключительно в свою тару,
-либо в биоразлагаемые бумажные пакеты, многоразовые пластиковые контейнеры или стеклянную тару.</p>
-<p>Почти все, что у них есть, продается на развес. С ассортиментом можно ознакомиться в <a href="https://vk.com/bez_upakovki_ptz">группе в ВК</a>.
-Советую посмотреть, хотя бы для расширения кругозора. Там продаются некоторые вещи, которые я никогда до этого не видел.</p>
-<p>Мне там нравится покупать гранолу и печеньки. Наташа (моя жена) очень любит тамошний зефир.
-Иногда еще мы берем сливочный сыр и сушеные бананы.</p>
-<p>В этом магазине я также заказывал только один раз. Там все гораздо дешевле, а цены прозрачнее.
-Для обычных потребителей это очень удобный магазин, позволяющий купить ровно столько, сколько нужно.</p>
-<p>Из недостатков хочется отметить то, что там работает ооочееень мееедлееенныыый персонал.
-Если в обычном магазине покупка вам обойдется в 5 минут, тот тут уйдут все 15.
-И это в том случае, если там нет очереди. Но если перед вами есть хоть один человек…
-Короче, если у вас не много времени, лучше просто развернуться и уйти.</p>
-<h2 id="ecogreen">Ecogreen</h2>
-<figure class="frame"><a href="./ecogreen.jpg" target="_blank"><img src="./ecogreen.jpg" alt="Ecogreen" title="Ecogreen"></a></figure>
-<p>Герой этой статьи – магазин <a href="https://vk.com/suxofrukti_petrozavodsk">Ecogreen</a>.
-Стоит сказать сразу, что почти весь товар продается пакетами минимум пол кило,
-а бесплатная доставка осуществляется от 2т. рублей.
-Это значит, что обычному потребителю не очень-то и удобно закупаться в этом магазине.
-Но для массовых закупок в офис, чтобы прокормить ~20 человек это самый оптимальный вариант.</p>
-<p>Также открывается возможность покупать товары для себя вместе с тем, что закупается в офис.</p>
-<p>Для ребят в офис я покупаю:</p>
-<ul>
-<li>Орешки (в основном смеси);</li>
-<li>Банановые чипсы;</li>
-<li>Цукаты;</li>
-<li>Сушеные и вяленые фрукты;</li>
-<li>Банановые чипсы;</li>
-<li>Имбирь в сахаре;</li>
-<li>т.д.</li>
-</ul>
-<p>По началу ребята уничтожали двухнедельный запас менее чем за 1.5 недели,
-а оставшиеся несколько дней пили пустой кофе/чай.
-Но сейчас, вероятно, организм получил все необходимые витамины, и скорость съедания припасов приубавилась.</p>
-<p>Для себя домой я иногда беру:</p>
-<ul>
-<li>Орешки;</li>
-<li>Финики;</li>
-<li>Банановые чипсы;</li>
-<li>Семечки (для птиц в кормушку);</li>
-<li>Зелень (укроп и петрушка), шпинат, мята;</li>
-<li>Нут, фасоль, маш.</li>
-</ul>
-<p>Обязательно изучите ассортимент в этом магазине.
-Конечно, не у каждого есть возможность единоразово выложить 2 тысячи рублей сразу.
-Но, во-первых, не обязательно закупаться одному – уговорите друга/соседа/родственника и закажите вместе.
-А во-вторых, продаваемый там товар обычно долгого срока хранения.
-Может быть есть смысл закупаться в начале месяца и потом постепенно уничтожать припасы.</p>
-<h2 id="выводы">Выводы</h2>
-<p>В итоге, мне удалось уложиться в выделенный мне месячный бюджет и перевести весь наш офис на полезные сладости.
-Опрос показал, что большинство за отказ от сладкого. Но есть и те, кто “готов есть ChocoPie всю оставшуюся жизнь”.
-Но им придется кушать хорошую пищу :grin:</p>
-<p>От себя скажу, что переход на орешки и финики помог уйти от непомерного употребления сладостей
-и уменьшить объемы съедаемых каллорий.
-Орехами и финиками быстро наедаешься, тогда как я мог съедать всю упаковку чокопаек в качестве завтрака.</p>
-<p>Я прекрасно понимаю, что орехи – это дорого.
-Но почему бы не провести эксперимент. Один месяц покупать обычные сладости: печеньки, конфеты, и т.п.
-А потом – орехи и сухофрукты. Сначала дайте полезностям фору – позвольте организму пару недель наесться.
-А потом посчитайте, сколько денег уйдет на то и другое. И тогда делайте выводы – стоит ли оно того (стоит) :fox:</p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Опыт" /><category term="Еда" /><category term="Магазины" /><summary type="html"><![CDATA[Делюсь опытом закупки еды на 20 человек, чтобы полезно и недорого. 
-]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/cheap-food-for-team/cover.jpg" /><media:content medium="image" url="https://vtvz.me/blog/cheap-food-for-team/cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+пока комментарии не появились <img class="fox-emoji" src="/assets/images/fox-emoji.png" alt="🦊"></p>]]></content><author><name>Vitaly Zaslavsky</name><email>vtvz@pm.me</email></author><category term="Разработка" /><category term="Веб-разработка" /><category term="Аналитика" /><category term="Frontend" /><summary type="html"><![CDATA[Элегантный способ укоротить UTM метки
+]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://vtvz.me/blog/conquering-the-utm-parameters/cover.jpg" /><media:content medium="image" url="https://vtvz.me/blog/conquering-the-utm-parameters/cover.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

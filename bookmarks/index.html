@@ -40,7 +40,7 @@
         <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/webfonts/fa-regular-400.woff2" as="font">
         <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/webfonts/fa-brands-400.woff2" as="font">
         <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/webfonts/fa-solid-900.woff2" as="font">
-    <link rel="stylesheet" href="/_astro/Default.Dixvamqm.css"></head>
+    <link rel="stylesheet" href="/_astro/Default.BAPppbAv.css"></head>
 
     <body class="full-layout">
         
@@ -120,7 +120,7 @@
                 </div>
 
                 <div class="box bookmark">
-    <div class="bookmark-gradient bookmark-gradient--variant-9"><a href="/bookmarks/kubernetes-security-speech/"></a></div>
+    <div class="bookmark-gradient bookmark-gradient--variant-4"><a href="/bookmarks/kubernetes-security-speech/"></a></div>
     
     <h2 class="bookmark-title">
         <a href="/bookmarks/kubernetes-security-speech/">
@@ -139,10 +139,10 @@
 
     
 
-    <div class="bookmark-content js-emojify"><p>Нашел просто замечательнейший доклад на тему безопасности в Kubernetes.
+    <div class="bookmark-content"><p>Нашел просто замечательнейший доклад на тему безопасности в Kubernetes.
 Очень рекомендую к просмотру/прочтению.
 Подобные меры применимы в основном для кластеров с мультипользовательским доступом, но для общего развития очень полезно.
-Сам хочу покопать в сторону вопросов безопасности, так что ждите больше ссылок и закладок :fox:</p>
+Сам хочу покопать в сторону вопросов безопасности, так что ждите больше ссылок и закладок <img class="fox-emoji" src="/assets/images/fox-emoji.png" alt="🦊"></p>
 <p><a href="https://habr.com/ru/company/southbridge/blog/472484/" class="btn btn-block" role="button" target="_blank" rel="noopener noreferrer">Перейти</a></p></div>
 
     
@@ -155,7 +155,7 @@
         <span class="bookmark-tags__item">Kubernetes</span>, <span class="bookmark-tags__item">DevOps</span>
     </div>
 </div><div class="box bookmark">
-    <div class="bookmark-gradient bookmark-gradient--variant-15"><a href="/bookmarks/kubernetes-administrator-certification/"></a></div>
+    <div class="bookmark-gradient bookmark-gradient--variant-10"><a href="/bookmarks/kubernetes-administrator-certification/"></a></div>
     
     <h2 class="bookmark-title">
         <a href="/bookmarks/kubernetes-administrator-certification/">
@@ -174,7 +174,7 @@
 
     
 
-    <div class="bookmark-content js-emojify"><p>Я нашел замечательный ресурс, который позволяет пройти сертификацию Kubernetes администратора.</p>
+    <div class="bookmark-content"><p>Я нашел замечательный ресурс, который позволяет пройти сертификацию Kubernetes администратора.</p>
 <p><a href="https://www.cncf.io/certification/cka/" class="btn btn-block" role="button" target="_blank" rel="noopener noreferrer">Перейти</a></p>
 <p>Хорошая цель для меня, как профессионала своего дела.
 Я слышал, что за рубежом подобные штуки очень ценятся.
@@ -184,7 +184,7 @@
 И в итоге совсем ушел из разработки в DevOps.</p>
 <p>Подготовка к сертификации – очень хороший способ не только прокачаться в скиллах,
 но и чаще находить полезный и интересный материал для моего блога.
-Так что подписывайтесь на меня, чтобы ничего не упустить :wink:</p></div>
+Так что подписывайтесь на меня, чтобы ничего не упустить 😉</p></div>
 
     
 
@@ -215,7 +215,7 @@
 
     
 
-    <div class="bookmark-content js-emojify"><p>Небольшой пак материалов на тему ресурсов и лимитов в Kubernetes и управления ими.
+    <div class="bookmark-content"><p>Небольшой пак материалов на тему ресурсов и лимитов в Kubernetes и управления ими.
 Очень рекомендую посмотреть видео, доступное по первым двум ссылкам.</p>
 <ul>
 <li><a href="https://habr.com/ru/company/flant/blog/459326/" target="_blank" rel="noopener noreferrer">Автомасштабирование и управление ресурсами в Kubernetes</a></li>
@@ -234,6 +234,41 @@
 
     <div class="bookmark-tags">
         <span class="bookmark-tags__item">Kubernetes</span>, <span class="bookmark-tags__item">DevOps</span>
+    </div>
+</div><div class="box bookmark">
+    <div class="bookmark-gradient bookmark-gradient--variant-21"><a href="/bookmarks/kubernetes-command-and-args/"></a></div>
+    
+    <h2 class="bookmark-title">
+        <a href="/bookmarks/kubernetes-command-and-args/">
+            <i class="fa-solid fa-bookmark"></i>
+            Command и args в Kubernetes
+            
+        </a>
+    </h2>
+
+    <div class="bookmark-meta">
+        <span class="bookmark-meta__item">DevOps</span>
+        <time class="bookmark-meta__item" itemprop="datePublished" datetime="2019-12-10T00:00:00+03:00">
+            10 Dec 2019
+        </time>
+    </div>
+
+    
+
+    <div class="bookmark-content"><p>Маленькая особенность Kubernetes, которая могла стоить нам сломанного прода (но благодаря коллеге была исправлена еще на этапе тестирования). Как оказалось, Entrypoint Докера в терминологии Куба — command. Тогда как докеровский Cmd (command в docker-compose) — args. И если указать команду в Кубе, она заменит собой и entrypoint, и cmd.</p>
+<p>Думаю, о причинах использования entrypoint’a стоит рассказать в отдельной статье.</p>
+<ul>
+<li><a href="https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#define-a-command-and-arguments-when-you-create-a-pod" target="_blank" rel="noopener noreferrer">Define a Command and Arguments for a Container</a></li>
+</ul></div>
+
+    
+
+    <a href="/bookmarks/kubernetes-command-and-args/?utm=_comments#comments" class="btn btn-block">
+            К комментариям &rarr;
+        </a>
+
+    <div class="bookmark-tags">
+        <span class="bookmark-tags__item">Kubernetes</span>, <span class="bookmark-tags__item">Docker</span>, <span class="bookmark-tags__item">DevOps</span>
     </div>
 </div>
 
@@ -254,21 +289,21 @@
 <li>
                                     <a href="/bookmarks/">
                                         <i class="fa-solid fa-bookmark fa-fw"></i> Bookmarks
-                                        <span class="badge">3</span>
+                                        <span class="badge">4</span>
                                     </a>
                                 </li>
                             
 <li>
                                     <a href="/notes/">
                                         <i class="fa-solid fa-sticky-note fa-fw"></i> Notes
-                                        <span class="badge">3</span>
+                                        <span class="badge">13</span>
                                     </a>
                                 </li>
                             
 <li>
                                     <a href="/software/">
                                         <i class="fa-solid fa-cogs fa-fw"></i> Software
-                                        <span class="badge">2</span>
+                                        <span class="badge">4</span>
                                     </a>
                                 </li>
                             
@@ -335,7 +370,7 @@
         <script src="/assets/js/bootstrap.min.js?cb=1dad3b3"></script>
         <script src="/assets/js/plugins.js?cb=932ef83"></script>
         <script src="/assets/js/scripts.js?cb=78bb624"></script>
-        <script type="module" src="/_astro/Html.astro_astro_type_script_index_0_lang.D_Ss_Wtn.js"></script>
+        <script type="module" src="/_astro/Html.astro_astro_type_script_index_0_lang.9-4xkp-m.js"></script>
 
         
 <script>(function(){const yandexId = 31771726;
