@@ -1,0 +1,1 @@
+var e=class{static delay(e){return new Promise(t=>setTimeout(t,e))}static random(e,t){return Math.floor(Math.random()*(t-e)+e)}static shuffle(e){let t=[...e];for(let e=t.length-1;e>0;e--){let n=Math.floor(Math.random()*(e+1));[t[e],t[n]]=[t[n],t[e]]}return t}};export{e as t};

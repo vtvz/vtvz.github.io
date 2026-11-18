@@ -75,40 +75,6 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    var header = $('.page-index__header')
-
-    if (!header.length) {
-        return
-    }
-
-    var hidden = false
-    $(window).scroll(function () {
-
-        var top = header.offset().top
-
-        var bottom = top + header.outerHeight()
-
-        var scrollTop = $(window).scrollTop()
-
-        if (scrollTop > bottom) {
-            if (!hidden) {
-                var namew = header.find('.page-index__name')
-
-                var now = namew.text()
-                var next = namew.data('alternative').split(',')
-
-                namew.text(next.shift())
-                next.push(now)
-                namew.data('alternative', next.join(','))
-            }
-            hidden = true
-        } else {
-            hidden = false
-        }
-    });
-});
-
-$(document).ready(function () {
     var tags = $('.tag-list > li');
     tags.slice(6).hide();
 
