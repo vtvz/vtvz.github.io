@@ -308,6 +308,7 @@ ERROR: Failed to mount private data at [/tmp/ecryptfs.xxxxxxxx].
                 </header>
                 <figure class="frame post-image post-image--right"><a href="./rustify-logo.png" target="_blank"><img src="./rustify-logo.png" alt="" title=""></a></figure>
 <p>Последние несколько месяцев я в качестве хобби-проекта разрабатывал небольшой телеграм-бот. Не столько из необходимости, сколько из желания выучить новый язык программирования (Rust <i class="fa-brands fa-rust"></i> <i class="fa-solid fa-heart"></i>) и немного улучшить себе жизнь.</p>
+<!--cut-->
 <p>На текущий момент бот тесно интегрируется со Spotify и выполняет несколько <small class="text-muted">не очень</small> простых функций:</p>
 <ul>
 <li>Позволяет дизлайкнуть трек, чтобы никогда его больше не слышать. В случае, если устройство подключено к интернету и аккаунт является премиальным, бот будет просто переключать его на следующий трек. Никаких больше ремиксов Эд Ширана!</li>
@@ -353,7 +354,7 @@ ERROR: Failed to mount private data at [/tmp/ecryptfs.xxxxxxxx].
   </p>
   <p>
     <a class="social-button social-button--block social-button--telegram" href="https://t.me/RustifyBot">
-      <i class="fa-fw fa-brands fa-telegram-plane"></i><span class="social-button__label"> RustifyBot</span>
+      <i class="fa-brands fa-telegram"></i><span class="social-button__label"> RustifyBot</span>
     </a>
   </p>
 </div>
@@ -927,7 +928,7 @@ ERROR: Failed to mount private data at [/tmp/ecryptfs.xxxxxxxx].
 И выглядел он очень даже неплохо. Каждое достижение – это отдельная карточка,
 в которой собраны ссылки и материалы, использованные мной.</p>
 <p>Ко всему этому туда были добавлены
-<a href="/notes/"><i class="fa-solid fa-sticky-note"></i> заметки</a>
+<a href="/notes/"><i class="fa-solid fa-note-sticky"></i> заметки</a>
 и <a href="/bookmarks/"><i class="fa-solid fa-bookmark"></i> закладки</a>.
 Первые – для записи коротких мыслей на свободные темы.
 Вторые – для сохранения ссылок на интересные и полезные материалы.
@@ -949,7 +950,7 @@ ERROR: Failed to mount private data at [/tmp/ecryptfs.xxxxxxxx].
 <ol>
 <li>Если у вас есть любимые красивые цветовые градиенты, отправьте их мне любым <a href="/">доступным способом</a>.</li>
 <li>Также, вы можете <a href="https://fontawesome.com/icons?d=gallery&#x26;s=solid&#x26;m=free">выбрать красивую иконку</a> для раздела коллекций.
-Я пока выбрал звездочку <i class="fa-solid fa-star fa-fw"></i>, но, возможно, у вас будет идея получше 😉</li>
+Я пока выбрал звездочку <i class="fa-solid fa-star"></i>, но, возможно, у вас будет идея получше 😉</li>
 </ol>
 <h2 id="иконка">Иконка</h2>
 <p>Очередное глобальное изменение.
