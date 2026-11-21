@@ -9,9 +9,6 @@
 
         <link rel="shortcut icon" href="/favicon.png" type="image/png">
 
-        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,500,600,700,800|Roboto:300,400,500,600,700,800&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet" crossorigin="anonymous">
-        <link href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.207/distr/fira_code.css" rel="stylesheet">
-
         <link rel="alternate" type="application/rss+xml" title="Vitaly Zaslavsky – DevOps Engineer, who loves his job" href="https://vtvz.me/feed.xml"><link rel="alternate" type="application/rss+xml" title="My Achievements | Vitaly Zaslavsky" href="https://vtvz.me/feed/achievements.xml"><link rel="alternate" type="application/rss+xml" title="My Bookmarks | Vitaly Zaslavsky" href="https://vtvz.me/feed/bookmarks.xml"><link rel="alternate" type="application/rss+xml" title="My Notes | Vitaly Zaslavsky" href="https://vtvz.me/feed/notes.xml"><link rel="alternate" type="application/rss+xml" title="My Software | Vitaly Zaslavsky" href="https://vtvz.me/feed/software.xml">
 
         <meta name="theme-color" content="#232323">
@@ -38,10 +35,12 @@
 <meta name="yandex-verification" content="fa3eb4fcd2ebc4ad">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Vitaly Zaslavsky"},"dateModified":"2020-01-12T00:00:00+03:00","datePublished":"2020-01-12T00:00:00+03:00","description":"Коротко об основных возможностях Kubernetes — мощном инструменте оркестрации контейнеров\n","headline":"Постигая Kubernetes — мощь и величие","image":"https://vtvz.me/blog/comprehending-kubernetes/cover.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://vtvz.me/blog/comprehending-kubernetes/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://vtvz.me/assets/images/logo-black.png"},"name":"Vitaly Zaslavsky"},"url":"https://vtvz.me/blog/comprehending-kubernetes/"}</script>
 
+        <link rel="preload" href="/_astro/roboto-latin-wght-normal.ccAYIvAh.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/_astro/roboto-cyrillic-wght-normal.fOt7epNf.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="preload" href="/_astro/fa-regular-400.DRN8N0d1.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="preload" href="/_astro/fa-brands-400.Bs6tcqqs.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="preload" href="/_astro/fa-solid-900.IAB4Droh.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="/_astro/Default.DluuUOUN.css"></head>
+    <link rel="stylesheet" href="/_astro/Default.DwotMz2W.css"></head>
 
     <body class="full-layout">
         
@@ -49,7 +48,7 @@
         <div class="preloader__spinner"></div>
     </div>
 
-    <div id="bg"></div>
+    <div id="bg" style="--bg-wide: url(/_astro/bg_wide.9-AU9trT_1TgEow.webp); --bg-normal: url(/_astro/bg_normal.BjHmDupi_1rvSS1.webp); --bg-mobile: url(/_astro/bg_mobile.PnzLebUz_Z1h90ny.webp)"></div>
 
     <div class="body-wrapper">
         <nav class="navbar navbar-default" role="navigation">
@@ -113,9 +112,9 @@
                 
     <div>
         <div class="post box" itemscope itemtype="http://schema.org/BlogPosting">
-            <div class="post-main-image" style="background-image: url(/blog/comprehending-kubernetes/cover.jpg)">
+            <div class="post-main-image" style="background-image: url(/_astro/cover.Gn1xFOAy_ZI1yuR.webp); background-image: image-set(url(/_astro/cover.Gn1xFOAy_ZI1yuR.webp) 1x, url(/_astro/cover.Gn1xFOAy_18IPTf.webp) 2x)">
     <a href="/blog/comprehending-kubernetes/">
-        <img src="/blog/comprehending-kubernetes/cover.jpg" alt="Постигая Kubernetes — мощь и величие">
+        <img src="/_astro/cover.Gn1xFOAy_ZI1yuR.webp" srcset="/_astro/cover.Gn1xFOAy_ZI1yuR.webp 1x, /_astro/cover.Gn1xFOAy_18IPTf.webp 2x" alt="Постигая Kubernetes — мощь и величие">
     </a>
     
 </div>
@@ -178,7 +177,7 @@ K8S со своей стороны закрывает трафик на этот
 а потом, через достаточно короткое время, убивает его.
 Что в свою очередь инициирует запуск этого сервиса вновь.</li>
 </ul>
-<figure class="frame"><a href="./rolling-update.png" target="_blank"><img src="./rolling-update.png" alt="Стратегия деплоя - RollingUpdate" title="Стратегия деплоя - RollingUpdate"></a></figure>
+<figure class="frame"><a href="./rolling-update.png" target="_blank"><img src="/_astro/rolling-update.AK6OiswC_pH5R.webp" srcset="/_astro/rolling-update.AK6OiswC_1229be.webp 480w, /_astro/rolling-update.AK6OiswC_Z1fcUdh.webp 690w, /_astro/rolling-update.AK6OiswC_Z1Rxor4.webp 1090w, /_astro/rolling-update.AK6OiswC_pH5R.webp 1380w" sizes="(min-width: 1270px) 690px, (min-width: 992px) 557px, (min-width: 768px) 670px, calc(100vw - 90px)" width="1432" height="956" style="contain: size; contain-intrinsic-size: 1432px 956px; aspect-ratio: 1432 / 956" loading="lazy" decoding="async" alt="Стратегия деплоя - RollingUpdate" title="Стратегия деплоя - RollingUpdate"></a></figure>
 <h2 id="деплой">Деплой <a class="post__header-anchor" href="#деплой" title="Anchor">#</a></h2>
 <p>Пожалуй, это одна из самых приятных фич, которую предоставляет куб.
 И вот в чем соль. Представьте, что у вас есть приложение, и вам нужно выкатить новую версию на production.
@@ -203,7 +202,7 @@ K8S со своей стороны закрывает трафик на этот
 <p>Заметьте, как гармонично деплой работает с инструментами мониторинга (liveness &#x26; readiness probes).
 Если в прод попадет заведомо сломанное приложение, куб остановит процесс накатывания и оставит код на старой версии.
 Про существующие стратегии деплоя можно почитать <a href="https://habr.com/ru/company/flant/blog/471620/" target="_blank" rel="noopener noreferrer">тут</a>.</p>
-<figure class="frame"><a href="./load-balancing.png" target="_blank"><img src="./load-balancing.png" alt="Балансировка нагрузки" title="Балансировка нагрузки"></a></figure>
+<figure class="frame"><a href="./load-balancing.png" target="_blank"><img src="/_astro/load-balancing.BJt8JdvW_1XmFY8.webp" srcset="/_astro/load-balancing.BJt8JdvW_ZzISR2.webp 480w, /_astro/load-balancing.BJt8JdvW_1sbSe9.webp 690w, /_astro/load-balancing.BJt8JdvW_1XmFY8.webp 800w" sizes="(min-width: 1270px) 690px, (min-width: 992px) 557px, (min-width: 768px) 670px, calc(100vw - 90px)" width="800" height="517" style="contain: size; contain-intrinsic-size: 800px 517px; aspect-ratio: 800 / 517" loading="lazy" decoding="async" alt="Балансировка нагрузки" title="Балансировка нагрузки"></a></figure>
 <h2 id="балансировка-распределение-и-масштабирование">Балансировка, распределение и масштабирование <a class="post__header-anchor" href="#балансировка-распределение-и-масштабирование" title="Anchor">#</a></h2>
 <p>Каждый отдельный сервис может иметь несколько реплик себя. Например, backend.
 В этом случае куб, при правильной настройке конечно, распределяет нагрузку между сервисами,
@@ -222,7 +221,7 @@ K8S со своей стороны закрывает трафик на этот
 Или наоборот – группировать некоторые компоненты в пределах одного сервера для уменьшения сетевых задержек.
 Для этой цели существует т.н. <a href="https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity" target="_blank" rel="noopener noreferrer">Affinity and anti-affinity</a> (не знаю, как правильно перевести).
 Тут как раз и задаются правила выбора ноды.</p>
-<figure class="frame"><a href="./resources.jpg" target="_blank"><img src="./resources.jpg" alt="Распределение ресурсов" title="Распределение ресурсов"></a></figure>
+<figure class="frame"><a href="./resources.jpg" target="_blank"><img src="/_astro/resources.Bh8vfG1f_ZjFREi.webp" srcset="/_astro/resources.Bh8vfG1f_vdzpX.webp 480w, /_astro/resources.Bh8vfG1f_Vzlvs.webp 690w, /_astro/resources.Bh8vfG1f_ZjFREi.webp 1024w" sizes="(min-width: 1270px) 690px, (min-width: 992px) 557px, (min-width: 768px) 670px, calc(100vw - 90px)" width="1024" height="576" style="contain: size; contain-intrinsic-size: 1024px 576px; aspect-ratio: 1024 / 576" loading="lazy" decoding="async" alt="Распределение ресурсов" title="Распределение ресурсов"></a></figure>
 <h2 id="менеджмент-ресурсов">Менеджмент ресурсов <a class="post__header-anchor" href="#менеджмент-ресурсов" title="Anchor">#</a></h2>
 <p>Куб умеет:</p>
 <ul>
@@ -653,7 +652,7 @@ K8S со своей стороны закрывает трафик на этот
         
         <script src="https://js.sentry-cdn.com/9969aeb380dc4927b6ed1e20f6fa772c.min.js" crossorigin="anonymous"></script>
 
-        <script type="module" src="/_astro/Html.astro_astro_type_script_index_0_lang.D_Fl5UQ7.js"></script>
+        <script type="module" src="/_astro/Html.astro_astro_type_script_index_0_lang.CRzHvEbK.js"></script>
 
         
 <script>(function(){const yandexId = 31771726;

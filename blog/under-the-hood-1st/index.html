@@ -9,9 +9,6 @@
 
         <link rel="shortcut icon" href="/favicon.png" type="image/png">
 
-        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,500,600,700,800|Roboto:300,400,500,600,700,800&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet" crossorigin="anonymous">
-        <link href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.207/distr/fira_code.css" rel="stylesheet">
-
         <link rel="alternate" type="application/rss+xml" title="Vitaly Zaslavsky – DevOps Engineer, who loves his job" href="https://vtvz.me/feed.xml"><link rel="alternate" type="application/rss+xml" title="My Achievements | Vitaly Zaslavsky" href="https://vtvz.me/feed/achievements.xml"><link rel="alternate" type="application/rss+xml" title="My Bookmarks | Vitaly Zaslavsky" href="https://vtvz.me/feed/bookmarks.xml"><link rel="alternate" type="application/rss+xml" title="My Notes | Vitaly Zaslavsky" href="https://vtvz.me/feed/notes.xml"><link rel="alternate" type="application/rss+xml" title="My Software | Vitaly Zaslavsky" href="https://vtvz.me/feed/software.xml">
 
         <meta name="theme-color" content="#232323">
@@ -38,10 +35,12 @@
 <meta name="yandex-verification" content="fa3eb4fcd2ebc4ad">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Vitaly Zaslavsky"},"dateModified":"2020-03-15T00:00:00+03:00","datePublished":"2020-03-15T00:00:00+03:00","description":"Отчет о проделанной над сайтом работе на последние пару недель и анонс будущего митапа\n","headline":"Ковыряясь под капотом #1","image":"https://vtvz.me/blog/under-the-hood-1st/cover.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://vtvz.me/blog/under-the-hood-1st/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://vtvz.me/assets/images/logo-black.png"},"name":"Vitaly Zaslavsky"},"url":"https://vtvz.me/blog/under-the-hood-1st/"}</script>
 
+        <link rel="preload" href="/_astro/roboto-latin-wght-normal.ccAYIvAh.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/_astro/roboto-cyrillic-wght-normal.fOt7epNf.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="preload" href="/_astro/fa-regular-400.DRN8N0d1.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="preload" href="/_astro/fa-brands-400.Bs6tcqqs.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="preload" href="/_astro/fa-solid-900.IAB4Droh.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="/_astro/Default.DluuUOUN.css"></head>
+    <link rel="stylesheet" href="/_astro/Default.DwotMz2W.css"></head>
 
     <body class="full-layout">
         
@@ -49,7 +48,7 @@
         <div class="preloader__spinner"></div>
     </div>
 
-    <div id="bg"></div>
+    <div id="bg" style="--bg-wide: url(/_astro/bg_wide.9-AU9trT_1TgEow.webp); --bg-normal: url(/_astro/bg_normal.BjHmDupi_1rvSS1.webp); --bg-mobile: url(/_astro/bg_mobile.PnzLebUz_Z1h90ny.webp)"></div>
 
     <div class="body-wrapper">
         <nav class="navbar navbar-default" role="navigation">
@@ -113,9 +112,9 @@
                 
     <div>
         <div class="post box" itemscope itemtype="http://schema.org/BlogPosting">
-            <div class="post-main-image" style="background-image: url(/blog/under-the-hood-1st/cover.jpg)">
+            <div class="post-main-image" style="background-image: url(/_astro/cover.CAV06bOS_Z39lGS.webp); background-image: image-set(url(/_astro/cover.CAV06bOS_Z39lGS.webp) 1x, url(/_astro/cover.CAV06bOS_2khujl.webp) 2x)">
     <a href="/blog/under-the-hood-1st/">
-        <img src="/blog/under-the-hood-1st/cover.jpg" alt="Ковыряясь под капотом #1">
+        <img src="/_astro/cover.CAV06bOS_Z39lGS.webp" srcset="/_astro/cover.CAV06bOS_Z39lGS.webp 1x, /_astro/cover.CAV06bOS_2khujl.webp 2x" alt="Ковыряясь под капотом #1">
     </a>
     
 </div>
@@ -145,7 +144,7 @@
 Пусть это будет даже небольшая заметка. Но для меня куда важнее улучшать и продвигать свой блог, чем профили в соц. сетях.
 Пусть это даже не так эффективно.</p>
 <hr>
-<figure class="frame"><a href="./meeting.png" target="_blank"><img src="./meeting.png" alt="Приглашение на митап" title="Приглашение на митап"></a></figure>
+<figure class="frame"><a href="./meeting.png" target="_blank"><img src="/_astro/meeting.DY0piExi_1cDB24.webp" srcset="/_astro/meeting.DY0piExi_1Dj2cF.webp 480w, /_astro/meeting.DY0piExi_lFN3O.webp 690w, /_astro/meeting.DY0piExi_ZhmA0B.webp 1090w, /_astro/meeting.DY0piExi_1cDB24.webp 1380w" sizes="(min-width: 1270px) 690px, (min-width: 992px) 557px, (min-width: 768px) 670px, calc(100vw - 90px)" width="2000" height="1400" style="contain: size; contain-intrinsic-size: 2000px 1400px; aspect-ratio: 2000 / 1400" loading="lazy" decoding="async" alt="Приглашение на митап" title="Приглашение на митап"></a></figure>
 <p>Прежде, чем приступить к повествованию, хочу сделать небольшой анонс.
 26 марта в 19:00 я буду выступать с публичным докладом,
 где расскажу про свою работу, мою роль в компании и используемые инструменты.</p>
@@ -183,7 +182,7 @@ Bootstrap из коробки предоставляет стили для пе�
 </ol>
 </li>
 </ol>
-<figure class="frame"><a href="./broken-links.png" target="_blank"><img src="./broken-links.png" alt="Уродливые ссылки" title="Уродливые ссылки"></a></figure>
+<figure class="frame"><a href="./broken-links.png" target="_blank"><img src="/_astro/broken-links.iyctx9X4_ZM8sIR.webp" srcset="/_astro/broken-links.iyctx9X4_ZpmJ5h.webp 480w, /_astro/broken-links.iyctx9X4_Z2dDUq1.webp 690w, /_astro/broken-links.iyctx9X4_ZM8sIR.webp 873w" sizes="(min-width: 1270px) 690px, (min-width: 992px) 557px, (min-width: 768px) 670px, calc(100vw - 90px)" width="873" height="242" style="contain: size; contain-intrinsic-size: 873px 242px; aspect-ratio: 873 / 242" loading="lazy" decoding="async" alt="Уродливые ссылки" title="Уродливые ссылки"></a></figure>
 <p>Тем не менее, я его победил и результатом очень даже доволен.
 Единственная проблема, которая осталась, и которую я, вероятно, решать не буду –
 нормально печатать может только Chrome, и то с несколькими донастройками: выключенные колонтитулы и включенный фон.
@@ -198,7 +197,7 @@ Firefox в этом плане очень проигрывает.
 <li>“Emulate CSS media type”;</li>
 <li>“Print” <code>4</code>.</li>
 </ul>
-<figure class="frame"><a href="./print-media-type.png" target="_blank"><img src="./print-media-type.png" alt="Инструкция включения режима печати" title="Инструкция включения режима печати"></a></figure>
+<figure class="frame"><a href="./print-media-type.png" target="_blank"><img src="/_astro/print-media-type.DZfew6js_Zluk9O.webp" srcset="/_astro/print-media-type.DZfew6js_Z1EN8cG.webp 480w, /_astro/print-media-type.DZfew6js_5NLf8.webp 690w, /_astro/print-media-type.DZfew6js_266WBs.webp 1090w, /_astro/print-media-type.DZfew6js_Zluk9O.webp 1360w" sizes="(min-width: 1270px) 690px, (min-width: 992px) 557px, (min-width: 768px) 670px, calc(100vw - 90px)" width="1360" height="448" style="contain: size; contain-intrinsic-size: 1360px 448px; aspect-ratio: 1360 / 448" loading="lazy" decoding="async" alt="Инструкция включения режима печати" title="Инструкция включения режима печати"></a></figure>
 <p>В итоге вам все равно придется проверять, как будет выглядеть документ на листе, используя реальный режим печати <code>Ctrl+P</code>,
 потому что, как я говорил ранее, верстка при итоговой печати отличается от отображаемого в браузере.
 Но этого должно быть достаточно, чтобы разобраться с цветами, шрифтами и отступами.</p>
@@ -589,7 +588,7 @@ Firefox в этом плане очень проигрывает.
         
         <script src="https://js.sentry-cdn.com/9969aeb380dc4927b6ed1e20f6fa772c.min.js" crossorigin="anonymous"></script>
 
-        <script type="module" src="/_astro/Html.astro_astro_type_script_index_0_lang.D_Fl5UQ7.js"></script>
+        <script type="module" src="/_astro/Html.astro_astro_type_script_index_0_lang.CRzHvEbK.js"></script>
 
         
 <script>(function(){const yandexId = 31771726;
