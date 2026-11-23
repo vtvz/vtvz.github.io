@@ -1,0 +1,1 @@
+import{a as e}from"./TimeTogether.CNcf08Lj.js";var t=class{async act(){let t=document.querySelector(`.cv__years-together`);if(!t)return;let n=()=>{let n=e(new Date);t.textContent=n.toFixed(7)};n(),setInterval(n,1e3)}};export{t as default};
