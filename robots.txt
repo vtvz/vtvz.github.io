@@ -1,1 +1,9 @@
+User-agent: *
+Allow: /
+
+# Yandex: internal links mark where a visitor came from with ?utm=...;
+# the page is the same without it
+User-agent: Yandex
+Clean-param: utm
+
 Sitemap: https://vtvz.me/sitemap.xml
