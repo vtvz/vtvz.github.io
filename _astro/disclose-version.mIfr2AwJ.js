@@ -1,1 +1,0 @@
-import{w as e}from"./client.Bi4p2dQm.js";e(),typeof window<`u`&&((globalThis.__svelte??={}).v??=new Set).add(`5`);
